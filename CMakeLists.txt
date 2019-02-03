@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.13)
+project(Pazaak)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Pazaak main.cpp "Source/Cards/Card Interface/Card.h" "Source/Cards/Card Implementation/BasicCard/BasicCard.cpp" "Source/Cards/Card Implementation/BasicCard/BasicCard.h" "Source/Cards/Card Implementation/FlipCard/FlipCard.cpp" "Source/Cards/Card Implementation/FlipCard/FlipCard.h" "Source/Cards/Card Implementation/DoubleCard/DoubleCard.cpp" "Source/Cards/Card Implementation/DoubleCard/DoubleCard.h" "Source/Cards/Card Implementation/DualCard/TieBreakerCard/TieBreakerCard.cpp" "Source/Cards/Card Implementation/DualCard/TieBreakerCard/TieBreakerCard.h" "Source/Cards/Card Implementation/DualCard/DualCard.cpp" "Source/Cards/Card Implementation/DualCard/DualCard.h" Source/Containers/Deck.cpp Source/Containers/Deck.h Source/Containers/Hand.cpp Source/Containers/Hand.h Source/Game-Utilities/Player.cpp Source/Game-Utilities/Player.h Source/Game-Utilities/Round.cpp Source/Game-Utilities/Round.h "Source/Cards/Card Interface/Card.cpp")
