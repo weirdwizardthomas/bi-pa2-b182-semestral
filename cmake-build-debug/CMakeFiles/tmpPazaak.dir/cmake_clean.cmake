@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/tmpPazaak.dir/Cards/Card_Interface/Card.cpp.o"
   "CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o"
   "CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o"
-  "CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DoubleCard.cpp.o"
+  "CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o"
   "CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp.o"
   "CMakeFiles/tmpPazaak.dir/PlayerBoard.cpp.o"
   "tmpPazaak.pdb"

@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="tmpPazaak"/>
+		<Option title="Pazaak"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -27,8 +27,8 @@
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="tmpPazaak">
-				<Option output="/home/tomtom/Development/Pazaak/cmake-build-debug/tmpPazaak" prefix_auto="0" extension_auto="0"/>
+			<Target title="Pazaak">
+				<Option output="/home/tomtom/Development/Pazaak/cmake-build-debug/Pazaak" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/tomtom/Development/Pazaak/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -44,14 +44,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 tmpPazaak"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 Pazaak"/>
 					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="tmpPazaak/fast">
-				<Option output="/home/tomtom/Development/Pazaak/cmake-build-debug/tmpPazaak" prefix_auto="0" extension_auto="0"/>
+			<Target title="Pazaak/fast">
+				<Option output="/home/tomtom/Development/Pazaak/cmake-build-debug/Pazaak" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/tomtom/Development/Pazaak/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -67,7 +67,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 tmpPazaak/fast"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 Pazaak/fast"/>
 					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/tomtom/Development/Pazaak/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -85,43 +85,43 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.h">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/PlayerBoard.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/PlayerBoard.h">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/main.cpp">
-			<Option target="tmpPazaak"/>
+			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

@@ -5,8 +5,8 @@ CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o: ..
 CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o: ../Cards/Card\ Implementation/BasicCard/BasicCard.h
 CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o: ../Cards/Card\ Interface/Card.h
 
-CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DoubleCard.cpp.o: ../Cards/Card\ Implementation/DoubleCard.cpp
-CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DoubleCard.cpp.o: ../Cards/Card\ Implementation/DoubleCard.h
+CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o: ../Cards/Card\ Implementation/DoubleCard/DoubleCard.cpp
+CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o: ../Cards/Card\ Implementation/DoubleCard/DoubleCard.h
 
 CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o: ../Cards/Card\ Implementation/DualCard/DualCard.cpp
 CMakeFiles/tmpPazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o: ../Cards/Card\ Implementation/DualCard/DualCard.h
