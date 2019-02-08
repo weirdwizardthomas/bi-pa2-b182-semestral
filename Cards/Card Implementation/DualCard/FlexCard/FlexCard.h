@@ -14,16 +14,16 @@
 #define B 2
 
 
-class PlusMinusOneTwoCard : public DualCard {
+class FlexCard : public DualCard {
 private:
     string getSignedAttribute() const;
 
 public:
     //Constructor---------------------------
-    PlusMinusOneTwoCard();
+    FlexCard();
 
     //Methods-------------------------------
-    int play(int currentScore, vector<Card *> &playedCards) const override;
+    int play(int currentScore, vector<int> playedCards) const override;
 
     string getDescription() const override;
 

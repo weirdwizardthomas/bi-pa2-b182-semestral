@@ -12,10 +12,15 @@ CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.cpp
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
-CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp.o
+CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
- /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp
- /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.cpp
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.cpp
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
 CMakeFiles/Pazaak.dir/Cards/Card_Interface/Card.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.cpp
@@ -27,7 +32,8 @@ CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o
 CMakeFiles/Pazaak.dir/main.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
- /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
  /home/tomtom/Development/Pazaak/PlayerBoard.h
  /home/tomtom/Development/Pazaak/main.cpp

@@ -8,7 +8,7 @@
 
 //Libraries---------------------------------
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 
 //Classes-----------------------------------
 #include "../../Card Interface/Card.h"
@@ -19,7 +19,7 @@ using namespace std;
 
 class DualCard : public Card {
 
-private:
+protected:
     //Attributes----------------------------
     int effects[2];
 
@@ -28,7 +28,7 @@ public:
     DualCard(int left, int right);
 
     //Methods-------------------------------
-    int play(int currentScore, vector<Card *> &playedCards) const override;
+    int play(int currentScore, vector<int> playedCards) const override;
 
     string getDescription() const override;
 

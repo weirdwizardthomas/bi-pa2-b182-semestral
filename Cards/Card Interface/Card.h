@@ -15,8 +15,8 @@ using namespace std;
 
 
 //Definitions-------------------------------
-#define LOWER_BOUND -6
-#define UPPER_BOUND 6
+#define LOWER_BOUND "-6"
+#define UPPER_BOUND "6"
 #define DUAL_DELIMITER "|"
 #define PLUS_SIGN "+"
 #define MINUS_SIGN "-"
@@ -30,7 +30,7 @@ protected:
 
 public:
 
-    virtual int play(int currentScore, vector<Card *> &playedCards) const = 0;
+    virtual int play(int currentScore, vector<int> playedCards) const = 0;
 
     virtual string getDescription() const = 0;
 

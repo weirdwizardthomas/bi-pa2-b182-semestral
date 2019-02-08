@@ -102,10 +102,16 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.cpp">

@@ -4,8 +4,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o"
   "CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o"
   "CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o"
-  "CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp.o"
+  "CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o"
   "CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o"
+  "CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o"
   "Pazaak.pdb"
   "Pazaak"
 )

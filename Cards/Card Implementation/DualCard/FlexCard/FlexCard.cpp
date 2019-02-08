@@ -2,9 +2,11 @@
 // Created by tomtom on 03/02/19.
 //
 
-#include "PlusMinusOneTwoCard.h"
+#include "FlexCard.h"
 
-int PlusMinusOneTwoCard::play(int currentScore, vector<Card *> &playedCards) const {
+FlexCard::FlexCard() : DualCard(A, B) {}
+
+int FlexCard::play(int currentScore, vector<int> playedCards) const {
     cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl;
 
     string sign = chooseSign();
@@ -13,7 +15,7 @@ int PlusMinusOneTwoCard::play(int currentScore, vector<Card *> &playedCards) con
     return (sign == PLUS_SIGN ? input : input * -1);
 }
 
-string PlusMinusOneTwoCard::chooseSign() const {
+string FlexCard::chooseSign() const {
     bool invalidInput = true;
     string sign;
     while (invalidInput) {
@@ -28,14 +30,13 @@ string PlusMinusOneTwoCard::chooseSign() const {
     return sign;
 }
 
-string PlusMinusOneTwoCard::getDescription() const {
+string FlexCard::getDescription() const {
     return getSignedAttribute() + "\t" + to_string(A) + string(DUAL_DELIMITER) + to_string(B);
 }
 
-string PlusMinusOneTwoCard::getSignedAttribute() const {
+string FlexCard::getSignedAttribute() const {
     return string(PLUS_SIGN) + string(SIGN_DELIMITER) + string(MINUS_SIGN);
 }
 
-PlusMinusOneTwoCard::PlusMinusOneTwoCard() : DualCard(A, B) {}
 
 

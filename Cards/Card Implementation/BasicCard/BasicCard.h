@@ -17,7 +17,7 @@ private:
 public:
     BasicCard(int value);
 
-    int play(int currentScore, vector<Card *> &playedCards) const override;
+    int play(int currentScore, vector<int> playedCards) const override;
 
     string getDescription() const override;
 };
