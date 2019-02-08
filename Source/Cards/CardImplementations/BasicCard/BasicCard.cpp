@@ -11,7 +11,7 @@ BasicCard::BasicCard(int value) {
     this->value = value;
 }
 
-int BasicCard::play(int currentScore, vector<int> playedCards) const {
+int BasicCard::play(vector<int> playedCards, int currentScore, int opponentScore) const {
     return currentScore + this->value;
 }
 

@@ -7,6 +7,7 @@ CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o: ../Ca
 
 CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o: ../Cards/Card\ Implementation/DoubleCard/DoubleCard.cpp
 CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o: ../Cards/Card\ Implementation/DoubleCard/DoubleCard.h
+CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o: ../Cards/Card\ Interface/Card.h
 
 CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o: ../Cards/Card\ Implementation/DualCard/DualCard.cpp
 CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o: ../Cards/Card\ Implementation/DualCard/DualCard.h
@@ -30,6 +31,7 @@ CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o: ../PlayerBoard.cpp
 CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o: ../PlayerBoard.h
 
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Cards/Card\ Implementation/BasicCard/BasicCard.h
+CMakeFiles/Pazaak.dir/main.cpp.o: ../Cards/Card\ Implementation/DoubleCard/DoubleCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Cards/Card\ Implementation/DualCard/DualCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Cards/Card\ Implementation/DualCard/FlexCard/FlexCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Cards/Card\ Implementation/DualCard/FlipCard/FlipCard.h

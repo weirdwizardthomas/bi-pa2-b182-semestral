@@ -18,14 +18,13 @@ class FlexCard : public DualCard {
 private:
     string getSignedAttribute() const;
 
-    string chooseSign() const;
 
 public:
     //Constructor---------------------------
     FlexCard();
 
     //Methods-------------------------------
-    int play(int currentScore, vector<int> playedCards) const override;
+    int play(vector<int> playedCards, int currentScore, int opponentScore) const override;
 
     string getDescription() const override;
 

@@ -4,13 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o"
-  "/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o"
-  "/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o"
-  "/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o"
-  "/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o"
-  "/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Cards/Card_Interface/Card.cpp.o"
-  "/home/tomtom/Development/Pazaak/PlayerBoard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Player/Player.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o"
   "/home/tomtom/Development/Pazaak/main.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

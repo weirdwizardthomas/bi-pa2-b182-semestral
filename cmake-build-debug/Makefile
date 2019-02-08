@@ -123,194 +123,248 @@ Pazaak/fast:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/build
 .PHONY : Pazaak/fast
 
-Cards/Card_Implementation/BasicCard/BasicCard.o: Cards/Card_Implementation/BasicCard/BasicCard.cpp.o
+Source/Cards/CardImplementations/BasicCard/BasicCard.o: Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o
 
-.PHONY : Cards/Card_Implementation/BasicCard/BasicCard.o
-
-# target to build an object file
-Cards/Card_Implementation/BasicCard/BasicCard.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o
-.PHONY : Cards/Card_Implementation/BasicCard/BasicCard.cpp.o
-
-Cards/Card_Implementation/BasicCard/BasicCard.i: Cards/Card_Implementation/BasicCard/BasicCard.cpp.i
-
-.PHONY : Cards/Card_Implementation/BasicCard/BasicCard.i
-
-# target to preprocess a source file
-Cards/Card_Implementation/BasicCard/BasicCard.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.i
-.PHONY : Cards/Card_Implementation/BasicCard/BasicCard.cpp.i
-
-Cards/Card_Implementation/BasicCard/BasicCard.s: Cards/Card_Implementation/BasicCard/BasicCard.cpp.s
-
-.PHONY : Cards/Card_Implementation/BasicCard/BasicCard.s
-
-# target to generate assembly for a file
-Cards/Card_Implementation/BasicCard/BasicCard.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.s
-.PHONY : Cards/Card_Implementation/BasicCard/BasicCard.cpp.s
-
-Cards/Card_Implementation/DoubleCard/DoubleCard.o: Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o
-
-.PHONY : Cards/Card_Implementation/DoubleCard/DoubleCard.o
+.PHONY : Source/Cards/CardImplementations/BasicCard/BasicCard.o
 
 # target to build an object file
-Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o
-.PHONY : Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o
+Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o
+.PHONY : Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o
 
-Cards/Card_Implementation/DoubleCard/DoubleCard.i: Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.i
+Source/Cards/CardImplementations/BasicCard/BasicCard.i: Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i
 
-.PHONY : Cards/Card_Implementation/DoubleCard/DoubleCard.i
+.PHONY : Source/Cards/CardImplementations/BasicCard/BasicCard.i
 
 # target to preprocess a source file
-Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.i
-.PHONY : Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.i
+Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i
+.PHONY : Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i
 
-Cards/Card_Implementation/DoubleCard/DoubleCard.s: Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.s
+Source/Cards/CardImplementations/BasicCard/BasicCard.s: Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s
 
-.PHONY : Cards/Card_Implementation/DoubleCard/DoubleCard.s
+.PHONY : Source/Cards/CardImplementations/BasicCard/BasicCard.s
 
 # target to generate assembly for a file
-Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.s
-.PHONY : Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.s
+Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s
+.PHONY : Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s
 
-Cards/Card_Implementation/DualCard/DualCard.o: Cards/Card_Implementation/DualCard/DualCard.cpp.o
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.o: Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o
 
-.PHONY : Cards/Card_Implementation/DualCard/DualCard.o
+.PHONY : Source/Cards/CardImplementations/DoubleCard/DoubleCard.o
 
 # target to build an object file
-Cards/Card_Implementation/DualCard/DualCard.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o
-.PHONY : Cards/Card_Implementation/DualCard/DualCard.cpp.o
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o
+.PHONY : Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o
 
-Cards/Card_Implementation/DualCard/DualCard.i: Cards/Card_Implementation/DualCard/DualCard.cpp.i
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.i: Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i
 
-.PHONY : Cards/Card_Implementation/DualCard/DualCard.i
+.PHONY : Source/Cards/CardImplementations/DoubleCard/DoubleCard.i
 
 # target to preprocess a source file
-Cards/Card_Implementation/DualCard/DualCard.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.i
-.PHONY : Cards/Card_Implementation/DualCard/DualCard.cpp.i
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i
+.PHONY : Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i
 
-Cards/Card_Implementation/DualCard/DualCard.s: Cards/Card_Implementation/DualCard/DualCard.cpp.s
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.s: Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s
 
-.PHONY : Cards/Card_Implementation/DualCard/DualCard.s
+.PHONY : Source/Cards/CardImplementations/DoubleCard/DoubleCard.s
 
 # target to generate assembly for a file
-Cards/Card_Implementation/DualCard/DualCard.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.s
-.PHONY : Cards/Card_Implementation/DualCard/DualCard.cpp.s
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s
+.PHONY : Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s
 
-Cards/Card_Implementation/DualCard/FlexCard/FlexCard.o: Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o
+Source/Cards/CardImplementations/DualCard/DualCard.o: Source/Cards/CardImplementations/DualCard/DualCard.cpp.o
 
-.PHONY : Cards/Card_Implementation/DualCard/FlexCard/FlexCard.o
+.PHONY : Source/Cards/CardImplementations/DualCard/DualCard.o
 
 # target to build an object file
-Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o
-.PHONY : Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.o
+Source/Cards/CardImplementations/DualCard/DualCard.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o
+.PHONY : Source/Cards/CardImplementations/DualCard/DualCard.cpp.o
 
-Cards/Card_Implementation/DualCard/FlexCard/FlexCard.i: Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.i
+Source/Cards/CardImplementations/DualCard/DualCard.i: Source/Cards/CardImplementations/DualCard/DualCard.cpp.i
 
-.PHONY : Cards/Card_Implementation/DualCard/FlexCard/FlexCard.i
+.PHONY : Source/Cards/CardImplementations/DualCard/DualCard.i
 
 # target to preprocess a source file
-Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.i
-.PHONY : Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.i
+Source/Cards/CardImplementations/DualCard/DualCard.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.i
+.PHONY : Source/Cards/CardImplementations/DualCard/DualCard.cpp.i
 
-Cards/Card_Implementation/DualCard/FlexCard/FlexCard.s: Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.s
+Source/Cards/CardImplementations/DualCard/DualCard.s: Source/Cards/CardImplementations/DualCard/DualCard.cpp.s
 
-.PHONY : Cards/Card_Implementation/DualCard/FlexCard/FlexCard.s
+.PHONY : Source/Cards/CardImplementations/DualCard/DualCard.s
 
 # target to generate assembly for a file
-Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.s
-.PHONY : Cards/Card_Implementation/DualCard/FlexCard/FlexCard.cpp.s
+Source/Cards/CardImplementations/DualCard/DualCard.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.s
+.PHONY : Source/Cards/CardImplementations/DualCard/DualCard.cpp.s
 
-Cards/Card_Implementation/DualCard/FlipCard/FlipCard.o: Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.o: Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o
 
-.PHONY : Cards/Card_Implementation/DualCard/FlipCard/FlipCard.o
+.PHONY : Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.o
 
 # target to build an object file
-Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o
-.PHONY : Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.o
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o
+.PHONY : Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o
 
-Cards/Card_Implementation/DualCard/FlipCard/FlipCard.i: Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.i
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.i: Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i
 
-.PHONY : Cards/Card_Implementation/DualCard/FlipCard/FlipCard.i
+.PHONY : Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.i
 
 # target to preprocess a source file
-Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.i
-.PHONY : Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.i
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i
+.PHONY : Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i
 
-Cards/Card_Implementation/DualCard/FlipCard/FlipCard.s: Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.s
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.s: Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s
 
-.PHONY : Cards/Card_Implementation/DualCard/FlipCard/FlipCard.s
+.PHONY : Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.s
 
 # target to generate assembly for a file
-Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.s
-.PHONY : Cards/Card_Implementation/DualCard/FlipCard/FlipCard.cpp.s
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s
+.PHONY : Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s
 
-Cards/Card_Interface/Card.o: Cards/Card_Interface/Card.cpp.o
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.o: Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o
 
-.PHONY : Cards/Card_Interface/Card.o
+.PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.o
 
 # target to build an object file
-Cards/Card_Interface/Card.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Interface/Card.cpp.o
-.PHONY : Cards/Card_Interface/Card.cpp.o
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o
+.PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o
 
-Cards/Card_Interface/Card.i: Cards/Card_Interface/Card.cpp.i
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.i: Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i
 
-.PHONY : Cards/Card_Interface/Card.i
+.PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.i
 
 # target to preprocess a source file
-Cards/Card_Interface/Card.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Interface/Card.cpp.i
-.PHONY : Cards/Card_Interface/Card.cpp.i
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i
+.PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i
 
-Cards/Card_Interface/Card.s: Cards/Card_Interface/Card.cpp.s
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.s: Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
 
-.PHONY : Cards/Card_Interface/Card.s
+.PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.s
 
 # target to generate assembly for a file
-Cards/Card_Interface/Card.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Cards/Card_Interface/Card.cpp.s
-.PHONY : Cards/Card_Interface/Card.cpp.s
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
+.PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
 
-PlayerBoard.o: PlayerBoard.cpp.o
+Source/Cards/CardInterface/Card.o: Source/Cards/CardInterface/Card.cpp.o
 
-.PHONY : PlayerBoard.o
+.PHONY : Source/Cards/CardInterface/Card.o
 
 # target to build an object file
-PlayerBoard.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o
-.PHONY : PlayerBoard.cpp.o
+Source/Cards/CardInterface/Card.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o
+.PHONY : Source/Cards/CardInterface/Card.cpp.o
 
-PlayerBoard.i: PlayerBoard.cpp.i
+Source/Cards/CardInterface/Card.i: Source/Cards/CardInterface/Card.cpp.i
 
-.PHONY : PlayerBoard.i
+.PHONY : Source/Cards/CardInterface/Card.i
 
 # target to preprocess a source file
-PlayerBoard.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/PlayerBoard.cpp.i
-.PHONY : PlayerBoard.cpp.i
+Source/Cards/CardInterface/Card.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.i
+.PHONY : Source/Cards/CardInterface/Card.cpp.i
 
-PlayerBoard.s: PlayerBoard.cpp.s
+Source/Cards/CardInterface/Card.s: Source/Cards/CardInterface/Card.cpp.s
 
-.PHONY : PlayerBoard.s
+.PHONY : Source/Cards/CardInterface/Card.s
 
 # target to generate assembly for a file
-PlayerBoard.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/PlayerBoard.cpp.s
-.PHONY : PlayerBoard.cpp.s
+Source/Cards/CardInterface/Card.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.s
+.PHONY : Source/Cards/CardInterface/Card.cpp.s
+
+Source/Deck/Deck.o: Source/Deck/Deck.cpp.o
+
+.PHONY : Source/Deck/Deck.o
+
+# target to build an object file
+Source/Deck/Deck.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o
+.PHONY : Source/Deck/Deck.cpp.o
+
+Source/Deck/Deck.i: Source/Deck/Deck.cpp.i
+
+.PHONY : Source/Deck/Deck.i
+
+# target to preprocess a source file
+Source/Deck/Deck.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.i
+.PHONY : Source/Deck/Deck.cpp.i
+
+Source/Deck/Deck.s: Source/Deck/Deck.cpp.s
+
+.PHONY : Source/Deck/Deck.s
+
+# target to generate assembly for a file
+Source/Deck/Deck.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.s
+.PHONY : Source/Deck/Deck.cpp.s
+
+Source/Player/Player.o: Source/Player/Player.cpp.o
+
+.PHONY : Source/Player/Player.o
+
+# target to build an object file
+Source/Player/Player.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o
+.PHONY : Source/Player/Player.cpp.o
+
+Source/Player/Player.i: Source/Player/Player.cpp.i
+
+.PHONY : Source/Player/Player.i
+
+# target to preprocess a source file
+Source/Player/Player.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.i
+.PHONY : Source/Player/Player.cpp.i
+
+Source/Player/Player.s: Source/Player/Player.cpp.s
+
+.PHONY : Source/Player/Player.s
+
+# target to generate assembly for a file
+Source/Player/Player.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s
+.PHONY : Source/Player/Player.cpp.s
+
+Source/Player/PlayerBoard/PlayerBoard.o: Source/Player/PlayerBoard/PlayerBoard.cpp.o
+
+.PHONY : Source/Player/PlayerBoard/PlayerBoard.o
+
+# target to build an object file
+Source/Player/PlayerBoard/PlayerBoard.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o
+.PHONY : Source/Player/PlayerBoard/PlayerBoard.cpp.o
+
+Source/Player/PlayerBoard/PlayerBoard.i: Source/Player/PlayerBoard/PlayerBoard.cpp.i
+
+.PHONY : Source/Player/PlayerBoard/PlayerBoard.i
+
+# target to preprocess a source file
+Source/Player/PlayerBoard/PlayerBoard.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.i
+.PHONY : Source/Player/PlayerBoard/PlayerBoard.cpp.i
+
+Source/Player/PlayerBoard/PlayerBoard.s: Source/Player/PlayerBoard/PlayerBoard.cpp.s
+
+.PHONY : Source/Player/PlayerBoard/PlayerBoard.s
+
+# target to generate assembly for a file
+Source/Player/PlayerBoard/PlayerBoard.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s
+.PHONY : Source/Player/PlayerBoard/PlayerBoard.cpp.s
 
 main.o: main.cpp.o
 
@@ -348,27 +402,33 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Pazaak"
 	@echo "... edit_cache"
-	@echo "... Cards/Card_Implementation/BasicCard/BasicCard.o"
-	@echo "... Cards/Card_Implementation/BasicCard/BasicCard.i"
-	@echo "... Cards/Card_Implementation/BasicCard/BasicCard.s"
-	@echo "... Cards/Card_Implementation/DoubleCard/DoubleCard.o"
-	@echo "... Cards/Card_Implementation/DoubleCard/DoubleCard.i"
-	@echo "... Cards/Card_Implementation/DoubleCard/DoubleCard.s"
-	@echo "... Cards/Card_Implementation/DualCard/DualCard.o"
-	@echo "... Cards/Card_Implementation/DualCard/DualCard.i"
-	@echo "... Cards/Card_Implementation/DualCard/DualCard.s"
-	@echo "... Cards/Card_Implementation/DualCard/FlexCard/FlexCard.o"
-	@echo "... Cards/Card_Implementation/DualCard/FlexCard/FlexCard.i"
-	@echo "... Cards/Card_Implementation/DualCard/FlexCard/FlexCard.s"
-	@echo "... Cards/Card_Implementation/DualCard/FlipCard/FlipCard.o"
-	@echo "... Cards/Card_Implementation/DualCard/FlipCard/FlipCard.i"
-	@echo "... Cards/Card_Implementation/DualCard/FlipCard/FlipCard.s"
-	@echo "... Cards/Card_Interface/Card.o"
-	@echo "... Cards/Card_Interface/Card.i"
-	@echo "... Cards/Card_Interface/Card.s"
-	@echo "... PlayerBoard.o"
-	@echo "... PlayerBoard.i"
-	@echo "... PlayerBoard.s"
+	@echo "... Source/Cards/CardImplementations/BasicCard/BasicCard.o"
+	@echo "... Source/Cards/CardImplementations/BasicCard/BasicCard.i"
+	@echo "... Source/Cards/CardImplementations/BasicCard/BasicCard.s"
+	@echo "... Source/Cards/CardImplementations/DoubleCard/DoubleCard.o"
+	@echo "... Source/Cards/CardImplementations/DoubleCard/DoubleCard.i"
+	@echo "... Source/Cards/CardImplementations/DoubleCard/DoubleCard.s"
+	@echo "... Source/Cards/CardImplementations/DualCard/DualCard.o"
+	@echo "... Source/Cards/CardImplementations/DualCard/DualCard.i"
+	@echo "... Source/Cards/CardImplementations/DualCard/DualCard.s"
+	@echo "... Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.o"
+	@echo "... Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.i"
+	@echo "... Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.s"
+	@echo "... Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.o"
+	@echo "... Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.i"
+	@echo "... Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.s"
+	@echo "... Source/Cards/CardInterface/Card.o"
+	@echo "... Source/Cards/CardInterface/Card.i"
+	@echo "... Source/Cards/CardInterface/Card.s"
+	@echo "... Source/Deck/Deck.o"
+	@echo "... Source/Deck/Deck.i"
+	@echo "... Source/Deck/Deck.s"
+	@echo "... Source/Player/Player.o"
+	@echo "... Source/Player/Player.i"
+	@echo "... Source/Player/Player.s"
+	@echo "... Source/Player/PlayerBoard/PlayerBoard.o"
+	@echo "... Source/Player/PlayerBoard/PlayerBoard.i"
+	@echo "... Source/Player/PlayerBoard/PlayerBoard.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

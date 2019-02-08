@@ -6,7 +6,7 @@
 
 FlipCard::FlipCard(int a, int b) : DualCard(abs(a) <= abs(b) ? abs(a) : abs(b), (abs(a) <= abs(b) ? abs(b) : abs(a))) {}
 
-int FlipCard::play(int currentScore, vector<int> playedCards) const {
+int FlipCard::play(vector<int> playedCards, int currentScore, int opponentScore) const {
     for (int i : playedCards)
         if (i == effects[0] || i == effects[1])
             i = -i;

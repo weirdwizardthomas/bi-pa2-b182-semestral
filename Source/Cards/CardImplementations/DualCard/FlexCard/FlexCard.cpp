@@ -6,7 +6,7 @@
 
 FlexCard::FlexCard() : DualCard(A, B) {}
 
-int FlexCard::play(int currentScore, vector<int> playedCards) const {
+int FlexCard::play(vector<int> playedCards, int currentScore, int opponentScore) const {
     cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl;
 
     string sign = chooseSign();
@@ -15,20 +15,7 @@ int FlexCard::play(int currentScore, vector<int> playedCards) const {
     return (sign == PLUS_SIGN ? input : input * -1);
 }
 
-string FlexCard::chooseSign() const {
-    bool invalidInput = true;
-    string sign;
-    while (invalidInput) {
-        cin >> sign;
 
-        invalidInput = (sign != PLUS_SIGN && sign != MINUS_SIGN);
-
-        if (invalidInput)
-            cout << "Invalid sign, please try again.";
-
-    }
-    return sign;
-}
 
 string FlexCard::getDescription() const {
     return getSignedAttribute() + "\t" + to_string(A) + string(DUAL_DELIMITER) + to_string(B);

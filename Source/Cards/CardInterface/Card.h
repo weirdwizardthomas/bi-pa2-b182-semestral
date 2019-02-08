@@ -9,6 +9,7 @@
 //Libraries---------------------------------
 #include <string>
 #include <vector>
+#include <iostream>
 
 //Namespaces--------------------------------
 using namespace std;
@@ -28,15 +29,16 @@ protected:
 
     string offsetPositiveNumber(int number) const;
 
+    string chooseSign() const;
+
+
 public:
 
-    virtual int play(int currentScore, vector<int> playedCards) const = 0;
+    virtual int play(vector<int> playedCards, int currentScore, int opponentScore) const = 0;
 
     virtual string getDescription() const = 0;
 
     friend ostream &operator<<(ostream &out, const Card &card);
-
-
 };
 
 

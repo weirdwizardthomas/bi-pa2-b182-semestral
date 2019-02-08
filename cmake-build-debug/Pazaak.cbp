@@ -84,46 +84,58 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/PlayerBoard.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/PlayerBoard.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Deck/Deck.h">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/Player.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/Player.h">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/main.cpp">

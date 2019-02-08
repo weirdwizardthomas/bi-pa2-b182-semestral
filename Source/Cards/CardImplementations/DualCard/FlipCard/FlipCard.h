@@ -24,7 +24,7 @@ class FlipCard : public DualCard {
 public:
     FlipCard(int a, int b);
 
-    int play(int currentScore, vector<int> playedCards) const override;
+    int play(vector<int> playedCards, int currentScore, int opponentScore) const override;
 
     string getDescription() const override;
 };

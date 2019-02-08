@@ -8,6 +8,7 @@ CMakeFiles/Pazaak.dir/Cards/Card_Implementation/BasicCard/BasicCard.cpp.o
 CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DoubleCard/DoubleCard.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.cpp
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
 CMakeFiles/Pazaak.dir/Cards/Card_Implementation/DualCard/DualCard.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.cpp
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
@@ -31,6 +32,7 @@ CMakeFiles/Pazaak.dir/PlayerBoard.cpp.o
  /home/tomtom/Development/Pazaak/PlayerBoard.h
 CMakeFiles/Pazaak.dir/main.cpp.o
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h
+ /home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
  /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h
