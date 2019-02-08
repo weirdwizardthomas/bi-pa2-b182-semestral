@@ -23,6 +23,8 @@ protected:
     //Attributes----------------------------
     int effects[2];
 
+    int chooseEffect() const;
+
 public:
     //Constructor---------------------------
     DualCard(int left, int right);
@@ -32,7 +34,6 @@ public:
 
     string getDescription() const override;
 
-    int chooseEffect() const;
 };
 
 

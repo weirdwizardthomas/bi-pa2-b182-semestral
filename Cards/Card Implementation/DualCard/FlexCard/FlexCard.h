@@ -18,6 +18,8 @@ class FlexCard : public DualCard {
 private:
     string getSignedAttribute() const;
 
+    string chooseSign() const;
+
 public:
     //Constructor---------------------------
     FlexCard();
@@ -27,7 +29,6 @@ public:
 
     string getDescription() const override;
 
-    string chooseSign() const;
 };
 
 

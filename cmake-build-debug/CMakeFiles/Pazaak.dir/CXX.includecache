@@ -6,17 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.cpp
+BasicCard.h
+/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h
+
 /home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h
 ../../Card Interface/Card.h
 /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
 
+/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.cpp
+DualCard.h
+/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
+
 /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
 iostream
 -
-stdlib.h
+cstdlib
 -
 ../../Card Interface/Card.h
 /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+
+/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.cpp
+FlexCard.h
+/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
 
 /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
 ../DualCard.h
@@ -32,11 +44,19 @@ cstdlib
 ../DualCard.h
 /home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
 
+/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.cpp
+Card.h
+/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+
 /home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
 string
 -
 vector
 -
+
+/home/tomtom/Development/Pazaak/PlayerBoard.cpp
+PlayerBoard.h
+/home/tomtom/Development/Pazaak/PlayerBoard.h
 
 /home/tomtom/Development/Pazaak/PlayerBoard.h
 vector
@@ -48,8 +68,6 @@ Cards/Card Interface/Card.h
 iostream
 -
 cmath
--
-cstdlib
 -
 vector
 -
