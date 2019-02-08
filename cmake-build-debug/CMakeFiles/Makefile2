@@ -59,45 +59,45 @@ RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tomtom/Development/PA2/Pazaak
+CMAKE_SOURCE_DIR = /home/tomtom/Development/PA2/tmpPazaak
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tomtom/Development/PA2/Pazaak/cmake-build-debug
+CMAKE_BINARY_DIR = /home/tomtom/Development/PA2/tmpPazaak/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/Pazaak.dir
+# Target rules for target CMakeFiles/tmpPazaak.dir
 
 # All Build rule for target.
-CMakeFiles/Pazaak.dir/all:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/depend
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target Pazaak"
-.PHONY : CMakeFiles/Pazaak.dir/all
+CMakeFiles/tmpPazaak.dir/all:
+	$(MAKE) -f CMakeFiles/tmpPazaak.dir/build.make CMakeFiles/tmpPazaak.dir/depend
+	$(MAKE) -f CMakeFiles/tmpPazaak.dir/build.make CMakeFiles/tmpPazaak.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tomtom/Development/PA2/tmpPazaak/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target tmpPazaak"
+.PHONY : CMakeFiles/tmpPazaak.dir/all
 
 # Include target in all.
-all: CMakeFiles/Pazaak.dir/all
+all: CMakeFiles/tmpPazaak.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Pazaak.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles 12
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Pazaak.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/Pazaak.dir/rule
+CMakeFiles/tmpPazaak.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tomtom/Development/PA2/tmpPazaak/cmake-build-debug/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tmpPazaak.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tomtom/Development/PA2/tmpPazaak/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/tmpPazaak.dir/rule
 
 # Convenience name for target.
-Pazaak: CMakeFiles/Pazaak.dir/rule
+tmpPazaak: CMakeFiles/tmpPazaak.dir/rule
 
-.PHONY : Pazaak
-
-# clean rule for target.
-CMakeFiles/Pazaak.dir/clean:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/clean
-.PHONY : CMakeFiles/Pazaak.dir/clean
+.PHONY : tmpPazaak
 
 # clean rule for target.
-clean: CMakeFiles/Pazaak.dir/clean
+CMakeFiles/tmpPazaak.dir/clean:
+	$(MAKE) -f CMakeFiles/tmpPazaak.dir/build.make CMakeFiles/tmpPazaak.dir/clean
+.PHONY : CMakeFiles/tmpPazaak.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/tmpPazaak.dir/clean
 
 .PHONY : clean
 

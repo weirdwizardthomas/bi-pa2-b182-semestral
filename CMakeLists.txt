@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
-project(Pazaak)
+project(tmpPazaak)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Pazaak main.cpp "Source/Cards/Card Interface/Card.h" "Source/Cards/Card Implementation/BasicCard/BasicCard.cpp" "Source/Cards/Card Implementation/BasicCard/BasicCard.h" "Source/Cards/Card Implementation/FlipCard/FlipCard.cpp" "Source/Cards/Card Implementation/FlipCard/FlipCard.h" "Source/Cards/Card Implementation/DoubleCard/DoubleCard.cpp" "Source/Cards/Card Implementation/DoubleCard/DoubleCard.h" "Source/Cards/Card Implementation/DualCard/TieBreakerCard/TieBreakerCard.cpp" "Source/Cards/Card Implementation/DualCard/TieBreakerCard/TieBreakerCard.h" "Source/Cards/Card Implementation/DualCard/DualCard.cpp" "Source/Cards/Card Implementation/DualCard/DualCard.h" Source/Containers/Deck.cpp Source/Containers/Deck.h Source/Containers/Hand.cpp Source/Containers/Hand.h Source/Game-Utilities/Player.cpp Source/Game-Utilities/Player.h Source/Game-Utilities/Round.cpp Source/Game-Utilities/Round.h "Source/Cards/Card Interface/Card.cpp")
+add_executable(tmpPazaak main.cpp "Cards/Card Interface/Card.cpp" "Cards/Card Interface/Card.h" "Cards/Card Implementation/BasicCard/BasicCard.cpp" "Cards/Card Implementation/BasicCard/BasicCard.h" "Cards/Card Implementation/DualCard/DualCard.cpp" "Cards/Card Implementation/DualCard/DualCard.h" "Cards/Card Implementation/DoubleCard/DoubleCard.cpp" "Cards/Card Implementation/DoubleCard/DoubleCard.h" "Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp" "Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h" PlayerBoard.cpp PlayerBoard.h)

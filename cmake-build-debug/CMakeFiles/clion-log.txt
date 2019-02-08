@@ -1,4 +1,4 @@
-/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tomtom/Development/PA2/Pazaak
+/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tomtom/Development/PA2/tmpPazaak
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/tomtom/Development/PA2/Pazaak/cmake-build-debug
+-- Build files have been written to: /home/tomtom/Development/PA2/tmpPazaak/cmake-build-debug

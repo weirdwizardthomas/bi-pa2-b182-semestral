@@ -46,5 +46,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/Pazaak.dir/DependInfo.cmake"
+  "CMakeFiles/tmpPazaak.dir/DependInfo.cmake"
   )

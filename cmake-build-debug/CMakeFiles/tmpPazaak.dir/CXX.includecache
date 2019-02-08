@@ -1,0 +1,60 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/BasicCard/BasicCard.h
+../../Card Interface/Card.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Interface/Card.h
+
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/DualCard.h
+iostream
+-
+stdlib.h
+-
+../../Card Interface/Card.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Interface/Card.h
+
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.cpp
+PlusMinusOneTwoCard.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h
+
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h
+../DualCard.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/DualCard.h
+
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Interface/Card.h
+string
+-
+vector
+-
+
+/home/tomtom/Development/PA2/tmpPazaak/PlayerBoard.h
+vector
+-
+Cards/Card Interface/Card.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Interface/Card.h
+
+/home/tomtom/Development/PA2/tmpPazaak/main.cpp
+iostream
+-
+cmath
+-
+cstdlib
+-
+vector
+-
+Cards/Card Interface/Card.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Interface/Card.h
+Cards/Card Implementation/BasicCard/BasicCard.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/BasicCard/BasicCard.h
+Cards/Card Implementation/DualCard/DualCard.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/DualCard.h
+PlayerBoard.h
+/home/tomtom/Development/PA2/tmpPazaak/PlayerBoard.h
+Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h
+/home/tomtom/Development/PA2/tmpPazaak/Cards/Card Implementation/DualCard/PlusMinusOneTwoCard/PlusMinusOneTwoCard.h
+
