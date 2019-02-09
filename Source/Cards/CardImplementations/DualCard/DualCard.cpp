@@ -13,12 +13,15 @@ DualCard::DualCard(int left, int right) {
     this->effects[1] = left <= right ? right : left;
 }
 
-int DualCard::play(vector<int> playedCards, int currentScore, int opponentScore) const {
+int DualCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
 
     int input = chooseEffect();
-    cout << "You've chosen: " << this->effects[input] << endl;
+    int value = this->effects[input];
+    cout << "You've chosen: " << value << endl;
 
-    return currentScore + this->effects[input];
+    playedCards.push_back(value);
+    
+    return currentScore + value;
 }
 
 int DualCard::chooseEffect() const {

@@ -4,7 +4,7 @@
 
 #include "DoubleCard.h"
 
-int DoubleCard::play(vector<int> playedCards, int currentScore, int opponentScore) const {
+int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
 
     int tmp = playedCards.back();
     playedCards.back() *=2;

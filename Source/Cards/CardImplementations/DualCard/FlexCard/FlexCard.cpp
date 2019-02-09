@@ -6,13 +6,16 @@
 
 FlexCard::FlexCard() : DualCard(A, B) {}
 
-int FlexCard::play(vector<int> playedCards, int currentScore, int opponentScore) const {
+int FlexCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
     cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl;
 
     string sign = chooseSign();
     int input = chooseEffect();
 
-    return (sign == PLUS_SIGN ? input : input * -1);
+
+    int value = sign == PLUS_SIGN ? input : input * -1;
+    playedCards.push_back(value);
+    return currentScore + value;
 }
 
 

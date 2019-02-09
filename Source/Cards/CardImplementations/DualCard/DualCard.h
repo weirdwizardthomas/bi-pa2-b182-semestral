@@ -30,7 +30,7 @@ public:
     DualCard(int left, int right);
 
     //Methods-------------------------------
-    int play(vector<int> playedCards, int currentScore, int opponentScore) const override;
+    int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
     string getDescription() const override;
 

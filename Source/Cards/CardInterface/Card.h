@@ -34,7 +34,7 @@ protected:
 
 public:
 
-    virtual int play(vector<int> playedCards, int currentScore, int opponentScore) const = 0;
+    virtual int play(vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     virtual string getDescription() const = 0;
 
