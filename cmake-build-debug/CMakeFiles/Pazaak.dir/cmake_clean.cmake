@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o"
+  "CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o"
   "Pazaak.pdb"
   "Pazaak"
 )

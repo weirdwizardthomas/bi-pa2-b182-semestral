@@ -1,13 +1,12 @@
 
 #include <cmath>
+#include "Source/Player/PlayerBoard/PlayerBoard.h"
+#include "Source/Cards/CardImplementations/BasicCard/BasicCard.h"
+#include "Source/Cards/CardImplementations/DualCard/DualCard.h"
+#include "Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
+#include "Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
+#include "Source/Cards/CardImplementations/DoubleCard/DoubleCard.h"
 
-#include "Cards/Card Interface/Card.h"
-#include "Cards/Card Implementation/BasicCard/BasicCard.h"
-#include "Cards/Card Implementation/DualCard/DualCard.h"
-#include "Cards/Card Implementation/DualCard/FlexCard/FlexCard.h"
-#include "Player/PlayerBoard/PlayerBoard.h"
-#include "Cards/Card Implementation/DualCard/FlipCard/FlipCard.h"
-#include "Cards/Card Implementation/DoubleCard/DoubleCard.h"
 
 int generate(int i) { return static_cast<int>((i % 7) * pow(-1, i)); }
 

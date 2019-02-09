@@ -6,7 +6,7 @@
 #define TMPPAZAAK_DOUBLECARD_H
 
 
-#include "../../Card Interface/Card.h"
+#include "../../CardInterface/Card.h"
 
 class DoubleCard : public Card {
 

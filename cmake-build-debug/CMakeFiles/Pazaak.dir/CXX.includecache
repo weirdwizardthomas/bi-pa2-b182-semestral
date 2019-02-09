@@ -6,33 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h
-../../Card Interface/Card.h
-/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+../../CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.h
-../../Card Interface/Card.h
-/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp
+DoubleCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
 
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+../../CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h
 iostream
 -
 cstdlib
 -
-../../Card Interface/Card.h
-/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+../../CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
 ../DualCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h
 
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 cstdlib
 -
 ../DualCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h
 
-/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 string
 -
 vector
@@ -40,31 +44,27 @@ vector
 iostream
 -
 
-/home/tomtom/Development/Pazaak/PlayerBoard.h
+/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
 vector
 -
-Cards/Card Interface/Card.h
-/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
+../../Cards/CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
 /home/tomtom/Development/Pazaak/main.cpp
-iostream
--
 cmath
 -
-vector
--
-Cards/Card Interface/Card.h
-/home/tomtom/Development/Pazaak/Cards/Card Interface/Card.h
-Cards/Card Implementation/BasicCard/BasicCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/BasicCard/BasicCard.h
-Cards/Card Implementation/DualCard/DualCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/DualCard.h
-Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h
-PlayerBoard.h
-/home/tomtom/Development/Pazaak/PlayerBoard.h
-Cards/Card Implementation/DualCard/FlipCard/FlipCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h
-Cards/Card Implementation/DoubleCard/DoubleCard.h
-/home/tomtom/Development/Pazaak/Cards/Card Implementation/DoubleCard/DoubleCard.h
+Source/Player/PlayerBoard/PlayerBoard.h
+/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
+Source/Cards/CardImplementations/BasicCard/BasicCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+Source/Cards/CardImplementations/DualCard/DualCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+Source/Cards/CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 

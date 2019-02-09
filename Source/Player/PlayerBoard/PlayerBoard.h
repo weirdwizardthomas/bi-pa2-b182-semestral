@@ -7,7 +7,7 @@
 
 
 #include <vector>
-#include "Cards/Card Interface/Card.h"
+#include "../../Cards/CardInterface/Card.h"
 
 
 using namespace std;

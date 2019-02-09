@@ -16,8 +16,8 @@ using namespace std;
 
 
 //Definitions-------------------------------
-#define LOWER_BOUND -6
-#define UPPER_BOUND 6
+#define LOWER_BOUND -10
+#define UPPER_BOUND 10
 #define DUAL_DELIMITER "|"
 #define PLUS_SIGN "+"
 #define MINUS_SIGN "-"

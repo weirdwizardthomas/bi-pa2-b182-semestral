@@ -7,7 +7,8 @@
 
 
 //Libraries---------------------------------
-#include "../../Card Interface/Card.h"
+
+#include "../../CardInterface/Card.h"
 
 class BasicCard : public Card {
 

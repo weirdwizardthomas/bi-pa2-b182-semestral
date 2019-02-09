@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o"
+  "/home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Player/Player.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o"
   "/home/tomtom/Development/Pazaak/main.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/main.cpp.o"
