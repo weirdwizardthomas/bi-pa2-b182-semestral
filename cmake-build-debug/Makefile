@@ -393,6 +393,33 @@ Source/Player/PlayerBoard/PlayerBoard.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s
 .PHONY : Source/Player/PlayerBoard/PlayerBoard.cpp.s
 
+Source/Utilities/CardParser.o: Source/Utilities/CardParser.cpp.o
+
+.PHONY : Source/Utilities/CardParser.o
+
+# target to build an object file
+Source/Utilities/CardParser.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o
+.PHONY : Source/Utilities/CardParser.cpp.o
+
+Source/Utilities/CardParser.i: Source/Utilities/CardParser.cpp.i
+
+.PHONY : Source/Utilities/CardParser.i
+
+# target to preprocess a source file
+Source/Utilities/CardParser.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.i
+.PHONY : Source/Utilities/CardParser.cpp.i
+
+Source/Utilities/CardParser.s: Source/Utilities/CardParser.cpp.s
+
+.PHONY : Source/Utilities/CardParser.s
+
+# target to generate assembly for a file
+Source/Utilities/CardParser.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.s
+.PHONY : Source/Utilities/CardParser.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -459,6 +486,9 @@ help:
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.o"
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.i"
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.s"
+	@echo "... Source/Utilities/CardParser.o"
+	@echo "... Source/Utilities/CardParser.i"
+	@echo "... Source/Utilities/CardParser.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
