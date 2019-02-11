@@ -19,10 +19,17 @@ private:
     PlayerBoard board;
     //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
+
 public:
-    void play();
+
+    Player() = default;
+    Player(string name);
+
+    void play(int opponentScore);
 
     const string &getName() const;
+    int getScore() const;
+    void addPoint();
 };
 
 

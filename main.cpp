@@ -1,11 +1,7 @@
 
 #include <cmath>
 #include "Source/Player/PlayerBoard/PlayerBoard.h"
-#include "Source/Cards/CardImplementations/BasicCard/BasicCard.h"
-#include "Source/Cards/CardImplementations/DualCard/DualCard.h"
-#include "Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
-#include "Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
-#include "Source/Cards/CardImplementations/DoubleCard/DoubleCard.h"
+#include "Source/Game.h"
 
 
 int generate(int i) { return static_cast<int>((i % 7) * pow(-1, i)); }
@@ -14,8 +10,21 @@ int generate(int i) { return static_cast<int>((i % 7) * pow(-1, i)); }
 
 int main() {
 
+    string name1, name2;
 
 
+    cout <<"Enter the name of the player:";
+    cin >> name1;
+    cout << "Created a player with the name " << name1 << endl;
+
+    cout <<"Enter the name of the player:";
+    cin>> name2;
+    cout << "Created a player with the name " << name2 << endl;
+
+    Game * game = new Game(new Player(name1), new Player(name2));
+    game->play();
+
+/*
     PlayerBoard *playerBoard1 = new PlayerBoard();
 
     //Generate basic cards
@@ -46,7 +55,7 @@ int main() {
 
     for (Card *card : playerBoard1->getPlayedCards())
         cout << *card << endl;
-
+*/
     cout << "--------------------" << endl;
 
 }

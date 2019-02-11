@@ -7,7 +7,6 @@
 
 Deck::Deck(const vector<Card *> &cards) : cards(cards) {}
 
-
 Hand *Deck::drawCards(Hand *currentHand) {
 
     for (size_t i = 0; i < 4; i++) {
@@ -43,6 +42,21 @@ int Deck::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore,
     this->cards.erase(this->cards.begin() + cardIndex);
 
     return effect;
+}
+
+ostream &operator<<(ostream &out, const Deck &deck) {
+    int i = 0;
+
+    for (Card *card : deck.cards) {
+        cout << "(" << i << ") " << *card << endl;
+        i++;
+    }
+
+    return out;
+}
+
+size_t Deck::getDeckSize() const {
+    return this->cards.size();
 }
 
 

@@ -8,6 +8,7 @@
 
 #include <vector>
 #include "../../Cards/CardInterface/Card.h"
+#include "../Player.h"
 
 
 using namespace std;
@@ -15,24 +16,38 @@ using namespace std;
 class PlayerBoard {
 
 private:
+    //Attributes--------------------------
     int currentScore;
     vector<Card *> playedCards;
-
+    int roundsWon;
+    bool standing;
+    Player * currentOpponent;
 
 public:
+    //Constructor------------------------
+    PlayerBoard(Player *currentOpponent);
 
-    PlayerBoard();
-
+    //Getters----------------------------
     int getCurrentScore() const;
 
-    void setCurrentScore(int currentScore);
-
+    Player * getCurrentOpponent() const;
     vector<Card *> getPlayedCards() const;
 
-    void setPlayedCards(const vector<Card *> &playedCards);
+
+    bool isStanding() const;
+
+    //Setters----------------------------
+    void addPoint();
 
     void addPlayedCard(Card *card);
 
+    void setPlayedCards(const vector<Card *> &playedCards);
+
+    void setCurrentScore(int currentScore);
+
+    void setStanding(bool standing);
+
+    void stand();
 };
 
 

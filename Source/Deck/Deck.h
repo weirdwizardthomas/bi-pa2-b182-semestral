@@ -22,15 +22,27 @@ using namespace std;
 class Deck {
 private:
     vector<Card *> cards;
+
     size_t generateBoundIndex() const;
 
 public:
+    Deck() = default;
+
     Deck(const vector<Card *> &cards);
+
     ~Deck() = default;
 
     Hand *drawCards(Hand *currentHand);
+
     void shuffle();
+
     int playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore);
+
+    size_t getDeckSize() const;
+
+    friend ostream &operator<<(ostream &out, const Deck &deck);
+
+
 };
 
 

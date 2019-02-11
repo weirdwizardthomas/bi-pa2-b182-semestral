@@ -5,6 +5,7 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
+#define BASE_ROUND_COUNT 3
 
 #include "Player/Player.h"
 
@@ -15,20 +16,38 @@ private:
 
     //Attributes------------------------------
     Player players[2];
-    Player * playerOnTurn;
+    size_t currentlyPlaying;
     //int timeElapsed;
-
 
     //Methods--------------------------------
     void swapPlayers();
+
+    size_t selectStartingPlayer();
+
+    Player *round();
+
+    void turn();
+
+    //Messages & prompts--------------------
+    bool roundIsTie() const;
+
+    void roundPrompt(int roundNumber) const;
+
+    void roundTieMessage() const;
+
+    void roundVictorMessage(const Player *victor) const;
+
     void turnPrompt() const;
-    Player * selectStartingPlayer();
+
+
 public:
 
-    Game(Player &a, Player &b);
+    //Constructor----------------------------
+    Game(Player *a, Player *b);
 
     //Methods--------------------------------
-    void turn();
+    void play();
+
 };
 
 
