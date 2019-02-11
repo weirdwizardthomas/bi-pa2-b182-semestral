@@ -18,6 +18,7 @@ private:
     int currentScore;
     vector<Card *> playedCards;
 
+
 public:
 
     PlayerBoard();

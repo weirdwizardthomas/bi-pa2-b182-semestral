@@ -312,6 +312,33 @@ Source/Deck/Deck.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.s
 .PHONY : Source/Deck/Deck.cpp.s
 
+Source/Game.o: Source/Game.cpp.o
+
+.PHONY : Source/Game.o
+
+# target to build an object file
+Source/Game.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Game.cpp.o
+.PHONY : Source/Game.cpp.o
+
+Source/Game.i: Source/Game.cpp.i
+
+.PHONY : Source/Game.i
+
+# target to preprocess a source file
+Source/Game.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Game.cpp.i
+.PHONY : Source/Game.cpp.i
+
+Source/Game.s: Source/Game.cpp.s
+
+.PHONY : Source/Game.s
+
+# target to generate assembly for a file
+Source/Game.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Game.cpp.s
+.PHONY : Source/Game.cpp.s
+
 Source/Player/Hand/Hand.o: Source/Player/Hand/Hand.cpp.o
 
 .PHONY : Source/Player/Hand/Hand.o
@@ -477,6 +504,9 @@ help:
 	@echo "... Source/Deck/Deck.o"
 	@echo "... Source/Deck/Deck.i"
 	@echo "... Source/Deck/Deck.s"
+	@echo "... Source/Game.o"
+	@echo "... Source/Game.i"
+	@echo "... Source/Game.s"
 	@echo "... Source/Player/Hand/Hand.o"
 	@echo "... Source/Player/Hand/Hand.i"
 	@echo "... Source/Player/Hand/Hand.s"

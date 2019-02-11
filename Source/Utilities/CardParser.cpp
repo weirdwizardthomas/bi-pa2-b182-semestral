@@ -4,12 +4,11 @@
 
 #include <sstream>
 #include "CardParser.h"
-#include "../Cards/CardImplementations/BasicCard/BasicCard.h"
 
 //TODO FIX THIS SHITE
 //TODO LEARN HOW TO PASS CLASS TYPE AS A PARAMETER AND THEN EXTRACT THE METHOD TO A SINGLE ONE
 vector<Card *> CardParser::loadCards() {
-    string filenames[] = {"BasicCards", "DoubleCards", "DualCards", "FlexCards", "FlipCards"};
+   /* string filenames[] = {"BasicCards", "DoubleCards", "DualCards", "FlexCards", "FlipCards"};
     vector<Card *> cards;
 
 
@@ -37,6 +36,6 @@ vector<Card *> CardParser::loadCards() {
 
     myFile.close();
     //--------------------------------------
-
+*/
     return vector<Card *>();
 }

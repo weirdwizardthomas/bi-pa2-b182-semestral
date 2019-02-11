@@ -27,13 +27,25 @@ CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o
  /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp
  /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o
+ /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
  /home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp
+ /home/tomtom/Development/Pazaak/Source/Deck/Deck.h
+ /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
+CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o
+ /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+ /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp
+ /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o
  /home/tomtom/Development/Pazaak/Source/Player/Player.cpp
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o
  /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
  /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp
  /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
+CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o
+ /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+ /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+ /home/tomtom/Development/Pazaak/Source/Utilities/CardParser.cpp
+ /home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h
 CMakeFiles/Pazaak.dir/main.cpp.o
  /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
  /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
@@ -42,4 +54,5 @@ CMakeFiles/Pazaak.dir/main.cpp.o
  /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
  /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
  /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
+ /home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h
  /home/tomtom/Development/Pazaak/main.cpp
