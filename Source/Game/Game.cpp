@@ -4,16 +4,14 @@
 
 #include "Game.h"
 
-
 Game::Game(Player *a, Player *b) {
     this->players[0] = *a;
     this->players[1] = *b;
     this->currentlyPlaying = selectStartingPlayer();
 
-    cout << endl << endl;
-    cout << "Starting a game of Pazaak between " << this->players[0].getName() << " and " << this->players[1].getName()
-         << "." << endl;
-    cout << this->players[currentlyPlaying].getName() << " goes first." << endl;
+    this->players[0].createDeck();
+
+    gameStartMessage();
 }
 
 size_t Game::selectStartingPlayer() {
@@ -23,19 +21,8 @@ size_t Game::selectStartingPlayer() {
     return (size_t) dist(mt);
 }
 
-
-void Game::turn() {
-    turnPrompt();
-    this->players[currentlyPlaying].play(0);
-    swapPlayers();
-}
-
 void Game::swapPlayers() {
-   this->currentlyPlaying = !(this->currentlyPlaying);
-}
-
-void Game::turnPrompt() const {
-    cout << "Player " + this->players[currentlyPlaying].getName() + "'s turn to play." << endl;
+    this->currentlyPlaying = (size_t) !(this->currentlyPlaying);
 }
 
 void Game::play() {
@@ -59,6 +46,28 @@ void Game::play() {
 
 }
 
+Player *Game::round() {
+
+    while (1) {
+        this->turn();
+
+    }
+}
+
+void Game::turn() {
+    turnPrompt();
+    this->players[currentlyPlaying].play(0);
+    swapPlayers();
+}
+
+//Queries and prompts---------------------------------
+void Game::gameStartMessage() const {
+    cout << endl << endl;
+    cout << "Starting a game of Pazaak between " << players[0].getName() << " and " << players[1].getName()
+         << "." << endl;
+    cout << players[currentlyPlaying].getName() << " goes first." << endl;
+}
+
 void Game::roundTieMessage() const { cout << "Tie"; }
 
 void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
@@ -67,10 +76,6 @@ bool Game::roundIsTie() const { return players[0].getScore() == players[1].getSc
 
 void Game::roundPrompt(int roundNumber) const { cout << "Starting round number " << roundNumber << endl; }
 
-Player *Game::round() {
-
-    while (1) {
-        this->turn();
-
-    }
+void Game::turnPrompt() const {
+    cout << "Player " + this->players[currentlyPlaying].getName() + "'s turn to play." << endl;
 }

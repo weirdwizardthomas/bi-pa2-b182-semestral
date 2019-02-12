@@ -25,19 +25,51 @@ using namespace std;
 class Card {
 
 protected:
-    bool validInput(int value) const;
+    /**
+     *
+     * @param x Integer to be checked as a valid card value
+     * @return Whether the input satisfies the constraint
+     */
+    bool validInput(int x) const;
 
-    string offsetPositiveNumber(int number) const;
 
+    /**
+     *
+     * @param x Integer to be formatted based on its sign
+     * @return the input number with a sign (+ for positive, -for negative)
+     */
+    string offsetPositiveNumber(int x) const;
+
+    /**
+     * queries the user to choose between a positive and negative sign - used at flip cards,...
+     * @return chosen sign
+     */
     string chooseSign() const;
 
 
 public:
 
+    /**
+     * Puts the card's effect in play
+     * @param playedCards Cards previously played by the current player
+     * @param currentScore Current player's current round's score
+     * @param opponentScore Opponent's current round's score
+     * @return current player's score updated by playing a card
+     */
     virtual int play(vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
+    /**
+     *
+     * @return descriptive action of the card
+     */
     virtual string getDescription() const = 0;
 
+    /**
+     *
+     * @param out the ostream
+     * @param card card to be placed into the stream
+     * @return getDescription()
+     */
     friend ostream &operator<<(ostream &out, const Card &card);
 };
 

@@ -7,10 +7,9 @@
 
 #define BASE_ROUND_COUNT 3
 
-#include "Player/Player.h"
+#include "../Player/Player.h"
 
 class Game {
-
 
 private:
 
@@ -29,6 +28,8 @@ private:
     void turn();
 
     //Messages & prompts--------------------
+    void gameStartMessage() const;
+
     bool roundIsTie() const;
 
     void roundPrompt(int roundNumber) const;

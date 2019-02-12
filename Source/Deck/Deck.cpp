@@ -59,4 +59,8 @@ size_t Deck::getDeckSize() const {
     return this->cards.size();
 }
 
+void Deck::addCard(Card *card) {
+    this->cards.push_back(card);
+}
+
 

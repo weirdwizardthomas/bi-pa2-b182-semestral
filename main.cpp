@@ -1,10 +1,24 @@
 
 #include <cmath>
 #include "Source/Player/PlayerBoard/PlayerBoard.h"
-#include "Source/Game.h"
+#include "Source/Game/Game.h"
+#include "Source/Cards/CardImplementations/BasicCard/BasicCard.h"
 
+#include <map>
 
 int generate(int i) { return static_cast<int>((i % 7) * pow(-1, i)); }
+
+map<string, Card *>  getAllCards(){
+    map<string, Card *> allCards;
+
+    for(int i = -6; i <= 6; i++)
+    {
+        Card * dummy = new BasicCard(i);
+        allCards.insert(pair<string, Card*>(dummy->getDescription(),dummy));
+    }
+
+    return allCards;
+}
 
 //TODO PROPER EXCEPTIONS
 
@@ -13,7 +27,7 @@ int main() {
     string name1, name2;
 
 
-    cout <<"Enter the name of the player:";
+   /* cout <<"Enter the name of the player:";
     cin >> name1;
     cout << "Created a player with the name " << name1 << endl;
 
@@ -21,8 +35,17 @@ int main() {
     cin>> name2;
     cout << "Created a player with the name " << name2 << endl;
 
-    Game * game = new Game(new Player(name1), new Player(name2));
-    game->play();
+    Game * game = new Game(new Player(name1), new Player(name2));*/
+
+    map<string, Card *> cardMap = getAllCards();
+
+
+    auto it = cardMap.begin();
+
+    for(it = cardMap.begin(); it != cardMap.end(); it++)
+        cout << *(it->second) << endl;
+
+   // game->play();
 
 /*
     PlayerBoard *playerBoard1 = new PlayerBoard();

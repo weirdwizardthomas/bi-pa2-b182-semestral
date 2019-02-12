@@ -10,12 +10,12 @@ ostream &operator<<(ostream &out, const Card &card) {
     return out;
 }
 
-bool Card::validInput(int value) const {
-    return (value >= LOWER_BOUND && value <= UPPER_BOUND);
+bool Card::validInput(int x) const {
+    return (x >= LOWER_BOUND && x <= UPPER_BOUND);
 }
 
-string Card::offsetPositiveNumber(int number) const {
-    return ((number < 0 ? "" : PLUS_SIGN) + to_string(number));
+string Card::offsetPositiveNumber(int x) const {
+    return ((x < 0 ? "" : PLUS_SIGN) + to_string(x));
 }
 
 string Card::chooseSign() const {

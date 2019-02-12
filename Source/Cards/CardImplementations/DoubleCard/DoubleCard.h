@@ -8,9 +8,20 @@
 
 #include "../../CardInterface/Card.h"
 
+/**
+ * Double cards double the value of the current player's last played card when played
+ */
 class DoubleCard : public Card {
 
 public:
+
+    /**
+     * Puts the card's effect in play
+     * @param playedCards Cards previously played by the current player
+     * @param currentScore Current player's current round's score
+     * @param opponentScore Opponent's current round's score
+     * @return current player's score updated by doubling last card's value
+     */
     int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
     string getDescription() const override;

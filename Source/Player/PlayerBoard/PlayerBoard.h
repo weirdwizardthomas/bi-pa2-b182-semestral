@@ -6,9 +6,9 @@
 #define TMPPAZAAK_PLAYERBOARD_H
 
 
+
 #include <vector>
 #include "../../Cards/CardInterface/Card.h"
-#include "../Player.h"
 
 
 using namespace std;
@@ -18,30 +18,25 @@ class PlayerBoard {
 private:
     //Attributes--------------------------
     int currentScore;
-    vector<Card *> playedCards;
+    vector<int> playedCards;
     int roundsWon;
     bool standing;
-    Player * currentOpponent;
 
 public:
     //Constructor------------------------
-    PlayerBoard(Player *currentOpponent);
+    PlayerBoard();
 
     //Getters----------------------------
     int getCurrentScore() const;
 
-    Player * getCurrentOpponent() const;
-    vector<Card *> getPlayedCards() const;
-
+    vector<int> getPlayedCards() const;
 
     bool isStanding() const;
 
     //Setters----------------------------
     void addPoint();
 
-    void addPlayedCard(Card *card);
-
-    void setPlayedCards(const vector<Card *> &playedCards);
+    void addPlayedCard(int value);
 
     void setCurrentScore(int currentScore);
 

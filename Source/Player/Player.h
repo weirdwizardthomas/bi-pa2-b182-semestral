@@ -10,6 +10,9 @@
 #include "../Deck/Deck.h"
 #include "PlayerBoard/PlayerBoard.h"
 
+
+#pragma once
+
 using namespace std;
 
 class Player {
@@ -26,6 +29,7 @@ public:
     Player(string name);
 
     void play(int opponentScore);
+    void createDeck();
 
     const string &getName() const;
     int getScore() const;

@@ -6,7 +6,7 @@
 #include "Player.h"
 
 
-Player::Player(string name) : name(name), board(nullptr) {}
+Player::Player(string name) : name(name) {}
 
 void Player::play(int opponentScore) {
     //TODO query what card to play, give the option to stand or quit the game
@@ -16,8 +16,8 @@ void Player::play(int opponentScore) {
     cout << "Your turn to play! Your score: " << this->getScore() << endl;
     cout << "Your board: ";
 
-    for (Card *card : this->board.getPlayedCards())
-        cout << *card << " ";
+    for (int cardValue : this->board.getPlayedCards())
+        cout << cardValue << " ";
 
     //TODO ADD HELP QUERY
 
@@ -36,7 +36,7 @@ void Player::play(int opponentScore) {
         extractChoice >> choice;
         if (choice > this->deck.getDeckSize())
             throw "INVALID INPUT OUT OF BOUNDS";
-        this->deck.playCard(choice,this->board.getPlayedCards(),this->board.getCurrentScore(), opponentScore);
+       // this->deck.playCard(choice,this->board.getPlayedCards(),this->board.getCurrentScore(), opponentScore);
 
     }
 
@@ -53,4 +53,11 @@ int Player::getScore() const {
 
 void Player::addPoint() {
     this->board.addPoint();
+}
+
+void Player::createDeck() {
+
+  //  for(size_t i = 0; i < 10; i++)
+
+
 }

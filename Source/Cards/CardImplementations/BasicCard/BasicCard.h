@@ -9,7 +9,9 @@
 //Libraries---------------------------------
 
 #include "../../CardInterface/Card.h"
-
+/**
+ * Basic cards add their value to the player's current score when played.
+ */
 class BasicCard : public Card {
 
 private:
@@ -17,7 +19,13 @@ private:
 
 public:
     BasicCard(int value);
-
+/**
+ * Puts the card's effect in play
+ * @param playedCards Cards previously played by the current player
+ * @param currentScore Current player's current round's score
+ * @param opponentScore Opponent's current round's score
+ * @return currentScore incremented by the card's value
+ */
     int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
     string getDescription() const override;
