@@ -9,10 +9,9 @@
 //Libraries---------------------------------
 #include <iostream>
 #include <cstdlib>
-#include "../../CardInterface/Card.h"
-
+#include <cmath>
 //Classes-----------------------------------
-
+#include "../../CardInterface/Card.h"
 //Namespaces--------------------------------
 using namespace std;
 

@@ -9,8 +9,10 @@ DualCard::DualCard(int left, int right) {
     if (!validInput(left) || !validInput(right))
         throw "Invalid card value."; //TODO extract this
 
-    this->effects[0] = left <= right ? left : right;
-    this->effects[1] = left <= right ? right : left;
+
+//can do with adding them and swapping them if needed
+    this->effects[0] = abs(left) <= abs(right) ? left : right;
+    this->effects[1] = abs(left) <= abs(right) ? right : left;
 }
 
 int DualCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
@@ -20,7 +22,7 @@ int DualCard::play(vector<int> &playedCards, int currentScore, int opponentScore
     cout << "You've chosen: " << value << endl;
 
     playedCards.push_back(value);
-    
+
     return currentScore + value;
 }
 

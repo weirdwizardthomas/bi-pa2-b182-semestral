@@ -61,3 +61,11 @@ void Player::createDeck() {
 
 
 }
+
+bool Player::isStanding() {
+    return this->board.isStanding();
+}
+
+int Player::playedCardsCount() {
+    return this->board.getPlayedCards().size();
+}

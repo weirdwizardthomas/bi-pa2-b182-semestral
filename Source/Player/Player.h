@@ -34,6 +34,9 @@ public:
     const string &getName() const;
     int getScore() const;
     void addPoint();
+    bool isStanding();
+
+    int playedCardsCount();
 };
 
 

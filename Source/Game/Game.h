@@ -6,6 +6,8 @@
 #define PAZAAK_GAME_H
 
 #define BASE_ROUND_COUNT 3
+#define TARGET 20
+#define TABLE_SIZE 9
 
 #include "../Player/Player.h"
 
@@ -25,7 +27,16 @@ private:
 
     Player *round();
 
+    Player *currentlyNotPlaying();
+
+    bool bothPlayersStanding();
+
+    size_t otherPlayerIndex() const;
+
+    Player *getVictor();
+
     void turn();
+
 
     //Messages & prompts--------------------
     void gameStartMessage() const;

@@ -22,8 +22,14 @@ size_t Game::selectStartingPlayer() {
 }
 
 void Game::swapPlayers() {
-    this->currentlyPlaying = (size_t) !(this->currentlyPlaying);
+    this->currentlyPlaying = otherPlayerIndex();
 }
+
+Player *Game::currentlyNotPlaying() {
+    return &(players[(currentlyPlaying == 0 ? 1 : 0)]);
+}
+
+size_t Game::otherPlayerIndex() const { return (size_t) !(currentlyPlaying); }
 
 void Game::play() {
 
@@ -33,7 +39,7 @@ void Game::play() {
     while (roundNumber <= BASE_ROUND_COUNT) {
         roundPrompt(roundNumber);
         victor = round();
-        if (roundIsTie()) //tie
+        if (victor == nullptr) //tie
             roundTieMessage();
         else {
             victor->addPoint();
@@ -48,16 +54,31 @@ void Game::play() {
 
 Player *Game::round() {
 
-    while (1) {
+    Player *currentPlayer = &(this->players[currentlyPlaying]);
+
+    while (!bothPlayersStan ding()) {
         this->turn();
 
+        if (currentPlayer->getScore() > TARGET)
+            return currentlyNotPlaying();
+
+        if (currentPlayer->playedCardsCount() == TABLE_SIZE && currentPlayer->getScore() <= 20)
+            return currentPlayer;
+
+        swapPlayers();
     }
+
+    if (roundIsTie())
+        return nullptr;
+
+    return getVictor();
 }
+
+Player *Game::getVictor() { return &(players[(players[0].getScore() > players[1].getScore() ? 0 : 1)]); }
 
 void Game::turn() {
     turnPrompt();
     this->players[currentlyPlaying].play(0);
-    swapPlayers();
 }
 
 //Queries and prompts---------------------------------
@@ -79,3 +100,8 @@ void Game::roundPrompt(int roundNumber) const { cout << "Starting round number "
 void Game::turnPrompt() const {
     cout << "Player " + this->players[currentlyPlaying].getName() + "'s turn to play." << endl;
 }
+
+bool Game::bothPlayersStanding() {
+    return this->players[0].isStanding() && this->players[0].isStanding();
+}
+
