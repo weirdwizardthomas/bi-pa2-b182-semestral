@@ -32,3 +32,4 @@ string Card::chooseSign() const {
     }
     return sign;
 }
+

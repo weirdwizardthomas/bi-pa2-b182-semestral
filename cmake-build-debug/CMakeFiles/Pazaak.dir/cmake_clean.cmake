@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o"
+  "CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o"
+  "CMakeFiles/Pazaak.dir/Source/Utilities/CardFileConstraints.cpp.o"
   "Pazaak.pdb"
   "Pazaak"
 )

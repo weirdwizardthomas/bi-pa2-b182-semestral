@@ -1,5 +1,9 @@
 
 #include <cmath>
+#include <iostream>
+#include <fstream>
+#include <map>
+
 
 #include "Source/Player/PlayerBoard/PlayerBoard.h"
 #include "Source/Game/Game.h"
@@ -9,10 +13,20 @@
 #include "Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
 #include "Source/Cards/CardImplementations/DoubleCard/DoubleCard.h"
 
-#include <map>
+void readCards(string path) {
+    fstream myFile;
+    myFile.open(path, ios::in | ios::out);
 
-int generate(int i) { return static_cast<int>((i % 7) * pow(-1, i)); }
+    if (!myFile.is_open())
+        return;
+    string line;
 
+
+    while (getline(myFile, line))
+        cout << line << endl;
+
+    myFile.close();
+}
 
 //TODO REPLACE THIS WITH FILES
 map<string, Card *> getAllCards() {
@@ -57,10 +71,16 @@ map<string, Card *> getAllCards() {
 
 int main() {
 
+    string CardPath = "../Data/Cards/";
+    readCards(CardPath + "BasicCards");
+    readCards(CardPath + "DualCards");
+    readCards(CardPath + "FlipCards");
+
+/*
     string name1, name2;
 
 
-    /* cout <<"Enter the name of the player:";
+     cout <<"Enter the name of the player:";
      cin >> name1;
      cout << "Created a player with the name " << name1 << endl;
 
@@ -70,50 +90,18 @@ int main() {
 
      Game * game = new Game(new Player(name1), new Player(name2));*/
 
-    map<string, Card *> cardMap = getAllCards();
+    /*map<string, Card *> cardMap = getAllCards();
 
     auto it = cardMap.begin();
     size_t i = 0;
 
     for (it = cardMap.begin(); it != cardMap.end(); it++)
-        cout << (i < 10 ? " " : "") <<"(" << i++ << ")" << " " << (it->second)->getDescription() << endl;
-
+        cout *//*<< (i < 10 ? " " : "") <<"(" << i++ << ")" << " "*//* << (it->second)->getDescription() << endl;
+*/
 
 
     // game->play();
 
-/*
-    PlayerBoard *playerBoard1 = new PlayerBoard();
-
-    //Generate basic cards
-    for (int i = 0; i < 20; i++)
-        playerBoard1->addPlayedCard(new BasicCard(generate(i)));
-
-    //Generate dual cards
-    for (int i = 0; i < 20; i++)
-        playerBoard1->addPlayedCard(new DualCard(generate(i), generate(20 - i)));
-
-    //Generate flex cards
-    for (int i = 0; i < 2; i++)
-        playerBoard1->addPlayedCard(new FlexCard());
-
-    //Generate flip cards
-    for (int i = 1; i < 6; i++)
-        playerBoard1->addPlayedCard(new FlipCard(i, generate(6 - i)));
-
-    //Generate double cards
-    for (int i = 0; i < 6; i++)
-        playerBoard1->addPlayedCard(new DoubleCard());
-
-    cout << "--------------------" << endl;
-
-
-    int currentScore = playerBoard1->getCurrentScore();
-    vector<Card *> playedCards = playerBoard1->getPlayedCards();
-
-    for (Card *card : playerBoard1->getPlayedCards())
-        cout << *card << endl;
-*/
     cout << "--------------------" << endl;
 
 }

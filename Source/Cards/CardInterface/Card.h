@@ -10,6 +10,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <map>
 
 //Namespaces--------------------------------
 using namespace std;
@@ -32,7 +34,6 @@ protected:
      */
     bool validInput(int x) const;
 
-
     /**
      *
      * @param x Integer to be formatted based on its sign
@@ -46,7 +47,6 @@ protected:
      */
     string chooseSign() const;
 
-
 public:
 
     /**
@@ -59,8 +59,8 @@ public:
     virtual int play(vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
-     *
-     * @return descriptive action of the card
+     * generates card's effect's description
+     * @return a verbose effect of the card
      */
     virtual string getDescription() const = 0;
 

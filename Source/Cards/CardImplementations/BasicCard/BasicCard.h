@@ -5,10 +5,13 @@
 #ifndef TMPPAZAAK_BASICCARD_H
 #define TMPPAZAAK_BASICCARD_H
 
-
 //Libraries---------------------------------
+#include <fstream>
 
+//Headers-----------------------------------
 #include "../../CardInterface/Card.h"
+
+
 /**
  * Basic cards add their value to the player's current score when played.
  */
@@ -17,8 +20,11 @@ class BasicCard : public Card {
 private:
     int value;
 
+protected:
+    map<string, Card *> loadFromFile() override;
+
 public:
-    BasicCard(int value);
+    explicit BasicCard(int value);
 /**
  * Puts the card's effect in play
  * @param playedCards Cards previously played by the current player
@@ -27,6 +33,8 @@ public:
  * @return currentScore incremented by the card's value
  */
     int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
+
+public:
 
     string getDescription() const override;
 };

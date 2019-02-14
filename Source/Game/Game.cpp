@@ -56,7 +56,7 @@ Player *Game::round() {
 
     Player *currentPlayer = &(this->players[currentlyPlaying]);
 
-    while (!bothPlayersStan ding()) {
+    while (!bothPlayersStanding()) {
         this->turn();
 
         if (currentPlayer->getScore() > TARGET)

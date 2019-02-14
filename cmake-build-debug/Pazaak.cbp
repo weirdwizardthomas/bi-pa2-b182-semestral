@@ -150,6 +150,18 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h">
 			<Option target="Pazaak"/>
 		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardFileConstraints.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardFileConstraints.h">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h">
+			<Option target="Pazaak"/>
+		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/main.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
