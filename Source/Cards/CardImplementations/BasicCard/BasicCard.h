@@ -20,9 +20,6 @@ class BasicCard : public Card {
 private:
     int value;
 
-protected:
-    map<string, Card *> loadFromFile() override;
-
 public:
     explicit BasicCard(int value);
 /**

@@ -5,34 +5,38 @@
 #ifndef PAZAAK_CARDPARSER_H
 #define PAZAAK_CARDPARSER_H
 
-#include <string>
+//Libraries---------------------------------
 #include <fstream>
-#include <vector>
 #include <map>
 
+//Classes-----------------------------------
+#include "ParserStringUtilities.cpp"
 #include "../Cards/CardInterface/Card.h"
+#include "../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
+#include "../Cards/CardImplementations/BasicCard/BasicCard.h"
 
-#define CARD_FOLDER_PATH "../../Data/Cards/"
+//Definitions-------------------------------
+#define CARD_FOLDER_PATH "../Data/Cards/"
 #define BASIC_CARD "BasicCards"
 #define DUAL_CARD "DualCards"
 #define FLIP_CARD "FlipCards"
 
-#define WHITE_SPACES " \t\n\r\f\v" //maybe define this instead of a global
-
+//Namespaces--------------------------------
 using namespace std;
 
 class CardParser {
 
 private:
-    string files[3] = {BASIC_CARD, DUAL_CARD, FLIP_CARD};
+    const string files[3] = {BASIC_CARD, DUAL_CARD, FLIP_CARD};
 
     vector<string> getFileLines(string filePath) const;
-    void validLines(vector<string> fileLines, string mode) const;
 
+    void validLines(vector<string> fileLines, string mode) const;
+    pair<int, int> getDualValues(const string &line) const;
 public:
     map<string, Card *> loadAllCards();
 
-    Card *callConstructor(const string &basic_string, vector<string> vector);
+
 };
 
 

@@ -66,6 +66,6 @@ bool Player::isStanding() {
     return this->board.isStanding();
 }
 
-int Player::playedCardsCount() {
+int Player::getPlayedCardsCount() {
     return this->board.getPlayedCards().size();
 }

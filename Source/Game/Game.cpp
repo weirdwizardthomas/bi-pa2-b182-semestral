@@ -62,7 +62,7 @@ Player *Game::round() {
         if (currentPlayer->getScore() > TARGET)
             return currentlyNotPlaying();
 
-        if (currentPlayer->playedCardsCount() == TABLE_SIZE && currentPlayer->getScore() <= 20)
+        if (currentPlayer->getPlayedCardsCount() == TABLE_SIZE && currentPlayer->getScore() <= 20)
             return currentPlayer;
 
         swapPlayers();

@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+fstream
+-
 ../../CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
@@ -40,6 +42,10 @@ string
 vector
 -
 iostream
+-
+fstream
+-
+map
 -
 
 /home/tomtom/Development/Pazaak/Source/Deck/Deck.h
@@ -78,6 +84,32 @@ vector
 ../../Cards/CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
+/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.cpp
+CardParser.h
+/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h
+
+/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h
+fstream
+-
+map
+-
+ParserStringUtilities.cpp
+/home/tomtom/Development/Pazaak/Source/Utilities/ParserStringUtilities.cpp
+../Cards/CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
+../Cards/CardImplementations/BasicCard/BasicCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+
+/home/tomtom/Development/Pazaak/Source/Utilities/ParserStringUtilities.cpp
+utility
+-
+string
+-
+vector
+-
+
 /home/tomtom/Development/Pazaak/main.cpp
 cmath
 -
@@ -101,4 +133,6 @@ Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
 Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+Source/Utilities/CardParser.h
+/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h
 

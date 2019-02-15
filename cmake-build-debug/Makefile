@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/tomtom/Development/Pazaak/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4588.63/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -420,33 +420,6 @@ Source/Player/PlayerBoard/PlayerBoard.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s
 .PHONY : Source/Player/PlayerBoard/PlayerBoard.cpp.s
 
-Source/Utilities/CardFileConstraints.o: Source/Utilities/CardFileConstraints.cpp.o
-
-.PHONY : Source/Utilities/CardFileConstraints.o
-
-# target to build an object file
-Source/Utilities/CardFileConstraints.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardFileConstraints.cpp.o
-.PHONY : Source/Utilities/CardFileConstraints.cpp.o
-
-Source/Utilities/CardFileConstraints.i: Source/Utilities/CardFileConstraints.cpp.i
-
-.PHONY : Source/Utilities/CardFileConstraints.i
-
-# target to preprocess a source file
-Source/Utilities/CardFileConstraints.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardFileConstraints.cpp.i
-.PHONY : Source/Utilities/CardFileConstraints.cpp.i
-
-Source/Utilities/CardFileConstraints.s: Source/Utilities/CardFileConstraints.cpp.s
-
-.PHONY : Source/Utilities/CardFileConstraints.s
-
-# target to generate assembly for a file
-Source/Utilities/CardFileConstraints.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardFileConstraints.cpp.s
-.PHONY : Source/Utilities/CardFileConstraints.cpp.s
-
 Source/Utilities/CardParser.o: Source/Utilities/CardParser.cpp.o
 
 .PHONY : Source/Utilities/CardParser.o
@@ -473,6 +446,33 @@ Source/Utilities/CardParser.s: Source/Utilities/CardParser.cpp.s
 Source/Utilities/CardParser.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.s
 .PHONY : Source/Utilities/CardParser.cpp.s
+
+Source/Utilities/ParserStringUtilities.o: Source/Utilities/ParserStringUtilities.cpp.o
+
+.PHONY : Source/Utilities/ParserStringUtilities.o
+
+# target to build an object file
+Source/Utilities/ParserStringUtilities.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.o
+.PHONY : Source/Utilities/ParserStringUtilities.cpp.o
+
+Source/Utilities/ParserStringUtilities.i: Source/Utilities/ParserStringUtilities.cpp.i
+
+.PHONY : Source/Utilities/ParserStringUtilities.i
+
+# target to preprocess a source file
+Source/Utilities/ParserStringUtilities.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.i
+.PHONY : Source/Utilities/ParserStringUtilities.cpp.i
+
+Source/Utilities/ParserStringUtilities.s: Source/Utilities/ParserStringUtilities.cpp.s
+
+.PHONY : Source/Utilities/ParserStringUtilities.s
+
+# target to generate assembly for a file
+Source/Utilities/ParserStringUtilities.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.s
+.PHONY : Source/Utilities/ParserStringUtilities.cpp.s
 
 main.o: main.cpp.o
 
@@ -543,12 +543,12 @@ help:
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.o"
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.i"
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.s"
-	@echo "... Source/Utilities/CardFileConstraints.o"
-	@echo "... Source/Utilities/CardFileConstraints.i"
-	@echo "... Source/Utilities/CardFileConstraints.s"
 	@echo "... Source/Utilities/CardParser.o"
 	@echo "... Source/Utilities/CardParser.i"
 	@echo "... Source/Utilities/CardParser.s"
+	@echo "... Source/Utilities/ParserStringUtilities.o"
+	@echo "... Source/Utilities/ParserStringUtilities.i"
+	@echo "... Source/Utilities/ParserStringUtilities.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

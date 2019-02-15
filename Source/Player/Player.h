@@ -36,7 +36,7 @@ public:
     void addPoint();
     bool isStanding();
 
-    int playedCardsCount();
+    int getPlayedCardsCount();
 };
 
 
