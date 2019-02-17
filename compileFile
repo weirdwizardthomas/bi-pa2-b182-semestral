@@ -1,0 +1,14 @@
+g++ -g main.cpp
+Source/Cards/CardInterface/Card.cpp
+Source/Cards/CardImplementations/BasicCard/BasicCard.cpp
+Source/Cards/CardImplementations/DualCard/DualCard.cpp
+Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp
+Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp
+Source/Player/PlayerBoard/PlayerBoard.cpp
+Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp
+Source/Player/Player.cpp
+Source/Deck/Deck.cpp
+Source/Player/Hand/Hand.cpp
+Source/Game/Game.cpp
+Source/Utilities/CardParser.cpp
+Source/Utilities/ParserStringUtilities.cpp

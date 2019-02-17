@@ -9,8 +9,6 @@ Game::Game(Player *a, Player *b) {
     this->players[1] = *b;
     this->currentlyPlaying = selectStartingPlayer();
 
-    this->players[0].createDeck();
-
     gameStartMessage();
 }
 
@@ -33,23 +31,22 @@ size_t Game::otherPlayerIndex() const { return (size_t) !(currentlyPlaying); }
 
 void Game::play() {
 
-    int roundNumber = 1;
-    Player *victor = nullptr;
+    size_t roundNumber = 1;
 
     while (roundNumber <= BASE_ROUND_COUNT) {
         roundPrompt(roundNumber);
-        victor = round();
-        if (victor == nullptr) //tie
+        Player *roundVictor = round();
+        if (roundVictor == nullptr) //tie
             roundTieMessage();
         else {
-            victor->addPoint();
+            roundVictor->addPoint();
             roundNumber++;
-            roundVictorMessage(victor);
+            roundVictorMessage(roundVictor);
         }
     }
 
-    cout << victor->getName() << " won the game!" << endl;
-
+    cout << (players[0].getScore() > players[1].getScore() ? players[0] : players[1])
+            .getName() << " won the game!" << endl;
 }
 
 Player *Game::round() {
@@ -95,7 +92,7 @@ void Game::roundVictorMessage(const Player *victor) const { cout << victor->getN
 
 bool Game::roundIsTie() const { return players[0].getScore() == players[1].getScore(); }
 
-void Game::roundPrompt(int roundNumber) const { cout << "Starting round number " << roundNumber << endl; }
+void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round number " << roundNumber << endl; }
 
 void Game::turnPrompt() const {
     cout << "Player " + this->players[currentlyPlaying].getName() + "'s turn to play." << endl;

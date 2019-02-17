@@ -5,7 +5,6 @@
 #ifndef TMPPAZAAK_CARD_H
 #define TMPPAZAAK_CARD_H
 
-
 //Libraries---------------------------------
 #include <string>
 #include <vector>
@@ -15,7 +14,6 @@
 
 //Namespaces--------------------------------
 using namespace std;
-
 
 //Definitions-------------------------------
 #define LOWER_BOUND -10

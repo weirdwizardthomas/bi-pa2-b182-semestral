@@ -120,16 +120,16 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp">
-			<Option target="Pazaak"/>
-		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Deck/Deck.h">
-			<Option target="Pazaak"/>
-		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Game/Game.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Game/Game.h">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp">

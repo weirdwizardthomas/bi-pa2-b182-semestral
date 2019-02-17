@@ -37,13 +37,12 @@ private:
 
     void turn();
 
-
     //Messages & prompts--------------------
     void gameStartMessage() const;
 
     bool roundIsTie() const;
 
-    void roundPrompt(int roundNumber) const;
+    void roundPrompt(size_t roundNumber) const;
 
     void roundTieMessage() const;
 
@@ -51,9 +50,7 @@ private:
 
     void turnPrompt() const;
 
-
 public:
-
     //Constructor----------------------------
     Game(Player *a, Player *b);
 
@@ -61,6 +58,4 @@ public:
     void play();
 
 };
-
-
 #endif //PAZAAK_GAME_H

@@ -24,6 +24,7 @@
 //Namespaces--------------------------------
 using namespace std;
 
+//This doesn't need to be a class, it could be a regular cpp with functions, TODO consult whether a class is better than just functions
 class CardParser {
 
 private:
@@ -32,10 +33,17 @@ private:
     vector<string> getFileLines(string filePath) const;
 
     void validLines(vector<string> fileLines, string mode) const;
+
     pair<int, int> getDualValues(const string &line) const;
+
+    void loadBasicCards(map<string, Card *> &cards) const;
+
+    void loadDualCards(map<string, Card *> &cards) const;
+
+    void loadFlipCards(map<string, Card *> &cards) const;
+
 public:
     map<string, Card *> loadAllCards();
-
 
 };
 

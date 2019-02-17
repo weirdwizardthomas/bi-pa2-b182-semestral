@@ -5,18 +5,19 @@
 #ifndef PAZAAK_DECK_H
 #define PAZAAK_DECK_H
 
-
 //Libraries---------------------------------
+#define NEWLINE '\n'
+
 #include <vector>
 #include <random>
+#include <algorithm>
 #include <cstdlib>
 
 //Classes-----------------------------------
-#include "../Cards/CardInterface/Card.h"
-#include "../Player/Hand/Hand.h"
+#include "../../Cards/CardInterface/Card.h"
+#include "../Hand/Hand.h"
 
-
-//Namespace--------------------------------
+//Namespaces-------------------------------
 using namespace std;
 
 class Deck {
@@ -27,6 +28,7 @@ private:
 
 public:
     Deck() = default;
+    Deck(map<string, Card*> & allCards);
 
     Deck(const vector<Card *> &cards);
 
@@ -44,7 +46,7 @@ public:
 
     friend ostream &operator<<(ostream &out, const Deck &deck);
 
-
+    void getCardChoicesFromUser(const map<string, Card *> &allCards);
 };
 
 

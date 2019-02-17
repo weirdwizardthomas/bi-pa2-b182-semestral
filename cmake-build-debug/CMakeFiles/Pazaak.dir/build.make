@@ -174,18 +174,18 @@ CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Player/Player.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s
 
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o: CMakeFiles/Pazaak.dir/flags.make
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o: ../Source/Deck/Deck.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o -c /home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: CMakeFiles/Pazaak.dir/flags.make
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: ../Source/Player/Deck/Deck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o -c /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp
 
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp > CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.i
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp > CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i
 
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Deck/Deck.cpp -o CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.s
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: ../Source/Player/Hand/Hand.cpp
@@ -250,7 +250,7 @@ Pazaak_OBJECTS = \
 "CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o" \
-"CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o" \
+"CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o" \
@@ -268,7 +268,7 @@ Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard
 Pazaak: CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o
-Pazaak: CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o
+Pazaak: CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o

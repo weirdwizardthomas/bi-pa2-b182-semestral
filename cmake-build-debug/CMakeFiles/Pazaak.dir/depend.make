@@ -26,25 +26,25 @@ CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCar
 CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o: ../Source/Cards/CardInterface/Card.cpp
 CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o: ../Source/Cards/CardInterface/Card.h
 
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o: ../Source/Cards/CardInterface/Card.h
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o: ../Source/Deck/Deck.cpp
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o: ../Source/Deck/Deck.h
-CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o: ../Source/Player/Hand/Hand.h
-
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Cards/CardInterface/Card.h
-CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Deck/Deck.h
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Game/Game.cpp
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Game/Game.h
+CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Player/Deck/Deck.h
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Player/Hand/Hand.h
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Player/Player.h
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.h
+
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: ../Source/Cards/CardInterface/Card.h
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: ../Source/Player/Deck/Deck.cpp
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: ../Source/Player/Deck/Deck.h
+CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: ../Source/Player/Hand/Hand.h
 
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: ../Source/Cards/CardInterface/Card.h
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: ../Source/Player/Hand/Hand.cpp
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: ../Source/Player/Hand/Hand.h
 
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Cards/CardInterface/Card.h
-CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Deck/Deck.h
+CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Deck/Deck.h
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Hand/Hand.h
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Player.cpp
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Player.h
@@ -65,13 +65,11 @@ CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Utilities/Par
 CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.o: ../Source/Utilities/ParserStringUtilities.cpp
 
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/BasicCard/BasicCard.h
-CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/DualCard/DualCard.h
-CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardInterface/Card.h
-CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Deck/Deck.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Game/Game.h
+CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/Deck/Deck.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/Hand/Hand.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/Player.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.h

@@ -11,7 +11,6 @@
 //Headers-----------------------------------
 #include "../../CardInterface/Card.h"
 
-
 /**
  * Basic cards add their value to the player's current score when played.
  */

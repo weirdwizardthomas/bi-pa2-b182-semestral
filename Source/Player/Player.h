@@ -7,11 +7,10 @@
 
 #include <cstdlib>
 #include <string>
-#include "../Deck/Deck.h"
+#include <map>
+
+#include "Deck/Deck.h"
 #include "PlayerBoard/PlayerBoard.h"
-
-
-#pragma once
 
 using namespace std;
 
@@ -29,14 +28,14 @@ public:
     Player(string name);
 
     void play(int opponentScore);
-    void createDeck();
+    void createDeck(map<string, Card *> & allCards);
 
     const string &getName() const;
     int getScore() const;
     void addPoint();
     bool isStanding();
 
-    int getPlayedCardsCount();
+    size_t getPlayedCardsCount();
 };
 
 

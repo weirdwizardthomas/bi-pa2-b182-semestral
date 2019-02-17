@@ -48,26 +48,17 @@ vector<string> CardParser::getFileLines(string filePath) const {
 map<string, Card *> CardParser::loadAllCards() {
     map<string, Card *> cards;
 
-    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[0]); //TODO CONCATENATE STRINGS
-    validLines(fileLines, BASIC_CARD);
-    for (const string &line : fileLines) {
-        Card *dummy = new BasicCard(stoi(line));
+    loadBasicCards(cards);
+    loadDualCards(cards);
+    loadFlipCards(cards);
+    
+    return cards;
+}
 
-        cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
-    }
-
-    fileLines = getFileLines(CARD_FOLDER_PATH + files[1]);
-    validLines(fileLines, DUAL_CARD);
-    for (const string &line : fileLines) {
-        pair<int, int> extractedValues = getDualValues(line);
-
-        Card *dummy = new DualCard(extractedValues.first, extractedValues.second);
-
-        cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
-    }
-
-    fileLines = getFileLines(CARD_FOLDER_PATH + files[2]);
+void CardParser::loadFlipCards(map<string, Card *> &cards) const {
+    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[2]);
     validLines(fileLines, FLIP_CARD);
+
     for (const string &line : fileLines) {
         pair<int, int> extractedValues = getDualValues(line);
 
@@ -75,9 +66,30 @@ map<string, Card *> CardParser::loadAllCards() {
 
         cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
     }
+}
 
+void CardParser::loadDualCards(map<string, Card *> &cards) const {
+    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[1]);
+    validLines(fileLines, DUAL_CARD);
 
-    return cards;
+    for (const string &line : fileLines) {
+        pair<int, int> extractedValues = getDualValues(line);
+
+        Card *dummy = new DualCard(extractedValues.first, extractedValues.second);
+
+        cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
+    }
+}
+
+void CardParser::loadBasicCards(map<string, Card *> &cards) const {
+    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[0]); //TODO CONCATENATE STRINGS
+    validLines(fileLines, BASIC_CARD);
+
+    for (const string &line : fileLines) {
+        Card *dummy = new BasicCard(stoi(line));
+
+        cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
+    }
 }
 
 pair<int, int> CardParser::getDualValues(const string &line) const {

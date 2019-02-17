@@ -285,33 +285,6 @@ Source/Cards/CardInterface/Card.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.s
 .PHONY : Source/Cards/CardInterface/Card.cpp.s
 
-Source/Deck/Deck.o: Source/Deck/Deck.cpp.o
-
-.PHONY : Source/Deck/Deck.o
-
-# target to build an object file
-Source/Deck/Deck.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.o
-.PHONY : Source/Deck/Deck.cpp.o
-
-Source/Deck/Deck.i: Source/Deck/Deck.cpp.i
-
-.PHONY : Source/Deck/Deck.i
-
-# target to preprocess a source file
-Source/Deck/Deck.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.i
-.PHONY : Source/Deck/Deck.cpp.i
-
-Source/Deck/Deck.s: Source/Deck/Deck.cpp.s
-
-.PHONY : Source/Deck/Deck.s
-
-# target to generate assembly for a file
-Source/Deck/Deck.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Deck/Deck.cpp.s
-.PHONY : Source/Deck/Deck.cpp.s
-
 Source/Game/Game.o: Source/Game/Game.cpp.o
 
 .PHONY : Source/Game/Game.o
@@ -338,6 +311,33 @@ Source/Game/Game.s: Source/Game/Game.cpp.s
 Source/Game/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.s
 .PHONY : Source/Game/Game.cpp.s
+
+Source/Player/Deck/Deck.o: Source/Player/Deck/Deck.cpp.o
+
+.PHONY : Source/Player/Deck/Deck.o
+
+# target to build an object file
+Source/Player/Deck/Deck.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o
+.PHONY : Source/Player/Deck/Deck.cpp.o
+
+Source/Player/Deck/Deck.i: Source/Player/Deck/Deck.cpp.i
+
+.PHONY : Source/Player/Deck/Deck.i
+
+# target to preprocess a source file
+Source/Player/Deck/Deck.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i
+.PHONY : Source/Player/Deck/Deck.cpp.i
+
+Source/Player/Deck/Deck.s: Source/Player/Deck/Deck.cpp.s
+
+.PHONY : Source/Player/Deck/Deck.s
+
+# target to generate assembly for a file
+Source/Player/Deck/Deck.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s
+.PHONY : Source/Player/Deck/Deck.cpp.s
 
 Source/Player/Hand/Hand.o: Source/Player/Hand/Hand.cpp.o
 
@@ -528,12 +528,12 @@ help:
 	@echo "... Source/Cards/CardInterface/Card.o"
 	@echo "... Source/Cards/CardInterface/Card.i"
 	@echo "... Source/Cards/CardInterface/Card.s"
-	@echo "... Source/Deck/Deck.o"
-	@echo "... Source/Deck/Deck.i"
-	@echo "... Source/Deck/Deck.s"
 	@echo "... Source/Game/Game.o"
 	@echo "... Source/Game/Game.i"
 	@echo "... Source/Game/Game.s"
+	@echo "... Source/Player/Deck/Deck.o"
+	@echo "... Source/Player/Deck/Deck.i"
+	@echo "... Source/Player/Deck/Deck.s"
 	@echo "... Source/Player/Hand/Hand.o"
 	@echo "... Source/Player/Hand/Hand.i"
 	@echo "... Source/Player/Hand/Hand.s"
