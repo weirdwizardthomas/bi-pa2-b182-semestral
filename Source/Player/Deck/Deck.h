@@ -6,18 +6,20 @@
 #define PAZAAK_DECK_H
 
 //Libraries---------------------------------
-#define NEWLINE '\n'
-
 #include <vector>
 #include <random>
 #include <algorithm>
 #include <cstdlib>
+#include <dirent.h>
 
 //Classes-----------------------------------
 #include "../../Cards/CardInterface/Card.h"
 #include "../Hand/Hand.h"
 
-//Namespaces-------------------------------
+//Definitions-------------------------------
+#define NEWLINE '\n'
+
+//Namespaces--------------------------------
 using namespace std;
 
 class Deck {
@@ -26,27 +28,31 @@ private:
 
     size_t generateBoundIndex() const;
 
-public:
-    Deck() = default;
-    Deck(map<string, Card*> & allCards);
-
-    Deck(const vector<Card *> &cards);
-
-    ~Deck() = default;
-
-    Hand *drawCards(Hand *currentHand);
+    void getCardChoicesFromUser(const map<string, Card *> &allCards);
 
     void shuffle();
 
+
+public:
+    Deck() = default;
+
+    Deck(map<string, Card *> &allCards);
+
+    Deck(const vector<Card *> &cards);
+
+    Hand *drawCards(Hand *currentHand);
+
     int playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore);
 
-    void addCard(Card * card);
+    void addCard(Card *card);
 
     size_t getDeckSize() const;
 
+    static Deck loadFromFile();
+    static vector<string> getDeckFiles();
+
     friend ostream &operator<<(ostream &out, const Deck &deck);
 
-    void getCardChoicesFromUser(const map<string, Card *> &allCards);
 };
 
 

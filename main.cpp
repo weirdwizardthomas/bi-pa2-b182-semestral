@@ -14,6 +14,7 @@
 
 //Namespaces--------------------------------
 using namespace std;
+
 /*
  * little testing of cin into different types, will implement in any user input //TODO
     int no;
@@ -40,7 +41,9 @@ int main() {
     CardParser cardParser;
     map<string, Card *> cards = cardParser.loadAllCards();
 
-    //Main menu--------------------------------------------
+    Deck::loadFromFile();
+
+  /*  //Main menu--------------------------------------------
     cout << "Pazaak, a game from the Old Republic, implemented by weirdwizardtom:koristo1@fit.cvut.cz" << endl;
 
     size_t menuIndex = 0;
@@ -58,45 +61,40 @@ int main() {
             cout << "Invalid choice, please select an option in range 0-" << menuIndex - 1 << endl;
     }
 
-    Deck deck;
 
     switch (menuChoice) {
         case 0:
             break;
-        case 1:
-            deck = Deck(cards);
-            cout << deck;
+        case 1: {
+            Deck deck = Deck(cards);
+            break;
+        }
         case 2:
             for (auto &card : cards)
                 free(card.second);
 
             return EXIT_SUCCESS;
-    }
+    }*/
     //can do a switch whose default value is call of the method again with a warning
 
+    string name1, name2;
+
+
+    cout << "Enter the name of the player:";
+    cin >> name1;
+    cout << "Created a player with the name " << name1 << endl;
     /*
+    cout << "Enter the name of the player:";
+    cin >> name2;
+    cout << "Created a player with the name " << name2 << endl;
 
-    CardParser cardParser;
-    map<string, Card *> cards = cardParser.loadAllCards();
-    size_t i = 0;
-    for (auto &card : cards)
-        cout << (i < 10 ? " " : "") << "(" << i++ << ")" << " " << (card.second)->getDescription() << endl;
-*/
-    /* string name1, name2;
+    Game *game = new Game(new Player(name1), new Player(name2));
 
 
-     cout << "Enter the name of the player:";
-     cin >> name1;
-     cout << "Created a player with the name " << name1 << endl;
+    game->play();*/
 
-     cout << "Enter the name of the player:";
-     cin >> name2;
-     cout << "Created a player with the name " << name2 << endl;
-
-     Game *game = new Game(new Player(name1), new Player(name2));
-
-
-     game->play();*/
+    Player *dummy = new Player(name1);
+    dummy->chooseDeck(cards);
 
     cout << "--------------------" << endl;
 

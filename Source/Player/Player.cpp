@@ -57,8 +57,9 @@ void Player::addPoint() {
     this->board.addPoint();
 }
 
-void Player::createDeck(map<string, Card *> & allCards) {
-    //TODO
+void Player::createDeck(map<string, Card *> &allCards) {
+    this->deck = Deck(allCards);
+    cout << this->deck;
 }
 
 bool Player::isStanding() {
@@ -67,4 +68,26 @@ bool Player::isStanding() {
 
 size_t Player::getPlayedCardsCount() {
     return this->board.getPlayedCards().size();
+}
+
+void Player::chooseDeck(map<string, Card *> &allCards) {
+
+    cout << "[F]orge a new deck or [L]oad an existing one?" << endl;
+
+    string input;
+    cin >> input;
+    while (cin.fail() || (input != "F" && input != "L")) { //TODO add more input choices
+        cout << "Invalid input, try again." << endl;
+        cin >> input;
+    }
+
+    if(input == "F")
+        this->createDeck(allCards);
+    else
+        this->loadDeck();
+
+}
+
+void Player::loadDeck() {
+
 }

@@ -47,10 +47,8 @@ int Deck::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore,
 ostream &operator<<(ostream &out, const Deck &deck) {
     int i = 0;
 
-    for (Card *card : deck.cards) {
-        cout << "(" << i << ") " << *card << endl;
-        i++;
-    }
+    for (Card *card : deck.cards)
+        cout << "(" << i++ << ") " << *card << endl;
 
     return out;
 }
@@ -69,11 +67,11 @@ Deck::Deck(map<string, Card *> &allCards) {
     for (auto &card : allCards)
         cout << (i < 10 ? " " : "") << "(" << i++ << ")" << " " << (card.second)->getDescription() << endl;
 
-    //TODO exit query here
+    //TODO exit query here ?
     cout << "Select ten cards to add to your deck." << endl;
 
-
     getCardChoicesFromUser(allCards);
+
     cout << "Deck successfully forged." << endl;
 }
 
@@ -120,4 +118,33 @@ void Deck::getCardChoicesFromUser(const map<string, Card *> &allCards) {
 
 
     }
+}
+
+//TODO use <filesystem>
+//Adapted from https://stackoverflow.com/a/612176
+Deck Deck::loadFromFile() {
+    string path = "../Data/Decks";
+
+    vector<string> files;
+
+    DIR *dir;
+    struct dirent *ent;
+    if ((dir = opendir(path.c_str())) != nullptr) {
+        /* print all the files and directories within directory */
+        while ((ent = readdir(dir)) != nullptr) {
+            string fileName = ent->d_name;
+            if (fileName != "." && fileName != "..")
+                files.emplace_back(ent->d_name);
+        }
+        closedir(dir);
+    } else {
+        /* could not open directory */
+
+        throw "Couldn't open directory"; //TODO better exception
+    }
+
+    for(const auto &file : files)
+        cout << file << endl;
+
+    return Deck();
 }

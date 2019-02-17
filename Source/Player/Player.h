@@ -22,13 +22,15 @@ private:
     //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
 
+
+    void createDeck(map<string, Card *> & allCards);
 public:
 
     Player() = default;
     Player(string name);
 
     void play(int opponentScore);
-    void createDeck(map<string, Card *> & allCards);
+    void chooseDeck(map<string, Card *> & allCards);
 
     const string &getName() const;
     int getScore() const;
@@ -36,6 +38,8 @@ public:
     bool isStanding();
 
     size_t getPlayedCardsCount();
+
+    void loadDeck();
 };
 
 
