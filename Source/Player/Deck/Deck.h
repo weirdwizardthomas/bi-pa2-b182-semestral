@@ -18,8 +18,16 @@
 
 //Definitions-------------------------------
 #define NEWLINE '\n'
+#define DECKS_DIRECTORY_PATH "../Data/Decks"
+#define CARD_DELIMITER ","
+#define BASIC_CARD_LEAD "BasicCard:"
+#define DOUBLE_CARD_LEAD "DoubleCards:"
+#define DUAL_CARD_LEAD "DualCards:"
+#define FLEX_CARD_LEAD "FlexCards:"
+#define FlIP_CARD_LEAD "FlipCards:"
 
 //Namespaces--------------------------------
+#define SPACE ' '
 using namespace std;
 
 class Deck {
@@ -31,6 +39,10 @@ private:
     void getCardChoicesFromUser(const map<string, Card *> &allCards);
 
     void shuffle();
+
+    static vector<string> getDecksFromDirectory();
+
+    static vector<string> loadFileContent(string file);
 
 
 public:
@@ -48,10 +60,14 @@ public:
 
     size_t getDeckSize() const;
 
-    static Deck loadFromFile();
+    friend ostream &operator<<(ostream &out, const Deck &deck);
+
+    static size_t selectDeckFile(const vector<string> &files);
+
     static vector<string> getDeckFiles();
 
-    friend ostream &operator<<(ostream &out, const Deck &deck);
+    static Deck loadFromFile();
+
 
 };
 

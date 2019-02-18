@@ -120,16 +120,12 @@ void Deck::getCardChoicesFromUser(const map<string, Card *> &allCards) {
     }
 }
 
-//TODO use <filesystem>
-//Adapted from https://stackoverflow.com/a/612176
-Deck Deck::loadFromFile() {
-    string path = "../Data/Decks";
-
+vector<string> Deck::getDecksFromDirectory() {
     vector<string> files;
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir(path.c_str())) != nullptr) {
+    if ((dir = opendir(DECKS_DIRECTORY_PATH)) != nullptr) {
         /* print all the files and directories within directory */
         while ((ent = readdir(dir)) != nullptr) {
             string fileName = ent->d_name;
@@ -143,8 +139,61 @@ Deck Deck::loadFromFile() {
         throw "Couldn't open directory"; //TODO better exception
     }
 
-    for(const auto &file : files)
-        cout << file << endl;
+    return files;
+}
+
+//TODO use <filesystem>
+//Adapted from https://stackoverflow.com/a/612176
+Deck Deck::loadFromFile() {
+    vector<string> files = getDecksFromDirectory();
+    size_t input = selectDeckFile(files);
+    vector<string> deckFileContent = Deck::loadFileContent(files[input]);
+    for (const auto &line : deckFileContent)
+        cout << line;
 
     return Deck();
+}
+
+size_t Deck::selectDeckFile(const vector<string> &files) {
+    size_t i = 0;
+
+    cout << "Decks available" << endl;
+
+    for (const auto &file : files)
+        cout << "(" << i++ << ") " << file << endl;
+
+    cout << "Select a deck:";
+
+    size_t input;
+    cin >> input;
+
+    while (input >= i) {
+        cout << "Invalid choice, please try again." << endl;
+        cin >> input;
+    }
+    return input;
+}
+
+vector<string> Deck::loadFileContent(string file) {
+
+    string path;
+    path.append(DECKS_DIRECTORY_PATH).append("/").append(file);
+    string line;
+    vector<string> fileContent;
+
+    cout << path;
+    fstream deckFile;
+
+    // deckFile.open(DECKS_DIRECTORY_PATH + "/" + file);
+
+    /*  if (!deckFile.is_open()) {
+          throw "File opening error"; //TODO proper exception
+      }
+
+      while (getline(deckFile, line)) {
+          if (line.find_first_not_of(SPACE) != string::npos) { //not an empty line
+              fileContent.push_back(line);
+          }
+      }*/
+    return fileContent;
 }
