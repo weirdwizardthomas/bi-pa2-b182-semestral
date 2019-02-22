@@ -73,8 +73,6 @@ dirent.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
 /home/tomtom/Development/Pazaak/Source/Player/Player.cpp
-sstream
--
 Player.h
 /home/tomtom/Development/Pazaak/Source/Player/Player.h
 
@@ -84,6 +82,8 @@ cstdlib
 string
 -
 map
+-
+sstream
 -
 Deck/Deck.h
 /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
@@ -101,8 +101,8 @@ fstream
 -
 map
 -
-ParserStringUtilities.cpp
-/home/tomtom/Development/Pazaak/Source/Utilities/ParserStringUtilities.cpp
+Utilities.cpp
+/home/tomtom/Development/Pazaak/Source/Utilities/Utilities.cpp
 ../Cards/CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 ../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
@@ -110,7 +110,7 @@ ParserStringUtilities.cpp
 ../Cards/CardImplementations/BasicCard/BasicCard.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
 
-/home/tomtom/Development/Pazaak/Source/Utilities/ParserStringUtilities.cpp
+/home/tomtom/Development/Pazaak/Source/Utilities/Utilities.cpp
 string
 -
 vector

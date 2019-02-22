@@ -4,6 +4,8 @@
 
 #include "DoubleCard.h"
 
+using namespace std;
+
 int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
 
     int tmp = playedCards.back();

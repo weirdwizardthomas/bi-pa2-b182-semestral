@@ -5,6 +5,8 @@
 
 #include "BasicCard.h"
 
+using namespace std;
+
 BasicCard::BasicCard(int value) {
     if (!validInput(value))
         throw "Invalid card value.";

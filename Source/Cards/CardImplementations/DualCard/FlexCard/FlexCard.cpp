@@ -4,6 +4,8 @@
 
 #include "FlexCard.h"
 
+using namespace std;
+
 FlexCard::FlexCard() : DualCard(A, B) {}
 
 int FlexCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {

@@ -60,9 +60,9 @@ CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Cards/CardImp
 CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Cards/CardInterface/Card.h
 CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Utilities/CardParser.cpp
 CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Utilities/CardParser.h
-CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Utilities/ParserStringUtilities.cpp
+CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o: ../Source/Utilities/Utilities.cpp
 
-CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.o: ../Source/Utilities/ParserStringUtilities.cpp
+CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.o: ../Source/Utilities/Utilities.cpp
 
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/BasicCard/BasicCard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Cards/CardImplementations/DualCard/DualCard.h
@@ -74,6 +74,6 @@ CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/Hand/Hand.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/Player.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.h
 CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Utilities/CardParser.h
-CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Utilities/ParserStringUtilities.cpp
+CMakeFiles/Pazaak.dir/main.cpp.o: ../Source/Utilities/Utilities.cpp
 CMakeFiles/Pazaak.dir/main.cpp.o: ../main.cpp
 

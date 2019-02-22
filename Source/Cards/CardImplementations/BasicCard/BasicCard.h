@@ -28,11 +28,11 @@ public:
  * @param opponentScore Opponent's current round's score
  * @return currentScore incremented by the card's value
  */
-    int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
+    int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
 public:
 
-    string getDescription() const override;
+    std::string getDescription() const override;
 };
 
 

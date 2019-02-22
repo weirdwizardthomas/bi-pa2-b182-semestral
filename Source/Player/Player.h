@@ -6,8 +6,8 @@
 #define PAZAAK_PLAYER_H
 
 #include <cstdlib>
-#include <std::string>
-#include <std::map>
+#include <string>
+#include <map>
 #include <sstream>
 
 

@@ -156,7 +156,7 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/ParserStringUtilities.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/Utilities.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/main.cpp">

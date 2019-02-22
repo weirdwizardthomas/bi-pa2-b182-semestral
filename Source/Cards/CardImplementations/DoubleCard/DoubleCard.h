@@ -22,9 +22,9 @@ public:
      * @param opponentScore Opponent's current round's score
      * @return current player's score updated by doubling last card's value
      */
-    int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
+    int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
-    string getDescription() const override;
+    std::string getDescription() const override;
 
 };
 

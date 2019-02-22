@@ -447,32 +447,32 @@ Source/Utilities/CardParser.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.s
 .PHONY : Source/Utilities/CardParser.cpp.s
 
-Source/Utilities/ParserStringUtilities.o: Source/Utilities/ParserStringUtilities.cpp.o
+Source/Utilities/Utilities.o: Source/Utilities/Utilities.cpp.o
 
-.PHONY : Source/Utilities/ParserStringUtilities.o
+.PHONY : Source/Utilities/Utilities.o
 
 # target to build an object file
-Source/Utilities/ParserStringUtilities.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.o
-.PHONY : Source/Utilities/ParserStringUtilities.cpp.o
+Source/Utilities/Utilities.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.o
+.PHONY : Source/Utilities/Utilities.cpp.o
 
-Source/Utilities/ParserStringUtilities.i: Source/Utilities/ParserStringUtilities.cpp.i
+Source/Utilities/Utilities.i: Source/Utilities/Utilities.cpp.i
 
-.PHONY : Source/Utilities/ParserStringUtilities.i
+.PHONY : Source/Utilities/Utilities.i
 
 # target to preprocess a source file
-Source/Utilities/ParserStringUtilities.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.i
-.PHONY : Source/Utilities/ParserStringUtilities.cpp.i
+Source/Utilities/Utilities.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.i
+.PHONY : Source/Utilities/Utilities.cpp.i
 
-Source/Utilities/ParserStringUtilities.s: Source/Utilities/ParserStringUtilities.cpp.s
+Source/Utilities/Utilities.s: Source/Utilities/Utilities.cpp.s
 
-.PHONY : Source/Utilities/ParserStringUtilities.s
+.PHONY : Source/Utilities/Utilities.s
 
 # target to generate assembly for a file
-Source/Utilities/ParserStringUtilities.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/ParserStringUtilities.cpp.s
-.PHONY : Source/Utilities/ParserStringUtilities.cpp.s
+Source/Utilities/Utilities.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.s
+.PHONY : Source/Utilities/Utilities.cpp.s
 
 main.o: main.cpp.o
 
@@ -546,9 +546,9 @@ help:
 	@echo "... Source/Utilities/CardParser.o"
 	@echo "... Source/Utilities/CardParser.i"
 	@echo "... Source/Utilities/CardParser.s"
-	@echo "... Source/Utilities/ParserStringUtilities.o"
-	@echo "... Source/Utilities/ParserStringUtilities.i"
-	@echo "... Source/Utilities/ParserStringUtilities.s"
+	@echo "... Source/Utilities/Utilities.o"
+	@echo "... Source/Utilities/Utilities.i"
+	@echo "... Source/Utilities/Utilities.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

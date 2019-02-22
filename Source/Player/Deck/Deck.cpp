@@ -7,6 +7,14 @@
 //Namespaces--------------------------------
 using namespace std;
 
+ostream &operator<<(ostream &out, const vector<string> &a) {
+    size_t i = 0;
+    for (const auto &file : a)
+        out << "(" << i++ << ") " << file << endl;
+
+    return out;
+}
+
 Deck::Deck(const vector<Card *> &cards) : cards(cards) {}
 
 Hand *Deck::drawCards(Hand *currentHand) {
@@ -15,30 +23,14 @@ Hand *Deck::drawCards(Hand *currentHand) {
         if (this->cards.empty()) //no more cards to be drawn
             break;
 
-        size_t cardIndex = generateBoundIndex();
-
-        currentHand->addCard(this->cards[cardIndex]);
-        this->cards.erase(this->cards.begin() + cardIndex);
+        currentHand->addCard(this->cards[i]);
+        this->cards.erase(this->cards.begin() + i);
     }
 
     return currentHand;
 }
 
-//copied from https://stackoverflow.com/a/19666713
-size_t Deck::generateBoundIndex() const {
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(0, this->cards.size());
-    return (size_t) dist(mt);
-}
-
-//TODO is this actually random?
-void Deck::shuffle() {
-    auto rng = default_random_engine{};
-    std::shuffle(std::begin(this->cards), std::end(this->cards), rng);
-}
-
-//TODO probably throw an exception
+//TODO probably throw an exception - WHAT EXCEPTION?!
 int Deck::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
     int effect = this->cards[cardIndex]->play(playedCards, currentScore, opponentScore);
 
@@ -48,7 +40,7 @@ int Deck::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore,
 }
 
 ostream &operator<<(ostream &out, const Deck &deck) {
-    int i = 0;
+    size_t i = 0;
 
     for (Card *card : deck.cards)
         cout << "(" << i++ << ") " << *card << endl;
@@ -68,7 +60,7 @@ Deck::Deck(map<string, Card *> &allCards) {
     size_t i = 0;
     //TODO Have pages and a fixed amount per page?
     for (auto &card : allCards)
-        cout << (i < 10 ? " " : "") << "(" << i++ << ")" << " " << (card.second)->getDescription() << endl;
+        cout << (i < DECK_SIZE ? " " : "") << "(" << i++ << ")" << " " << (card.second)->getDescription() << endl;
 
     //TODO exit query here ?
     cout << "Select ten cards to add to your deck." << endl;
@@ -77,7 +69,6 @@ Deck::Deck(map<string, Card *> &allCards) {
 
     cout << "Deck successfully forged." << endl;
 }
-
 
 vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
     vector<Card *> allCardsVector;
@@ -91,38 +82,35 @@ vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
 
 //TODO allow replacing cards during the selection using cin.fail && cin.clear and cin >> string/char
 void Deck::getCardChoicesFromUser(const map<string, Card *> &allCards) {
-
     vector<Card *> allCardsVector = copyMapToVector(allCards);
 
     size_t i = 1;
 
-    while (i != 10) {
+    while (i != DECK_SIZE) {
         cout << "(" << i << "):";
 
-        size_t input;
+        size_t input = 0;
         cin >> input;
 
-        if (!cin.fail()) {
-            if (input < allCards.size()) {
+        if (!cin.fail()) { //is a positive number
+            if (input >= allCards.size())
+                cout << "Invalid choice, please try again." << endl;  //out of bounds
+            else { //valid input
                 this->addCard(allCardsVector[input]);
                 cout << "You've selected: " << *(this->cards[i - 1]) << endl;
                 i++;
-
-            } else {
-                cout << "Invalid choice, please try again." << endl; //out of bounds
             }
 
         } else {
             cout << "Invalid input, please try again." << endl; //NaN
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),
-                       NEWLINE); //ignores the entire cin until a newline is encountered
+            //ignores the entire cin until a newline is encountered
+            cin.ignore(numeric_limits<streamsize>::max(), NEWLINE);
         }
-
-
     }
 }
 
+//Adapted from https://stackoverflow.com/a/612176
 vector<string> Deck::getDecksFromDirectory() {
     vector<string> files;
 
@@ -136,47 +124,61 @@ vector<string> Deck::getDecksFromDirectory() {
                 files.emplace_back(ent->d_name);
         }
         closedir(dir);
-    } else {
+    } else
         /* could not open directory */
-
         throw "Couldn't open directory"; //TODO better exception
-    }
+
 
     return files;
 }
 
-//TODO use <filesystem>
-//Adapted from https://stackoverflow.com/a/612176
 Deck Deck::loadFromFile() {
-    vector<string> files = getDecksFromDirectory();
+    vector<string> files = Deck::getDecksFromDirectory();
 
-    size_t input = selectDeckFile(files);
+    size_t fileIndex = Deck::userDeckIndexInput(files);
+    string loadedFile = files[fileIndex];
 
-    vector<string> deckFileContent = Deck::loadFileContent(files[input]);
-    for (const auto &line : deckFileContent)
-        cout << line << endl;
+    vector<string> deckFileContent = Deck::loadFileContent(loadedFile);
+    cout << deckFileContent << endl;
 
-    cout << endl;
-    return Deck();
+    map<string, vector<string>> parsedLines = Deck::parseAllFileLines(deckFileContent);
+    for (auto &parsedLine : parsedLines)
+        cout << parsedLine.second << endl;
+
+    vector<Card *> cards;
+    vector<string> currentLineValues;
+    //TODO pass the Card * map to this method, find the approriate card based on the key, add it to the vector
+
+
+    //first line - BASIC_CARDS
+    currentLineValues = parsedLines.at(BASIC_CARD_LEAD);
+
+    //second line - DOUBLE_CARDS
+
+    //third line - DUAL_CARDS
+
+    //fourth line - FLEX_CARDS
+
+    //fifth line - FLIP_CARDS
+
+    return Deck(cards);
 }
 
-size_t Deck::selectDeckFile(const vector<string> &files) {
-    size_t i = 0;
+size_t Deck::userDeckIndexInput(const vector<string> &files) {
 
     cout << "Decks available" << endl;
-
-    for (const auto &file : files)
-        cout << "(" << i++ << ") " << file << endl;
-
+    cout << files;
     cout << "Select a deck:";
 
-    size_t input;
+    size_t input = 0;
 
-    while (!(cin >> input) || input >= i) {
-        cout << "Invalid input, please try again:";
+    while (!(cin >> input) || input >= files.size()) {
+        cout << "Invalid input, please try again." << endl; //NaN
         cin.clear();
-        cin.ignore(10000, '\n');
+        //ignores the entire cin until a newline is encountered
+        cin.ignore(numeric_limits<streamsize>::max(), NEWLINE);
     }
+
     return input;
 }
 
@@ -191,19 +193,53 @@ vector<string> Deck::loadFileContent(string file) {
     fstream deckFile;
 
     deckFile.open(path);
-
-    if (!deckFile.is_open()) {
+    if (!deckFile.is_open())
         throw "File opening error"; //TODO proper exception
-    }
 
-
-    while (getline(deckFile, line)) {
-        if (line.find_first_not_of(SPACE) != string::npos) { //not an empty line
+    while (getline(deckFile, line))
+        if (line.find_first_not_of(SPACE) != string::npos) //not an empty line
             fileContent.push_back(line);
-        }
-    }
 
     deckFile.close();
 
     return fileContent;
+}
+
+/**
+ * Parses the phrase string by the delimiter string into substrings
+ * @param phrase Line to be parsed by the delimiter
+ * @param delimiter Delimiter by which the string will be split
+ * @return Vector of substring lying between delimiters
+ */
+std::vector<std::string> Deck::parseCardValues(string phrase, const string &delimiter) {
+    vector<string> list;
+    size_t pos = 0;
+    string token;
+    while ((pos = phrase.find(delimiter)) != string::npos) {
+        token = phrase.substr(0, pos);
+        list.push_back(token);
+        phrase.erase(0, pos + delimiter.length());
+    }
+    list.push_back(phrase);
+
+    return list;
+}
+
+std::map<std::string, std::vector<std::string>> Deck::parseAllFileLines(vector<string> &deckFileContent) {
+
+    map<string, vector<string>> parsedLines;
+    for (const auto &line : deckFileContent) {
+        size_t delimiterPosition = line.find(CARD_TYPE_VALUE_DELIMITER);
+        if (delimiterPosition == string::npos)
+            throw "Invalid line";  //TODO PROPER EXCEPTION
+        else {
+            string cardType = line.substr(0, delimiterPosition); //TODO trim
+            string cardValues = line.substr(delimiterPosition + 1, string::npos);
+
+            vector<string> parsedValues = parseCardValues(cardValues, FILE_CARD_VALUE_DELIMITER);
+            pair<string, vector<string>> parsedLine = make_pair(cardType, parsedValues);
+            parsedLines.insert(parsedLine);
+        }
+    }
+    return parsedLines;
 }
