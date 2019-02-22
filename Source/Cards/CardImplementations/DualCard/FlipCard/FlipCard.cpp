@@ -4,6 +4,9 @@
 
 #include "FlipCard.h"
 
+//Namespace---------------------------------
+using namespace std;
+
 FlipCard::FlipCard(int a, int b) : DualCard(abs(a) <= abs(b) ? abs(a) : abs(b), (abs(a) <= abs(b) ? abs(b) : abs(a))) {}
 
 int FlipCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {

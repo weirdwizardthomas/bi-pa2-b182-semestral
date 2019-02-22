@@ -4,6 +4,9 @@
 
 #include "Card.h"
 
+//Namespaces--------------------------------
+using namespace std;
+
 ostream &operator<<(ostream &out, const Card &card) {
     out << card.getDescription();
 

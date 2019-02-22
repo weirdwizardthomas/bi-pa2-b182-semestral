@@ -12,8 +12,6 @@
 #include <cmath>
 //Classes-----------------------------------
 #include "../../CardInterface/Card.h"
-//Namespaces--------------------------------
-using namespace std;
 
 /**
  * Dual cards present the current player with two effects to choose from when played
@@ -42,9 +40,9 @@ public:
     * @param opponentScore Opponent's current round's score
     * @return current player's score updated by playing a card
     */
-    int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
+    int play(std::std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
-    string getDescription() const override;
+    std::string getDescription() const override;
 
 };
 

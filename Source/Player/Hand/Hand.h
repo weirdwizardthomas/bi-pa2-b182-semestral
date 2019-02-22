@@ -5,12 +5,11 @@
 #ifndef PAZAAK_HAND_H
 #define PAZAAK_HAND_H
 
-
 #include "../../Cards/CardInterface/Card.h"
 
 class Hand {
 private:
-    vector <Card *> cards;
+    std::vector <Card *> cards;
 
 public:
     void addCard(Card * card);

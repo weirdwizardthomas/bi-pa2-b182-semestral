@@ -12,9 +12,6 @@
 #include <fstream>
 #include <map>
 
-//Namespaces--------------------------------
-using namespace std;
-
 //Definitions-------------------------------
 #define LOWER_BOUND -10
 #define UPPER_BOUND 10
@@ -37,13 +34,13 @@ protected:
      * @param x Integer to be formatted based on its sign
      * @return the input number with a sign (+ for positive, -for negative)
      */
-    string offsetPositiveNumber(int x) const;
+    std::string offsetPositiveNumber(int x) const;
 
     /**
      * queries the user to choose between a positive and negative sign - used at flip cards,...
      * @return chosen sign
      */
-    string chooseSign() const;
+    std::string chooseSign() const;
 
 public:
 
@@ -54,21 +51,21 @@ public:
      * @param opponentScore Opponent's current round's score
      * @return current player's score updated by playing a card
      */
-    virtual int play(vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
+    virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
      * generates card's effect's description
      * @return a verbose effect of the card
      */
-    virtual string getDescription() const = 0;
+    virtual std::string getDescription() const = 0;
 
     /**
      *
-     * @param out the ostream
+     * @param out the std::ostream
      * @param card card to be placed into the stream
      * @return getDescription()
      */
-    friend ostream &operator<<(ostream &out, const Card &card);
+    friend std::ostream &operator<<(std::ostream &out, const Card &card);
 };
 
 

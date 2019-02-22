@@ -4,6 +4,9 @@
 
 #include "Deck.h"
 
+//Namespaces--------------------------------
+using namespace std;
+
 Deck::Deck(const vector<Card *> &cards) : cards(cards) {}
 
 Hand *Deck::drawCards(Hand *currentHand) {
@@ -146,11 +149,14 @@ vector<string> Deck::getDecksFromDirectory() {
 //Adapted from https://stackoverflow.com/a/612176
 Deck Deck::loadFromFile() {
     vector<string> files = getDecksFromDirectory();
+
     size_t input = selectDeckFile(files);
+
     vector<string> deckFileContent = Deck::loadFileContent(files[input]);
     for (const auto &line : deckFileContent)
-        cout << line;
+        cout << line << endl;
 
+    cout << endl;
     return Deck();
 }
 
@@ -165,35 +171,39 @@ size_t Deck::selectDeckFile(const vector<string> &files) {
     cout << "Select a deck:";
 
     size_t input;
-    cin >> input;
 
-    while (input >= i) {
-        cout << "Invalid choice, please try again." << endl;
-        cin >> input;
+    while (!(cin >> input) || input >= i) {
+        cout << "Invalid input, please try again:";
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
     return input;
 }
 
 vector<string> Deck::loadFileContent(string file) {
-
+//TODO can prolly remove the string line and directly add the file's line in the cycle ?
     string path;
     path.append(DECKS_DIRECTORY_PATH).append("/").append(file);
+
     string line;
     vector<string> fileContent;
 
-    cout << path;
     fstream deckFile;
 
-    // deckFile.open(DECKS_DIRECTORY_PATH + "/" + file);
+    deckFile.open(path);
 
-    /*  if (!deckFile.is_open()) {
-          throw "File opening error"; //TODO proper exception
-      }
+    if (!deckFile.is_open()) {
+        throw "File opening error"; //TODO proper exception
+    }
 
-      while (getline(deckFile, line)) {
-          if (line.find_first_not_of(SPACE) != string::npos) { //not an empty line
-              fileContent.push_back(line);
-          }
-      }*/
+
+    while (getline(deckFile, line)) {
+        if (line.find_first_not_of(SPACE) != string::npos) { //not an empty line
+            fileContent.push_back(line);
+        }
+    }
+
+    deckFile.close();
+
     return fileContent;
 }

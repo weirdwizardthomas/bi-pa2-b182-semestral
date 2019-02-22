@@ -21,29 +21,26 @@
 #define DUAL_CARD "DualCards"
 #define FLIP_CARD "FlipCards"
 
-//Namespaces--------------------------------
-using namespace std;
-
 //This doesn't need to be a class, it could be a regular cpp with functions, TODO consult whether a class is better than just functions
 class CardParser {
 
 private:
-    const string files[3] = {BASIC_CARD, DUAL_CARD, FLIP_CARD};
+    const std::string files[3] = {BASIC_CARD, DUAL_CARD, FLIP_CARD};
 
-    vector<string> getFileLines(string filePath) const;
+    std::vector<std::string> getFileLines(std::string filePath) const;
 
-    void validLines(vector<string> fileLines, string mode) const;
+    void validLines(std::vector<std::string> fileLines, std::string mode) const;
 
-    pair<int, int> getDualValues(const string &line) const;
+    pair<int, int> getDualValues(const std::string &line) const;
 
-    void loadBasicCards(map<string, Card *> &cards) const;
+    void loadBasicCards(std::map<std::string, Card *> &cards) const;
 
-    void loadDualCards(map<string, Card *> &cards) const;
+    void loadDualCards(std::map<std::string, Card *> &cards) const;
 
-    void loadFlipCards(map<string, Card *> &cards) const;
+    void loadFlipCards(std::map<std::string, Card *> &cards) const;
 
 public:
-    map<string, Card *> loadAllCards();
+    std::map<std::string, Card *> loadAllCards();
 
 };
 

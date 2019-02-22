@@ -4,6 +4,8 @@
 
 #include "DualCard.h"
 
+//Namespaces--------------------------------
+using namespace std;
 
 DualCard::DualCard(int left, int right) {
     if (!validInput(left) || !validInput(right))

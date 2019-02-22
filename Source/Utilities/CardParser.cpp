@@ -4,6 +4,8 @@
 
 #include "CardParser.h"
 
+//Namespaces--------------------------------
+using namespace std;
 
 //Copied from https://stackoverflow.com/a/44495206'
 //TODO Can't move it to ParserStringUtilities.cpp, fix!
@@ -51,7 +53,7 @@ map<string, Card *> CardParser::loadAllCards() {
     loadBasicCards(cards);
     loadDualCards(cards);
     loadFlipCards(cards);
-    
+
     return cards;
 }
 

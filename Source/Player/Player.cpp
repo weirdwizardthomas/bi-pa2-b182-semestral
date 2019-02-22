@@ -2,9 +2,10 @@
 // Created by tomtom on 08/02/19.
 //
 
-#include <sstream>
-
 #include "Player.h"
+
+//Definitions-------------
+using namespace std;
 
 
 Player::Player(string name) : name(name) {}

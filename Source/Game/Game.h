@@ -5,6 +5,8 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
+
+//Definitions-----------------------
 #define BASE_ROUND_COUNT 3
 #define TARGET 20
 #define TABLE_SIZE 9
@@ -58,4 +60,5 @@ public:
     void play();
 
 };
+
 #endif //PAZAAK_GAME_H

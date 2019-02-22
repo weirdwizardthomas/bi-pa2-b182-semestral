@@ -16,9 +16,6 @@
 //Definitions-------------------------------
 #define FLIP_SIGN  " <~> "
 
-//Namespace---------------------------------
-using namespace std;
-
 //TODO reword this to be clearer
 /**
  * Flip cards negate the signs of two values on all cards of the current player when played
@@ -34,9 +31,9 @@ public:
     * @param opponentScore Opponent's current round's score
     * @return current player's score updated by flipping the respective cards' sign
     */
-    int play(vector<int> &playedCards, int currentScore, int opponentScore) const override;
+    int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
-    string getDescription() const override;
+    std::string getDescription() const override;
 };
 
 

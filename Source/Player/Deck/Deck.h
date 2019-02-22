@@ -18,6 +18,7 @@
 
 //Definitions-------------------------------
 #define NEWLINE '\n'
+#define SPACE ' '
 #define DECKS_DIRECTORY_PATH "../Data/Decks"
 #define CARD_DELIMITER ","
 #define BASIC_CARD_LEAD "BasicCard:"
@@ -26,45 +27,51 @@
 #define FLEX_CARD_LEAD "FlexCards:"
 #define FlIP_CARD_LEAD "FlipCards:"
 
-//Namespaces--------------------------------
-#define SPACE ' '
-using namespace std;
-
 class Deck {
 private:
-    vector<Card *> cards;
+    std::vector<Card *> cards;
 
     size_t generateBoundIndex() const;
 
-    void getCardChoicesFromUser(const map<string, Card *> &allCards);
+    void getCardChoicesFromUser(const map<std::string, Card *> &allCards);
 
     void shuffle();
 
-    static vector<string> getDecksFromDirectory();
+    static std::vector<std::string> getDecksFromDirectory();
 
-    static vector<string> loadFileContent(string file);
+    /**
+     * loads content of a single file in DECKS_DIRECTORY_PATH
+     * @param file name of the file to be opened 
+     * @return individual lines of the file
+     */
+    static std::vector<std::string> loadFileContent(std::string file);
 
 
 public:
     Deck() = default;
 
-    Deck(map<string, Card *> &allCards);
+    Deck(map<std::string, Card *> &allCards);
 
-    Deck(const vector<Card *> &cards);
+    Deck(const std::vector<Card *> &cards);
 
     Hand *drawCards(Hand *currentHand);
 
-    int playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore);
+    int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
     void addCard(Card *card);
 
     size_t getDeckSize() const;
 
-    friend ostream &operator<<(ostream &out, const Deck &deck);
+    friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
-    static size_t selectDeckFile(const vector<string> &files);
+    /**
+     * Queries the user with deck name to pick from
+     * @param files Contents of the /Data/Decks directory
+     * @return index of the deck chosen
+     */
+    static size_t selectDeckFile(const std::vector<std::string> &files);
 
-    static vector<string> getDeckFiles();
+    static std::vector<std::string> getDeckFiles();
 
     static Deck loadFromFile();
 
