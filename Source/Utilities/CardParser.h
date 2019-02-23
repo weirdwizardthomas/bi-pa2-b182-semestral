@@ -14,6 +14,8 @@
 #include "../Cards/CardInterface/Card.h"
 #include "../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
 #include "../Cards/CardImplementations/BasicCard/BasicCard.h"
+#include "../Cards/CardImplementations/DoubleCard/DoubleCard.h"
+#include "../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
 
 //Definitions-------------------------------
 #define CARD_FOLDER_PATH "../Data/Cards/"
@@ -42,6 +44,9 @@ private:
 public:
     std::map<std::string, Card *> loadAllCards();
 
+    void addDoubleCards(map<string, Card *> &cards);
+
+    void addFlexCards(map<string, Card *> &cards);
 };
 
 

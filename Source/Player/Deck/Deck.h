@@ -14,21 +14,28 @@
 
 //Classes-----------------------------------
 #include "../../Cards/CardInterface/Card.h"
+#include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
+#include "../../Cards/CardImplementations/DoubleCard/DoubleCard.h"
+#include "../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
+#include "../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
 #include "../Hand/Hand.h"
 
 //Definitions-------------------------------
 #define NEWLINE '\n'
-#define SPACE ' '
+#define SPACE " "
+
 #define DECKS_DIRECTORY_PATH "../Data/Decks"
-#define DECK_SIZE 10
+#define FOLDER_DELIMITER "/"
 #define FILE_CARD_VALUE_DELIMITER ","
 #define CARD_TYPE_VALUE_DELIMITER ":"
 
-#define BASIC_CARD_LEAD "BasicCard:"
-#define DOUBLE_CARD_LEAD "DoubleCards:"
-#define DUAL_CARD_LEAD "DualCards:"
-#define FLEX_CARD_LEAD "FlexCards:"
-#define FlIP_CARD_LEAD "FlipCards:"
+#define DECK_SIZE 10
+
+#define BASIC_CARD_LEAD "BasicCards"
+#define DOUBLE_CARD_LEAD "DoubleCards"
+#define DUAL_CARD_LEAD "DualCards"
+#define FLEX_CARD_LEAD "FlexCards"
+#define FLIP_CARD_LEAD "FlipCards"
 
 
 class Deck {
@@ -44,7 +51,7 @@ private:
     void addCard(Card *card);
 
     /**
-     * finds all non-trivial (excluding current and parent folder references) files in the /Data/Decks directory
+     * Finds all non-trivial (excluding current and parent folder references) files in the /Data/Decks directory
      * @return names of files within /Data/Decks/ directory
      */
     static std::vector<std::string> getDecksFromDirectory();
@@ -56,9 +63,95 @@ private:
      */
     static std::vector<std::string> loadFileContent(std::string file);
 
-    static std::vector<std::string> parseCardValues(std::string phrase, const std::string &delimiter);
+    /**
+     * Splits the phrase string by the delimiter string into substrings
+     * @param phrase Line to be parsed by the delimiter
+     * @param delimiter Delimiter by which the string will be split
+     * @return Vector of substring lying between delimiters
+     */
+    static std::vector<std::string> splitStringByDelimiter(std::string phrase, const std::string &delimiter);
 
-    static std::map<std::string,std::vector<std::string>> parseAllFileLines(std::vector<std::string> &deckFileContent);
+    /**
+     * Processes the text file and splits it by the delimiter CARD_TYPE_VALUE_DELIMITER into key and value
+     * @param deckFileContent Text file to be processed
+     * @return Map of lines of the text file split by the CARD_TYPE_VALUE_DELIMITER
+     */
+    static std::map<std::string, std::vector<std::string>> parseAllFileLines(std::vector<std::string> &deckFileContent);
+
+    /**
+     * Based on the chosen file inserts appropriate card into a vector
+     * @param allCards Map of all available cards
+     * @param deckFileContent File from which the cards will be extracted
+     * @return Vector of cards based on the file
+     */
+    static std::vector<Card *>
+    createCardVector(const std::map<std::string, Card *> &allCards, std::vector<std::string> &deckFileContent);
+
+    /**
+     * Given a string, extracts two values per delimiter and converts them into integers
+     * @param value String to be parsed
+     * @return Pointer to a 2 element array of the parsed integers
+     */
+    static int *getDualValuesFromString(const std::string &value);
+
+    /**
+     * Extracts a single integer representing the card count of the constant, valueless cards - Double, Flip
+     * @param lineValues String to be processed
+     * @return Count of cards of the given type to be added
+     */
+    static int singleParameterValue(const std::vector<std::string> &lineValues);
+
+    /**
+     *
+     * @param allCards
+     * @param cards
+     * @param cardCount
+     */
+    static void
+    insertDoubleCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
+
+    /**
+     *
+     * @param allCards
+     * @param cards
+     * @param cardcount
+     */
+    static void
+    insertFlexCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardcount);
+
+    /**
+     *
+     * @param allCards
+     * @param cards
+     * @param currentLineValues
+     */
+    static void insertBasicCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
+                                 const std::vector<std::string> &currentLineValues);
+
+    /**
+     *
+     * @param cards
+     * @param currentLineValues
+     * @param allCards
+     */
+    static void insertDualCards(std::vector<Card *> &cards, const std::vector<std::string> &currentLineValues,
+                                const std::map<std::string, Card *> &allCards);
+
+    /**
+     *
+     * @param cards
+     * @param currentLineValues
+     * @param allCards
+     */
+    static void insertFlipCards(std::vector<Card *> &cards, const std::vector<std::string> &currentLineValues,
+                                const std::map<std::string, Card *> &allCards);
+
+    /**
+     * Queries the user with deck name to pick from
+     * @param files Contents of the /Data/Decks directory
+     * @return index of the deck chosen
+     */
+    static size_t userDeckIndexInput(const std::vector<std::string> &files);
 
 public:
     Deck() = default;
@@ -66,6 +159,8 @@ public:
     Deck(std::map<std::string, Card *> &allCards);
 
     Deck(const std::vector<Card *> &cards);
+
+    static Deck loadFromFile(const std::map<std::string, Card *> &allCards);
 
     /**
      * Assuming a shuffled deck, moves HAND_SIZE number of cards from deck to the hand
@@ -77,7 +172,7 @@ public:
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
     /**
-     *
+     * Shows Deck's container's size
      * @return number of Cards in the deck
      */
     size_t getDeckSize() const;
@@ -90,17 +185,6 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
-    /**
-     * Queries the user with deck name to pick from
-     * @param files Contents of the /Data/Decks directory
-     * @return index of the deck chosen
-     */
-    static size_t userDeckIndexInput(const std::vector<std::string> &files);
-
-    static Deck loadFromFile();
-
-
 };
-
 
 #endif //PAZAAK_DECK_H

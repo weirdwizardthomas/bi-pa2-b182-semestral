@@ -41,7 +41,7 @@ int main() {
     CardParser cardParser;
     map<string, Card *> cards = cardParser.loadAllCards();
 
-    Deck::loadFromFile();
+    cout << Deck::loadFromFile(cards);
 
   /*  //Main menu--------------------------------------------
     cout << "Pazaak, a game from the Old Republic, implemented by weirdwizardtom:koristo1@fit.cvut.cz" << endl;

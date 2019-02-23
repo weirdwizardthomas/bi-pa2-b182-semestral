@@ -53,6 +53,8 @@ map<string, Card *> CardParser::loadAllCards() {
     loadBasicCards(cards);
     loadDualCards(cards);
     loadFlipCards(cards);
+    addDoubleCards(cards);
+    addFlexCards(cards);
 
     return cards;
 }
@@ -119,4 +121,14 @@ void CardParser::validLines(vector<string> fileLines, string mode) const {
                 throw "INVALID DUAL CARD FORMAT, MISSING DELIMITER"; //TODO proper exception
         }
     }
+}
+
+void CardParser::addDoubleCards(map<string, Card *> &cards) {
+    Card *dummy = new DoubleCard();
+    cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
+}
+
+void CardParser::addFlexCards(map<string, Card *> &cards) {
+    Card *dummy = new FlexCard();
+    cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
 }

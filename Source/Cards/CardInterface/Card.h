@@ -65,6 +65,7 @@ public:
      * @param card card to be placed into the stream
      * @return getDescription()
      */
+
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
 };
 

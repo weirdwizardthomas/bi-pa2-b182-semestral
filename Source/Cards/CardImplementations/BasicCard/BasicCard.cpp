@@ -24,4 +24,3 @@ string BasicCard::getDescription() const {
     return offsetPositiveNumber(this->value);
 }
 
-

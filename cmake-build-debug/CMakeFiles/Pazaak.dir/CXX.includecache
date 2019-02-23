@@ -12,6 +12,10 @@ fstream
 ../../CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+../../CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h
 iostream
 -
@@ -21,6 +25,10 @@ cmath
 -
 ../../CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
+../DualCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.h
 
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 cstdlib
@@ -65,6 +73,14 @@ dirent.h
 -
 ../../Cards/CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+../../Cards/CardImplementations/BasicCard/BasicCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+../../Cards/CardImplementations/DoubleCard/DoubleCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
+../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 ../Hand/Hand.h
 /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
 
@@ -109,6 +125,10 @@ Utilities.cpp
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 ../Cards/CardImplementations/BasicCard/BasicCard.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
+../Cards/CardImplementations/DoubleCard/DoubleCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
+../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
 
 /home/tomtom/Development/Pazaak/Source/Utilities/Utilities.cpp
 string
