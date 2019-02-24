@@ -37,12 +37,16 @@
 #define FLEX_CARD_LEAD "FlexCards"
 #define FLIP_CARD_LEAD "FlipCards"
 
-
 class Deck {
 private:
+    //Attributes----------------------------------------------
     std::vector<Card *> cards;
 
-    void getCardChoicesFromUser(const std::map<std::string, Card *> &allCards);
+    /**
+     * Queries the player with a choice of card indices to add to the deck
+     * @param allCards All Cards eligible to be placed in the a deck
+     */
+    void loadCardsFromUser(const std::map<std::string, Card *> &allCards);
 
     /**
      * Adds the Card pointer to the Deck's container
@@ -50,6 +54,53 @@ private:
      */
     void addCard(Card *card);
 
+    void addLeadingCategories(std::vector<std::string> *categorised) const;
+
+    bool fileAlreadyExists(const std::vector<std::string> &files, const std::string &filename) const;
+
+public:
+    Deck() = default;
+
+    Deck(const std::map<std::string, Card *> &allCards);
+
+    Deck(const std::vector<Card *> &cards);
+
+    /**
+     * Assuming a shuffled deck, moves HAND_SIZE number of cards from deck to the hand
+     * @param currentHand Deck owner's current hand to be endowed with a set of cards
+     * @return updated hand with up to four cards from the deck
+     */
+    Hand *drawCards(Hand *currentHand);
+
+    int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
+
+    /**
+     * Shows Deck's container's size
+     * @return number of Cards in the deck
+     */
+    size_t getDeckSize() const;
+
+    /**
+     * Displays contents of the cards' container in the stream
+     * @param out stream in which the Deck will be placed
+     * @param deck Deck to be streamed
+     * @return the input stream
+     */
+    friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
+
+    void saveToFile() const;
+
+//-----------------------------------------------------------------------------------------
+//Deck loading from file
+public:
+    /**
+     * Constructs a deck based on contents of a user chosen file within the Data/Decks directory
+     * @param allCards Map of all available cards, used as a database
+     * @return Deck containing cards corresponding to records in a file
+     */
+    static Deck loadFromFile(const std::map<std::string, Card *> &allCards);
+
+private:
     /**
      * Finds all non-trivial (excluding current and parent folder references) files in the /Data/Decks directory
      * @return names of files within /Data/Decks/ directory
@@ -58,7 +109,7 @@ private:
 
     /**
      * loads content of a single file in DECKS_DIRECTORY_PATH
-     * @param file name of the file to be opened 
+     * @param file name of the file to be opened
      * @return individual lines of the file
      */
     static std::vector<std::string> loadFileContent(std::string file);
@@ -85,7 +136,7 @@ private:
      * @return Vector of cards based on the file
      */
     static std::vector<Card *>
-    createCardVector(const std::map<std::string, Card *> &allCards, std::vector<std::string> &deckFileContent);
+    parseLinesForCards(const std::map<std::string, Card *> &allCards, std::vector<std::string> &deckFileContent);
 
     /**
      * Given a string, extracts two values per delimiter and converts them into integers
@@ -134,8 +185,9 @@ private:
      * @param currentLineValues
      * @param allCards
      */
-    static void insertDualCards(std::vector<Card *> &cards, const std::vector<std::string> &currentLineValues,
-                                const std::map<std::string, Card *> &allCards);
+    static void
+    insertDualCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
+                    const std::vector<std::string> &currentLineValues);
 
     /**
      *
@@ -143,8 +195,9 @@ private:
      * @param currentLineValues
      * @param allCards
      */
-    static void insertFlipCards(std::vector<Card *> &cards, const std::vector<std::string> &currentLineValues,
-                                const std::map<std::string, Card *> &allCards);
+    static void
+    insertFlipCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
+                    const std::vector<std::string> &currentLineValues);
 
     /**
      * Queries the user with deck name to pick from
@@ -153,38 +206,11 @@ private:
      */
     static size_t userDeckIndexInput(const std::vector<std::string> &files);
 
-public:
-    Deck() = default;
+    std::vector<std::string> parseDeckForCards() const;
 
-    Deck(std::map<std::string, Card *> &allCards);
+    std::string QueryUserInputFilename(const std::vector<std::string> &files) const;
 
-    Deck(const std::vector<Card *> &cards);
-
-    static Deck loadFromFile(const std::map<std::string, Card *> &allCards);
-
-    /**
-     * Assuming a shuffled deck, moves HAND_SIZE number of cards from deck to the hand
-     * @param currentHand Deck owner's current hand to be endowed with a set of cards
-     * @return updated hand with up to four cards from the deck
-     */
-    Hand *drawCards(Hand *currentHand);
-
-    int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
-
-    /**
-     * Shows Deck's container's size
-     * @return number of Cards in the deck
-     */
-    size_t getDeckSize() const;
-
-    /**
-     * Displays contents of the cards' container in the stream
-     * @param out stream in which the Deck will be placed
-     * @param deck Deck to be streamed
-     * @return the input stream
-     */
-    friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
-
+    void convertFlipCardToFileFormat(std::vector<std::string> *categorised) const;
 };
 
 #endif //PAZAAK_DECK_H

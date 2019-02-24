@@ -420,59 +420,59 @@ Source/Player/PlayerBoard/PlayerBoard.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s
 .PHONY : Source/Player/PlayerBoard/PlayerBoard.cpp.s
 
-Source/Utilities/CardParser.o: Source/Utilities/CardParser.cpp.o
+Source/Utilities/Parsers/CardParser/CardParser.o: Source/Utilities/Parsers/CardParser/CardParser.cpp.o
 
-.PHONY : Source/Utilities/CardParser.o
-
-# target to build an object file
-Source/Utilities/CardParser.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.o
-.PHONY : Source/Utilities/CardParser.cpp.o
-
-Source/Utilities/CardParser.i: Source/Utilities/CardParser.cpp.i
-
-.PHONY : Source/Utilities/CardParser.i
-
-# target to preprocess a source file
-Source/Utilities/CardParser.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.i
-.PHONY : Source/Utilities/CardParser.cpp.i
-
-Source/Utilities/CardParser.s: Source/Utilities/CardParser.cpp.s
-
-.PHONY : Source/Utilities/CardParser.s
-
-# target to generate assembly for a file
-Source/Utilities/CardParser.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/CardParser.cpp.s
-.PHONY : Source/Utilities/CardParser.cpp.s
-
-Source/Utilities/Utilities.o: Source/Utilities/Utilities.cpp.o
-
-.PHONY : Source/Utilities/Utilities.o
+.PHONY : Source/Utilities/Parsers/CardParser/CardParser.o
 
 # target to build an object file
-Source/Utilities/Utilities.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.o
-.PHONY : Source/Utilities/Utilities.cpp.o
+Source/Utilities/Parsers/CardParser/CardParser.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o
+.PHONY : Source/Utilities/Parsers/CardParser/CardParser.cpp.o
 
-Source/Utilities/Utilities.i: Source/Utilities/Utilities.cpp.i
+Source/Utilities/Parsers/CardParser/CardParser.i: Source/Utilities/Parsers/CardParser/CardParser.cpp.i
 
-.PHONY : Source/Utilities/Utilities.i
+.PHONY : Source/Utilities/Parsers/CardParser/CardParser.i
 
 # target to preprocess a source file
-Source/Utilities/Utilities.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.i
-.PHONY : Source/Utilities/Utilities.cpp.i
+Source/Utilities/Parsers/CardParser/CardParser.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.i
+.PHONY : Source/Utilities/Parsers/CardParser/CardParser.cpp.i
 
-Source/Utilities/Utilities.s: Source/Utilities/Utilities.cpp.s
+Source/Utilities/Parsers/CardParser/CardParser.s: Source/Utilities/Parsers/CardParser/CardParser.cpp.s
 
-.PHONY : Source/Utilities/Utilities.s
+.PHONY : Source/Utilities/Parsers/CardParser/CardParser.s
 
 # target to generate assembly for a file
-Source/Utilities/Utilities.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Utilities.cpp.s
-.PHONY : Source/Utilities/Utilities.cpp.s
+Source/Utilities/Parsers/CardParser/CardParser.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.s
+.PHONY : Source/Utilities/Parsers/CardParser/CardParser.cpp.s
+
+Source/Utilities/Parsers/Utilities.o: Source/Utilities/Parsers/Utilities.cpp.o
+
+.PHONY : Source/Utilities/Parsers/Utilities.o
+
+# target to build an object file
+Source/Utilities/Parsers/Utilities.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o
+.PHONY : Source/Utilities/Parsers/Utilities.cpp.o
+
+Source/Utilities/Parsers/Utilities.i: Source/Utilities/Parsers/Utilities.cpp.i
+
+.PHONY : Source/Utilities/Parsers/Utilities.i
+
+# target to preprocess a source file
+Source/Utilities/Parsers/Utilities.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.i
+.PHONY : Source/Utilities/Parsers/Utilities.cpp.i
+
+Source/Utilities/Parsers/Utilities.s: Source/Utilities/Parsers/Utilities.cpp.s
+
+.PHONY : Source/Utilities/Parsers/Utilities.s
+
+# target to generate assembly for a file
+Source/Utilities/Parsers/Utilities.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.s
+.PHONY : Source/Utilities/Parsers/Utilities.cpp.s
 
 main.o: main.cpp.o
 
@@ -543,12 +543,12 @@ help:
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.o"
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.i"
 	@echo "... Source/Player/PlayerBoard/PlayerBoard.s"
-	@echo "... Source/Utilities/CardParser.o"
-	@echo "... Source/Utilities/CardParser.i"
-	@echo "... Source/Utilities/CardParser.s"
-	@echo "... Source/Utilities/Utilities.o"
-	@echo "... Source/Utilities/Utilities.i"
-	@echo "... Source/Utilities/Utilities.s"
+	@echo "... Source/Utilities/Parsers/CardParser/CardParser.o"
+	@echo "... Source/Utilities/Parsers/CardParser/CardParser.i"
+	@echo "... Source/Utilities/Parsers/CardParser/CardParser.s"
+	@echo "... Source/Utilities/Parsers/Utilities.o"
+	@echo "... Source/Utilities/Parsers/Utilities.i"
+	@echo "... Source/Utilities/Parsers/Utilities.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -45,7 +45,7 @@ int DualCard::chooseEffect() const {
 }
 
 string DualCard::getDescription() const {
-    return offsetPositiveNumber(this->effects[0]) + DUAL_DELIMITER + offsetPositiveNumber(this->effects[1]);
+    return offsetPositiveNumber(this->effects[0]) + DUAL_DELIMITER + " " + offsetPositiveNumber(this->effects[1]);
 }
 
 

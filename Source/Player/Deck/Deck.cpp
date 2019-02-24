@@ -9,16 +9,19 @@ using namespace std;
 
 ostream &operator<<(ostream &out, const vector<string> &a) {
     size_t i = 0;
-    for (const auto &file : a)
-        out << "(" << i++ << ") " << file << endl;
-
+    for (const auto &file : a) {
+        out << "(" << i << ") " << file << endl;
+        i++;
+    }
     return out;
 }
 
 ostream &operator<<(ostream &out, const vector<Card *> &a) {
     size_t i = 0;
-    for (const auto &card : a)
-        out << "(" << i++ << ") " << card << endl;
+    for (const auto &card : a) {
+        out << "(" << i << ") " << card << endl;
+        i++;
+    }
 
     return out;
 }
@@ -47,7 +50,6 @@ int Deck::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore,
     return effect;
 }
 
-
 size_t Deck::getDeckSize() const {
     return this->cards.size();
 }
@@ -56,18 +58,154 @@ void Deck::addCard(Card *card) {
     this->cards.push_back(card);
 }
 
-Deck::Deck(map<string, Card *> &allCards) {
+Deck::Deck(const map<string, Card *> &allCards) {
     size_t i = 0;
     //TODO Have pages and a fixed amount per page?
-    for (auto &card : allCards)
-        cout << (i < DECK_SIZE ? " " : "") << "(" << i++ << ")" << " " << (card.second)->getDescription() << endl;
+    for (auto &card : allCards) {
+        cout << (i < DECK_SIZE ? " " : "") << "(" << i << ")" << " " << (card.second)->getDescription() << endl;
+        i++;
+    }
 
     //TODO exit query here ?
     cout << "Select ten cards to add to your deck." << endl;
 
-    getCardChoicesFromUser(allCards);
+    loadCardsFromUser(allCards);
 
-    cout << "Deck successfully forged." << endl;
+    cout << "Deck forged." << endl;
+}
+
+bool containsSubstring(const string &master, const string &slave) {
+    return master.find(slave) != string::npos;
+}
+
+void Deck::saveToFile() const {
+
+    //Setup ostream-------------------
+    fstream deckFile;
+
+    vector<string> files = getDecksFromDirectory(); //TODO Change to a set?
+
+    string filename = QueryUserInputFilename(files);
+
+    string path;
+    path.append(DECKS_DIRECTORY_PATH).append(FOLDER_DELIMITER).append(filename);
+
+    deckFile.open(path, fstream::out);
+    if (!deckFile.is_open())
+        throw "File error"; //TODO proper exception
+
+    vector<string> cardLines = parseDeckForCards();
+    for (size_t i = 0; i < cardLines.size(); i++)
+        deckFile << cardLines[i] << endl;
+
+    deckFile.close();
+
+}
+
+string Deck::QueryUserInputFilename(const vector<string> &files) const {
+    cout << "Saved decks" << endl;
+    cout << files;
+
+    string filename;
+    cout << "Save deck as:";
+    cin >> filename;
+
+    while (fileAlreadyExists(files, filename)) {
+        cout << "File already exists, please try another name: ";
+        cin >> filename;
+    }
+    return filename;
+}
+
+void removeSubstring(string &master, const string &pattern) {
+    string::size_type n = pattern.length();
+    for (string::size_type i = master.find(pattern);
+         i != string::npos;
+         i = master.find(pattern))
+        master.erase(i, n);
+}
+
+vector<string> Deck::parseDeckForCards() const {
+    vector<string> fileLines;
+
+    vector<string> categorised[5];
+    addLeadingCategories(categorised);
+
+    size_t DoubleCardCounter = 0;
+    size_t FlexCardCounter = 0;
+
+    for (Card *card : cards) {
+        const string &cardDescription = card->getDescription();
+        //TODO make this prettier - extract a 'Contains substring' method and use switch?
+        if (containsSubstring(cardDescription, "Double the value of the last played card")) //DOUBLE
+            DoubleCardCounter++;
+        else if (containsSubstring(cardDescription, "+/-")) //FLEX
+            FlexCardCounter++;
+        else if (containsSubstring(cardDescription, "<~>")) //FLIP
+            categorised[3].push_back(cardDescription);
+        else if (containsSubstring(cardDescription, "|"))
+            categorised[2].push_back(cardDescription); //DUAL
+        else
+            categorised[0].push_back(cardDescription); //BASIC
+    }
+
+    //add the counters of the unique cards
+    categorised[1].push_back(to_string(DoubleCardCounter));
+    categorised[4].push_back(to_string(FlexCardCounter));
+
+    convertFlipCardToFileFormat(categorised);
+
+    //Remove the delimiters
+    for (auto &category : categorised)
+        for (auto &currentValue : category) {
+            removeSubstring(currentValue, "+");
+            removeSubstring(currentValue, "|");
+            removeSubstring(currentValue, "<~>");
+        }
+
+    //Construct the line in the output vector
+    for (auto &i : categorised) {
+        string line;
+        for (size_t j = 0; j < i.size(); j++)
+            line.append(i[j]).append((j == 0 || j == i.size() - 1 ? "" : FILE_CARD_VALUE_DELIMITER));
+        fileLines.push_back(line);
+    }
+
+    return fileLines;
+}
+
+void Deck::convertFlipCardToFileFormat(vector<string> *categorised) const {
+    for (size_t i = 1; i < categorised[3].size(); i++) {
+        string currentFlipCard = categorised[3][i];
+        //Split the string (X <~> -X | Y <~> -Y) into X<~>-X and Y<~>-Y
+        vector<string> splitValues = splitStringByDelimiter(currentFlipCard, "|"); //TODO replace with an array
+
+        //Extract the X from each substring
+        string parsedFlipCard;
+        for (size_t j = 0; j < 2; j++) {
+            //Extract the first number from each operand
+            string extractedValue = (splitStringByDelimiter(splitValues[j], "<~>")[0]);
+            //Remove redundant symbols - sign and white spaces
+            extractedValue = to_string(stoi(extractedValue)); //TODO can be made easier, but this works for now
+            //Add to the line with a white space between if necessary
+            parsedFlipCard.append(extractedValue).append((j == 0 ? " " : ""));
+        }
+        //replace the value
+        categorised[3][i] = parsedFlipCard;
+    }
+}
+
+bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename) const {
+    for (const string &currentFile : files)
+        if (currentFile == filename)
+            return true;
+    return false;
+}
+
+void Deck::addLeadingCategories(vector<string> *categorised) const {
+    string leads[5] = {BASIC_CARD_LEAD, DOUBLE_CARD_LEAD, DUAL_CARD_LEAD, FLIP_CARD_LEAD, FLEX_CARD_LEAD};
+    for (size_t k = 0; k < 5; k++)
+        categorised[k].push_back(leads[k] + CARD_TYPE_VALUE_DELIMITER);
 }
 
 vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
@@ -81,10 +219,10 @@ vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
 }
 
 //TODO allow replacing cards during the selection using cin.fail && cin.clear and cin >> string/char
-void Deck::getCardChoicesFromUser(const map<string, Card *> &allCards) {
+void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     vector<Card *> allCardsVector = copyMapToVector(allCards);
 
-    size_t i = 1;
+    size_t i = this->getDeckSize() + 1;
 
     while (i != DECK_SIZE) {
         cout << "(" << i << "):";
@@ -137,31 +275,34 @@ Deck Deck::loadFromFile(const map<string, Card *> &allCards) {
     vector<string> files = Deck::getDecksFromDirectory(); //Find all files in a directory
     string loadedFile = files[Deck::userDeckIndexInput(files)]; //pick a file in the directory
 
-    //Use the file
+    //Parse the file
     vector<string> deckFileContent = Deck::loadFileContent(loadedFile); //load the picked file's content
-    vector<Card *> cards = createCardVector(allCards, deckFileContent); //Load the cards from the 'database'
+    vector<Card *> cards = parseLinesForCards(allCards, deckFileContent); //Load the cards from the 'database'
 
     return Deck(cards); //forge the deck
 }
 
-vector<Card *>
-Deck::createCardVector(const map<string, Card *> &allCards, vector<string> &deckFileContent) { //TODO better method name
+//TODO better method name
+vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vector<string> &deckFileContent) {
     vector<Card *> cards;
     map<string, vector<string>> parsedLines = Deck::parseAllFileLines(deckFileContent);//TODO TRIM
 
     insertBasicCards(allCards, cards, parsedLines.at(BASIC_CARD_LEAD));
-    insertDualCards(cards, parsedLines.at(DUAL_CARD_LEAD), allCards);
-    insertFlipCards(cards, parsedLines.at(FLIP_CARD_LEAD), allCards);
+    insertDualCards(allCards, cards, parsedLines.at(DUAL_CARD_LEAD));
+    insertFlipCards(allCards, cards, parsedLines.at(FLIP_CARD_LEAD));
     insertDoubleCards(allCards, cards, singleParameterValue(parsedLines.at(DOUBLE_CARD_LEAD)));
     insertFlexCards(allCards, cards, singleParameterValue(parsedLines.at(FLEX_CARD_LEAD)));
 
+    //TODO try catch the stoi, might be an extra comma - no value to be parsed after a comma
     //TODO if card count doesn't match, ask to remove/add more cards - bleeding edge, do later
+    if (cards.size() != DECK_SIZE)
+        throw "Error parsing"; //TODO PROPER EXCEPTION - not enough cards in a deck
 
     return cards;
 }
 
-void Deck::insertFlipCards(vector<Card *> &cards, const vector<string> &currentLineValues,
-                           const map<string, Card *> &allCards) {
+void Deck::insertFlipCards(const map<string, Card *> &allCards, vector<Card *> &cards,
+                           const vector<string> &currentLineValues) {
 
     for (const auto &value : currentLineValues) {
         int *effects = getDualValuesFromString(value);
@@ -172,8 +313,8 @@ void Deck::insertFlipCards(vector<Card *> &cards, const vector<string> &currentL
     }
 }
 
-void Deck::insertDualCards(vector<Card *> &cards, const vector<string> &currentLineValues,
-                           const map<string, Card *> &allCards) {
+void Deck::insertDualCards(const map<string, Card *> &allCards, vector<Card *> &cards,
+                           const vector<string> &currentLineValues) {
     for (const auto &value : currentLineValues) {
         int *effects = getDualValuesFromString(value);
         Card *dummy = new DualCard(effects[0], effects[1]);
@@ -183,8 +324,8 @@ void Deck::insertDualCards(vector<Card *> &cards, const vector<string> &currentL
     }
 }
 
-void Deck::insertBasicCards(const map<string, Card *> &allCards, vector<Card *> &cards,
-                            const vector<string> &currentLineValues) {
+void Deck::insertBasicCards(const std::map<string, Card *> &allCards, std::vector<Card *> &cards,
+                            const std::vector<string> &currentLineValues) {
     for (const auto &value : currentLineValues) {
         Card *dummy = new BasicCard(stoi(value));
         cards.push_back(allCards.at(dummy->getDescription()));
@@ -216,7 +357,6 @@ int Deck::singleParameterValue(const vector<string> &lineValues) {
 
     return flexCardCount;
 }
-
 
 int *Deck::getDualValuesFromString(const string &value) {
     //TODO CAN MAKE PAIR
@@ -251,18 +391,17 @@ size_t Deck::userDeckIndexInput(const vector<string> &files) {
 }
 
 vector<string> Deck::loadFileContent(string file) {
-//TODO can prolly remove the string line and directly add the file's line in the cycle ?
+    fstream deckFile;
+
     string path;
     path.append(DECKS_DIRECTORY_PATH).append(FOLDER_DELIMITER).append(file);
-
-    string line;
-    vector<string> fileContent;
-
-    fstream deckFile;
 
     deckFile.open(path);
     if (!deckFile.is_open())
         throw "File opening error"; //TODO proper exception
+
+    string line;
+    vector<string> fileContent;
 
     while (getline(deckFile, line))
         if (line.find_first_not_of(SPACE) != string::npos) //not an empty line
@@ -273,7 +412,7 @@ vector<string> Deck::loadFileContent(string file) {
     return fileContent;
 }
 
-std::vector<std::string> Deck::splitStringByDelimiter(string phrase, const string &delimiter) {
+vector<string> Deck::splitStringByDelimiter(string phrase, const string &delimiter) {
     vector<string> list;
     size_t pos = 0;
     string token;
@@ -287,7 +426,7 @@ std::vector<std::string> Deck::splitStringByDelimiter(string phrase, const strin
     return list;
 }
 
-std::map<std::string, std::vector<std::string>> Deck::parseAllFileLines(vector<string> &deckFileContent) {
+map<string, vector<string>> Deck::parseAllFileLines(vector<string> &deckFileContent) {
 
     map<string, vector<string>> parsedLines;
     for (const auto &line : deckFileContent) {
@@ -305,7 +444,6 @@ std::map<std::string, std::vector<std::string>> Deck::parseAllFileLines(vector<s
     }
     return parsedLines;
 }
-
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;

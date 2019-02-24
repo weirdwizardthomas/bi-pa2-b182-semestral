@@ -150,13 +150,13 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/CardParser.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/Utilities.cpp">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/Utilities.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/main.cpp">

@@ -10,12 +10,12 @@
 #include <map>
 
 //Classes-----------------------------------
-#include "Utilities.cpp"
-#include "../Cards/CardInterface/Card.h"
-#include "../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
-#include "../Cards/CardImplementations/BasicCard/BasicCard.h"
-#include "../Cards/CardImplementations/DoubleCard/DoubleCard.h"
-#include "../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
+#include "../Utilities.cpp"
+#include "../../../Cards/CardInterface/Card.h"
+#include "../../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
+#include "../../../Cards/CardImplementations/BasicCard/BasicCard.h"
+#include "../../../Cards/CardImplementations/DoubleCard/DoubleCard.h"
+#include "../../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
 
 //Definitions-------------------------------
 #define CARD_FOLDER_PATH "../Data/Cards/"

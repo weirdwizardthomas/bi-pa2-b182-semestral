@@ -1,5 +1,5 @@
-BasicCards: 1, -1, 2, 3, 4
-DoubleCards:2
+BasicCards: 1, -1, 2, 3
+DoubleCards:1
 DualCards:3 4,2 5
-FlexCards:4
-FlipCards:5 2
+FlexCards:1
+FlipCards:2 5,3 4
