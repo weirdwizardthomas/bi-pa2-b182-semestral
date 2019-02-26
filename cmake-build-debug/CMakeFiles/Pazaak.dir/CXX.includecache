@@ -48,9 +48,13 @@ fstream
 map
 -
 
-/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp
-Deck.h
-/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
+/home/tomtom/Development/Pazaak/Source/Game/Game.cpp
+Game.h
+/home/tomtom/Development/Pazaak/Source/Game/Game.h
+
+/home/tomtom/Development/Pazaak/Source/Game/Game.h
+../Player/Player.h
+/home/tomtom/Development/Pazaak/Source/Player/Player.h
 
 /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
 vector
@@ -77,6 +81,26 @@ dirent.h
 /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
 
 /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
+../../Cards/CardInterface/Card.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+
+/home/tomtom/Development/Pazaak/Source/Player/Player.h
+cstdlib
+-
+string
+-
+map
+-
+sstream
+-
+Deck/Deck.h
+/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
+PlayerBoard/PlayerBoard.h
+/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
+
+/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
+vector
+-
 ../../Cards/CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 

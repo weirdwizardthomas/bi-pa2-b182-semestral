@@ -7,13 +7,16 @@
 //Definitions-------------
 using namespace std;
 
-
-Player::Player(string name) : name(name) {}
+Player::Player(string name) : name(name) {
+    cout << "Welcome player " << name << endl;
+}
 
 void Player::play(int opponentScore) {
     //TODO query what card to play, give the option to stand or quit the game
-    if (this->board.isStanding())
+    if (this->board.isStanding()) {
+        cout << "Player " << this->name << " is standing." << endl;
         return;
+    }
 
     cout << "Your turn to play! Your score: " << this->getScore();
     cout << " | Your opponent's score: " << opponentScore << endl;
@@ -40,14 +43,7 @@ void Player::play(int opponentScore) {
         if (choice > this->deck.getDeckSize())
             throw "INVALID INPUT OUT OF BOUNDS";
         // this->deck.playCard(choice,this->board.getPlayedCards(),this->board.getCurrentScore(), opponentScore);
-
     }
-
-
-}
-
-const string &Player::getName() const {
-    return name;
 }
 
 int Player::getScore() const {
@@ -58,22 +54,14 @@ void Player::addPoint() {
     this->board.addPoint();
 }
 
-void Player::createDeck(map<string, Card *> &allCards) {
+void Player::createDeck(const map<string, Card *> &allCards) {
     this->deck = Deck(allCards);
     cout << this->deck;
 }
 
-bool Player::isStanding() {
-    return this->board.isStanding();
-}
+void Player::chooseDeck(const map<string, Card *> &allCards) {
 
-size_t Player::getPlayedCardsCount() {
-    return this->board.getPlayedCards().size();
-}
-
-void Player::chooseDeck(map<string, Card *> &allCards) {
-
-    cout << "[F]orge a new deck or [L]oad an existing one?" << endl;
+    cout << this->name << ": [F]orge a new deck or [L]oad an existing one?" << endl;
 
     string input;
     cin >> input;
@@ -82,13 +70,29 @@ void Player::chooseDeck(map<string, Card *> &allCards) {
         cin >> input;
     }
 
-    if(input == "F")
+    if (input == "F")
         this->createDeck(allCards);
     else
-        this->loadDeck();
+        this->loadDeck(allCards);
 
 }
 
-void Player::loadDeck() {
+void Player::loadDeck(const map<string, Card *> &allCards) {
+    this->deck = Deck::loadFromFile(allCards);
+}
 
+const Deck &Player::getDeck() const {
+    return this->deck;
+}
+
+size_t Player::getPlayedCardsCount() const {
+    return this->board.getPlayedCards().size();
+}
+
+const string &Player::getName() const {
+    return name;
+}
+
+bool Player::isStanding() const {
+    return this->board.isStanding();
 }

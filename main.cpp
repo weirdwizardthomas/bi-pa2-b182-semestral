@@ -17,47 +17,53 @@ using namespace std;
 
 int main() {
 
-    CardParser cardParser;
-    map<string, Card *> cards = cardParser.loadAllCards();
+    map<string, Card *> cards =  CardParser::loadAllCards();
 
-    Deck deck = Deck::loadFromFile(cards);
-    deck.saveToFile();
+    string nameA, nameB;
+    cout << "Player 1 name: ";
+    getline(cin, nameA);
+    cout << "Player 2 name: ";
+    getline(cin, nameB);
+
+
+    Game newGame = Game(new Player(nameA), new Player(nameB), cards);
+    newGame.play();
 
     /*//Main menu--------------------------------------------
     cout << "Pazaak, a game from the Old Republic, implemented by weirdwizardtom:koristo1@fit.cvut.cz" << endl;
 */
-   /* size_t menuIndex = 0;
+    /* size_t menuIndex = 0;
 
-    cout << LEFT_INDEX_WRAPPER << menuIndex++ << RIGHT_INDEX_WRAPPER << " Play" << endl;
-    cout << LEFT_INDEX_WRAPPER << menuIndex++ << RIGHT_INDEX_WRAPPER << " Craft a deck" << endl;
-    cout << LEFT_INDEX_WRAPPER << menuIndex++ << RIGHT_INDEX_WRAPPER << " Quit" << endl;
-    size_t menuChoice = menuIndex;
-*/
-  /*  //Menu item selection----------------------------------
-    cout << "Select a menu option: ";
-    while (menuChoice >= menuIndex) {
-        cin >> menuChoice;
-        if (menuChoice >= menuIndex)
-            cout << "Invalid choice, please select an option in range 0-" << menuIndex - 1 << endl;
-    }
+     cout << LEFT_INDEX_WRAPPER << menuIndex++ << RIGHT_INDEX_WRAPPER << " Play" << endl;
+     cout << LEFT_INDEX_WRAPPER << menuIndex++ << RIGHT_INDEX_WRAPPER << " Decks" << endl;
+     cout << LEFT_INDEX_WRAPPER << menuIndex++ << RIGHT_INDEX_WRAPPER << " Quit" << endl;
+     size_t menuChoice = menuIndex;
+ */
+    /*  //Menu item selection----------------------------------
+      cout << "Select a menu option: ";
+      while (menuChoice >= menuIndex) {
+          cin >> menuChoice;
+          if (menuChoice >= menuIndex)
+              cout << "Invalid choice, please select an option in range 0-" << menuIndex - 1 << endl;
+      }
 
-    switch (menuChoice) {
-        case 0:
-            break;
-        case 1: {
-            Deck deck = Deck(cards);
-            deck.saveToFile();
-            break;
-        }
-        case 2: {
-        }
-            for (auto &card : cards)
-                free(card.second);
+      switch (menuChoice) {
+          case 0:
+              break;
+          case 1: {
+              Deck deck = Deck(cards);
+              deck.saveToFile();
+              break;
+          }
+          case 2: {
+          }
+              for (auto &card : cards)
+                  free(card.second);
 
-            return EXIT_SUCCESS;
-    }
+              return EXIT_SUCCESS;
+      }
 
-    //can do a switch whose default value is call of the method again with a warning*/
+      //can do a switch whose default value is call of the method again with a warning*/
 /*
 
     string name1, name2;

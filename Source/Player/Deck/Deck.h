@@ -99,8 +99,9 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
-//-----------------------------------------------------------------------------------------
-//Deck loading from file
+//--------------------------------------------------------------------------------------------------------------------//
+//Static methods------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 public:
     /**
      * Constructs a deck based on contents of a user chosen file within the Data/Decks directory
@@ -189,13 +190,6 @@ private:
     static std::vector<std::string> loadFileContent(std::string file);
 
     /**
-     * Splits the phrase string by the delimiter string into substrings
-     * @param phrase Line to be parsed by the delimiter
-     * @param delimiter Delimiter by which the string will be split
-     * @return Vector of substring lying between delimiters
-     */
-
-    /**
      * Processes the text file and splits it by the delimiter CARD_TYPE_VALUE_DELIMITER into key and value
      * @param deckFileContent Text file to be processed
      * @return Map of lines of the text file split by the CARD_TYPE_VALUE_DELIMITER
@@ -211,8 +205,6 @@ private:
     static std::vector<Card *>
     parseLinesForCards(const std::map<std::string, Card *> &allCards, std::vector<std::string> &deckFileContent);
 
-    static void removeOperands(const std::vector<std::string> &categorised);
-
     /**
      * Extracts a single integer representing the card count of the constant, valueless cards - Double, Flip
      * @param lineValues String to be processed
@@ -221,10 +213,10 @@ private:
     static int singleParameterValue(const std::vector<std::string> &lineValues);
 
     /**
-     * Splits the phrase string into substring by delimiter
-     * @param phrase String to be split into substrings
-     * @param delimiter String by which the phrase will be split
-     * @return Vector of substrings
+     * Splits the phrase string by the delimiter string into substrings
+     * @param phrase Line to be parsed by the delimiter
+     * @param delimiter Delimiter by which the string will be split
+     * @return Vector of substring lying between delimiters
      */
     static std::vector<std::string> splitStringByDelimiter(std::string phrase, const std::string &delimiter);
 

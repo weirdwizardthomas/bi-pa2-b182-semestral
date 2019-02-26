@@ -28,7 +28,7 @@ vector<string> split(string phrase, const string &delimiter) {
     return list;
 }
 
-vector<string> CardParser::getFileLines(string filePath) const {
+vector<string> CardParser::getFileLines(const string &filePath) {
     fstream cardFile;
     cardFile.open(filePath, ios::in);
 
@@ -59,8 +59,9 @@ map<string, Card *> CardParser::loadAllCards() {
     return cards;
 }
 
-void CardParser::loadFlipCards(map<string, Card *> &cards) const {
-    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[2]);
+void CardParser::loadFlipCards(map<string, Card *> &cards) {
+
+    vector<string> fileLines = getFileLines(pathOf(FLIP_CARD));
     validLines(fileLines, FLIP_CARD);
 
     for (const string &line : fileLines) {
@@ -72,8 +73,8 @@ void CardParser::loadFlipCards(map<string, Card *> &cards) const {
     }
 }
 
-void CardParser::loadDualCards(map<string, Card *> &cards) const {
-    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[1]);
+void CardParser::loadDualCards(map<string, Card *> &cards) {
+    vector<string> fileLines = getFileLines(pathOf(DUAL_CARD));
     validLines(fileLines, DUAL_CARD);
 
     for (const string &line : fileLines) {
@@ -85,8 +86,8 @@ void CardParser::loadDualCards(map<string, Card *> &cards) const {
     }
 }
 
-void CardParser::loadBasicCards(map<string, Card *> &cards) const {
-    vector<string> fileLines = getFileLines(CARD_FOLDER_PATH + files[0]); //TODO CONCATENATE STRINGS
+void CardParser::loadBasicCards(map<string, Card *> &cards) {
+    vector<string> fileLines = getFileLines(pathOf(BASIC_CARD)); //TODO CONCATENATE STRINGS
     validLines(fileLines, BASIC_CARD);
 
     for (const string &line : fileLines) {
@@ -96,7 +97,7 @@ void CardParser::loadBasicCards(map<string, Card *> &cards) const {
     }
 }
 
-pair<int, int> CardParser::getDualValues(const string &line) const {
+pair<int, int> CardParser::getDualValues(const string &line) {
     pair<int, int> values;
 
     vector<string> tokenisedLine = split(line, DUAL_DELIMITER);
@@ -108,7 +109,7 @@ pair<int, int> CardParser::getDualValues(const string &line) const {
 }
 
 //TODO need to reconsider this method's implementation
-void CardParser::validLines(vector<string> fileLines, string mode) const {
+void CardParser::validLines(vector<string> fileLines, string mode) {
 
     if (mode == BASIC_CARD) {
         for (const string &line : fileLines)
@@ -131,4 +132,9 @@ void CardParser::addDoubleCards(map<string, Card *> &cards) {
 void CardParser::addFlexCards(map<string, Card *> &cards) {
     Card *dummy = new FlexCard();
     cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
+}
+
+string CardParser::pathOf(const char *filename) {
+    string fileString = filename;
+    return CARD_FOLDER_PATH + fileString;
 }

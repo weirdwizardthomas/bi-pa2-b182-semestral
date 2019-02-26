@@ -4,10 +4,17 @@
 
 #include "Game.h"
 
-Game::Game(Player *a, Player *b) {
+Game::Game(Player *a, Player *b, const map<string, Card *> &allCards) {
     this->players[0] = *a;
     this->players[1] = *b;
     this->currentlyPlaying = selectStartingPlayer();
+
+    for (Player &player : players)
+        player.chooseDeck(allCards);
+
+    for (Player &player : players)
+        cout << player.getName() << "'s deck:" << endl << player.getDeck() << "------------" << endl;
+
 
     gameStartMessage();
 }

@@ -16,8 +16,6 @@
 class Game {
 
 private:
-
-    //Attributes------------------------------
     Player players[2];
     size_t currentlyPlaying;
     //int timeElapsed;
@@ -86,7 +84,7 @@ private:
 
 public:
     //Constructor----------------------------
-    Game(Player *a, Player *b);
+    Game(Player *a, Player *b, const map<string, Card*> &allCards);
 
     //Methods--------------------------------
     void play();

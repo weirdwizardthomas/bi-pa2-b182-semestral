@@ -21,29 +21,33 @@ private:
     PlayerBoard board;
     //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
-    void createDeck(std::map<std::string, Card *> &allCards);
+    void createDeck(const map<string, Card *> &allCards);
+
+    void loadDeck(const map<string, Card *> &allCards);
 
 public:
-
+    //Constructors----------------------
     Player() = default;
 
-    Player(std::string name);
+    explicit Player(string name);
 
     void play(int opponentScore);
 
-    void chooseDeck(std::map<std::string, Card *> &allCards);
+    void chooseDeck(const std::map<std::string, Card *> &allCards);
+
+    //Setters--------------------------
+    void addPoint();
 
     const std::string &getName() const;
 
+    //Getters--------------------------
     int getScore() const;
 
-    void addPoint();
+    bool isStanding() const;
 
-    bool isStanding();
+    size_t getPlayedCardsCount() const;
 
-    size_t getPlayedCardsCount();
-
-    void loadDeck();
+    const Deck &getDeck() const;
 };
 
 
