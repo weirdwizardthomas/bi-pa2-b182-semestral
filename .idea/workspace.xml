@@ -14,29 +14,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdc5aa39-3125-4a97-bc14-927376fd3e82" name="Default Changelist" comment="">
+    <list default="true" id="bdc5aa39-3125-4a97-bc14-927376fd3e82" name="Default Changelist" comment="Viable Deck methods converted to static. Deck methods split between static and non-static in Deck.cpp, sorted alphabetically in Deck.h &amp; .cpp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Decks/BestDeck" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Decks/BestDeck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Decks/TomsDeck" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Decks/TomsDeck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Cards/CardImplementations/BasicCard/BasicCard.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Cards/CardImplementations/BasicCard/BasicCard.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Game/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Game/Game.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Player/Deck/Deck.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Player/Deck/Deck.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Player/Deck/Deck.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Player/Deck/Deck.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/CardParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/CardParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Utilities.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Utilities/Parsers/Utilities.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pazaak.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pazaak.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pazaak.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,158 +30,114 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6544607">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Source/Player/Deck/Deck.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-32">
-                  <caret line="173" column="21" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#0#2#0" />
-                    <element signature="e#127#324#0" />
-                    <element signature="e#326#524#0" />
-                    <element signature="e#585#877#0" />
-                    <element signature="e#879#1202#0" />
-                    <element signature="e#1204#1271#0" />
-                    <element signature="e#1273#1340#0" />
-                    <element signature="e#1342#1790#0" />
-                    <element signature="e#2524#2832#0" />
-                    <element signature="e#3978#4186#0" />
-                    <element signature="e#3533#3800#0" />
-                    <element signature="e#3712#3983#0" />
-                    <element signature="e#3985#5016#0" />
-                    <element signature="e#5018#5670#0" />
-                    <element signature="e#5672#6222#0" />
-                    <element signature="e#7125#7566#0" />
-                    <element signature="e#7568#8008#0" />
-                    <element signature="e#8010#8376#0" />
-                    <element signature="e#8378#8642#0" />
-                    <element signature="e#8644#8912#0" />
-                    <element signature="e#8914#9283#0" />
-                    <element signature="e#9285#9691#0" />
-                    <element signature="e#9693#10165#0" />
-                    <element signature="e#10167#10707#0" />
-                    <element signature="e#10709#11093#0" />
-                    <element signature="e#11095#11954#0" />
-                    <element signature="e#11956#12134#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Data/Decks/raawr">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/Player/Deck/Deck.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="626">
-                  <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
-                  <folding>
-                    <element signature="e#0#2#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="780">
-                  <caret line="52" selection-start-line="52" selection-end-line="52" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="217">
-                  <caret line="23" selection-start-line="23" selection-end-line="23" />
-                  <folding>
-                    <element signature="e#45#61#0" expanded="true" />
-                    <element signature="e#143#193#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="26" selection-start-line="26" selection-end-line="26" />
-                  <folding>
-                    <element signature="e#143#161#0" expanded="true" />
-                    <element signature="e#223#250#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Data/Decks/TomsDeck">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/BasicCard/BasicCard.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="388">
-                  <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="373">
-                  <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#146#165#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="403">
-                  <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Data/Decks/TomsDeck">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="23" selection-start-column="23" selection-end-column="23" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/Player/Deck/Deck.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="369" column="45" selection-start-line="369" selection-start-column="45" selection-end-line="369" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#2#0" />
+                <element signature="e#128#247#0" />
+                <element signature="e#127#324#0" />
+                <element signature="e#327#505#0" />
+                <element signature="e#596#712#0" />
+                <element signature="e#712#983#0" />
+                <element signature="e#1304#1577#0" />
+                <element signature="e#1992#2440#0" />
+                <element signature="e#1918#1985#0" />
+                <element signature="e#585#877#0" />
+                <element signature="e#2805#2872#0" />
+                <element signature="e#4631#5662#0" />
+                <element signature="e#3907#5664#0" />
+                <element signature="e#879#1202#0" />
+                <element signature="e#1910#2525#0" />
+                <element signature="e#7367#7651#0" />
+                <element signature="e#7846#8063#0" />
+                <element signature="e#6810#7849#0" />
+                <element signature="e#8569#9221#0" />
+                <element signature="e#13006#13546#0" />
+                <element signature="e#13260#13626#0" />
+                <element signature="e#13260#13528#0" />
+                <element signature="e#13530#13970#0" />
+                <element signature="e#13259#13700#0" />
+                <element signature="e#14512#14776#0" />
+                <element signature="e#13251#13800#0" />
+                <element signature="e#13670#14662#0" />
+                <element signature="e#13489#13864#0" />
+                <element signature="e#14293#14662#0" />
+                <element signature="e#14663#15047#0" />
+                <element signature="e#14577#15049#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Player/Deck/Deck.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="209" column="7" lean-forward="true" selection-start-line="209" selection-start-column="7" selection-end-line="209" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#2#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="26" column="73" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
+              <folding>
+                <element signature="e#45#61#0" expanded="true" />
+                <element signature="e#143#193#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/Decks/TomsDeck">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/BasicCard/BasicCard.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+              <folding>
+                <element signature="e#146#165#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -219,6 +158,12 @@
       <find>addCard</find>
       <find>trim</find>
       <find>parseDeckForCards</find>
+      <find>Deck</find>
+      <find>DeckImplemented::</find>
+      <find>fileAlreadyExists</find>
+      <find>addLeading</find>
+      <find>removeSubstring</find>
+      <find>singleParameter</find>
     </findStrings>
     <replaceStrings>
       <replace>allCards.push_back(new ());</replace>
@@ -229,6 +174,8 @@
       <replace>std::string</replace>
       <replace>std::vector</replace>
       <replace>std::map</replace>
+      <replace>DeckImplemented</replace>
+      <replace>DeckImplemented*::</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -243,8 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Cards/Card Implementation/DualCard/FlipCard/FlipCard.h" />
-        <option value="$PROJECT_DIR$/Cards/Card Implementation/DualCard/DualCard.h" />
         <option value="$PROJECT_DIR$/Cards/Card Implementation/DoubleCard/DoubleCard.h" />
         <option value="$PROJECT_DIR$/Cards/Card Implementation/DoubleCard/DoubleCard.cpp" />
         <option value="$PROJECT_DIR$/Cards/Card Implementation/DualCard/FlexCard/FlexCard.h" />
@@ -291,17 +236,19 @@
         <option value="$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp" />
         <option value="$PROJECT_DIR$/Data/Decks/TomsDeck" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/Source/Player/Deck/Deck.h" />
         <option value="$PROJECT_DIR$/Data/Decks/raawr" />
+        <option value="$PROJECT_DIR$/Source/Player/Deck/DeckImplemented.cpp" />
+        <option value="$PROJECT_DIR$/Source/Player/Deck/DeckImplemented.h" />
+        <option value="$PROJECT_DIR$/Source/Player/Deck/Deck.h" />
         <option value="$PROJECT_DIR$/Source/Player/Deck/Deck.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
+    <option name="y" value="27" />
     <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="height" value="1020" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -323,12 +270,6 @@
               <item name="Pazaak" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pazaak" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pazaak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pazaak" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="Cards" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pazaak" type="b2602c69:ProjectViewProjectNode" />
@@ -495,6 +436,7 @@
       <workItem from="1550913124842" duration="11241000" />
       <workItem from="1550941100438" duration="8774000" />
       <workItem from="1551029112323" duration="10967000" />
+      <workItem from="1551193867805" duration="3756000" />
     </task>
     <task id="LOCAL-00001" summary="Added FlipCard as a children of DualCard, some cleanup">
       <created>1549632653872</created>
@@ -598,24 +540,24 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127485000" />
+    <option name="totallyTimeSpent" value="131241000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="27" width="1920" height="1020" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="1020" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991511" visible="true" weight="0.19764957" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4991511" visible="true" weight="0.19978632" />
       <window_info id="Structure" order="1" sideWeight="0.5008489" side_tool="true" weight="0.25641027" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3287827" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946582" visible="true" weight="0.30716723" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946582" weight="0.30716723" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993174" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3287827" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.3287827" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.33333334" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005342" side_tool="true" weight="0.3287827" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32992035" />
@@ -709,7 +651,8 @@
     <MESSAGE value="Slight formatting adjustments. Moved all 'using namespace std' from header files to cpp files, adjusted header files with std:: prefix where necessary (most frequent were string, map, vector, ostream &gt;&gt; std:: string, map, vector, ostream)" />
     <MESSAGE value="Some namespace fixed. Parsing file for deck loading." />
     <MESSAGE value="Decks are now loadable from files. Valid deck size check is needed at some point." />
-    <option name="LAST_COMMIT_MESSAGE" value="Decks are now loadable from files. Valid deck size check is needed at some point." />
+    <MESSAGE value="Viable Deck methods converted to static. Deck methods split between static and non-static in Deck.cpp, sorted alphabetically in Deck.h &amp; .cpp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Viable Deck methods converted to static. Deck methods split between static and non-static in Deck.cpp, sorted alphabetically in Deck.h &amp; .cpp" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -736,15 +679,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Source/Player/Hand/Hand.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Data.cpp" />
-    <entry file="file://$PROJECT_DIR$/Source/Data.h" />
     <entry file="file://$PROJECT_DIR$/Data/Cards/FlexCards" />
     <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -948,13 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Cards/CardInterface/Card.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -969,40 +896,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/BasicCard/BasicCard.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-          <folding>
-            <element signature="e#146#165#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Decks/TomsDeck">
+    <entry file="file://$PROJECT_DIR$/Data/Decks/tmp" />
+    <entry file="file://$PROJECT_DIR$/Data/Decks/rawr" />
+    <entry file="file://$PROJECT_DIR$/Data/Decks/raawr">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/Parsers/CardParser/CardParser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="390">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="e#143#161#0" expanded="true" />
@@ -1011,10 +923,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/BasicCard/BasicCard.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+          <folding>
+            <element signature="e#146#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Cards/CardImplementations/DualCard/DualCard.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="262">
+          <caret line="26" column="73" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
           <folding>
             <element signature="e#45#61#0" expanded="true" />
             <element signature="e#143#193#0" expanded="true" />
@@ -1022,61 +958,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Decks/madafaking">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Player/Deck/DeckImplemented.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Player/Deck/DeckImplemented.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/Decks/TomsDeck">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Player/Deck/Deck.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+        <state relative-caret-position="118">
+          <caret line="209" column="7" lean-forward="true" selection-start-line="209" selection-start-column="7" selection-end-line="209" selection-end-column="7" />
           <folding>
             <element signature="e#0#2#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Decks/tmp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Decks/rawr">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/Decks/raawr">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Player/Deck/Deck.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="173" column="21" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="21" />
+        <state relative-caret-position="54">
+          <caret line="369" column="45" selection-start-line="369" selection-start-column="45" selection-end-line="369" selection-end-column="45" />
           <folding>
             <element signature="e#0#2#0" />
+            <element signature="e#128#247#0" />
             <element signature="e#127#324#0" />
-            <element signature="e#326#524#0" />
+            <element signature="e#327#505#0" />
+            <element signature="e#596#712#0" />
+            <element signature="e#712#983#0" />
+            <element signature="e#1304#1577#0" />
+            <element signature="e#1992#2440#0" />
+            <element signature="e#1918#1985#0" />
             <element signature="e#585#877#0" />
+            <element signature="e#2805#2872#0" />
+            <element signature="e#4631#5662#0" />
+            <element signature="e#3907#5664#0" />
             <element signature="e#879#1202#0" />
-            <element signature="e#1204#1271#0" />
-            <element signature="e#1273#1340#0" />
-            <element signature="e#1342#1790#0" />
-            <element signature="e#2524#2832#0" />
-            <element signature="e#3978#4186#0" />
-            <element signature="e#3533#3800#0" />
-            <element signature="e#3712#3983#0" />
-            <element signature="e#3985#5016#0" />
-            <element signature="e#5018#5670#0" />
-            <element signature="e#5672#6222#0" />
-            <element signature="e#7125#7566#0" />
-            <element signature="e#7568#8008#0" />
-            <element signature="e#8010#8376#0" />
-            <element signature="e#8378#8642#0" />
-            <element signature="e#8644#8912#0" />
-            <element signature="e#8914#9283#0" />
-            <element signature="e#9285#9691#0" />
-            <element signature="e#9693#10165#0" />
-            <element signature="e#10167#10707#0" />
-            <element signature="e#10709#11093#0" />
-            <element signature="e#11095#11954#0" />
-            <element signature="e#11956#12134#0" />
+            <element signature="e#1910#2525#0" />
+            <element signature="e#7367#7651#0" />
+            <element signature="e#7846#8063#0" />
+            <element signature="e#6810#7849#0" />
+            <element signature="e#8569#9221#0" />
+            <element signature="e#13006#13546#0" />
+            <element signature="e#13260#13626#0" />
+            <element signature="e#13260#13528#0" />
+            <element signature="e#13530#13970#0" />
+            <element signature="e#13259#13700#0" />
+            <element signature="e#14512#14776#0" />
+            <element signature="e#13251#13800#0" />
+            <element signature="e#13670#14662#0" />
+            <element signature="e#13489#13864#0" />
+            <element signature="e#14293#14662#0" />
+            <element signature="e#14663#15047#0" />
+            <element signature="e#14577#15049#0" />
           </folding>
         </state>
       </provider>
