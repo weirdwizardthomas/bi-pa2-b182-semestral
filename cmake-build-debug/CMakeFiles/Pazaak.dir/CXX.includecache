@@ -48,13 +48,17 @@ fstream
 map
 -
 
-/home/tomtom/Development/Pazaak/Source/Game/Game.cpp
-Game.h
-/home/tomtom/Development/Pazaak/Source/Game/Game.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h
 
 /home/tomtom/Development/Pazaak/Source/Game/Game.h
 ../Player/Player.h
 /home/tomtom/Development/Pazaak/Source/Player/Player.h
+
+/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp
+Deck.h
+/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
+../../Cards/CardTypeEnum/CardType.h
+/home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h
 
 /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
 vector
@@ -78,19 +82,11 @@ dirent.h
 ../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
 
-/home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp
-Hand.h
-/home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
-
 /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
 iostream
 -
 ../../Cards/CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
-
-/home/tomtom/Development/Pazaak/Source/Player/Player.cpp
-Player.h
-/home/tomtom/Development/Pazaak/Source/Player/Player.h
 
 /home/tomtom/Development/Pazaak/Source/Player/Player.h
 cstdlib

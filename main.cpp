@@ -69,7 +69,7 @@ int main() {
 
     Game *game = new Game(new Player(name1), new Player(name2), cards);
 
-    game->play();
+g    game->play();
 
     for (auto &card : cards)
         free(card.second);

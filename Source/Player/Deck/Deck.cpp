@@ -192,7 +192,6 @@ void Deck::saveToFile() const {
 
     string path;
     path.append(DECKS_DIRECTORY_PATH).append(FOLDER_DELIMITER).append(filename);
-Viable Deck methods converted to static. Deck methods split between static and non-static in Deck.cpp, sorted alphabetically in Deck.h & .cpp
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
         throw "File error"; //TODO proper exception
