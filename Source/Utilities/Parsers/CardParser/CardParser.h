@@ -27,27 +27,27 @@
 class CardParser {
 
 private:
-    const std::string files[3] = {BASIC_CARD, DUAL_CARD, FLIP_CARD};
 
-    std::vector<std::string> getFileLines(std::string filePath) const;
+    static void addDoubleCards(std::map<std::string, Card *> &cards);
 
-    void validLines(std::vector<std::string> fileLines, std::string mode) const;
+    static void addFlexCards(std::map<std::string, Card *> &cards);
 
-    pair<int, int> getDualValues(const std::string &line) const;
+    static string pathOf(const char *filename);
 
-    void loadBasicCards(std::map<std::string, Card *> &cards) const;
+    static pair<int, int> getDualValues(const std::string &line);
 
-    void loadDualCards(std::map<std::string, Card *> &cards) const;
+    static std::vector<std::string> getFileLines(const std::string & filePath);
 
-    void loadFlipCards(std::map<std::string, Card *> &cards) const;
+    static void loadBasicCards(std::map<std::string, Card *> &cards);
+
+    static void loadDualCards(std::map<std::string, Card *> &cards);
+
+    static void loadFlipCards(std::map<std::string, Card *> &cards);
+
+    static void validLines(std::vector<std::string> fileLines, std::string mode);
 
 public:
-    std::map<std::string, Card *> loadAllCards();
-
-    void addDoubleCards(map<string, Card *> &cards);
-
-    void addFlexCards(map<string, Card *> &cards);
+    static std::map<std::string, Card *> loadAllCards();
 };
-
 
 #endif //PAZAAK_CARDPARSER_H
