@@ -13,37 +13,54 @@
 
 #include "Deck/Deck.h"
 #include "PlayerBoard/PlayerBoard.h"
+#include "Hand/Hand.h"
 
 class Player {
 private:
+    //Attributes---------------------------------------------------------
     std::string name;
     Deck deck;
     PlayerBoard board;
+    Hand hand;
     //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
-    void createDeck(std::map<std::string, Card *> &allCards);
+    //Methods-------------------------------------
+    void deckApprovalQuery() const;
+
+    void invalidInputMessage() const;
 
 public:
-
     Player() = default;
 
-    Player(std::string name);
+    explicit Player(std::string name);
 
-    void play(int opponentScore);
+    void takeTurn(int opponentScore);
 
-    void chooseDeck(std::map<std::string, Card *> &allCards);
+    //Setters-------------------------------------
+    void addPoint();
+
+    void chooseDeck(const std::map<std::string, Card *> &allCards);
+
+    //Getters---------------------------------------
+    void drawHand();
+
+    int getCurrentRoundScore() const;
 
     const std::string &getName() const;
 
-    int getScore() const;
+    size_t getPlayedCardsCount() const;
 
-    void addPoint();
+    size_t getRoundsWon() const;
 
-    bool isStanding();
+    bool isStanding() const;
 
-    size_t getPlayedCardsCount();
+    //Messages-and-prompts--------------------------
+    void actionPrompt() const;
 
-    void loadDeck();
+    void playerIsStandingMessage() const;
+
+    void boardStatusMessage(int opponentScore) const;
+
 };
 
 

@@ -14,12 +14,11 @@ int FlexCard::play(vector<int> &playedCards, int currentScore, int opponentScore
     string sign = chooseSign();
     int input = chooseEffect();
 
+    int value = (sign == PLUS_SIGN ? 1 : -1) * input;
+    //int value = (int) pow(-1.(sign != PLUS_SIGN)) * input;
 
-    int value = sign == PLUS_SIGN ? input : input * -1;
-    playedCards.push_back(value);
-    return currentScore + value;
+    return value;
 }
-
 
 
 string FlexCard::getDescription() const {

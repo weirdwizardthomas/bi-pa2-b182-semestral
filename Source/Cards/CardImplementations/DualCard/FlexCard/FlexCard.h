@@ -39,5 +39,4 @@ public:
 
 };
 
-
 #endif //TMPPAZAAK_PLUSMINUSONETWOCARD_H

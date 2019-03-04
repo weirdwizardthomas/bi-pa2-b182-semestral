@@ -5,20 +5,17 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
-
 //Definitions-----------------------
-#define BASE_ROUND_COUNT 3
-#define TARGET 20
-#define TABLE_SIZE 9
+#define ROUNDS 3
+#define TARGET_SCORE 20
 
 #include "../Player/Player.h"
 
 class Game {
 
 private:
-
     //Attributes------------------------------
-    Player players[2];
+    Player * players[2];
     size_t currentlyPlaying;
     //int timeElapsed;
 
@@ -34,11 +31,23 @@ private:
      */
     size_t selectStartingPlayer();
 
+    /**
+     * Plays a round between the two players
+     * @return Player who won the round, nullptr if the round was a draw
+     */
     Player *round();
 
-    Player *currentlyNotPlaying();
+    /**
+     * Returns the player who is not currently on turn
+     * @return Pointer to an element of the players container, which is not currently playing
+     */
+    Player *currentlyNotPlaying() const;
 
-    bool bothPlayersStanding();
+    /**
+     * Determines whether both players are standing, and effectively ends the current round if so
+     * @return True if both are standing, False if at least one isn't
+     */
+    bool bothPlayersStanding() const;
 
     /**
      * Provides the 'players' array index of the player not currently playing
@@ -46,11 +55,15 @@ private:
      */
     size_t otherPlayerIndex() const;
 
-    Player *getVictor();
+    /**
+     * Examines the score and determines the victor of the round
+     * @return Victorious player, nullptr if the round was a draw
+     */
+    Player *getVictor() const ;
 
     void turn();
 
-    //Messages & prompts--------------------
+    //Messages & prompts-----------------------
     /**
      * Shows a message to tell players the game has commenced
      */
@@ -86,11 +99,13 @@ private:
 
 public:
     //Constructor----------------------------
-    Game(Player *a, Player *b);
+    Game(Player *player1, Player *player2, const std::map<std::string, Card *> &allCards);
+    ~Game();
 
     //Methods--------------------------------
     void play();
 
+    void gameWinnerMessage() const;
 };
 
 #endif //PAZAAK_GAME_H

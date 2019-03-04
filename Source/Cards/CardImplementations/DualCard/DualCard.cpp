@@ -22,10 +22,7 @@ int DualCard::play(vector<int> &playedCards, int currentScore, int opponentScore
     int input = chooseEffect();
     int value = this->effects[input];
     cout << "You've chosen: " << value << endl;
-
-    playedCards.push_back(value);
-
-    return currentScore + value;
+    return value;
 }
 
 int DualCard::chooseEffect() const {

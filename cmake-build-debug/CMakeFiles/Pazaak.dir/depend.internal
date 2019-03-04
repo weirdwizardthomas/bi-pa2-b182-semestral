@@ -46,9 +46,9 @@ CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o
  /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
  /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
  /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
+ /home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h
  /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp
  /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
- /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o
  /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
  /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp

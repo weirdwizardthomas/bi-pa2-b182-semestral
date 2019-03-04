@@ -120,6 +120,9 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h">
 			<Option target="Pazaak"/>
 		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h">
+			<Option target="Pazaak"/>
+		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Game/Game.cpp">
 			<Option target="Pazaak"/>
 		</Unit>

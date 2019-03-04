@@ -3,14 +3,14 @@
 //
 
 #include "Deck.h"
+#include "../../Cards/CardTypeEnum/CardType.h"
 
 //Namespaces--------------------------------
 using namespace std;
 
-
-//-------------------------------------------------------------------------------------------------------------------//
-//Ostreams-----------------------------------------------------------------------------------------------------------//
-//-------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
+//Ostreams------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 
 ostream &operator<<(ostream &out, const vector<string> &a) {
     size_t i = 0;
@@ -65,12 +65,14 @@ Deck::Deck(const map<string, Card *> &allCards) {
     size_t i = 0;
     //TODO Have pages and a fixed amount per page?
     for (auto &card : allCards) {
-        cout << (i < DECK_SIZE ? " " : "") << "(" << i << ")" << " " << (card.second)->getDescription() << endl;
+        cout << (i < 10 ? " " : "") //Offsets single digit indices
+             << (i < 100 ? " " : "")  //Offsets double digit indices
+             << "(" << i << ")" << " " << (card.second)->getDescription() << endl;
         i++;
     }
 
     //TODO exit query here ?
-    cout << "Select ten cards to add to your deck." << endl;
+    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl;
 
     loadCardsFromUser(allCards);
 
@@ -81,16 +83,18 @@ void Deck::addCard(Card *card) {
     this->cards.push_back(card);
 }
 
-Hand *Deck::drawCards(Hand *currentHand) {
-    for (size_t i = 0; i < 4; i++) {
-        if (this->cards.empty()) //no more cards to be drawn
-            break;
+vector<Card *> Deck::drawCardsFromDeck() {
+    vector<Card *> drawnCards;
 
-        currentHand->addCard(this->cards[i]);
-        this->cards.erase(this->cards.begin() + i);
+    for (size_t i = 0; i < MAX_CARDS_DRAWN; i++) {
+        if (cards.empty())
+            break;
+        size_t pickedCardIndex = rand() % this->cards.size();
+        drawnCards.push_back(this->cards[pickedCardIndex]);
+        this->cards.erase(this->cards.begin() + pickedCardIndex);
     }
 
-    return currentHand;
+    return drawnCards;
 }
 
 size_t Deck::getDeckSize() const {
@@ -101,10 +105,11 @@ size_t Deck::getDeckSize() const {
 void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     vector<Card *> allCardsVector = copyMapToVector(allCards);
 
-    size_t i = this->getDeckSize() + 1;
+    this->cards.reserve(DECK_SIZE);
+    size_t i = 0; //initial index
 
     while (i != DECK_SIZE) {
-        cout << "(" << i << "):";
+        cout << "(" << i << "): ";
 
         size_t input = 0;
         cin >> input;
@@ -114,10 +119,9 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
                 cout << "Invalid choice, please try again." << endl;  //out of bounds
             else { //valid input
                 this->addCard(allCardsVector[input]);
-                cout << "You've selected: " << *(this->cards[i - 1]) << endl;
+                cout << "You've selected: " << *(this->cards[i]) << endl;
                 i++;
             }
-
         } else {
             cout << "Invalid input, please try again." << endl; //NaN
             cin.clear();
@@ -127,7 +131,7 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     }
 }
 
-vector<string> Deck::parseDeckForCards() const {
+vector<string> Deck::parseDeckForCards() const { //TODO rename
     vector<string> fileLines;
 
     vector<string> categorised[5];
@@ -141,29 +145,29 @@ vector<string> Deck::parseDeckForCards() const {
         //TODO make this prettier - extract a 'Contains substring' method and use switch?
         if (containsSubstring(cardDescription, "Double the value of the last played card")) //DOUBLE
             DoubleCardCounter++;
-        else if (containsSubstring(cardDescription, "+/-")) //FLEX
+        else if (containsSubstring(cardDescription, "+/-"))
             FlexCardCounter++;
-        else if (containsSubstring(cardDescription, "<~>")) //FLIP
-            categorised[3].push_back(cardDescription);
-        else if (containsSubstring(cardDescription, "|"))
-            categorised[2].push_back(cardDescription); //DUAL
+        else if (containsSubstring(cardDescription, FLIP_SIGN))
+            categorised[FLIP].push_back(cardDescription);
+        else if (containsSubstring(cardDescription, DUAL_DELIMITER))
+            categorised[DUAL].push_back(cardDescription);
         else
-            categorised[0].push_back(cardDescription); //BASIC
+            categorised[BASIC].push_back(cardDescription);
     }
 
     //add the counters of the unique cards
-    categorised[1].push_back(to_string(DoubleCardCounter));
-    categorised[4].push_back(to_string(FlexCardCounter));
+    categorised[DOUBLE].push_back(to_string(DoubleCardCounter));
+    categorised[FLEX].push_back(to_string(FlexCardCounter));
 
-    //Prepare flipcards for saving
+    //Prepare FlipCards for saving
     convertFlipCardToFileFormat(categorised);
 
     //Remove the card operands
     for (auto &category : categorised)
         for (auto &currentValue : category) {
-            removeSubstring(currentValue, "+");
-            removeSubstring(currentValue, "|");
-            removeSubstring(currentValue, "<~>");
+            removeSubstring(currentValue, PLUS_SIGN);
+            removeSubstring(currentValue, DUAL_DELIMITER);
+            removeSubstring(currentValue, FLIP_SIGN);
         }
 
     //Construct the line in the output vector
@@ -177,15 +181,6 @@ vector<string> Deck::parseDeckForCards() const {
     return fileLines;
 }
 
-//TODO probably throw an exception - WHAT EXCEPTION?!
-int Deck::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
-    int effect = this->cards[cardIndex]->play(playedCards, currentScore, opponentScore);
-
-    this->cards.erase(this->cards.begin() + cardIndex);
-
-    return effect;
-}
-
 void Deck::saveToFile() const {
 
     //Setup ostream-------------------
@@ -197,12 +192,13 @@ void Deck::saveToFile() const {
 
     string path;
     path.append(DECKS_DIRECTORY_PATH).append(FOLDER_DELIMITER).append(filename);
-
+Viable Deck methods converted to static. Deck methods split between static and non-static in Deck.cpp, sorted alphabetically in Deck.h & .cpp
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
         throw "File error"; //TODO proper exception
 
     vector<string> cardLines = parseDeckForCards();
+
     for (size_t i = 0; i < cardLines.size(); i++)
         deckFile << cardLines[i] << endl;
 
@@ -360,6 +356,7 @@ Deck Deck::loadFromFile(const map<string, Card *> &allCards) {
     vector<string> deckFileContent = Deck::loadFileContent(loadedFile); //load the picked file's content
     vector<Card *> cards = parseLinesForCards(allCards, deckFileContent); //Load the cards from the 'database'
 
+
     return Deck(cards); //forge the deck
 }
 
@@ -458,4 +455,3 @@ size_t Deck::userDeckIndexInput(const vector<string> &files) {
 
     return input;
 }
-

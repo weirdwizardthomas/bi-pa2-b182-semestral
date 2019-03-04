@@ -15,9 +15,7 @@ BasicCard::BasicCard(int value) {
 }
 
 int BasicCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
-    playedCards.push_back(this->value);
-
-    return currentScore + this->value;
+    return this->value;
 }
 
 string BasicCard::getDescription() const {

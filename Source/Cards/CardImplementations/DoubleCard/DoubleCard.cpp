@@ -7,10 +7,11 @@
 using namespace std;
 
 int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
-
-    int tmp = playedCards.back();
-    playedCards.back() *=2;
-    return tmp;
+    //Replaces the last value
+    int dummy = playedCards.back();
+    dummy *= 2;
+    playedCards.erase(playedCards.end());
+    return dummy;
 }
 
 string DoubleCard::getDescription() const {

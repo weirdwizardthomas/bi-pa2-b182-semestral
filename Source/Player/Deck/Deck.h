@@ -18,7 +18,6 @@
 #include "../../Cards/CardImplementations/DoubleCard/DoubleCard.h"
 #include "../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
 #include "../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
-#include "../Hand/Hand.h"
 
 //Definitions-------------------------------
 #define NEWLINE '\n'
@@ -30,6 +29,7 @@
 #define CARD_TYPE_VALUE_DELIMITER ":"
 
 #define DECK_SIZE 10
+#define MAX_CARDS_DRAWN 4
 
 #define BASIC_CARD_LEAD "BasicCards"
 #define DOUBLE_CARD_LEAD "DoubleCards"
@@ -60,17 +60,11 @@ public:
     //Constructors--------------------------------------------
     Deck() = default;
 
-    Deck(const std::map<std::string, Card *> &allCards);
+    explicit Deck(const std::map<std::string, Card *> &allCards);
 
-    Deck(const std::vector<Card *> &cards);
+    explicit Deck(const std::vector<Card *> &cards);
 
     //Methods--------------------------------------------------
-    /**
-     * Assuming a shuffled deck, moves HAND_SIZE number of cards from deck to the hand
-     * @param currentHand Deck owner's current hand to be endowed with a set of cards
-     * @return updated hand with up to four cards from the deck
-     */
-    Hand *drawCards(Hand *currentHand);
 
     /**
      * Shows Deck's container's size
@@ -84,12 +78,16 @@ public:
      */
     std::vector<std::string> parseDeckForCards() const;
 
-    int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
-
     /**
      * Saves the deck's contents to a readable form in the DECKS_DIRECTORY_PATH to be reconstructed later
      */
     void saveToFile() const;
+
+    /**
+     * Randomly selects up to four cards(if there are enough, otherwise fewer), removes them from the Deck and passes them
+     * @return Up to four random Cards
+     */
+    std::vector<Card *> drawCardsFromDeck();
 
     /**
      * Displays contents of the cards' container in the stream
@@ -153,10 +151,10 @@ private:
      *
      * @param allCards
      * @param cards
-     * @param cardcount
+     * @param cardCount
      */
     static void
-    insertFlexCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardcount);
+    insertFlexCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
 
     /**
      *
@@ -210,8 +208,6 @@ private:
      */
     static std::vector<Card *>
     parseLinesForCards(const std::map<std::string, Card *> &allCards, std::vector<std::string> &deckFileContent);
-
-    static void removeOperands(const std::vector<std::string> &categorised);
 
     /**
      * Extracts a single integer representing the card count of the constant, valueless cards - Double, Flip

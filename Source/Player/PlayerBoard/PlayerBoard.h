@@ -6,43 +6,55 @@
 #define TMPPAZAAK_PLAYERBOARD_H
 
 
+#define TABLE_SIZE 9
+#define SPACE " "
+
+#define SIDEDECK_SIZE 40
 
 #include <vector>
 #include "../../Cards/CardInterface/Card.h"
 
-
-using namespace std;
 
 class PlayerBoard {
 
 private:
     //Attributes--------------------------
     int currentScore;
-    vector<int> playedCards;
-    int roundsWon;
+    std::vector<int> playedCards;
+    std::vector<Card *> sidedeck;
+    size_t roundsWon;
     bool standing;
 
 public:
-    //Constructor------------------------
+    //Constructors-----------------------
     PlayerBoard();
+
+    //Destructors------------------------
+    ~PlayerBoard() = default;
 
     //Getters----------------------------
     int getCurrentScore() const;
 
-    vector<int> getPlayedCards() const;
+    std::vector<int> &getPlayedCards();
+
+    size_t getPlayedCardsCount() const;
 
     bool isStanding() const;
+
+    std::string showCardsPlayed() const;
+
+    size_t getRoundsWon() const;
 
     //Setters----------------------------
     void addPoint();
 
-    void addPlayedCard(int value);
-
-    void setCurrentScore(int currentScore);
-
     void setStanding(bool standing);
 
     void stand();
+
+    void addPlayedCard(int cardValue);
+
+    void recalculateScore();
 };
 
 
