@@ -16,6 +16,8 @@ void Player::takeTurn(const int opponentScore) {
         return;
     }
 
+    this->drawHand();
+
     boardStatusMessage(opponentScore);
     actionPrompt();
 
@@ -24,6 +26,10 @@ void Player::takeTurn(const int opponentScore) {
     cin >> input;
     if (input == "S") {
         this->board.stand();
+        return;
+    } else if (input == "P") {
+        cout << this->getName() << " is passing their turn." << endl;
+        return;
     } else { //play a card based on the number
         stringstream extractChoice(input);
         size_t choice;
@@ -35,28 +41,22 @@ void Player::takeTurn(const int opponentScore) {
                                              opponentScore);
         //insert the value at the end
         this->board.addPlayedCard(cardResult);
-
+        return;
     }
 }
 
-const string &Player::getName() const {
-    return name;
+void Player::drawHand() {
+    vector < Card * > drawnFromHand = this->deck.drawCardsFromDeck();
+
+    for (auto &card : drawnFromHand)
+        this->hand.addCard(card);
 }
 
-int Player::getCurrentRoundScore() const {
-    return this->board.getCurrentScore();
-}
-
+//--------------------------------------------------------------------------------------------------------------------//
+//Setters-------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 void Player::addPoint() {
     this->board.addPoint();
-}
-
-bool Player::isStanding() const {
-    return this->board.isStanding();
-}
-
-size_t Player::getPlayedCardsCount() const {
-    return this->board.getPlayedCardsCount();
 }
 
 void Player::chooseDeck(const map<string, Card *> &allCards) {
@@ -97,12 +97,40 @@ void Player::chooseDeck(const map<string, Card *> &allCards) {
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
+//Getters-------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
+const string &Player::getName() const {
+    return name;
+}
+
+int Player::getCurrentRoundScore() const {
+    return this->board.getCurrentScore();
+}
+
+int Player::getOpener() const {
+    return this->board.getOpener();
+}
+
+size_t Player::getPlayedCardsCount() const {
+    return this->board.getPlayedCardsCount();
+}
+
+size_t Player::getRoundsWon() const {
+    return this->board.getRoundsWon();
+}
+
+bool Player::isStanding() const {
+    return this->board.isStanding();
+}
+
+//--------------------------------------------------------------------------------------------------------------------//
 //Messages------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
 void Player::invalidInputMessage() const { cout << "Invalid input, try again." << endl; }
 
-//TODO exit
-void Player::deckApprovalQuery() const { cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl; }
+void Player::deckApprovalQuery() const {
+    cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl;//TODO exit
+}
 
 void Player::boardStatusMessage(const int opponentScore) const {
     cout << "Your turn to play! Your score: " << getCurrentRoundScore();
@@ -120,13 +148,5 @@ void Player::actionPrompt() const {
     cout << "(S) Stand" << endl;
 }
 
-void Player::drawHand() {
-    vector<Card *> drawnFromHand = this->deck.drawCardsFromDeck();
 
-    for (auto &card : drawnFromHand)
-        this->hand.addCard(card);
-}
 
-size_t Player::getRoundsWon() const {
-    return this->board.getRoundsWon();
-}

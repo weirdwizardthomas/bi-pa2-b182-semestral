@@ -6,12 +6,24 @@
 
 using namespace std;
 
+//Constructor-Destructor---------------------------
 PlayerBoard::PlayerBoard() {
     this->currentScore = 0;
     this->roundsWon = 0;
     this->playedCards.reserve(TABLE_SIZE);
-    this->sidedeck.reserve(SIDEDECK_SIZE);
+    this->mainDeck.reserve(UPPER_BOUND * MAIN_DECK_CARD_COPIES);
     this->standing = false;
+
+    ///Generates MAIN_DECK_CARD_COPIES copies of 1-UPPER_BOUND cards
+    for (size_t i = 1; i <= UPPER_BOUND; i++)
+        for (size_t j = 0; j < MAIN_DECK_CARD_COPIES; j++)
+            this->mainDeck.push_back(new BasicCard(i));
+}
+
+PlayerBoard::~PlayerBoard() {
+    //TODO solve the virtual destructor thingy
+    for (auto &i : this->mainDeck)
+        delete i;
 }
 
 //Getters------------------------------------------
@@ -73,4 +85,25 @@ void PlayerBoard::recalculateScore() {
     for (auto playedCard : this->playedCards)
         currentScore += playedCard;
 }
+
+BasicCard *PlayerBoard::getRandomCard(size_t index) const {
+    return this->mainDeck[index];
+}
+
+unsigned long PlayerBoard::getRandomBoundIndex() const { return rand() % mainDeck.size(); }
+
+int PlayerBoard::getOpener() const {
+    if (this->mainDeck.empty())
+        throw "DECK IS EMPTY"; //TODO proper exception
+    return this->getRandomCard(getRandomBoundIndex())->play();
+}
+
+int PlayerBoard::drawCardFromMainDeck() {
+    size_t index = getRandomBoundIndex();
+    int value = this->getRandomCard(index)->play();
+    delete this->mainDeck[index];
+    this->mainDeck.erase(mainDeck.begin() + index);
+    return value;
+}
+
 

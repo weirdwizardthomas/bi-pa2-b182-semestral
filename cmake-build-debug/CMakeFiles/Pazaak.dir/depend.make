@@ -65,6 +65,7 @@ CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Player.cpp
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Player.h
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.h
 
+CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o: ../Source/Cards/CardImplementations/BasicCard/BasicCard.h
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o: ../Source/Cards/CardInterface/Card.h
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.cpp
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.h

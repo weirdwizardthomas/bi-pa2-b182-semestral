@@ -54,9 +54,6 @@ Player *Game::round() {
 
     Player *currentPlayer = this->players[currentlyPlaying];
 
-    for (auto &player : players)
-        player->drawHand();
-
     while (!bothPlayersStanding()) {
         this->turn();
 
@@ -98,10 +95,7 @@ Player *Game::getVictor() const {
 size_t Game::otherPlayerIndex() const { return (size_t) !(currentlyPlaying); }
 
 size_t Game::selectStartingPlayer() {
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_real_distribution<double> dist(0, 2);
-    return (size_t) dist(mt);
+    return (size_t) (this->players[0]->getOpener() < this->players[1]->getOpener());
 }
 
 void Game::swapPlayers() {

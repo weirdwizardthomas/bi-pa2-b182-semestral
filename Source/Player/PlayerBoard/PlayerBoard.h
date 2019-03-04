@@ -5,15 +5,15 @@
 #ifndef TMPPAZAAK_PLAYERBOARD_H
 #define TMPPAZAAK_PLAYERBOARD_H
 
+#include <vector>
+
+#include "../../Cards/CardInterface/Card.h"
+#include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
 
 #define TABLE_SIZE 9
+#define MAIN_DECK_CARD_COPIES 4
+
 #define SPACE " "
-
-#define SIDEDECK_SIZE 40
-
-#include <vector>
-#include "../../Cards/CardInterface/Card.h"
-
 
 class PlayerBoard {
 
@@ -21,7 +21,7 @@ private:
     //Attributes--------------------------
     int currentScore;
     std::vector<int> playedCards;
-    std::vector<Card *> sidedeck;
+    std::vector<BasicCard *> mainDeck;
     size_t roundsWon;
     bool standing;
 
@@ -30,7 +30,7 @@ public:
     PlayerBoard();
 
     //Destructors------------------------
-    ~PlayerBoard() = default;
+    ~PlayerBoard();
 
     //Getters----------------------------
     int getCurrentScore() const;
@@ -45,6 +45,12 @@ public:
 
     size_t getRoundsWon() const;
 
+    BasicCard *getRandomCard(size_t index) const;
+
+    int getOpener() const;
+
+    int drawCardFromMainDeck();
+
     //Setters----------------------------
     void addPoint();
 
@@ -55,6 +61,8 @@ public:
     void addPlayedCard(int cardValue);
 
     void recalculateScore();
+
+    unsigned long getRandomBoundIndex() const;
 };
 
 

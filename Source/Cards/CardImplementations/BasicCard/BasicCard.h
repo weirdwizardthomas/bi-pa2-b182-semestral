@@ -32,6 +32,7 @@ public:
  * @return currentScore incremented by the card's value
  */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
+    int play() const;
 
 public:
     std::string getDescription() const override;

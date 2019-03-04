@@ -79,6 +79,7 @@ Deck::Deck(const map<string, Card *> &allCards) {
     cout << "Deck forged." << endl;
 }
 
+//Other-methods-----------------------
 void Deck::addCard(Card *card) {
     this->cards.push_back(card);
 }
