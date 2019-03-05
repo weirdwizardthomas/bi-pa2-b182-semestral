@@ -25,8 +25,34 @@ private:
     size_t roundsWon;
     bool standing;
 
+    //Getters---------------------------
+    /**
+     *
+     * @param index
+     * @return
+     */
     BasicCard *getRandomCard(size_t index) const;
 
+    //Setters---------------------------
+    /**
+     *
+     * @param standing
+     */
+    void setStanding(bool standing);
+
+    //Supportive-methods------------------
+    /**
+     *
+     * @return
+     */
+    size_t generateRandomBoundIndex() const;
+
+    void recalculateScore();
+
+    /**
+     *
+     */
+    void resetPlayedCards();
 
 public:
     //Constructors-----------------------
@@ -36,35 +62,69 @@ public:
     ~PlayerBoard();
 
     //Getters----------------------------
-    int getCurrentScore() const;
-
-    std::vector<int> &getPlayedCards();
-
-    size_t getPlayedCardsCount() const;
-
-    bool isStanding() const;
-
-    std::string showCardsPlayed() const;
-
-    size_t getRoundsWon() const;
-
-
-    int getOpener() const;
-
+    /**
+     *
+     * @return
+     */
     int drawCardFromMainDeck();
 
+    /**
+     *
+     * @return
+     */
+    int getCurrentScore() const;
+
+   /**
+    *
+    * @return
+    */
+    int getOpener() const;
+
+    /**
+     *
+     * @return
+     */
+    std::vector<int> &getPlayedCards();
+    /**
+     *
+     * @return
+     */
+    size_t getPlayedCardsCount() const;
+    /**
+     *
+     * @return
+     */
+    size_t getRoundsWon() const;
+    /**
+     *
+     * @return
+     */
+    bool isStanding() const;
+    /**
+     *
+     * @return
+     */
+    std::string showCardsPlayed() const;
+
     //Setters----------------------------
-    void addPoint();
-
-    void setStanding(bool standing);
-
-    void stand();
-
+    /**
+     *
+     * @param cardValue
+     */
     void addPlayedCard(int cardValue);
+    /**
+     *
+     */
+    void addPoint();
+    /**
+     *
+     */
+    void stand();
+    /**
+     *
+     */
+    void reset();
 
-    void recalculateScore();
-
-    unsigned long getRandomBoundIndex() const;
 };
 
 

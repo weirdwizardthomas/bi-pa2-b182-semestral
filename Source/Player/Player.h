@@ -53,6 +53,8 @@ public:
 
     void drawHand();
 
+    void resetBoard();
+
     //Getters---------------------------------------
     int getCurrentRoundScore() const;
 

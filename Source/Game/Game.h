@@ -61,7 +61,7 @@ private:
      */
     Player *getVictor() const ;
 
-    void turn();
+    void turn(Player *currentPlayer);
 
     //Messages & prompts-----------------------
     /**
@@ -106,6 +106,8 @@ public:
     void play();
 
     void gameWinnerMessage() const;
+
+    void resetBoards();
 };
 
 #endif //PAZAAK_GAME_H

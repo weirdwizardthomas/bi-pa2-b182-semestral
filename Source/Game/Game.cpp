@@ -52,12 +52,11 @@ void Game::gameWinnerMessage() const {
 
 Player *Game::round() {
 
-    Player *currentPlayer = this->players[currentlyPlaying];
-
     while (!bothPlayersStanding()) {
+        Player *currentPlayer = this->players[currentlyPlaying];
         currentPlayer->drawHand();
 
-        this->turn();
+        this->turn(currentPlayer);
 
         if (currentPlayer->getCurrentRoundScore() > TARGET_SCORE)
             return currentlyNotPlaying();
@@ -65,16 +64,18 @@ Player *Game::round() {
         if (currentPlayer->getPlayedCardsCount() == TABLE_SIZE && currentPlayer->getCurrentRoundScore() <= TARGET_SCORE)
             return currentPlayer;
 
-        swapPlayers();
+        this->swapPlayers();
+        //TODO change this, make it more elegant
     }
 
+    this->resetBoards();
     return getVictor();
 }
 
-void Game::turn() {
+void Game::turn(Player *currentPlayer) {
     turnPrompt();
     const int opponentScore = this->players[otherPlayerIndex()]->getCurrentRoundScore();
-    this->players[currentlyPlaying]->takeTurn(opponentScore);
+    currentPlayer->takeTurn(opponentScore);
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
@@ -94,7 +95,7 @@ Player *Game::getVictor() const {
     return players[(players[0]->getCurrentRoundScore() > players[1]->getCurrentRoundScore() ? 0 : 1)];
 }
 
-size_t Game::otherPlayerIndex() const { return (size_t) !(currentlyPlaying); }
+size_t Game::otherPlayerIndex() const { return (size_t) (currentlyPlaying != 1); }
 
 size_t Game::selectStartingPlayer() {
     return (size_t) (this->players[0]->getOpener() < this->players[1]->getOpener());
@@ -102,6 +103,11 @@ size_t Game::selectStartingPlayer() {
 
 void Game::swapPlayers() {
     this->currentlyPlaying = otherPlayerIndex();
+}
+
+void Game::resetBoards() {
+    for (auto &player : players)
+        player->resetBoard();
 }
 
 //--------------------------------------------------------------------------------------------------------------------//

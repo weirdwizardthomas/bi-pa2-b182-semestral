@@ -84,10 +84,6 @@ iostream
 ../../Cards/CardInterface/Card.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 
-/home/tomtom/Development/Pazaak/Source/Player/Player.cpp
-Player.h
-/home/tomtom/Development/Pazaak/Source/Player/Player.h
-
 /home/tomtom/Development/Pazaak/Source/Player/Player.h
 cstdlib
 -

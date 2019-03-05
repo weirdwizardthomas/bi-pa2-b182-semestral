@@ -23,7 +23,7 @@ void Player::takeTurn(const int opponentScore) {
     string input;
     cin >> input;
 
-    if(input != "Y" && input != "N" && input != "S" )
+    if (input != "Y" && input != "N" && input != "S")
         throw "INVALID INPUT"; //TODO proper exception
 
     if (input == "S") {
@@ -160,4 +160,8 @@ void Player::actionPrompt() const {
 
 int Player::autoPlayCard() {
     return this->board.drawCardFromMainDeck();
+}
+
+void Player::resetBoard() {
+    return this->board.reset();
 }

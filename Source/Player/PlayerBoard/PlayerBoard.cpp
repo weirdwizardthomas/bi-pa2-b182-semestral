@@ -6,7 +6,9 @@
 
 using namespace std;
 
-//Constructor-Destructor---------------------------
+//--------------------------------------------------------------------------------------------------------------------//
+//Constructor-Destructor----------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 PlayerBoard::PlayerBoard() {
     this->currentScore = 0;
     this->roundsWon = 0;
@@ -26,13 +28,33 @@ PlayerBoard::~PlayerBoard() {
         delete i;
 }
 
-//Getters------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------//
+//Getters-------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 int PlayerBoard::getCurrentScore() const {
     return this->currentScore;
 }
 
+int PlayerBoard::drawCardFromMainDeck() {
+    size_t index = generateRandomBoundIndex();
+    int value = this->getRandomCard(index)->play();
+    delete this->mainDeck[index];
+    this->mainDeck.erase(mainDeck.begin() + index);
+    return value;
+}
+
+int PlayerBoard::getOpener() const {
+    if (this->mainDeck.empty())
+        throw "DECK IS EMPTY"; //TODO proper exception
+    return this->getRandomCard(generateRandomBoundIndex())->play();
+}
+
 vector<int> &PlayerBoard::getPlayedCards() {
     return this->playedCards;
+}
+
+size_t PlayerBoard::getPlayedCardsCount() const {
+    return this->playedCards.size();
 }
 
 size_t PlayerBoard::getRoundsWon() const {
@@ -54,7 +76,17 @@ string PlayerBoard::showCardsPlayed() const {
     return output;
 }
 
-//Setters-----------------------------------------
+//--------------------------------------------------------------------------------------------------------------------//
+//Setters-------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
+void PlayerBoard::addPlayedCard(int cardValue) {
+    //No added value, card was either a double or a flip, which isn't recorded as played
+    if (cardValue == 0)
+        return;
+    this->playedCards.push_back(cardValue);
+    this->recalculateScore();
+}
+
 void PlayerBoard::addPoint() {
     this->roundsWon++;
 }
@@ -67,19 +99,20 @@ void PlayerBoard::stand() {
     this->setStanding(true);
 }
 
-size_t PlayerBoard::getPlayedCardsCount() const {
-    return this->playedCards.size();
+void PlayerBoard::reset() {
+    this->currentScore = 0;
+    this->resetPlayedCards();
+    this->setStanding(false);
 }
 
-void PlayerBoard::addPlayedCard(int cardValue) {
-    //No added value, card was either a double or a flip, which isn't recorded as played
-    if (cardValue == 0)
-        return;
-    this->playedCards.push_back(cardValue);
-    this->recalculateScore();
+void PlayerBoard::resetPlayedCards() {
+    this->playedCards.clear();
+    this->playedCards.reserve(TABLE_SIZE);
 }
 
-//Other methods------------------------------------
+//--------------------------------------------------------------------------------------------------------------------//
+//Other methods-------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 void PlayerBoard::recalculateScore() {
     this->currentScore = 0;
     for (auto playedCard : this->playedCards)
@@ -90,20 +123,5 @@ BasicCard *PlayerBoard::getRandomCard(size_t index) const {
     return this->mainDeck[index];
 }
 
-unsigned long PlayerBoard::getRandomBoundIndex() const { return rand() % mainDeck.size(); }
-
-int PlayerBoard::getOpener() const {
-    if (this->mainDeck.empty())
-        throw "DECK IS EMPTY"; //TODO proper exception
-    return this->getRandomCard(getRandomBoundIndex())->play();
-}
-
-int PlayerBoard::drawCardFromMainDeck() {
-    size_t index = getRandomBoundIndex();
-    int value = this->getRandomCard(index)->play();
-    delete this->mainDeck[index];
-    this->mainDeck.erase(mainDeck.begin() + index);
-    return value;
-}
-
+unsigned long PlayerBoard::generateRandomBoundIndex() const { return (size_t) rand() % mainDeck.size(); }
 
