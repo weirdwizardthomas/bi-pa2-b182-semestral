@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp
-BasicCard.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
-
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
 fstream
 -
@@ -52,8 +48,6 @@ fstream
 map
 -
 
-/home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h
-
 /home/tomtom/Development/Pazaak/Source/Game/Game.cpp
 Game.h
 /home/tomtom/Development/Pazaak/Source/Game/Game.h
@@ -61,12 +55,6 @@ Game.h
 /home/tomtom/Development/Pazaak/Source/Game/Game.h
 ../Player/Player.h
 /home/tomtom/Development/Pazaak/Source/Player/Player.h
-
-/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp
-Deck.h
-/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
-../../Cards/CardTypeEnum/CardType.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h
 
 /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.h
 vector
@@ -116,10 +104,6 @@ PlayerBoard/PlayerBoard.h
 Hand/Hand.h
 /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.h
 
-/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp
-PlayerBoard.h
-/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
-
 /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
 vector
 -
@@ -127,48 +111,4 @@ vector
 /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
 ../../Cards/CardImplementations/BasicCard/BasicCard.h
 /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
-
-/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp
-CardParser.h
-/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.h
-
-/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.h
-fstream
--
-map
--
-../Utilities.cpp
-/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/Utilities.cpp
-../../../Cards/CardInterface/Card.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h
-../../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h
-../../../Cards/CardImplementations/BasicCard/BasicCard.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.h
-../../../Cards/CardImplementations/DoubleCard/DoubleCard.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.h
-../../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
-/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.h
-
-/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/Utilities.cpp
-string
--
-vector
--
-utility
--
-
-/home/tomtom/Development/Pazaak/main.cpp
-cmath
--
-iostream
--
-map
--
-Source/Player/PlayerBoard/PlayerBoard.h
-/home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.h
-Source/Game/Game.h
-/home/tomtom/Development/Pazaak/Source/Game/Game.h
-Source/Utilities/Parsers/CardParser/CardParser.h
-/home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.h
 

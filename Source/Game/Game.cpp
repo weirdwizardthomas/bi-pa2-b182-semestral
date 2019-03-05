@@ -55,6 +55,8 @@ Player *Game::round() {
     Player *currentPlayer = this->players[currentlyPlaying];
 
     while (!bothPlayersStanding()) {
+        currentPlayer->drawHand();
+
         this->turn();
 
         if (currentPlayer->getCurrentRoundScore() > TARGET_SCORE)
@@ -110,7 +112,7 @@ void Game::gameStartMessage() const {
         cout << endl;
     cout << "Starting a game of Pazaak between " << players[0]->getName() << " and " << players[1]->getName()
          << "." << endl;
-    cout << players[currentlyPlaying]->getName() << " goes first." << endl;
+    cout << players[currentlyPlaying]->getName() << " goes first." << endl << endl;
 }
 
 void Game::roundTieMessage() const { cout << "Tie"; }
@@ -119,8 +121,8 @@ void Game::roundVictorMessage(const Player *victor) const { cout << victor->getN
 
 bool Game::roundIsTie() const { return players[0]->getCurrentRoundScore() == players[1]->getCurrentRoundScore(); }
 
-void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round number " << roundNumber << endl; }
+void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round #" << roundNumber << endl; }
 
 void Game::turnPrompt() const {
-    cout << "Player " + this->players[currentlyPlaying]->getName() + "'s turn to play." << endl;
+    cout << this->players[currentlyPlaying]->getName() << "'s turn to play." << endl;
 }

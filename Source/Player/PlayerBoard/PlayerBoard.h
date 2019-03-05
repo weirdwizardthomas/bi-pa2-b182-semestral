@@ -25,6 +25,9 @@ private:
     size_t roundsWon;
     bool standing;
 
+    BasicCard *getRandomCard(size_t index) const;
+
+
 public:
     //Constructors-----------------------
     PlayerBoard();
@@ -45,7 +48,6 @@ public:
 
     size_t getRoundsWon() const;
 
-    BasicCard *getRandomCard(size_t index) const;
 
     int getOpener() const;
 

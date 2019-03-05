@@ -25,7 +25,8 @@ private:
     //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
     //Methods-------------------------------------
-    void drawHand();
+
+    int autoPlayCard();
 
     //Messages-and-prompts------------------------
     void actionPrompt() const;
@@ -49,6 +50,8 @@ public:
     void addPoint();
 
     void chooseDeck(const std::map<std::string, Card *> &allCards);
+
+    void drawHand();
 
     //Getters---------------------------------------
     int getCurrentRoundScore() const;

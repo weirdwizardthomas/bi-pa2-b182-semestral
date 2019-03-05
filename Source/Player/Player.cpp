@@ -16,18 +16,28 @@ void Player::takeTurn(const int opponentScore) {
         return;
     }
 
-    this->drawHand();
-
     boardStatusMessage(opponentScore);
-    actionPrompt();
 
+    cout << "Would you like to [S]tand?" << endl;
     //TODO Need to treat input
     string input;
     cin >> input;
+
+    if(input != "Y" && input != "N" && input != "S" )
+        throw "INVALID INPUT"; //TODO proper exception
+
     if (input == "S") {
         this->board.stand();
         return;
-    } else if (input == "P") {
+    }
+
+    this->board.addPlayedCard(this->autoPlayCard());
+    boardStatusMessage(opponentScore);
+    actionPrompt();
+
+
+    cin >> input;
+    if (input == "P") {
         cout << this->getName() << " is passing their turn." << endl;
         return;
     } else { //play a card based on the number
@@ -46,7 +56,7 @@ void Player::takeTurn(const int opponentScore) {
 }
 
 void Player::drawHand() {
-    vector < Card * > drawnFromHand = this->deck.drawCardsFromDeck();
+    vector<Card *> drawnFromHand = this->deck.drawCardsFromDeck();
 
     for (auto &card : drawnFromHand)
         this->hand.addCard(card);
@@ -133,20 +143,21 @@ void Player::deckApprovalQuery() const {
 }
 
 void Player::boardStatusMessage(const int opponentScore) const {
-    cout << "Your turn to play! Your score: " << getCurrentRoundScore();
+    cout << "Your score: " << getCurrentRoundScore();
     cout << " | Your opponent's score: " << opponentScore << endl;
     cout << "Your board: ";
-    cout << (this->board.showCardsPlayed().empty() ? "No cards played so far." : this->board.showCardsPlayed());
+    cout << (this->board.showCardsPlayed().empty() ? "No cards played so far." : this->board.showCardsPlayed()) << endl;
 }
 
 void Player::playerIsStandingMessage() const { cout << getName() << " is standing." << endl; }
 
 void Player::actionPrompt() const {
     //TODO ADD HELP QUERY
-    cout << endl << "[P]ick a card to play or [S]tand" << endl;
+    cout << endl << "Pick a card to play or [P]ass" << endl;
     cout << this->hand;
-    cout << "(S) Stand" << endl;
+    cout << "(P) Pass" << endl;
 }
 
-
-
+int Player::autoPlayCard() {
+    return this->board.drawCardFromMainDeck();
+}
