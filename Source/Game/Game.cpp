@@ -52,9 +52,11 @@ void Game::gameWinnerMessage() const {
 
 Player *Game::round() {
 
+    for (auto &player : players)
+        player->drawHand();
+
     while (!bothPlayersStanding()) {
         Player *currentPlayer = this->players[currentlyPlaying];
-        currentPlayer->drawHand();
 
         this->turn(currentPlayer);
 
@@ -66,6 +68,7 @@ Player *Game::round() {
 
         this->swapPlayers();
         //TODO change this, make it more elegant
+
     }
 
     this->resetBoards();
