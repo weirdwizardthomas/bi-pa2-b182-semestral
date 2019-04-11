@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -70,18 +70,18 @@ CMakeFiles/Pazaak.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/main.cpp -o CMakeFiles/Pazaak.dir/main.cpp.s
 
-CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o: CMakeFiles/Pazaak.dir/flags.make
-CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o: ../Source/Cards/CardInterface/Card.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp
+CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o: CMakeFiles/Pazaak.dir/flags.make
+CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o: ../Source/Cards/Card.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/Card.cpp
 
-CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.i
+CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/Card.cpp > CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i
 
-CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.s
+CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/Card.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o: ../Source/Cards/CardImplementations/BasicCard/BasicCard.cpp
@@ -242,7 +242,7 @@ CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.s: cmake_force
 # Object files for target Pazaak
 Pazaak_OBJECTS = \
 "CMakeFiles/Pazaak.dir/main.cpp.o" \
-"CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o" \
+"CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o" \
 "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o" \
@@ -260,7 +260,7 @@ Pazaak_OBJECTS = \
 Pazaak_EXTERNAL_OBJECTS =
 
 Pazaak: CMakeFiles/Pazaak.dir/main.cpp.o
-Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o
+Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o

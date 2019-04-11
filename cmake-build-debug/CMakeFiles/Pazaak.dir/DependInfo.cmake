@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/tomtom/Development/Pazaak/Source/Cards/Card.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o"
-  "/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Game/Game.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o"
   "/home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp" "/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o"

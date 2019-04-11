@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/Card.cpp">
+			<Option target="Pazaak"/>
+		</Unit>
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/Card.h">
+			<Option target="Pazaak"/>
+		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp">
 			<Option target="Pazaak"/>
 		</Unit>
@@ -114,13 +120,7 @@
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.h">
 			<Option target="Pazaak"/>
 		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.cpp">
-			<Option target="Pazaak"/>
-		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardInterface/Card.h">
-			<Option target="Pazaak"/>
-		</Unit>
-		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardTypeEnum/CardType.h">
+		<Unit filename="/home/tomtom/Development/Pazaak/Source/Cards/CardType.h">
 			<Option target="Pazaak"/>
 		</Unit>
 		<Unit filename="/home/tomtom/Development/Pazaak/Source/Game/Game.cpp">

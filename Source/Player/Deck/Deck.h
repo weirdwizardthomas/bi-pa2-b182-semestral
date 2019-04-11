@@ -13,7 +13,7 @@
 #include <dirent.h>
 
 //Classes-----------------------------------
-#include "../../Cards/CardInterface/Card.h"
+#include "../../Cards/Card.h"
 #include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
 #include "../../Cards/CardImplementations/DoubleCard/DoubleCard.h"
 #include "../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"

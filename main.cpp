@@ -73,7 +73,7 @@ int main() {
 
     for (auto &card : cards)
         free(card.second);
-
+    delete[] game;
 
     return EXIT_SUCCESS;
 

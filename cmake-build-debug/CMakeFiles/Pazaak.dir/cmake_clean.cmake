@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Pazaak.dir/main.cpp.o"
-  "CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o"
+  "CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o"
   "CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o"

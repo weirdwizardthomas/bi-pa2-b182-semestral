@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "../../Cards/CardInterface/Card.h"
+#include "../../Cards/Card.h"
 #include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
 
 #define TABLE_SIZE 9

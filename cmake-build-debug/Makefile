@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/tomtom/Development/Pazaak/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,33 @@ Pazaak: cmake_check_build_system
 Pazaak/fast:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/build
 .PHONY : Pazaak/fast
+
+Source/Cards/Card.o: Source/Cards/Card.cpp.o
+
+.PHONY : Source/Cards/Card.o
+
+# target to build an object file
+Source/Cards/Card.cpp.o:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o
+.PHONY : Source/Cards/Card.cpp.o
+
+Source/Cards/Card.i: Source/Cards/Card.cpp.i
+
+.PHONY : Source/Cards/Card.i
+
+# target to preprocess a source file
+Source/Cards/Card.cpp.i:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i
+.PHONY : Source/Cards/Card.cpp.i
+
+Source/Cards/Card.s: Source/Cards/Card.cpp.s
+
+.PHONY : Source/Cards/Card.s
+
+# target to generate assembly for a file
+Source/Cards/Card.cpp.s:
+	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s
+.PHONY : Source/Cards/Card.cpp.s
 
 Source/Cards/CardImplementations/BasicCard/BasicCard.o: Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o
 
@@ -257,33 +284,6 @@ Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.s: Source/Cards/Card
 Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s:
 	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
 .PHONY : Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
-
-Source/Cards/CardInterface/Card.o: Source/Cards/CardInterface/Card.cpp.o
-
-.PHONY : Source/Cards/CardInterface/Card.o
-
-# target to build an object file
-Source/Cards/CardInterface/Card.cpp.o:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.o
-.PHONY : Source/Cards/CardInterface/Card.cpp.o
-
-Source/Cards/CardInterface/Card.i: Source/Cards/CardInterface/Card.cpp.i
-
-.PHONY : Source/Cards/CardInterface/Card.i
-
-# target to preprocess a source file
-Source/Cards/CardInterface/Card.cpp.i:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.i
-.PHONY : Source/Cards/CardInterface/Card.cpp.i
-
-Source/Cards/CardInterface/Card.s: Source/Cards/CardInterface/Card.cpp.s
-
-.PHONY : Source/Cards/CardInterface/Card.s
-
-# target to generate assembly for a file
-Source/Cards/CardInterface/Card.cpp.s:
-	$(MAKE) -f CMakeFiles/Pazaak.dir/build.make CMakeFiles/Pazaak.dir/Source/Cards/CardInterface/Card.cpp.s
-.PHONY : Source/Cards/CardInterface/Card.cpp.s
 
 Source/Game/Game.o: Source/Game/Game.cpp.o
 
@@ -510,6 +510,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Pazaak"
 	@echo "... edit_cache"
+	@echo "... Source/Cards/Card.o"
+	@echo "... Source/Cards/Card.i"
+	@echo "... Source/Cards/Card.s"
 	@echo "... Source/Cards/CardImplementations/BasicCard/BasicCard.o"
 	@echo "... Source/Cards/CardImplementations/BasicCard/BasicCard.i"
 	@echo "... Source/Cards/CardImplementations/BasicCard/BasicCard.s"
@@ -525,9 +528,6 @@ help:
 	@echo "... Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.o"
 	@echo "... Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.i"
 	@echo "... Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.s"
-	@echo "... Source/Cards/CardInterface/Card.o"
-	@echo "... Source/Cards/CardInterface/Card.i"
-	@echo "... Source/Cards/CardInterface/Card.s"
 	@echo "... Source/Game/Game.o"
 	@echo "... Source/Game/Game.i"
 	@echo "... Source/Game/Game.s"

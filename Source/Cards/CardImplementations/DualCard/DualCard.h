@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <cmath>
 //Classes-----------------------------------
-#include "../../CardInterface/Card.h"
+#include "../../Card.h"
 
 /**
  * Dual cards present the current player with two effects to choose from when played

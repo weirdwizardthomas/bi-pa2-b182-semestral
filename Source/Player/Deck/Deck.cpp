@@ -3,7 +3,7 @@
 //
 
 #include "Deck.h"
-#include "../../Cards/CardTypeEnum/CardType.h"
+#include "../../Cards/CardType.h"
 
 //Namespaces--------------------------------
 using namespace std;

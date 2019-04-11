@@ -6,7 +6,7 @@
 #define TMPPAZAAK_DOUBLECARD_H
 
 
-#include "../../CardInterface/Card.h"
+#include "../../Card.h"
 
 /**
  * Double cards double the value of the current player's last played card when played
