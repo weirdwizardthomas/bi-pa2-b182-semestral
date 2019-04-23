@@ -14,7 +14,7 @@
 #include "../DualCard.h"
 
 //Definitions-------------------------------
-#define FLIP_SIGN  " <~> "
+const std::string FLIP_SIGN =  " <~> ";
 
 //TODO reword this to be clearer
 /**

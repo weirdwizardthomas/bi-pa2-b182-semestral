@@ -13,7 +13,7 @@
 #define TABLE_SIZE 9
 #define MAIN_DECK_CARD_COPIES 4
 
-#define SPACE " "
+const std::string SPACE = " ";
 
 class PlayerBoard {
 
@@ -74,10 +74,10 @@ public:
      */
     int getCurrentScore() const;
 
-   /**
-    *
-    * @return
-    */
+    /**
+     *
+     * @return
+     */
     int getOpener() const;
 
     /**
@@ -85,21 +85,25 @@ public:
      * @return
      */
     std::vector<int> &getPlayedCards();
+
     /**
      *
      * @return
      */
     size_t getPlayedCardsCount() const;
+
     /**
      *
      * @return
      */
     size_t getRoundsWon() const;
+
     /**
      *
      * @return
      */
     bool isStanding() const;
+
     /**
      *
      * @return
@@ -112,14 +116,17 @@ public:
      * @param cardValue
      */
     void addPlayedCard(int cardValue);
+
     /**
      *
      */
     void addPoint();
+
     /**
      *
      */
     void stand();
+
     /**
      *
      */

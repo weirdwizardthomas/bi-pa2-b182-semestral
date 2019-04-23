@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by tomtom on 08/02/19.
 //
@@ -59,7 +61,7 @@ void removeSubstring(string &master, const string &pattern) {
 //--------------------------------------------------------------------------------------------------------------------//
 
 //Constructors
-Deck::Deck(const vector<Card *> &cards) : cards(cards) {}
+Deck::Deck(vector<Card *> cards) : cards(std::move(cards)) {}
 
 Deck::Deck(const map<string, Card *> &allCards) {
     size_t i = 0;
@@ -199,8 +201,8 @@ void Deck::saveToFile() const {
 
     vector<string> cardLines = parseDeckForCards();
 
-    for (size_t i = 0; i < cardLines.size(); i++)
-        deckFile << cardLines[i] << endl;
+    for (const auto &cardLine : cardLines)
+        deckFile << cardLine << endl;
 
     deckFile.close();
 
@@ -250,7 +252,7 @@ vector<string> Deck::getDecksFromDirectory() {
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir(DECKS_DIRECTORY_PATH)) != nullptr) {
+    if ((dir = opendir(DECKS_DIRECTORY_PATH.c_str())) != nullptr) {
         /* print all the files and directories within directory */
         while ((ent = readdir(dir)) != nullptr) {
             string fileName = ent->d_name;
@@ -267,7 +269,7 @@ vector<string> Deck::getDecksFromDirectory() {
 
 int *Deck::getDualValuesFromString(const string &value) {
     //TODO CAN MAKE PAIR
-    vector<string> parsedValue = splitStringByDelimiter(value, SPACE);
+    vector<string> parsedValue = splitStringByDelimiter(value, " ");
 
     if (parsedValue.size() != 2)
         throw "Parse error"; //TODO PROPER EXCEPTION, invalid count of doubling cards
@@ -293,7 +295,7 @@ vector<string> Deck::loadFileContent(string file) {
     vector<string> fileContent;
 
     while (getline(deckFile, line))
-        if (line.find_first_not_of(SPACE) != string::npos) //not an empty line
+        if (line.find_first_not_of(' ') != string::npos) //not an empty line
             fileContent.push_back(line);
 
     deckFile.close();

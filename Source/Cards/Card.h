@@ -13,11 +13,11 @@
 #include <map>
 
 //Definitions-------------------------------
-#define LOWER_BOUND -10
-#define UPPER_BOUND 10
-#define DUAL_DELIMITER "|"
-#define PLUS_SIGN "+"
-#define MINUS_SIGN "-"
+const int LOWER_BOUND = -10;
+const int UPPER_BOUND = 10;
+const std::string DUAL_DELIMITER = "|";
+const std::string PLUS_SIGN = "+";
+const std::string MINUS_SIGN = "-";
 
 class Card {
 
@@ -43,6 +43,8 @@ protected:
     std::string chooseSign() const;
 
 public:
+
+    virtual ~Card() = default;
 
     /**
      * Puts the card's effect in play

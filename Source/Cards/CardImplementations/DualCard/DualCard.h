@@ -32,7 +32,7 @@ public:
     //Constructor---------------------------
     DualCard(int left, int right);
 
-    ~DualCard() = default;
+    ~DualCard() override = default;
     //Methods-------------------------------
    /**
     * Presents the player with two values to choose from to be played

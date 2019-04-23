@@ -15,7 +15,7 @@ class DoubleCard : public Card {
 
 public:
 
-    ~DoubleCard() = default;
+    ~DoubleCard() override = default;
     /**
      * Puts the card's effect in play
      * @param playedCards Cards previously played by the current player

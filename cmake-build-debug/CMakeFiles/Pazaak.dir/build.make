@@ -43,10 +43,10 @@ RM = /home/tomtom/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tomtom/Development/Pazaak
+CMAKE_SOURCE_DIR = /home/tomtom/Development/PA2/Pazaak
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tomtom/Development/Pazaak/cmake-build-debug
+CMAKE_BINARY_DIR = /home/tomtom/Development/PA2/Pazaak/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Pazaak.dir/depend.make
@@ -59,185 +59,185 @@ include CMakeFiles/Pazaak.dir/flags.make
 
 CMakeFiles/Pazaak.dir/main.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Pazaak.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/main.cpp.o -c /home/tomtom/Development/Pazaak/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Pazaak.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/main.cpp.o -c /home/tomtom/Development/PA2/Pazaak/main.cpp
 
 CMakeFiles/Pazaak.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/main.cpp > CMakeFiles/Pazaak.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/main.cpp > CMakeFiles/Pazaak.dir/main.cpp.i
 
 CMakeFiles/Pazaak.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/main.cpp -o CMakeFiles/Pazaak.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/main.cpp -o CMakeFiles/Pazaak.dir/main.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o: ../Source/Cards/Card.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/Card.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Cards/Card.cpp
 
 CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/Card.cpp > CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Cards/Card.cpp > CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/Card.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Cards/Card.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/Card.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o: ../Source/Cards/CardImplementations/BasicCard/BasicCard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/BasicCard/BasicCard.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o: ../Source/Cards/CardImplementations/DualCard/DualCard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/DualCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/DualCard.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o: ../Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DoubleCard/DoubleCard.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o: ../Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlexCard/FlexCard.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o: ../Source/Player/PlayerBoard/PlayerBoard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o -c /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp
 
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp > CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp > CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp -o CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Player/PlayerBoard/PlayerBoard.cpp -o CMakeFiles/Pazaak.dir/Source/Player/PlayerBoard/PlayerBoard.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o: ../Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o -c /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp > CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp -o CMakeFiles/Pazaak.dir/Source/Cards/CardImplementations/DualCard/FlipCard/FlipCard.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o: ../Source/Player/Player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o -c /home/tomtom/Development/Pazaak/Source/Player/Player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Player/Player.cpp
 
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Player/Player.cpp > CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Player/Player.cpp > CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Player/Player.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Player/Player.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Player.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o: ../Source/Player/Deck/Deck.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o -c /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Player/Deck/Deck.cpp
 
 CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp > CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Player/Deck/Deck.cpp > CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Player/Deck/Deck.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Player/Deck/Deck.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Deck/Deck.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o: ../Source/Player/Hand/Hand.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o -c /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Player/Hand/Hand.cpp
 
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp > CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Player/Hand/Hand.cpp > CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Player/Hand/Hand.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Player/Hand/Hand.cpp -o CMakeFiles/Pazaak.dir/Source/Player/Hand/Hand.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o: ../Source/Game/Game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o -c /home/tomtom/Development/Pazaak/Source/Game/Game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Game/Game.cpp
 
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Game/Game.cpp > CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Game/Game.cpp > CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Game/Game.cpp -o CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Game/Game.cpp -o CMakeFiles/Pazaak.dir/Source/Game/Game.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o: ../Source/Utilities/Parsers/CardParser/CardParser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o -c /home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp
 
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp > CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp > CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Utilities/Parsers/CardParser/CardParser.cpp -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp.s
 
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o: CMakeFiles/Pazaak.dir/flags.make
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o: ../Source/Utilities/Parsers/Utilities.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o -c /home/tomtom/Development/Pazaak/Source/Utilities/Parsers/Utilities.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o -c /home/tomtom/Development/PA2/Pazaak/Source/Utilities/Parsers/Utilities.cpp
 
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/Pazaak/Source/Utilities/Parsers/Utilities.cpp > CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomtom/Development/PA2/Pazaak/Source/Utilities/Parsers/Utilities.cpp > CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.i
 
 CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/Pazaak/Source/Utilities/Parsers/Utilities.cpp -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomtom/Development/PA2/Pazaak/Source/Utilities/Parsers/Utilities.cpp -o CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.s
 
 # Object files for target Pazaak
 Pazaak_OBJECTS = \
@@ -275,7 +275,7 @@ Pazaak: CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/CardParser/CardParser.cpp
 Pazaak: CMakeFiles/Pazaak.dir/Source/Utilities/Parsers/Utilities.cpp.o
 Pazaak: CMakeFiles/Pazaak.dir/build.make
 Pazaak: CMakeFiles/Pazaak.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Pazaak"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Pazaak"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Pazaak.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -288,6 +288,6 @@ CMakeFiles/Pazaak.dir/clean:
 .PHONY : CMakeFiles/Pazaak.dir/clean
 
 CMakeFiles/Pazaak.dir/depend:
-	cd /home/tomtom/Development/Pazaak/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tomtom/Development/Pazaak /home/tomtom/Development/Pazaak /home/tomtom/Development/Pazaak/cmake-build-debug /home/tomtom/Development/Pazaak/cmake-build-debug /home/tomtom/Development/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tomtom/Development/PA2/Pazaak/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tomtom/Development/PA2/Pazaak /home/tomtom/Development/PA2/Pazaak /home/tomtom/Development/PA2/Pazaak/cmake-build-debug /home/tomtom/Development/PA2/Pazaak/cmake-build-debug /home/tomtom/Development/PA2/Pazaak/cmake-build-debug/CMakeFiles/Pazaak.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Pazaak.dir/depend
 

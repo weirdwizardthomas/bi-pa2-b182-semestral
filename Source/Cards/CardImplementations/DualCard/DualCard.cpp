@@ -21,7 +21,7 @@ int DualCard::play(vector<int> &playedCards, int currentScore, int opponentScore
 
     int input = chooseEffect();
     int value = this->effects[input];
-    cout << "You've chosen: " << value << endl;
+    cout << "You've chosen: " << value << endl; //TODO MAKE A PROMPT
     return value;
 }
 
@@ -30,13 +30,13 @@ int DualCard::chooseEffect() const {
     int input = -1;
 
     while (invalidInput) {
-        cout << "Choose an effect " << "[0 for the first choice/1 for the second choice]";
+        cout << "Choose an effect " << "[0 for the first choice/1 for the second choice]"; //TODO MAKE A PROMPT
         cout << endl;
         cout << "[" << effects[0] << DUAL_DELIMITER << effects[1] << "]: ";
         cin >> input;
         invalidInput = (input != 0 && input != 1);
         if (invalidInput)
-            cout << "Invalid choice, please try again." << endl << endl;
+            cout << "Invalid choice, please try again." << endl << endl; //TODO MAKE A PROMPT
     }
     return input;
 }

@@ -46,8 +46,7 @@ void Game::play() {
 
 void Game::gameWinnerMessage() const {
     cout << players[(players[0]->getRoundsWon() > players[1]->getRoundsWon() ? 0 : 1)]->getName()
-         << " won the game!"
-         << endl;
+         << " won the game!" << endl;
 }
 
 Player *Game::round() {

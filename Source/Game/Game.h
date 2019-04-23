@@ -6,8 +6,8 @@
 #define PAZAAK_GAME_H
 
 //Definitions-----------------------
-#define ROUNDS 3
-#define TARGET_SCORE 20
+const int ROUNDS = 3;
+const int TARGET_SCORE = 20;
 
 #include "../Player/Player.h"
 
@@ -15,7 +15,7 @@ class Game {
 
 private:
     //Attributes------------------------------
-    Player * players[2];
+    Player *players[2];
     size_t currentlyPlaying;
     //int timeElapsed;
 
@@ -59,7 +59,7 @@ private:
      * Examines the score and determines the victor of the round
      * @return Victorious player, nullptr if the round was a draw
      */
-    Player *getVictor() const ;
+    Player *getVictor() const;
 
     void turn(Player *currentPlayer);
 
@@ -100,6 +100,7 @@ private:
 public:
     //Constructor----------------------------
     Game(Player *player1, Player *player2, const std::map<std::string, Card *> &allCards);
+
     ~Game();
 
     //Methods--------------------------------
