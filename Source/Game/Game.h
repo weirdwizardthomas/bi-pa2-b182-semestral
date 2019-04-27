@@ -12,7 +12,6 @@ const int TARGET_SCORE = 20;
 #include "../Player/Player.h"
 
 class Game {
-
 private:
     //Attributes------------------------------
     Player *players[2];

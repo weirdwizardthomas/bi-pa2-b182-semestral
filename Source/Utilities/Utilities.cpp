@@ -8,11 +8,11 @@
 #include <vector>
 #include <utility>
 
-//Definitions-------------------------------
-#define WHITE_SPACES " \t\n\r\f\v"
-
 //Namespaces--------------------------------
 using namespace std;
+
+//Definitions-------------------------------
+const string WHITE_SPACES = " \t\n\r\f\v";
 
 //-------------------------------------------------------------------------------------//
 //Trimming functions, slightly altered this code : https://stackoverflow.com/a/25385766//

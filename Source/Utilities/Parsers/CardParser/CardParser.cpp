@@ -7,6 +7,14 @@
 //Namespaces--------------------------------
 using namespace std;
 
+//Definitions-------------------------------
+const string CARD_FOLDER_PATH = "../Data/Cards/";
+const string BASIC_CARD = "BasicCards";
+const string DUAL_CARD = "DualCards";
+const string FLIP_CARD = "FlipCards";
+const string DUAL_DELIMITER = "|";
+
+
 //Copied from https://stackoverflow.com/a/44495206'
 //TODO Can't move it to ParserStringUtilities.cpp, fix!
 vector<string> split(string phrase, const string &delimiter) {
@@ -38,10 +46,10 @@ vector<string> CardParser::getFileLines(const string &filePath) {
     string line;
     vector<string> lines;
 
-    while (getline(cardFile, line)) {
+    while (getline(cardFile, line))
         if (line.find_first_not_of(' ') != string::npos) //not an empty line
             lines.push_back(trim(line));
-    }
+
 
     return lines;
 }
@@ -61,7 +69,7 @@ map<string, Card *> CardParser::loadAllCards() {
 
 void CardParser::loadFlipCards(map<string, Card *> &cards) {
 
-    vector<string> fileLines = getFileLines(pathOf(FLIP_CARD));
+    vector<string> fileLines = getFileLines(pathOf(FLIP_CARD.c_str()));
     validLines(fileLines, FLIP_CARD);
 
     for (const string &line : fileLines) {
@@ -134,7 +142,4 @@ void CardParser::addFlexCards(map<string, Card *> &cards) {
     cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
 }
 
-string CardParser::pathOf(const char *filename) {
-    string fileString = filename;
-    return CARD_FOLDER_PATH + fileString;
-}
+string CardParser::pathOf(const string &filename) { return CARD_FOLDER_PATH + filename; }

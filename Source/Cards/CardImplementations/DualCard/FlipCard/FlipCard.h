@@ -13,10 +13,8 @@
 //Classes-----------------------------------
 #include "../DualCard.h"
 
-//Definitions-------------------------------
-const std::string FLIP_SIGN =  " <~> ";
 
-//TODO reword this to be clearer
+
 /**
  * Flip cards negate the signs of two values on all cards of the current player when played
  */

@@ -1,13 +1,16 @@
+#include <utility>
+
 //
 // Created by tomtom on 08/02/19.
 //
 
 #include "Player.h"
 
-//Definitions-------------
+
+//Namespaces--------------------------------
 using namespace std;
 
-Player::Player(string name) : name(name) {}
+Player::Player(string name) : name(std::move(name)) {}
 
 void Player::takeTurn(const int opponentScore) {
     //TODO query what card to play, give the option to stand or quit the game

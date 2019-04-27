@@ -19,23 +19,6 @@
 #include "../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
 #include "../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
 
-//Definitions-------------------------------
-const char NEWLINE = '\n';
-
-const std::string DECKS_DIRECTORY_PATH = "../Data/Decks";
-const std::string FOLDER_DELIMITER = "/";
-const std::string FILE_CARD_VALUE_DELIMITER = ",";
-const std::string CARD_TYPE_VALUE_DELIMITER = ":";
-
-const int DECK_SIZE = 10;
-const int MAX_CARDS_DRAWN = 4;
-
-const std::string BASIC_CARD_LEAD = "BasicCards";
-const std::string DOUBLE_CARD_LEAD = "DoubleCards";
-const std::string DUAL_CARD_LEAD = "DualCards";
-const std::string FLEX_CARD_LEAD = "FlexCards";
-const std::string FLIP_CARD_LEAD = "FlipCards";
-
 class Deck {
 private:
     //Attributes----------------------------------------------

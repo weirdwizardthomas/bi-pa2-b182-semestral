@@ -7,6 +7,11 @@
 //Namespaces--------------------------------
 using namespace std;
 
+const string DUAL_DELIMITER = "|";
+const string PLUS_SIGN = "+";
+const string MINUS_SIGN = "-";
+
+
 DualCard::DualCard(int left, int right) {
     if (!validInput(left) || !validInput(right))
         throw "Invalid card value."; //TODO extract this

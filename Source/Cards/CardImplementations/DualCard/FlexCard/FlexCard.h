@@ -8,10 +8,6 @@
 //Classes-----------------------------------
 #include "../DualCard.h"
 
-//Definitions------------------------------
-const std::string SIGN_DELIMITER = "/";
-const int A = 1;
-const int B = 2;
 
 /**
  * A special case of the Dual card, Flex cards offer the choice of four choices: +/- 1/2

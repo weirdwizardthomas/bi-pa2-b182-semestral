@@ -4,6 +4,7 @@
 
 #include "Game.h"
 
+//Namespaces--------------------------
 using namespace std;
 
 //TODO rework players to be a pair and change appropriate calls

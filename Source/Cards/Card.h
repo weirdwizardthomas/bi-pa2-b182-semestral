@@ -12,12 +12,7 @@
 #include <fstream>
 #include <map>
 
-//Definitions-------------------------------
-const int LOWER_BOUND = -10;
-const int UPPER_BOUND = 10;
-const std::string DUAL_DELIMITER = "|";
-const std::string PLUS_SIGN = "+";
-const std::string MINUS_SIGN = "-";
+
 
 class Card {
 

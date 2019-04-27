@@ -24,11 +24,11 @@ private:
     Hand hand;
     //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
-    //Methods-------------------------------------
+    //Methods------------------------------------------------------------
 
     int autoPlayCard();
 
-    //Messages-and-prompts------------------------
+    //Messages-and-prompts-----------------------------------------------
     void actionPrompt() const;
 
     void boardStatusMessage(int opponentScore) const;
@@ -46,7 +46,7 @@ public:
 
     void takeTurn(int opponentScore);
 
-    //Setters---------------------------------------
+    //Setters------------------------------------------------------------
     void addPoint();
 
     void chooseDeck(const std::map<std::string, Card *> &allCards);
@@ -55,7 +55,7 @@ public:
 
     void resetBoard();
 
-    //Getters---------------------------------------
+    //Getters------------------------------------------------------------
     int getCurrentRoundScore() const;
 
     const std::string &getName() const;

@@ -4,12 +4,21 @@
 
 #include "FlexCard.h"
 
+//Namespaces-------------------------------
 using namespace std;
+//Definitions------------------------------
+const string SIGN_DELIMITER = "/";
+const int A = 1;
+const int B = 2;
+const string DUAL_DELIMITER = "|";
+const string PLUS_SIGN = "+";
+const string MINUS_SIGN = "-";
+
 
 FlexCard::FlexCard() : DualCard(A, B) {}
 
 int FlexCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
-    cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl;
+    cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl; //TODO extract into a method
 
     string sign = chooseSign();
     int input = chooseEffect();

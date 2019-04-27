@@ -22,7 +22,7 @@ private:
 public:
     explicit BasicCard(int value);
 
-    ~BasicCard() = default;
+    ~BasicCard() override = default;
 
 /**
  * Puts the card's effect in play

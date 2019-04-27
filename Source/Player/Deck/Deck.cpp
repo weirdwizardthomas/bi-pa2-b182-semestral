@@ -10,9 +10,29 @@
 //Namespaces--------------------------------
 using namespace std;
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Ostreams------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
+
+//Definitions-------------------------------
+const char NEWLINE = '\n';
+
+const string DUAL_DELIMITER = "|";
+const string PLUS_SIGN = "+";
+const string MINUS_SIGN = "-";
+const std::string FLIP_SIGN = " <~> ";
+
+
+const string DECKS_DIRECTORY_PATH = "../Data/Decks";
+const string FOLDER_DELIMITER = "/";
+const string FILE_CARD_VALUE_DELIMITER = ",";
+const string CARD_TYPE_VALUE_DELIMITER = ":";
+
+const int DECK_SIZE = 10;
+const int MAX_CARDS_DRAWN = 4;
+
+const string BASIC_CARD_LEAD = "BasicCards";
+const string DOUBLE_CARD_LEAD = "DoubleCards";
+const string DUAL_CARD_LEAD = "DualCards";
+const string FLEX_CARD_LEAD = "FlexCards";
+const string FLIP_CARD_LEAD = "FlipCards";
 
 ostream &operator<<(ostream &out, const vector<string> &a) {
     size_t i = 0;
@@ -32,10 +52,8 @@ ostream &operator<<(ostream &out, const Deck &deck) {
     return out;
 }
 
-//Supportive-non-class-methods-------------
-bool containsSubstring(const string &master, const string &slave) {
-    return master.find(slave) != string::npos;
-}
+//Supportive-non-class-methods--------------
+bool containsSubstring(const string &master, const string &slave) { return master.find(slave) != string::npos; }
 
 vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
     vector<Card *> allCardsVector;
@@ -82,9 +100,7 @@ Deck::Deck(const map<string, Card *> &allCards) {
 }
 
 //Other-methods-----------------------
-void Deck::addCard(Card *card) {
-    this->cards.push_back(card);
-}
+void Deck::addCard(Card *card) { this->cards.push_back(card); }
 
 vector<Card *> Deck::drawCardsFromDeck() {
     vector<Card *> drawnCards;
@@ -92,7 +108,7 @@ vector<Card *> Deck::drawCardsFromDeck() {
     for (size_t i = 0; i < MAX_CARDS_DRAWN; i++) {
         if (cards.empty())
             break;
-        size_t pickedCardIndex = rand() % this->cards.size();
+        size_t pickedCardIndex = rand() % this->cards.size(); //TODO change the randomness
         drawnCards.push_back(this->cards[pickedCardIndex]);
         this->cards.erase(this->cards.begin() + pickedCardIndex);
     }
@@ -134,7 +150,7 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     }
 }
 
-vector<string> Deck::parseDeckForCards() const { //TODO rename
+vector<string> Deck::parseDeckForCards() const {
     vector<string> fileLines;
 
     vector<string> categorised[5];
@@ -145,7 +161,6 @@ vector<string> Deck::parseDeckForCards() const { //TODO rename
 
     for (Card *card : cards) {
         const string &cardDescription = card->getDescription();
-        //TODO make this prettier - extract a 'Contains substring' method and use switch?
         if (containsSubstring(cardDescription, "Double the value of the last played card")) //DOUBLE
             DoubleCardCounter++;
         else if (containsSubstring(cardDescription, "+/-"))
@@ -186,7 +201,6 @@ vector<string> Deck::parseDeckForCards() const { //TODO rename
 
 void Deck::saveToFile() const {
 
-    //Setup ostream-------------------
     fstream deckFile;
 
     vector<string> files = getDecksFromDirectory(); //TODO Change to a set?
@@ -208,13 +222,10 @@ void Deck::saveToFile() const {
 
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Static-methods------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
-
+//Static-methods----------------------
 void Deck::addLeadingCategories(vector<string> *categorised) {
     string leads[5] = {BASIC_CARD_LEAD, DOUBLE_CARD_LEAD, DUAL_CARD_LEAD, FLIP_CARD_LEAD, FLEX_CARD_LEAD};
-    for (size_t k = 0; k < 5; k++)
+    for (size_t k = 0; k < 5; ++k)
         categorised[k].push_back(leads[k] + CARD_TYPE_VALUE_DELIMITER);
 }
 
@@ -357,7 +368,6 @@ Deck Deck::loadFromFile(const map<string, Card *> &allCards) {
     //Parse the file
     vector<string> deckFileContent = Deck::loadFileContent(loadedFile); //load the picked file's content
     vector<Card *> cards = parseLinesForCards(allCards, deckFileContent); //Load the cards from the 'database'
-
 
     return Deck(cards); //forge the deck
 }
