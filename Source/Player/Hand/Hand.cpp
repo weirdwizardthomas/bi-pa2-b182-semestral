@@ -14,10 +14,11 @@ ostream &operator<<(ostream &out, const Hand &hand) {
     return out;
 }
 
+
 int Hand::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
-    const int cardValue = this->cards[cardIndex]->play(playedCards, currentScore, opponentScore);
-    this->cards.erase(this->cards.begin() + cardIndex); //Remove the played card
+    const int cardValue = cards[cardIndex]->play(playedCards, currentScore, opponentScore);
+    cards.erase(cards.begin() + cardIndex); //Remove the played card
     return cardValue;
 }
 
-void Hand::addCard(Card *card) { this->cards.push_back(card); }
+void Hand::addCard(Card *card) { cards.push_back(card); }

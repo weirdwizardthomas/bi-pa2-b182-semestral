@@ -29,7 +29,6 @@ ostream &operator<<(ostream &out, const vector<string> &a) { //TODO make this in
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
-
     for (Card *card : deck.cards)
         cout << "(" << i++ << ") " << *card << endl;
     return out;
@@ -75,11 +74,15 @@ Deck::Deck(const map<string, Card *> &allCards) {
     }
 
     //TODO exit query here ?
-    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; //TODO extract prompt
-
+    selectCardsDeckSizePrompt();
     loadCardsFromUser(allCards);
+    deckForgedMessage();
+}
 
-    cout << "Deck forged." << endl;
+void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
+
+void Deck::selectCardsDeckSizePrompt() {
+    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl;
 }
 
 //Other-methods-----------------------
@@ -99,9 +102,7 @@ vector<Card *> Deck::drawCardsFromDeck() {
     return drawnCards;
 }
 
-size_t Deck::getDeckSize() const {
-    return this->cards.size();
-}
+size_t Deck::getDeckSize() const { return this->cards.size(); }
 
 //TODO allow replacing cards during the selection using cin.fail && cin.clear and cin >> string/char
 void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
@@ -118,20 +119,22 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
 
         if (!cin.fail()) { //is a positive number
             if (input >= allCards.size())
-                cout << "Invalid choice, please try again." << endl;  //out of bounds
+                invalidInputMessage();//out of bounds
             else { //valid input
                 this->addCard(allCardsVector[input]);
                 cout << "You've selected: " << *(this->cards[i]) << endl;
                 i++;
             }
         } else {
-            cout << "Invalid input, please try again." << endl; //NaN
+            invalidInputMessage(); //NaN
             cin.clear();
             //ignores the entire cin until a newline is encountered
             cin.ignore(numeric_limits<streamsize>::max(), NEWLINE);
         }
     }
 }
+
+void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
 
 vector<string> Deck::prepareDeckForSaving() const { //TODO refactor
     vector<string> fileLines;
@@ -439,18 +442,24 @@ vector<string> Deck::splitStringByDelimiter(string phrase, const string &delimit
 
 size_t Deck::userDeckIndexInput(const vector<string> &files) {
 
-    cout << "Decks available" << endl;
-    cout << files;
-    cout << "Select a deck:";
+    listDecksMessage(files);
+    selectDeckPrompt();
 
     size_t input = 0;
 
     while (!(cin >> input) || input >= files.size()) {
-        cout << "Invalid input, please try again." << endl; //NaN
+        invalidInputMessage(); //NaN
         cin.clear();
         //ignores the entire cin until a newline is encountered
         cin.ignore(numeric_limits<streamsize>::max(), NEWLINE);
     }
 
     return input;
+}
+
+void Deck::selectDeckPrompt() { cout << "Select a deck:"; }
+
+void Deck::listDecksMessage(const vector<string> &files) {
+    cout << "Decks available" << endl;
+    cout << files;
 }

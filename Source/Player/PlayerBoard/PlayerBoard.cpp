@@ -5,73 +5,64 @@
 #include "PlayerBoard.h"
 
 using namespace std;
-
+const std::string PlayerBoard::PLAYED_CARDS_DELIMITER = " ";
 
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Constructor-Destructor----------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
 PlayerBoard::PlayerBoard() {
-    this->currentScore = 0;
-    this->roundsWon = 0;
-    this->playedCards.reserve(TABLE_SIZE);
-    this->mainDeck.reserve(Card::UPPER_BOUND * MAIN_DECK_CARD_COPIES);
-    this->standing = false;
+    currentScore = 0;
+    roundsWon = 0;
+    playedCards.reserve(PlayerBoard::TABLE_SIZE);
+    mainDeck.reserve(Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES);
+    standing = false;
 
     ///Generates MAIN_DECK_CARD_COPIES copies of 1-Card::UPPER_BOUND cards
     for (size_t i = 1; i <= Card::UPPER_BOUND; i++)
-        for (size_t j = 0; j < MAIN_DECK_CARD_COPIES; j++)
-            this->mainDeck.push_back(new BasicCard(i));
+        for (size_t j = 0; j < PlayerBoard::MAIN_DECK_CARD_COPIES; j++)
+            mainDeck.push_back(new BasicCard(i));
 }
 
 PlayerBoard::~PlayerBoard() {
-    for (auto &i : this->mainDeck)
+    for (auto &i : mainDeck)
         delete i;
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Getters-------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
-int PlayerBoard::getCurrentScore() const {
-    return this->currentScore;
-}
+int PlayerBoard::getCurrentScore() const { return currentScore; }
 
 int PlayerBoard::drawCardFromMainDeck() {
     size_t index = generateRandomBoundIndex();
-    int value = this->getRandomCard(index)->play();
-    delete this->mainDeck[index];
-    this->mainDeck.erase(mainDeck.begin() + index);
+    int value = getCardAt(index)->play();
+    delete mainDeck[index];
+    mainDeck.erase(mainDeck.begin() + index);
     return value;
 }
 
 int PlayerBoard::getOpener() const {
-    if (this->mainDeck.empty())
+    if (mainDeck.empty())
         throw "DECK IS EMPTY"; //TODO proper exception
-    return this->getRandomCard(generateRandomBoundIndex())->play();
+    return getCardAt(generateRandomBoundIndex())->play();
 }
 
-vector<int> &PlayerBoard::getPlayedCards() {
-    return this->playedCards;
-}
+vector<int> &PlayerBoard::getPlayedCards() { return playedCards; }
 
-size_t PlayerBoard::getPlayedCardsCount() const {
-    return this->playedCards.size();
-}
+size_t PlayerBoard::getPlayedCardsCount() const { return playedCards.size(); }
 
-size_t PlayerBoard::getRoundsWon() const {
-    return this->roundsWon;
-}
+size_t PlayerBoard::getRoundsWon() const { return roundsWon; }
 
-bool PlayerBoard::isStanding() const {
-    return this->standing;
-}
+bool PlayerBoard::isStanding() const { return standing; }
 
 string PlayerBoard::showCardsPlayed() const {
     string output;
-    for (auto &cardValue : this->playedCards) {
+    for (auto &cardValue : playedCards) {
         output.append(to_string(cardValue));
-        if (cardValue != *(this->playedCards.end())) //places a SPACE between each substring of the output string
-            output.append(SPACE);
+        if (cardValue !=
+            *(playedCards.end())) //places a PLAYED_CARDS_DELIMITER between each substring of the output string
+            output.append(PlayerBoard::PLAYED_CARDS_DELIMITER);
     }
 
     return output;
@@ -84,45 +75,37 @@ void PlayerBoard::addPlayedCard(int cardValue) {
     //No added value, card was either a double or a flip, which isn't recorded as played
     if (cardValue == 0)
         return;
-    this->playedCards.push_back(cardValue);
-    this->recalculateScore();
+    playedCards.push_back(cardValue);
+    recalculateScore();
 }
 
-void PlayerBoard::addPoint() {
-    this->roundsWon++;
-}
+void PlayerBoard::addPoint() { roundsWon++; }
 
-void PlayerBoard::setStanding(bool standing) {
-    this->standing = standing;
-}
+void PlayerBoard::setStanding(bool standing) { standing = standing; }
 
-void PlayerBoard::stand() {
-    this->setStanding(true);
-}
+void PlayerBoard::stand() { setStanding(true); }
 
 void PlayerBoard::reset() {
-    this->currentScore = 0;
-    this->resetPlayedCards();
-    this->setStanding(false);
+    currentScore = 0;
+    resetPlayedCards();
+    setStanding(false);
 }
 
 void PlayerBoard::resetPlayedCards() {
-    this->playedCards.clear();
-    this->playedCards.reserve(TABLE_SIZE);
+    playedCards.clear();
+    playedCards.reserve(PlayerBoard::TABLE_SIZE);
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Other methods-------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
 void PlayerBoard::recalculateScore() {
-    this->currentScore = 0;
-    for (auto playedCard : this->playedCards)
+    currentScore = 0;
+    for (auto playedCard : playedCards)
         currentScore += playedCard;
 }
 
-BasicCard *PlayerBoard::getRandomCard(size_t index) const {
-    return this->mainDeck[index];
-}
+BasicCard *PlayerBoard::getCardAt(size_t index) const { return mainDeck[index]; }
 
 unsigned long PlayerBoard::generateRandomBoundIndex() const { return (size_t) rand() % mainDeck.size(); }
 

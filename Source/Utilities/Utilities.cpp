@@ -6,7 +6,6 @@
 //Libraries---------------------------------
 #include <string>
 #include <vector>
-#include <utility>
 
 //Namespaces--------------------------------
 using namespace std;
@@ -31,6 +30,4 @@ inline std::string &ltrim(std::string &s) {
 }
 
 // trim from both ends of string (right then left)
-inline std::string &trim(std::string &s) {
-    return ltrim(rtrim(s));
-}
+inline std::string &trim(std::string &s) { return ltrim(rtrim(s)); }

@@ -19,6 +19,7 @@ public:
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
+
 };
 
 

@@ -10,10 +10,6 @@
 #include "../../Cards/Card.h"
 #include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
 
-#define TABLE_SIZE 9
-#define MAIN_DECK_CARD_COPIES 4
-
-const std::string SPACE = " ";
 
 class PlayerBoard {
 
@@ -31,7 +27,7 @@ private:
      * @param index
      * @return
      */
-    BasicCard *getRandomCard(size_t index) const;
+    BasicCard *getCardAt(size_t index) const;
 
     //Setters---------------------------
     /**
@@ -47,6 +43,9 @@ private:
      */
     size_t generateRandomBoundIndex() const;
 
+    /**
+     *
+     */
     void recalculateScore();
 
     /**
@@ -55,6 +54,10 @@ private:
     void resetPlayedCards();
 
 public:
+    static const int TABLE_SIZE = 9;
+    static const int MAIN_DECK_CARD_COPIES = 4;
+    static const std::string PLAYED_CARDS_DELIMITER;
+
     //Constructors-----------------------
     PlayerBoard();
 
@@ -131,7 +134,6 @@ public:
      *
      */
     void reset();
-
 };
 
 

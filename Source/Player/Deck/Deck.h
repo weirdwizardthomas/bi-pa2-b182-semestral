@@ -180,7 +180,7 @@ private:
      * @param file name of the file to be opened
      * @return individual lines of the file
      */
-    static std::vector<std::string> loadFileContent(const std::string& file);
+    static std::vector<std::string> loadFileContent(const std::string &file);
 
     /**
      * Processes the text file and splits it by the delimiter CARD_TYPE_VALUE_DELIMITER into key and value
@@ -227,6 +227,15 @@ private:
      */
     static size_t userDeckIndexInput(const std::vector<std::string> &files);
 
+    static void selectCardsDeckSizePrompt();
+
+    static void deckForgedMessage();
+
+    static void invalidInputMessage();
+
+    static void listDecksMessage(const std::vector<std::string> &files);
+
+    static void selectDeckPrompt();
 };
 
 #endif //PAZAAK_DECK_H

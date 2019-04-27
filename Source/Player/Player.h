@@ -66,6 +66,16 @@ public:
     size_t getRoundsWon() const;
 
     bool isStanding() const;
+
+    void standPrompt() const;
+
+    void isPassingTurnMessage() const;
+
+    void choosingDeckMessage() const;
+
+    void deckChoicePrompt() const;
+
+    void printDeck() const;
 };
 
 #endif //PAZAAK_PLAYER_H

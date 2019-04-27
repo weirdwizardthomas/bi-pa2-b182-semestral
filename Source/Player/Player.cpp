@@ -14,14 +14,13 @@ Player::Player(string name) : name(std::move(name)) {}
 
 void Player::takeTurn(const int opponentScore) {
     //TODO query what card to play, give the option to stand or quit the game
-    if (this->board.isStanding()) {
+    if (board.isStanding()) {
         playerIsStandingMessage();
         return;
     }
 
     boardStatusMessage(opponentScore);
-
-    cout << "Would you like to [S]tand?" << endl;
+    standPrompt();
     //TODO Need to treat input
     string input;
     cin >> input;
@@ -30,61 +29,55 @@ void Player::takeTurn(const int opponentScore) {
         throw "INVALID INPUT"; //TODO proper exception
 
     if (input == "S") {
-        this->board.stand();
+        board.stand();
         return;
     }
 
-    this->board.addPlayedCard(this->autoPlayCard());
+    board.addPlayedCard(autoPlayCard());
     boardStatusMessage(opponentScore);
     actionPrompt();
 
-
+    //TODO ADD HELP QUERY
     cin >> input;
     if (input == "P") {
-        cout << this->getName() << " is passing their turn." << endl;
+        isPassingTurnMessage();
         return;
     } else { //play a card based on the number
         stringstream extractChoice(input);
-        size_t choice;
+        size_t choice=0;
         extractChoice >> choice;
-        if (choice > this->deck.getDeckSize())
+        if (choice > deck.getDeckSize())
             throw "INVALID INPUT OUT OF BOUNDS";
 
-        int cardResult = this->hand.playCard(choice, this->board.getPlayedCards(), this->board.getCurrentScore(),
-                                             opponentScore);
+        int cardResult = hand.playCard(choice, board.getPlayedCards(), board.getCurrentScore(), opponentScore);
         //insert the value at the end
-        this->board.addPlayedCard(cardResult);
+        board.addPlayedCard(cardResult);
         return;
     }
 }
 
 void Player::drawHand() {
-    vector<Card *> drawnFromHand = this->deck.drawCardsFromDeck();
+    vector<Card *> drawnFromHand = deck.drawCardsFromDeck();
 
     for (auto &card : drawnFromHand)
-        this->hand.addCard(card);
+        hand.addCard(card);
 }
+
+int Player::autoPlayCard() { return board.drawCardFromMainDeck(); }
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Setters-------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
-void Player::addPoint() {
-    this->board.addPoint();
-}
+void Player::addPoint() { board.addPoint(); }
 
 void Player::chooseDeck(const map<string, Card *> &allCards) {
-    const string deckQuery = "[F]orge a new deck or [L]oad an existing one?";
-    const size_t messageLength = deckQuery.length();
 
-    cout << this->name << "s turn to pick a deck" << endl;
+    choosingDeckMessage();
 
     bool confirmed = false;
 
     while (!confirmed) {
-        for (size_t i = 0; i < messageLength; i++)
-            cout << "=";
-        cout << endl;
-        cout << deckQuery << endl;
+       deckChoicePrompt();
 
         string input;
         cin >> input;
@@ -94,8 +87,8 @@ void Player::chooseDeck(const map<string, Card *> &allCards) {
         }
 
         //Construct the deck, assign it and show it
-        this->deck = (input == "F" ? Deck(allCards) : Deck::loadFromFile(allCards));
-        cout << deck << endl;
+        deck = (input == "F" ? Deck(allCards) : Deck::loadFromFile(allCards));
+        printDeck();
         deckApprovalQuery();
 
         //Ask for approval
@@ -109,62 +102,54 @@ void Player::chooseDeck(const map<string, Card *> &allCards) {
     }
 }
 
+void Player::printDeck() const { cout << deck << endl; }
+
+void Player::resetBoard() { return board.reset(); }
+
 //--------------------------------------------------------------------------------------------------------------------//
 //Getters-------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
-const string &Player::getName() const {
-    return name;
-}
+const string &Player::getName() const { return name; }
 
-int Player::getCurrentRoundScore() const {
-    return this->board.getCurrentScore();
-}
+int Player::getCurrentRoundScore() const { return board.getCurrentScore(); }
 
-int Player::getOpener() const {
-    return this->board.getOpener();
-}
+int Player::getOpener() const { return board.getOpener(); }
 
-size_t Player::getPlayedCardsCount() const {
-    return this->board.getPlayedCardsCount();
-}
+size_t Player::getPlayedCardsCount() const { return board.getPlayedCardsCount(); }
 
-size_t Player::getRoundsWon() const {
-    return this->board.getRoundsWon();
-}
+size_t Player::getRoundsWon() const { return board.getRoundsWon(); }
 
-bool Player::isStanding() const {
-    return this->board.isStanding();
-}
+bool Player::isStanding() const { return board.isStanding(); }
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Messages------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
 void Player::invalidInputMessage() const { cout << "Invalid input, try again." << endl; }
 
-void Player::deckApprovalQuery() const {
-    cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl;//TODO exit
-}
+void Player::deckApprovalQuery() const { cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl; }
 
 void Player::boardStatusMessage(const int opponentScore) const {
     cout << "Your score: " << getCurrentRoundScore();
     cout << " | Your opponent's score: " << opponentScore << endl;
     cout << "Your board: ";
-    cout << (this->board.showCardsPlayed().empty() ? "No cards played so far." : this->board.showCardsPlayed()) << endl;
+    cout << (board.showCardsPlayed().empty() ? "No cards played so far." : board.showCardsPlayed()) << endl;
 }
 
 void Player::playerIsStandingMessage() const { cout << getName() << " is standing." << endl; }
 
 void Player::actionPrompt() const {
-    //TODO ADD HELP QUERY
     cout << endl << "Pick a card to play or [P]ass" << endl;
-    cout << this->hand;
-    cout << "(P) Pass" << endl;
+    cout << hand;
+    cout << "(P)ass" << endl;
 }
 
-int Player::autoPlayCard() {
-    return this->board.drawCardFromMainDeck();
+void Player::deckChoicePrompt() const {
+    cout << "==============================" << endl;
+    cout << "[F]orge a new deck or [L]oad an existing one?" << endl;
 }
 
-void Player::resetBoard() {
-    return this->board.reset();
-}
+void Player::choosingDeckMessage() const { cout << name << "'s turn to pick a deck" << endl; }
+
+void Player::isPassingTurnMessage() const { cout << name << " is passing their turn." << endl; }
+
+void Player::standPrompt() const { cout << "Would you like to [S]tand?" << endl; }
