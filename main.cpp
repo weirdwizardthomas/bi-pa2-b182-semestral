@@ -4,7 +4,6 @@
 #include <map>
 
 //Classes-----------------------------------
-#include "Source/Player/PlayerBoard/PlayerBoard.h"
 #include "Source/Game/Game.h"
 #include "Source/Utilities/Parsers/CardParser/CardParser.h"
 
@@ -16,9 +15,7 @@
 using namespace std;
 
 int main() {
-
-    CardParser cardParser;
-    map<string, Card *> cards = cardParser.loadAllCards();
+    map<string, Card *> cards = CardParser::loadAllCards();
 
 
     /*//Main menu--------------------------------------------

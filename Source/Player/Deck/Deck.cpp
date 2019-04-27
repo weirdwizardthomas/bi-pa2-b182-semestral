@@ -1,4 +1,3 @@
-#include <utility>
 
 //
 // Created by tomtom on 08/02/19.
@@ -9,7 +8,6 @@
 
 //Namespaces--------------------------------
 using namespace std;
-
 
 const char Deck::NEWLINE = '\n';
 const string Deck::DECKS_DIRECTORY_PATH = "../Data/Decks";
@@ -22,12 +20,10 @@ const string Deck::DUAL_CARD_LEAD = "DualCards";
 const string Deck::FLEX_CARD_LEAD = "FlexCards";
 const string Deck::FLIP_CARD_LEAD = "FlipCards";
 
-ostream &operator<<(ostream &out, const vector<string> &a) {
+ostream &operator<<(ostream &out, const vector<string> &a) { //TODO make this into a method instead of an operator
     size_t i = 0;
-    for (const auto &file : a) {
-        out << "(" << i << ") " << file << endl;
-        i++;
-    }
+    for (const auto &file : a)
+        out << "(" << i++ << ") " << file << endl;
     return out;
 }
 
@@ -36,7 +32,6 @@ ostream &operator<<(ostream &out, const Deck &deck) {
 
     for (Card *card : deck.cards)
         cout << "(" << i++ << ") " << *card << endl;
-
     return out;
 }
 
@@ -80,7 +75,7 @@ Deck::Deck(const map<string, Card *> &allCards) {
     }
 
     //TODO exit query here ?
-    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl;
+    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; //TODO extract prompt
 
     loadCardsFromUser(allCards);
 
@@ -138,7 +133,7 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     }
 }
 
-vector<string> Deck::parseDeckForCards() const {
+vector<string> Deck::prepareDeckForSaving() const { //TODO refactor
     vector<string> fileLines;
 
     vector<string> categorised[5];
@@ -147,9 +142,10 @@ vector<string> Deck::parseDeckForCards() const {
     size_t DoubleCardCounter = 0;
     size_t FlexCardCounter = 0;
 
+    //categorise cards in the deck
     for (Card *card : cards) {
         const string &cardDescription = card->getDescription();
-        if (containsSubstring(cardDescription, "Double the value of the last played card")) //DOUBLE
+        if (containsSubstring(cardDescription, "Double the value of the last played card"))
             DoubleCardCounter++;
         else if (containsSubstring(cardDescription, "+/-"))
             FlexCardCounter++;
@@ -177,10 +173,11 @@ vector<string> Deck::parseDeckForCards() const {
         }
 
     //Construct the line in the output vector
-    for (auto &i : categorised) {
+    for (auto &currentCategory : categorised) {
         string line;
-        for (size_t j = 0; j < i.size(); j++)
-            line.append(i[j]).append((j == 0 || j == i.size() - 1 ? "" : Deck::FILE_CARD_VALUE_DELIMITER));
+        for (size_t j = 0; j < currentCategory.size(); j++)
+            line.append(currentCategory[j]).append(
+                    (j == 0 || j == currentCategory.size() - 1 ? "" : Deck::FILE_CARD_VALUE_DELIMITER));
         fileLines.push_back(line);
     }
 
@@ -201,7 +198,7 @@ void Deck::saveToFile() const {
     if (!deckFile.is_open())
         throw "File error"; //TODO proper exception
 
-    vector<string> cardLines = parseDeckForCards();
+    vector<string> cardLines = prepareDeckForSaving();
 
     for (const auto &cardLine : cardLines)
         deckFile << cardLine << endl;
@@ -213,7 +210,7 @@ void Deck::saveToFile() const {
 //Static-methods----------------------
 void Deck::addLeadingCategories(vector<string> *categorised) {
     string leads[5] = {Deck::BASIC_CARD_LEAD, Deck::DOUBLE_CARD_LEAD, Deck::DUAL_CARD_LEAD, Deck::FLIP_CARD_LEAD,
-                       Deck::FLEX_CARD_LEAD};
+                       Deck::FLEX_CARD_LEAD}; //TODO change this, it's too static
     for (size_t k = 0; k < 5; ++k)
         categorised[k].push_back(leads[k] + Deck::CARD_TYPE_VALUE_DELIMITER);
 }
@@ -401,15 +398,15 @@ vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vec
 }
 
 string Deck::QueryUserInputFilename(const vector<string> &files) {
-    cout << "Saved decks" << endl;
+    cout << "Saved decks" << endl; //TODO extract into prompt
     cout << files;
 
     string filename;
-    cout << "Save deck as:";
+    cout << "Save deck as:";  //TODO extract into prompt
     cin >> filename;
 
     while (Deck::fileAlreadyExists(files, filename)) {
-        cout << "File already exists, please try another name: ";
+        cout << "File already exists, please try another name: ";  //TODO extract into prompt
         cin >> filename;
     }
     return filename;

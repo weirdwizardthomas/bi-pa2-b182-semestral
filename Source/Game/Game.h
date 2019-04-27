@@ -10,27 +10,14 @@
 class Game {
 private:
     //Attributes------------------------------
-    Player *players[2];
-    size_t currentlyPlaying;
-    //int timeElapsed;
+    std::pair<Player *, Player *> players;
 
     //Methods--------------------------------
     /**
-     * Swaps between currently playing and not playing players
+     * Queries both players to select an existing deck of cards or to build a new one
+     * @param allCards Database of all available cards
      */
-    void swapPlayers();
-
-    /**
-     * Generates a random index to determine which player will go first
-     * @return random integer between 0 and 1
-     */
-    size_t selectStartingPlayer();
-
-    /**
-     * Plays a round between the two players
-     * @return Player who won the round, nullptr if the round was a draw
-     */
-    Player *round();
+    void chooseDecks(const std::map<std::string, Card *> &allCards) const;
 
     /**
      * Returns the player who is not currently on turn
@@ -39,25 +26,55 @@ private:
     Player *currentlyNotPlaying() const;
 
     /**
+     * Returns the player who is currently on turn
+     * @return Pointer to an element of the players container, which is  currently playing
+     */
+    Player *currentlyPlaying() const;
+
+    /**
      * Determines whether both players are standing, and effectively ends the current round if so
      * @return True if both are standing, False if at least one isn't
      */
     bool bothPlayersStanding() const;
 
     /**
-     * Provides the 'players' array index of the player not currently playing
-     * @return Negation of currentlyPlaying
-     */
-    size_t otherPlayerIndex() const;
-
-    /**
      * Examines the score and determines the victor of the round
      * @return Victorious player, nullptr if the round was a draw
      */
-    Player *getVictor() const;
+    Player *getRoundVictor() const;
+
+    /**
+     * Examines the round scores of either players and determines the victor of the game
+     * @return Player with a higher score than the other one
+     */
+    Player *getGameVictor() const;
+
+    void resetBoards();
+
+    /**
+     * Plays a round between the two players
+     * @return Player who won the round, nullptr if the round was a draw
+     */
+    Player *round();
+
+    /**
+     * Determines whether the finished round ended in a tie, e.g. equal score of both players
+     * @return True if players have equal score, False otherwise
+     */
+    bool roundIsTie() const;
+
+    /**
+ * Swaps between currently playing and not playing player
+ */
+    void swapPlayers();
+
+    /**
+     * Determines the starting player by examining the first card of either player's main deck. Higher value goes first
+     * @return
+     */
+    size_t selectStartingPlayer();
 
     void turn(Player *currentPlayer);
-
     //Messages & prompts-----------------------
     /**
      * Shows a message to tell players the game has commenced
@@ -65,10 +82,9 @@ private:
     void gameStartMessage() const;
 
     /**
-     * Determines whether the finished round ended in a tie, e.g. equal score of both players
-     * @return True if players have equal score, False otherwise
+     * Shows a message to tell players who the victor is
      */
-    bool roundIsTie() const;
+    void gameVictorMessage() const;
 
     /**
      * Informs the players that a round is commencing //TODO BETTER DESCRIPTION
@@ -92,9 +108,11 @@ private:
      */
     void turnPrompt() const;
 
+
 public:
     static const int ROUNDS = 3;
     static const int TARGET_SCORE = 20;
+
     //Constructor----------------------------
     Game(Player *player1, Player *player2, const std::map<std::string, Card *> &allCards);
 
@@ -103,9 +121,6 @@ public:
     //Methods--------------------------------
     void play();
 
-    void gameWinnerMessage() const;
-
-    void resetBoards();
 };
 
 #endif //PAZAAK_GAME_H

@@ -40,7 +40,6 @@ private:
 
 public:
     static const char NEWLINE;
-
     static const std::string DECKS_DIRECTORY_PATH;
     static const std::string FOLDER_DELIMITER;
     static const std::string FILE_CARD_VALUE_DELIMITER;
@@ -72,7 +71,7 @@ public:
      * Analyses the deck's cards and splits them based on their card type
      * @return
      */
-    std::vector<std::string> parseDeckForCards() const;
+    std::vector<std::string> prepareDeckForSaving() const;
 
     /**
      * Saves the deck's contents to a readable form in the DECKS_DIRECTORY_PATH to be reconstructed later
@@ -215,7 +214,7 @@ private:
     static std::vector<std::string> splitStringByDelimiter(std::string phrase, const std::string &delimiter);
 
     /**
-     *
+     * Queries the user to enter a filename for the saved file
      * @param files
      * @return
      */

@@ -8,20 +8,16 @@
 using namespace std;
 
 //TODO rework players to be a pair and change appropriate calls
-Game::Game(Player *player1, Player *player2, const map<string, Card *> &allCards) {
-    this->players[0] = player1;
-    this->players[1] = player2;
-    this->currentlyPlaying = selectStartingPlayer();
+Game::Game(Player *player1, Player *player2, const map<string, Card *> &allCards) : players({player1, player2}) {
 
-    for (Player *player : this->players)
-        player->chooseDeck(allCards);
-
+    selectStartingPlayer();
+    chooseDecks(allCards);
     gameStartMessage();
 }
 
 Game::~Game() {
-    delete this->players[0];
-    delete this->players[1];
+    delete this->players.first;
+    delete this->players.second;
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
@@ -42,25 +38,25 @@ void Game::play() {
         }
     }
 
-    gameWinnerMessage();
+    gameVictorMessage();
 }
-
 
 Player *Game::round() {
 
-    for (auto &player : players)
-        player->drawHand();
+    players.first->drawHand();
+    players.second->drawHand();
 
     while (!bothPlayersStanding()) {
-        Player *currentPlayer = this->players[currentlyPlaying];
 
-        this->turn(currentPlayer);
 
-        if (currentPlayer->getCurrentRoundScore() > TARGET_SCORE)
+        this->turn(currentlyPlaying());
+
+        if (currentlyPlaying()->getCurrentRoundScore() > TARGET_SCORE)
             return currentlyNotPlaying();
 
-        if (currentPlayer->getPlayedCardsCount() == TABLE_SIZE && currentPlayer->getCurrentRoundScore() <= TARGET_SCORE)
-            return currentPlayer;
+        if (currentlyPlaying()->getPlayedCardsCount() == TABLE_SIZE &&
+            currentlyPlaying()->getCurrentRoundScore() <= TARGET_SCORE)
+            return currentlyPlaying();
 
         this->swapPlayers();
         //TODO change this, make it more elegant
@@ -68,12 +64,12 @@ Player *Game::round() {
     }
 
     this->resetBoards();
-    return getVictor();
+    return getRoundVictor();
 }
 
 void Game::turn(Player *currentPlayer) {
     turnPrompt();
-    const int opponentScore = this->players[otherPlayerIndex()]->getCurrentRoundScore();
+    const int opponentScore = this->players.second->getCurrentRoundScore();
     currentPlayer->takeTurn(opponentScore);
 }
 
@@ -81,32 +77,48 @@ void Game::turn(Player *currentPlayer) {
 //Supportive-methods--------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
 bool Game::bothPlayersStanding() const {
-    return this->players[0]->isStanding() && this->players[1]->isStanding();
+    return this->players.first->isStanding() && this->players.second->isStanding();
 }
 
-Player *Game::currentlyNotPlaying() const {
-    return players[otherPlayerIndex()];
+void Game::chooseDecks(const map<string, Card *> &allCards) const {
+    players.first->chooseDeck(allCards);
+    players.second->chooseDeck(allCards);
 }
 
-Player *Game::getVictor() const {
+Player *Game::currentlyNotPlaying() const { return players.second; }
+
+Player *Game::currentlyPlaying() const { return this->players.first; }
+
+Player *Game::getGameVictor() const {
+    return players.first->getRoundsWon() > players.second->getRoundsWon() ? players.first : players.second;
+}
+
+Player *Game::getRoundVictor() const {
     if (roundIsTie())
         return nullptr;
-    return players[(players[0]->getCurrentRoundScore() > players[1]->getCurrentRoundScore() ? 0 : 1)];
-}
 
-size_t Game::otherPlayerIndex() const { return (size_t) (currentlyPlaying != 1); }
-
-size_t Game::selectStartingPlayer() {
-    return (size_t) (this->players[0]->getOpener() < this->players[1]->getOpener());
-}
-
-void Game::swapPlayers() {
-    this->currentlyPlaying = otherPlayerIndex();
+    return players.first->getCurrentRoundScore() > players.second->getCurrentRoundScore() ? players.first
+                                                                                          : players.second;
 }
 
 void Game::resetBoards() {
-    for (auto &player : players)
-        player->resetBoard();
+    players.first->resetBoard();
+    players.second->resetBoard();
+}
+
+bool Game::roundIsTie() const {
+    return players.first->getCurrentRoundScore() == players.second->getCurrentRoundScore();
+}
+
+size_t Game::selectStartingPlayer() {
+    if (this->players.first->getOpener() < this->players.first->getOpener())
+        this->swapPlayers();
+}
+
+void Game::swapPlayers() {
+    auto dummy = this->players.first;
+    this->players.first = this->players.second;
+    this->players.second = dummy;
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
@@ -115,24 +127,22 @@ void Game::resetBoards() {
 void Game::gameStartMessage() const {
     for (size_t i = 0; i < 2; i++)
         cout << endl;
-    cout << "Starting a game of Pazaak between " << players[0]->getName() << " and " << players[1]->getName()
+    cout << "Starting a game of Pazaak between " << players.first->getName() << " and " << players.second->getName()
          << "." << endl;
-    cout << players[currentlyPlaying]->getName() << " goes first." << endl << endl;
+    cout << players.first->getName() << " goes first." << endl << endl;
 }
 
-void Game::gameWinnerMessage() const {
-    cout << players[(players[0]->getRoundsWon() > players[1]->getRoundsWon() ? 0 : 1)]->getName()
-         << " won the game!" << endl;
+void Game::gameVictorMessage() const {
+    cout << getGameVictor()->getName() << " won the game!" << endl;
 }
+
+void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round #" << roundNumber << endl; }
 
 void Game::roundTieMessage() const { cout << "Tie"; }
 
 void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
 
-bool Game::roundIsTie() const { return players[0]->getCurrentRoundScore() == players[1]->getCurrentRoundScore(); }
-
-void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round #" << roundNumber << endl; }
-
 void Game::turnPrompt() const {
-    cout << this->players[currentlyPlaying]->getName() << "'s turn to play." << endl;
+    cout << this->players.first->getName() << "'s turn to play." << endl;
 }
+

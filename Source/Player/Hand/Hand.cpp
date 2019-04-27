@@ -9,16 +9,14 @@ using namespace std;
 
 ostream &operator<<(ostream &out, const Hand &hand) {
     size_t i = 0;
-    for (auto card : hand.cards) {
-        cout << "(" << i << ") " << *card << endl; //TODO can move i++ here
-        i++;
-    }
+    for (auto card : hand.cards)
+        cout << "(" << i++ << ") " << *card << endl;
+    return out;
 }
 
 int Hand::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
     const int cardValue = this->cards[cardIndex]->play(playedCards, currentScore, opponentScore);
-
-    this->cards.erase(this->cards.begin() + cardIndex);    //Remove the played card
+    this->cards.erase(this->cards.begin() + cardIndex); //Remove the played card
     return cardValue;
 }
 
