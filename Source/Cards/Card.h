@@ -13,7 +13,6 @@
 #include <map>
 
 
-
 class Card {
 
 protected:
@@ -38,6 +37,11 @@ protected:
     std::string chooseSign() const;
 
 public:
+    static const int LOWER_BOUND = -10;
+    static const int UPPER_BOUND = 10;
+    static const std::string DUAL_DELIMITER;
+    static const std::string PLUS_SIGN;
+    static const std::string MINUS_SIGN;
 
     virtual ~Card() = default;
 
@@ -65,6 +69,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
 };
+
 
 
 #endif //TMPPAZAAK_CARD_H

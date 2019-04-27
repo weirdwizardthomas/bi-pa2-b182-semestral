@@ -7,10 +7,6 @@
 //Namespaces--------------------------------
 using namespace std;
 
-const string DUAL_DELIMITER = "|";
-const string PLUS_SIGN = "+";
-const string MINUS_SIGN = "-";
-
 
 DualCard::DualCard(int left, int right) {
     if (!validInput(left) || !validInput(right))
@@ -37,7 +33,7 @@ int DualCard::chooseEffect() const {
     while (invalidInput) {
         cout << "Choose an effect " << "[0 for the first choice/1 for the second choice]"; //TODO MAKE A PROMPT
         cout << endl;
-        cout << "[" << effects[0] << DUAL_DELIMITER << effects[1] << "]: ";
+        cout << "[" << effects[0] << Card::DUAL_DELIMITER << effects[1] << "]: ";
         cin >> input;
         invalidInput = (input != 0 && input != 1);
         if (invalidInput)
@@ -47,7 +43,7 @@ int DualCard::chooseEffect() const {
 }
 
 string DualCard::getDescription() const {
-    return offsetPositiveNumber(this->effects[0]) + DUAL_DELIMITER + " " + offsetPositiveNumber(this->effects[1]);
+    return offsetPositiveNumber(this->effects[0]) + Card::DUAL_DELIMITER + " " + offsetPositiveNumber(this->effects[1]);
 }
 
 

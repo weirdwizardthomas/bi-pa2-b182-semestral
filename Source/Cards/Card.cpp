@@ -7,12 +7,10 @@
 //Namespaces--------------------------------
 using namespace std;
 
-//Definitions-------------------------------
-const int LOWER_BOUND = -10;
-const int UPPER_BOUND = 10;
-const string DUAL_DELIMITER = "|";
-const string PLUS_SIGN = "+";
-const string MINUS_SIGN = "-";
+const std::string Card::DUAL_DELIMITER = "|";
+const std::string Card::PLUS_SIGN = "+";
+const std::string Card::MINUS_SIGN = "-";
+
 
 ostream &operator<<(ostream &out, const Card &card) {
     out << card.getDescription();
@@ -21,11 +19,11 @@ ostream &operator<<(ostream &out, const Card &card) {
 }
 
 bool Card::validInput(int x) const {
-    return (x >= LOWER_BOUND && x <= UPPER_BOUND);
+    return (x >= Card::LOWER_BOUND && x <= Card::UPPER_BOUND);
 }
 
 string Card::offsetPositiveNumber(int x) const {
-    return ((x < 0 ? "" : PLUS_SIGN) + to_string(x));
+    return ((x < 0 ? "" : Card::PLUS_SIGN) + to_string(x));
 }
 
 string Card::chooseSign() const {
@@ -34,7 +32,7 @@ string Card::chooseSign() const {
     while (invalidInput) {
         cin >> sign;
 
-        invalidInput = (sign != PLUS_SIGN && sign != MINUS_SIGN);
+        invalidInput = (sign != Card::PLUS_SIGN && sign != Card::MINUS_SIGN);
 
         if (invalidInput)
             cout << "Invalid sign, please try again.";

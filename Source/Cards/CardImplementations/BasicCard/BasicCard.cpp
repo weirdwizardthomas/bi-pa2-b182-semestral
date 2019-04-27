@@ -21,7 +21,5 @@ string BasicCard::getDescription() const {
     return offsetPositiveNumber(this->value);
 }
 
-int BasicCard::play() const {
-    return this->value;
-}
+int BasicCard::play() const { return this->value; }
 

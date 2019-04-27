@@ -8,11 +8,11 @@
 using namespace std;
 
 //Definitions-------------------------------
-const string CARD_FOLDER_PATH = "../Data/Cards/";
-const string BASIC_CARD = "BasicCards";
-const string DUAL_CARD = "DualCards";
-const string FLIP_CARD = "FlipCards";
-const string DUAL_DELIMITER = "|";
+const string CardParser::CARD_FOLDER_PATH = "../Data/Cards/";
+const string CardParser::BASIC_CARD = "BasicCards";
+const string CardParser::DUAL_CARD = "DualCards";
+const string CardParser::FLIP_CARD = "FlipCards";
+const string CardParser::DUAL_DELIMITER = "|";
 
 
 //Copied from https://stackoverflow.com/a/44495206'
@@ -69,7 +69,7 @@ map<string, Card *> CardParser::loadAllCards() {
 
 void CardParser::loadFlipCards(map<string, Card *> &cards) {
 
-    vector<string> fileLines = getFileLines(pathOf(FLIP_CARD.c_str()));
+    vector<string> fileLines = getFileLines(pathOf(FLIP_CARD));
     validLines(fileLines, FLIP_CARD);
 
     for (const string &line : fileLines) {
@@ -117,7 +117,7 @@ pair<int, int> CardParser::getDualValues(const string &line) {
 }
 
 //TODO need to reconsider this method's implementation
-void CardParser::validLines(vector<string> fileLines, string mode) {
+void CardParser::validLines(vector<string> fileLines, const string& mode) {
 
     if (mode == BASIC_CARD) {
         for (const string &line : fileLines)

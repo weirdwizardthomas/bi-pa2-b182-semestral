@@ -24,14 +24,18 @@ public:
 
     ~BasicCard() override = default;
 
-/**
- * Puts the card's effect in play
- * @param playedCards Cards previously played by the current player
- * @param currentScore Current player's current round's score
- * @param opponentScore Opponent's current round's score
- * @return currentScore incremented by the card's value
- */
+    /**
+     * Puts the card's effect in play
+     * @param playedCards Cards previously played by the current player
+     * @param currentScore Current player's current round's score
+     * @param opponentScore Opponent's current round's score
+     * @return currentScore incremented by the card's value
+     */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
+    /**
+     * Put's the card's effect in play automatically from the main deck
+     * @return Card's value
+     */
     int play() const;
 
 public:

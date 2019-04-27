@@ -17,6 +17,10 @@ private:
     std::string getSignedAttribute() const;
 
 public:
+    static const int A = 1;
+    static const int B = 2;
+    static const std::string SIGN_DELIMITER;
+
     //Constructor---------------------------
     FlexCard();
 

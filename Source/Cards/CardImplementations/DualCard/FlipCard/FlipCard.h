@@ -21,6 +21,8 @@
 class FlipCard : public DualCard {
 
 public:
+    static const std::string FLIP_SIGN;
+
     FlipCard(int a, int b);
    /**
     * Swaps the sign's on all cards with the value equal to this card's effects

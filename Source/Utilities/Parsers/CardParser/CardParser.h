@@ -18,7 +18,6 @@
 #include "../../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
 
 
-
 //This doesn't need to be a class, it could be a regular cpp with functions, TODO consult whether a class is better than just functions
 class CardParser {
 
@@ -32,7 +31,7 @@ private:
 
     static pair<int, int> getDualValues(const std::string &line);
 
-    static std::vector<std::string> getFileLines(const std::string & filePath);
+    static std::vector<std::string> getFileLines(const std::string &filePath);
 
     static void loadBasicCards(std::map<std::string, Card *> &cards);
 
@@ -40,9 +39,15 @@ private:
 
     static void loadFlipCards(std::map<std::string, Card *> &cards);
 
-    static void validLines(std::vector<std::string> fileLines, std::string mode);
+    static void validLines(std::vector<std::string> fileLines, const std::string& mode);
 
 public:
+    static const std::string CARD_FOLDER_PATH;
+    static const std::string BASIC_CARD;
+    static const std::string DUAL_CARD;
+    static const std::string FLIP_CARD;
+    static const std::string DUAL_DELIMITER;
+
     static std::map<std::string, Card *> loadAllCards();
 };
 

@@ -45,10 +45,6 @@ void Game::play() {
     gameWinnerMessage();
 }
 
-void Game::gameWinnerMessage() const {
-    cout << players[(players[0]->getRoundsWon() > players[1]->getRoundsWon() ? 0 : 1)]->getName()
-         << " won the game!" << endl;
-}
 
 Player *Game::round() {
 
@@ -122,6 +118,11 @@ void Game::gameStartMessage() const {
     cout << "Starting a game of Pazaak between " << players[0]->getName() << " and " << players[1]->getName()
          << "." << endl;
     cout << players[currentlyPlaying]->getName() << " goes first." << endl << endl;
+}
+
+void Game::gameWinnerMessage() const {
+    cout << players[(players[0]->getRoundsWon() > players[1]->getRoundsWon() ? 0 : 1)]->getName()
+         << " won the game!" << endl;
 }
 
 void Game::roundTieMessage() const { cout << "Tie"; }

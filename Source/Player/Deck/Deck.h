@@ -39,6 +39,20 @@ private:
     static bool fileAlreadyExists(const std::vector<std::string> &files, const std::string &filename);
 
 public:
+    static const char NEWLINE;
+
+    static const std::string DECKS_DIRECTORY_PATH;
+    static const std::string FOLDER_DELIMITER;
+    static const std::string FILE_CARD_VALUE_DELIMITER;
+    static const std::string CARD_TYPE_VALUE_DELIMITER;
+    static const int DECK_SIZE = 10;
+    static const int MAX_CARDS_DRAWN = 4;
+    static const std::string BASIC_CARD_LEAD;
+    static const std::string DOUBLE_CARD_LEAD;
+    static const std::string DUAL_CARD_LEAD;
+    static const std::string FLEX_CARD_LEAD;
+    static const std::string FLIP_CARD_LEAD;
+
     //Constructors--------------------------------------------
     Deck() = default;
 
@@ -167,7 +181,7 @@ private:
      * @param file name of the file to be opened
      * @return individual lines of the file
      */
-    static std::vector<std::string> loadFileContent(std::string file);
+    static std::vector<std::string> loadFileContent(const std::string& file);
 
     /**
      * Processes the text file and splits it by the delimiter CARD_TYPE_VALUE_DELIMITER into key and value

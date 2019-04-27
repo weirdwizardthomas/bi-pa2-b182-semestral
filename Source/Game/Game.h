@@ -5,10 +5,6 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
-//Definitions-----------------------
-const int ROUNDS = 3;
-const int TARGET_SCORE = 20;
-
 #include "../Player/Player.h"
 
 class Game {
@@ -97,6 +93,8 @@ private:
     void turnPrompt() const;
 
 public:
+    static const int ROUNDS = 3;
+    static const int TARGET_SCORE = 20;
     //Constructor----------------------------
     Game(Player *player1, Player *player2, const std::map<std::string, Card *> &allCards);
 

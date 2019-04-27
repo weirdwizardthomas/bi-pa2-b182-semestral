@@ -11,28 +11,16 @@
 using namespace std;
 
 
-//Definitions-------------------------------
-const char NEWLINE = '\n';
-
-const string DUAL_DELIMITER = "|";
-const string PLUS_SIGN = "+";
-const string MINUS_SIGN = "-";
-const std::string FLIP_SIGN = " <~> ";
-
-
-const string DECKS_DIRECTORY_PATH = "../Data/Decks";
-const string FOLDER_DELIMITER = "/";
-const string FILE_CARD_VALUE_DELIMITER = ",";
-const string CARD_TYPE_VALUE_DELIMITER = ":";
-
-const int DECK_SIZE = 10;
-const int MAX_CARDS_DRAWN = 4;
-
-const string BASIC_CARD_LEAD = "BasicCards";
-const string DOUBLE_CARD_LEAD = "DoubleCards";
-const string DUAL_CARD_LEAD = "DualCards";
-const string FLEX_CARD_LEAD = "FlexCards";
-const string FLIP_CARD_LEAD = "FlipCards";
+const char Deck::NEWLINE = '\n';
+const string Deck::DECKS_DIRECTORY_PATH = "../Data/Decks";
+const string Deck::FOLDER_DELIMITER = "/";
+const string Deck::FILE_CARD_VALUE_DELIMITER = ",";
+const string Deck::CARD_TYPE_VALUE_DELIMITER = ":";
+const string Deck::BASIC_CARD_LEAD = "BasicCards";
+const string Deck::DOUBLE_CARD_LEAD = "DoubleCards";
+const string Deck::DUAL_CARD_LEAD = "DualCards";
+const string Deck::FLEX_CARD_LEAD = "FlexCards";
+const string Deck::FLIP_CARD_LEAD = "FlipCards";
 
 ostream &operator<<(ostream &out, const vector<string> &a) {
     size_t i = 0;
@@ -165,9 +153,9 @@ vector<string> Deck::parseDeckForCards() const {
             DoubleCardCounter++;
         else if (containsSubstring(cardDescription, "+/-"))
             FlexCardCounter++;
-        else if (containsSubstring(cardDescription, FLIP_SIGN))
+        else if (containsSubstring(cardDescription, FlipCard::FLIP_SIGN))
             categorised[FLIP].push_back(cardDescription);
-        else if (containsSubstring(cardDescription, DUAL_DELIMITER))
+        else if (containsSubstring(cardDescription, Card::DUAL_DELIMITER))
             categorised[DUAL].push_back(cardDescription);
         else
             categorised[BASIC].push_back(cardDescription);
@@ -183,16 +171,16 @@ vector<string> Deck::parseDeckForCards() const {
     //Remove the card operands
     for (auto &category : categorised)
         for (auto &currentValue : category) {
-            removeSubstring(currentValue, PLUS_SIGN);
-            removeSubstring(currentValue, DUAL_DELIMITER);
-            removeSubstring(currentValue, FLIP_SIGN);
+            removeSubstring(currentValue, Card::PLUS_SIGN);
+            removeSubstring(currentValue, Card::DUAL_DELIMITER);
+            removeSubstring(currentValue, FlipCard::FLIP_SIGN);
         }
 
     //Construct the line in the output vector
     for (auto &i : categorised) {
         string line;
         for (size_t j = 0; j < i.size(); j++)
-            line.append(i[j]).append((j == 0 || j == i.size() - 1 ? "" : FILE_CARD_VALUE_DELIMITER));
+            line.append(i[j]).append((j == 0 || j == i.size() - 1 ? "" : Deck::FILE_CARD_VALUE_DELIMITER));
         fileLines.push_back(line);
     }
 
@@ -208,7 +196,7 @@ void Deck::saveToFile() const {
     string filename = QueryUserInputFilename(files);
 
     string path;
-    path.append(DECKS_DIRECTORY_PATH).append(FOLDER_DELIMITER).append(filename);
+    path.append(Deck::DECKS_DIRECTORY_PATH).append(Deck::FOLDER_DELIMITER).append(filename);
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
         throw "File error"; //TODO proper exception
@@ -224,9 +212,10 @@ void Deck::saveToFile() const {
 
 //Static-methods----------------------
 void Deck::addLeadingCategories(vector<string> *categorised) {
-    string leads[5] = {BASIC_CARD_LEAD, DOUBLE_CARD_LEAD, DUAL_CARD_LEAD, FLIP_CARD_LEAD, FLEX_CARD_LEAD};
+    string leads[5] = {Deck::BASIC_CARD_LEAD, Deck::DOUBLE_CARD_LEAD, Deck::DUAL_CARD_LEAD, Deck::FLIP_CARD_LEAD,
+                       Deck::FLEX_CARD_LEAD};
     for (size_t k = 0; k < 5; ++k)
-        categorised[k].push_back(leads[k] + CARD_TYPE_VALUE_DELIMITER);
+        categorised[k].push_back(leads[k] + Deck::CARD_TYPE_VALUE_DELIMITER);
 }
 
 bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename) {
@@ -263,7 +252,7 @@ vector<string> Deck::getDecksFromDirectory() {
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir(DECKS_DIRECTORY_PATH.c_str())) != nullptr) {
+    if ((dir = opendir(Deck::DECKS_DIRECTORY_PATH.c_str())) != nullptr) {
         /* print all the files and directories within directory */
         while ((ent = readdir(dir)) != nullptr) {
             string fileName = ent->d_name;
@@ -292,11 +281,11 @@ int *Deck::getDualValuesFromString(const string &value) {
     return effects;
 }
 
-vector<string> Deck::loadFileContent(string file) {
+vector<string> Deck::loadFileContent(const string &file) {
     fstream deckFile;
 
     string path;
-    path.append(DECKS_DIRECTORY_PATH).append(FOLDER_DELIMITER).append(file);
+    path.append(Deck::DECKS_DIRECTORY_PATH).append(Deck::FOLDER_DELIMITER).append(file);
 
     deckFile.open(path);
     if (!deckFile.is_open())
@@ -376,14 +365,15 @@ map<string, vector<string>> Deck::parseAllFileLines(vector<string> &deckFileCont
 
     map<string, vector<string>> parsedLines;
     for (const auto &line : deckFileContent) {
-        size_t delimiterPosition = line.find(CARD_TYPE_VALUE_DELIMITER);
+        size_t delimiterPosition = line.find(Deck::CARD_TYPE_VALUE_DELIMITER);
         if (delimiterPosition == string::npos) //contains delimiter?
             throw "Invalid line";  //TODO PROPER EXCEPTION
         else {
             string cardType = line.substr(0, delimiterPosition); //TODO trim
             string cardValues = line.substr(delimiterPosition + 1, string::npos); //TODO trim
 
-            vector<string> parsedValues = splitStringByDelimiter(cardValues, FILE_CARD_VALUE_DELIMITER); //TODO trim
+            vector<string> parsedValues = splitStringByDelimiter(cardValues,
+                                                                 Deck::FILE_CARD_VALUE_DELIMITER); //TODO trim
             pair<string, vector<string>> parsedLine = make_pair(cardType, parsedValues);
             parsedLines.insert(parsedLine);
         }
@@ -396,11 +386,11 @@ vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vec
     vector<Card *> cards;
     map<string, vector<string>> parsedLines = Deck::parseAllFileLines(deckFileContent);//TODO TRIM
 
-    insertBasicCards(allCards, cards, parsedLines.at(BASIC_CARD_LEAD));
-    insertDualCards(allCards, cards, parsedLines.at(DUAL_CARD_LEAD));
-    insertFlipCards(allCards, cards, parsedLines.at(FLIP_CARD_LEAD));
-    insertDoubleCards(allCards, cards, singleParameterValue(parsedLines.at(DOUBLE_CARD_LEAD)));
-    insertFlexCards(allCards, cards, singleParameterValue(parsedLines.at(FLEX_CARD_LEAD)));
+    insertBasicCards(allCards, cards, parsedLines.at(Deck::BASIC_CARD_LEAD));
+    insertDualCards(allCards, cards, parsedLines.at(Deck::DUAL_CARD_LEAD));
+    insertFlipCards(allCards, cards, parsedLines.at(Deck::FLIP_CARD_LEAD));
+    insertDoubleCards(allCards, cards, singleParameterValue(parsedLines.at(Deck::DOUBLE_CARD_LEAD)));
+    insertFlexCards(allCards, cards, singleParameterValue(parsedLines.at(Deck::FLEX_CARD_LEAD)));
 
     //TODO try catch the stoi, might be an extra comma - no value to be parsed after a comma
     //TODO if card count doesn't match, ask to remove/add more cards - bleeding edge, do later

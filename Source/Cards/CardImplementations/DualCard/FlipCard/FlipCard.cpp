@@ -7,12 +7,7 @@
 //Namespace---------------------------------
 using namespace std;
 
-//Definitions-------------------------------
-const std::string FLIP_SIGN = " <~> ";
-const string DUAL_DELIMITER = "|";
-const string PLUS_SIGN = "+";
-const string MINUS_SIGN = "-";
-
+const std::string FlipCard::FLIP_SIGN = " <~> ";
 
 FlipCard::FlipCard(int a, int b) : DualCard(abs(a) <= abs(b) ? abs(a) : abs(b), (abs(a) <= abs(b) ? abs(b) : abs(a))) {}
 
@@ -25,8 +20,10 @@ int FlipCard::play(vector<int> &playedCards, int currentScore, int opponentScore
 }
 
 string FlipCard::getDescription() const {
-    return PLUS_SIGN + to_string(effects[0]) + FLIP_SIGN + MINUS_SIGN + to_string(effects[0]) + " " + DUAL_DELIMITER +
-           " " + PLUS_SIGN + to_string(effects[1]) + FLIP_SIGN + MINUS_SIGN + to_string(effects[1]);
+    return Card::PLUS_SIGN + to_string(effects[0]) + FlipCard::FLIP_SIGN +
+           Card::MINUS_SIGN + to_string(effects[0]) + " " + Card::DUAL_DELIMITER + " " +
+           Card::PLUS_SIGN + to_string(effects[1]) + FlipCard::FLIP_SIGN +
+           Card::MINUS_SIGN + to_string(effects[1]);
 }
 
 

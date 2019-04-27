@@ -10,7 +10,6 @@
 #include <map>
 #include <sstream>
 
-
 #include "Deck/Deck.h"
 #include "PlayerBoard/PlayerBoard.h"
 #include "Hand/Hand.h"

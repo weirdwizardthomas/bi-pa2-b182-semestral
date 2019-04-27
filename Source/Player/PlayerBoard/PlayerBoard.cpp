@@ -6,8 +6,7 @@
 
 using namespace std;
 
-const int LOWER_BOUND = -10;
-const int UPPER_BOUND = 10;
+
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Constructor-Destructor----------------------------------------------------------------------------------------------//
@@ -16,17 +15,16 @@ PlayerBoard::PlayerBoard() {
     this->currentScore = 0;
     this->roundsWon = 0;
     this->playedCards.reserve(TABLE_SIZE);
-    this->mainDeck.reserve(UPPER_BOUND * MAIN_DECK_CARD_COPIES);
+    this->mainDeck.reserve(Card::UPPER_BOUND * MAIN_DECK_CARD_COPIES);
     this->standing = false;
 
-    ///Generates MAIN_DECK_CARD_COPIES copies of 1-UPPER_BOUND cards
-    for (size_t i = 1; i <= UPPER_BOUND; i++)
+    ///Generates MAIN_DECK_CARD_COPIES copies of 1-Card::UPPER_BOUND cards
+    for (size_t i = 1; i <= Card::UPPER_BOUND; i++)
         for (size_t j = 0; j < MAIN_DECK_CARD_COPIES; j++)
             this->mainDeck.push_back(new BasicCard(i));
 }
 
 PlayerBoard::~PlayerBoard() {
-    //TODO solve the virtual destructor thingy
     for (auto &i : this->mainDeck)
         delete i;
 }
