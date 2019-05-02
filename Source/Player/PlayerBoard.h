@@ -7,8 +7,8 @@
 
 #include <vector>
 
-#include "../../Cards/Card.h"
-#include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
+#include "../Cards/Card.h"
+#include "../Cards/BasicCard.h"
 
 
 class PlayerBoard {
@@ -16,32 +16,27 @@ class PlayerBoard {
 private:
     //Attributes--------------------------
     int currentScore;
-    std::vector<int> playedCards;
-    std::vector<BasicCard *> mainDeck;
     size_t roundsWon;
     bool standing;
+    std::vector<int> playedCards;
+    std::vector<BasicCard *> mainDeck;
 
-    //Getters---------------------------
+
+    void generateMainDeck();
+
+    /**
+     *
+     * @return
+     */
+    size_t generateRandomBoundIndex() const;
+
+
     /**
      *
      * @param index
      * @return
      */
     BasicCard *getCardAt(size_t index) const;
-
-    //Setters---------------------------
-    /**
-     *
-     * @param standing
-     */
-    void setStanding(bool standing);
-
-    //Supportive-methods------------------
-    /**
-     *
-     * @return
-     */
-    size_t generateRandomBoundIndex() const;
 
     /**
      *
@@ -134,6 +129,7 @@ public:
      *
      */
     void reset();
+
 };
 
 

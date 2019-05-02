@@ -5,7 +5,7 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
-#include "../Player/Player.h"
+#include "Player/Player.h"
 
 class Game {
 private:
@@ -13,6 +13,13 @@ private:
     std::pair<Player *, Player *> players;
 
     //Methods--------------------------------
+
+    /**
+     * Determines whether both players are standing, and effectively ends the current round if so
+     * @return True if both are standing, False if at least one isn't
+     */
+    bool bothPlayersStanding() const;
+
     /**
      * Queries both players to select an existing deck of cards or to build a new one
      * @param allCards Database of all available cards
@@ -31,11 +38,7 @@ private:
      */
     Player *currentlyPlaying() const;
 
-    /**
-     * Determines whether both players are standing, and effectively ends the current round if so
-     * @return True if both are standing, False if at least one isn't
-     */
-    bool bothPlayersStanding() const;
+    void drawHands() const;
 
     /**
      * Examines the score and determines the victor of the round
@@ -49,6 +52,9 @@ private:
      */
     Player *getGameVictor() const;
 
+    /**
+     * Resets the board for both players
+     */
     void resetBoards();
 
     /**
@@ -72,10 +78,13 @@ private:
      * Determines the starting player by examining the first card of either player's main deck. Higher value goes first
      * @return
      */
-    size_t selectStartingPlayer();
+    void selectStartingPlayer();
 
     void turn(Player *currentPlayer);
+
     //Messages & prompts-----------------------
+    void currentScoreMessage() const;
+
     /**
      * Shows a message to tell players the game has commenced
      */
@@ -87,7 +96,7 @@ private:
     void gameVictorMessage() const;
 
     /**
-     * Informs the players that a round is commencing //TODO BETTER DESCRIPTION
+     * Shows a message that a round is commencing
      * @param roundNumber current round's number to be displayed
      */
     void roundPrompt(size_t roundNumber) const;
@@ -120,6 +129,12 @@ public:
 
     //Methods--------------------------------
     void play();
+
+    /**
+     * Clears the 'out' stream by sending a number of new lines into it
+     * @param out Output stream to be cleared
+     */
+    static void clearScreen(std::ostream &out);
 
 };
 

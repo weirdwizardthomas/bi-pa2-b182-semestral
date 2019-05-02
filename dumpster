@@ -1,0 +1,19 @@
+CXX= g++
+CXXFLAGS= -g -Wall -pedantic
+LDFLAGS=
+EXECUTABLE= Pazaak
+SOURCE_FOLDER = ./Source
+CARDS_FOLDER = $(SOURCE_FOLDER)/Cards
+PLAYER_FOLDER =  $(SOURCE_FOLDER)/Player
+UTILITIES_FOLDER =  $(SOURCE_FOLDER)/Utilities
+OUTPUT_FOLDER =  ./Output
+
+CARDS_SOURCE = $(CARDS_FOLDER)/Card.cpp $(CARDS_FOLDER)/DoubleCard.cpp $(CARDS_FOLDER)/DualCard.cpp $(CARDS_FOLDER)/FlexCard.cpp $(CARDS_FOLDER)/FlipCard.cpp #get all card files in the right order
+CARDS_OBJECTS = $(patsubst $(CARDS_FOLDER)%, $(OUTPUT_FOLDER)%, $(patsubst %.cpp, %.o, $(CARDS_SOURCE))) #swap the extensions and then swap the path
+
+
+cards.o: $(CARDS_SOURCE)
+	$(CXX) $(CXXFLAGS) -c $(LDFLAGS) $(CARDS_SOURCE) -o $(OUTPUT_FOLDER)/cards.o
+
+clean:
+	rm -f ./Output/*.o

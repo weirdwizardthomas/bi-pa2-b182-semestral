@@ -9,7 +9,7 @@
 #include <fstream>
 
 //Headers-----------------------------------
-#include "../../Card.h"
+#include "Card.h"
 
 /**
  * Basic cards add their value to the player's current score when played.

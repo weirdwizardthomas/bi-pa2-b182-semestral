@@ -5,6 +5,7 @@
 //
 
 #include "Player.h"
+#include "../Game.h"
 
 
 //Namespaces--------------------------------
@@ -13,7 +14,6 @@ using namespace std;
 Player::Player(string name) : name(std::move(name)) {}
 
 void Player::takeTurn(const int opponentScore) {
-    //TODO query what card to play, give the option to stand or quit the game
     if (board.isStanding()) {
         playerIsStandingMessage();
         return;
@@ -21,39 +21,62 @@ void Player::takeTurn(const int opponentScore) {
 
     boardStatusMessage(opponentScore);
     standPrompt();
-    //TODO Need to treat input
-    string input;
-    cin >> input;
 
-    if (input != "Y" && input != "N" && input != "S")
-        throw "INVALID INPUT"; //TODO proper exception
-
-    if (input == "S") {
+    if (isStandingUp()) {
         board.stand();
+        Game::clearScreen(cout);
         return;
     }
-
+    Game::clearScreen(cout);
     board.addPlayedCard(autoPlayCard());
     boardStatusMessage(opponentScore);
     actionPrompt();
 
-    //TODO ADD HELP QUERY
+    while (!playCard(opponentScore));
+
+}
+
+bool Player::playCard(const int opponentScore) {
+    string input;
     cin >> input;
-    if (input == "P") {
+    if (input == "P" || input == "PASS") {
         isPassingTurnMessage();
-        return;
-    } else { //play a card based on the number
-        stringstream extractChoice(input);
-        size_t choice=0;
-        extractChoice >> choice;
+        return true;
+    }
+
+    try {
+        size_t choice = stoull(input);
         if (choice > deck.getDeckSize())
-            throw "INVALID INPUT OUT OF BOUNDS";
+            return false;
 
         int cardResult = hand.playCard(choice, board.getPlayedCards(), board.getCurrentScore(), opponentScore);
-        //insert the value at the end
-        board.addPlayedCard(cardResult);
-        return;
+        board.addPlayedCard(cardResult); //insert the value at the end
+        Game::clearScreen(cout);
+        return true;
     }
+    catch (invalid_argument &e) {
+        Game::clearScreen(cout);
+        invalidInputMessage();
+        boardStatusMessage(opponentScore);
+        actionPrompt();
+        return false;
+    }
+
+}
+
+bool Player::isStandingUp() const {
+    string input;
+    bool invalidInput = true;
+    while (invalidInput) {
+        cin >> input;
+        invalidInput = input != "Y" && input != "N" && input != "S";
+        if (invalidInput) {
+            Game::clearScreen(cout);
+            invalidInputMessage();
+            standPrompt();
+        }
+    }
+    return input == "Y" || input == "S";
 }
 
 void Player::drawHand() {
@@ -71,13 +94,12 @@ int Player::autoPlayCard() { return board.drawCardFromMainDeck(); }
 void Player::addPoint() { board.addPoint(); }
 
 void Player::chooseDeck(const map<string, Card *> &allCards) {
-
     choosingDeckMessage();
 
     bool confirmed = false;
 
     while (!confirmed) {
-       deckChoicePrompt();
+        deckChoicePrompt();
 
         string input;
         cin >> input;
@@ -113,7 +135,12 @@ const string &Player::getName() const { return name; }
 
 int Player::getCurrentRoundScore() const { return board.getCurrentScore(); }
 
-int Player::getOpener() const { return board.getOpener(); }
+int Player::getOpener() const {
+    int opener = board.getOpener();
+    openerMessage(opener);
+    return opener;
+
+}
 
 size_t Player::getPlayedCardsCount() const { return board.getPlayedCardsCount(); }
 
@@ -144,12 +171,17 @@ void Player::actionPrompt() const {
 }
 
 void Player::deckChoicePrompt() const {
-    cout << "==============================" << endl;
+    cout << "============================================" << endl;
     cout << "[F]orge a new deck or [L]oad an existing one?" << endl;
 }
 
-void Player::choosingDeckMessage() const { cout << name << "'s turn to pick a deck" << endl; }
+void Player::choosingDeckMessage() const {
+    Game::clearScreen(cout);
+    cout << name << "'s turn to pick a deck." << endl;
+}
 
 void Player::isPassingTurnMessage() const { cout << name << " is passing their turn." << endl; }
 
 void Player::standPrompt() const { cout << "Would you like to [S]tand?" << endl; }
+
+void Player::openerMessage(int opener) const { cout << "Player " << name << "'s opener:" << opener << endl; }

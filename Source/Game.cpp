@@ -4,13 +4,16 @@
 
 #include "Game.h"
 
+#include <iostream>
+#include <iomanip>
+
 //Namespaces--------------------------
 using namespace std;
 
 //TODO rework players to be a pair and change appropriate calls
 Game::Game(Player *player1, Player *player2, const map<string, Card *> &allCards) : players({player1, player2}) {
-    selectStartingPlayer();
     chooseDecks(allCards);
+    selectStartingPlayer();
     gameStartMessage();
 }
 
@@ -26,31 +29,36 @@ void Game::play() {
     size_t roundNumber = 1;
 
     while (roundNumber <= ROUNDS) {
+        currentScoreMessage();
         roundPrompt(roundNumber);
         Player *roundVictor = round();
-        if (roundVictor == nullptr) //tie
+        if (roundVictor == nullptr) {
+            Game::clearScreen(cout);
             roundTieMessage();
-        else {
+        } else {
             roundVictor->addPoint();
             ++roundNumber;
+            Game::clearScreen(cout);
             roundVictorMessage(roundVictor);
         }
     }
 
+    Game::clearScreen(cout);
     gameVictorMessage();
 }
 
 Player *Game::round() {
     resetBoards();
-    players.first->drawHand();
-    players.second->drawHand();
+    drawHands();
 
     while (!bothPlayersStanding()) {
         turn(currentlyPlaying());
 
+        //Player broke the threshold
         if (currentlyPlaying()->getCurrentRoundScore() > Game::TARGET_SCORE)
             return currentlyNotPlaying();
 
+        //Player managed to fill the board without breaking the threshold
         if (currentlyPlaying()->getPlayedCardsCount() == PlayerBoard::TABLE_SIZE &&
             currentlyPlaying()->getCurrentRoundScore() <= Game::TARGET_SCORE)
             return currentlyPlaying();
@@ -60,6 +68,11 @@ Player *Game::round() {
 
 
     return getRoundVictor();
+}
+
+void Game::drawHands() const {
+    players.first->drawHand();
+    players.second->drawHand();
 }
 
 void Game::turn(Player *currentPlayer) {
@@ -105,8 +118,8 @@ bool Game::roundIsTie() const {
     return players.first->getCurrentRoundScore() == players.second->getCurrentRoundScore();
 }
 
-size_t Game::selectStartingPlayer() {
-    if (players.first->getOpener() < players.first->getOpener())
+void Game::selectStartingPlayer() {
+    if (players.first->getOpener() < players.second->getOpener())
         swapPlayers();
 }
 
@@ -119,13 +132,26 @@ void Game::swapPlayers() {
 //--------------------------------------------------------------------------------------------------------------------//
 //Queries and prompts-------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
+const int rowsCleared = 18;
+
+void Game::clearScreen(ostream &out) {
+    ios_base::fmtflags f(out.flags());
+    out << setfill('\n') << setw(rowsCleared)<<endl;
+    out.flags(f);
+}
+
+void Game::currentScoreMessage() const {
+    cout << "Current score: " << endl;
+    cout << players.first->getName() << ":" << players.first->getCurrentRoundScore() << endl;
+    cout << players.second->getName() << ":" << players.second->getCurrentRoundScore() << endl;
+}
+
 void Game::gameStartMessage() const {
-    for (size_t i = 0; i < 2; i++)
-        cout << endl;
-    cout << "Starting a game of Pazaak between "
-         << players.first->getName() << " and "
-         << players.second->getName() << "." << endl
-         << players.first->getName() << " goes first." << endl << endl;
+    Game::clearScreen(cout);
+    //TODO more ZAZ around here
+    cout << "Starting a game of Pazaak between " << players.first->getName() << " and " << players.second->getName()
+         << "." << endl;
+    cout << players.first->getName() << " goes first." << endl;
 }
 
 void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " won the game!" << endl; }
@@ -137,4 +163,3 @@ void Game::roundTieMessage() const { cout << "Tie" << endl; }
 void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
 
 void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play." << endl; }
-

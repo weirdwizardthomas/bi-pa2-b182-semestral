@@ -6,6 +6,8 @@
 //Libraries---------------------------------
 #include <string>
 #include <vector>
+#include<iostream>
+#include<iomanip>
 
 //Namespaces--------------------------------
 using namespace std;

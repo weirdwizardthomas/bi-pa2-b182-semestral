@@ -31,9 +31,11 @@ string Card::chooseSign() const {
         invalidInput = (sign != Card::PLUS_SIGN && sign != Card::MINUS_SIGN);
 
         if (invalidInput)
-            cout << "Invalid sign, please try again.";
+            invalidSignMessage();
 
     }
     return sign;
 }
+
+void Card::invalidSignMessage() const { cout << "Invalid sign, please try again."; }
 

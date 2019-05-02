@@ -4,8 +4,8 @@
 #include <map>
 
 //Classes-----------------------------------
-#include "Source/Game/Game.h"
-#include "Source/Utilities/Parsers/CardParser/CardParser.h"
+#include "Source/Game.h"
+#include "Source/Utilities/CardParser.h"
 
 //Definitions-------------------------------
 #define LEFT_INDEX_WRAPPER "("
@@ -16,7 +16,6 @@ using namespace std;
 
 int main() {
     map<string, Card *> cards = CardParser::loadAllCards();
-
 
     /*//Main menu--------------------------------------------
     cout << "Pazaak, a game from the Old Republic, implemented by weirdwizardtom:koristo1@fit.cvut.cz" << endl;
@@ -56,7 +55,7 @@ int main() {
 
     string name1, name2;
 
-
+    //TODO extract into a method
     cout << "Enter the name of the player:";
     cin >> name1;
     cout << "Created a player with the name " << name1 << endl;
@@ -64,15 +63,13 @@ int main() {
     cin >> name2;
     cout << "Created a player with the name " << name2 << endl;
 
-    Game *game = new Game(new Player(name1), new Player(name2), cards);
+    Game game = Game(new Player(name1), new Player(name2), cards);
 
-    game->play();
+    game.play();
 
     for (auto &card : cards)
         free(card.second);
-    delete[] game;
 
     return EXIT_SUCCESS;
-
 }
 

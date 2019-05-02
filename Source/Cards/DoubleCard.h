@@ -6,7 +6,7 @@
 #define TMPPAZAAK_DOUBLECARD_H
 
 
-#include "../../Card.h"
+#include "Card.h"
 
 /**
  * Double cards double the value of the current player's last played card when played
@@ -17,7 +17,7 @@ public:
 
     ~DoubleCard() override = default;
     /**
-     * Puts the card's effect in play
+     * Puts the card's effect in play - doubles the effective value of the last played card
      * @param playedCards Cards previously played by the current player
      * @param currentScore Current player's current round's score
      * @param opponentScore Opponent's current round's score

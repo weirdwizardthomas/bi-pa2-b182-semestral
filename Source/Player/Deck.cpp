@@ -4,7 +4,7 @@
 //
 
 #include "Deck.h"
-#include "../../Cards/CardType.h"
+#include "../Cards/CardType.h"
 
 //Namespaces--------------------------------
 using namespace std;
@@ -20,6 +20,13 @@ const string Deck::DUAL_CARD_LEAD = "DualCards";
 const string Deck::FLEX_CARD_LEAD = "FlexCards";
 const string Deck::FLIP_CARD_LEAD = "FlipCards";
 
+class CannotOpenDirectory : public exception {
+public:
+    const char *what() const throw() override {
+        return ("Cannot open the" + Deck::DECKS_DIRECTORY_PATH + "directory.").c_str();
+    }
+};
+
 ostream &operator<<(ostream &out, const vector<string> &a) { //TODO make this into a method instead of an operator
     size_t i = 0;
     for (const auto &file : a)
@@ -29,7 +36,7 @@ ostream &operator<<(ostream &out, const vector<string> &a) { //TODO make this in
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
-    for (Card *card : deck.cards)
+    for (const Card *card : deck.cards)
         cout << "(" << i++ << ") " << *card << endl;
     return out;
 }
@@ -47,7 +54,6 @@ vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
     return allCardsVector;
 }
 
-//TODO move elsewhere
 void removeSubstring(string &master, const string &pattern) {
     string::size_type n = pattern.length();
     for (string::size_type i = master.find(pattern);
@@ -65,7 +71,6 @@ Deck::Deck(vector<Card *> cards) : cards(std::move(cards)) {}
 
 Deck::Deck(const map<string, Card *> &allCards) {
     size_t i = 0;
-    //TODO Have pages and a fixed amount per page?
     for (auto &card : allCards) {
         cout << (i < 10 ? " " : "") //Offsets single digit indices
              << (i < 100 ? " " : "")  //Offsets double digit indices
@@ -73,7 +78,6 @@ Deck::Deck(const map<string, Card *> &allCards) {
         i++;
     }
 
-    //TODO exit query here ?
     selectCardsDeckSizePrompt();
     loadCardsFromUser(allCards);
     deckForgedMessage();
@@ -81,9 +85,7 @@ Deck::Deck(const map<string, Card *> &allCards) {
 
 void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
 
-void Deck::selectCardsDeckSizePrompt() {
-    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl;
-}
+void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
 
 //Other-methods-----------------------
 void Deck::addCard(Card *card) { this->cards.push_back(card); }
@@ -262,7 +264,7 @@ vector<string> Deck::getDecksFromDirectory() {
         closedir(dir);
     } else
         /* could not open directory */
-        throw "Couldn't open directory"; //TODO better exception
+        throw CannotOpenDirectory();
 
     return files;
 }
@@ -381,7 +383,6 @@ map<string, vector<string>> Deck::parseAllFileLines(vector<string> &deckFileCont
     return parsedLines;
 }
 
-//TODO better method name
 vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vector<string> &deckFileContent) {
     vector<Card *> cards;
     map<string, vector<string>> parsedLines = Deck::parseAllFileLines(deckFileContent);//TODO TRIM
@@ -401,15 +402,14 @@ vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vec
 }
 
 string Deck::QueryUserInputFilename(const vector<string> &files) {
-    cout << "Saved decks" << endl; //TODO extract into prompt
-    cout << files;
+    displayDecksMessage(files);
+    saveDeckAsPrompt();
 
     string filename;
-    cout << "Save deck as:";  //TODO extract into prompt
     cin >> filename;
 
     while (Deck::fileAlreadyExists(files, filename)) {
-        cout << "File already exists, please try another name: ";  //TODO extract into prompt
+        fileExistsMessage();
         cin >> filename;
     }
     return filename;
@@ -459,7 +459,10 @@ size_t Deck::userDeckIndexInput(const vector<string> &files) {
 
 void Deck::selectDeckPrompt() { cout << "Select a deck:"; }
 
-void Deck::listDecksMessage(const vector<string> &files) {
-    cout << "Decks available" << endl;
-    cout << files;
-}
+void Deck::listDecksMessage(const vector<string> &files) { cout << "Decks available" << endl << files; }
+
+void Deck::fileExistsMessage() { cout << "File already exists, please try another name: "; }
+
+void Deck::saveDeckAsPrompt() { cout << "Save deck as:"; }
+
+void Deck::displayDecksMessage(const vector<string> &files) { cout << "Saved decks" << endl << files; }

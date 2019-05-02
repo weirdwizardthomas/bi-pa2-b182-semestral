@@ -6,7 +6,7 @@
 #define TMPPAZAAK_PLUSMINUSONETWOCARD_H
 
 //Classes-----------------------------------
-#include "../DualCard.h"
+#include "DualCard.h"
 
 
 /**
@@ -16,9 +16,11 @@ class FlexCard : public DualCard {
 private:
     std::string getSignedAttribute() const;
 
+    void chooseSignPrompt() const;
+
 public:
-    static const int A = 1;
-    static const int B = 2;
+    static const int LEFT = 1;
+    static const int RIGHT = 2;
     static const std::string SIGN_DELIMITER;
 
     //Constructor---------------------------

@@ -36,6 +36,8 @@ protected:
      */
     std::string chooseSign() const;
 
+    void invalidSignMessage() const;
+
 public:
     static const int LOWER_BOUND = -10;
     static const int UPPER_BOUND = 10;
@@ -55,21 +57,20 @@ public:
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
-     * generates card's effect's description
+     * Generates card's effect's description
      * @return a verbose effect of the card
      */
     virtual std::string getDescription() const = 0;
 
     /**
      *
-     * @param out the std::ostream
+     * @param out the Stream into which the card's decription will be sent
      * @param card card to be placed into the stream
      * @return getDescription()
      */
-
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
-};
 
+};
 
 
 #endif //TMPPAZAAK_CARD_H

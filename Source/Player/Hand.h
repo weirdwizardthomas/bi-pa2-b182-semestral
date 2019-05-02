@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "../../Cards/Card.h"
+#include "../Cards/Card.h"
 
 class Hand {
 private:

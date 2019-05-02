@@ -13,11 +13,11 @@
 #include <dirent.h>
 
 //Classes-----------------------------------
-#include "../../Cards/Card.h"
-#include "../../Cards/CardImplementations/BasicCard/BasicCard.h"
-#include "../../Cards/CardImplementations/DoubleCard/DoubleCard.h"
-#include "../../Cards/CardImplementations/DualCard/FlexCard/FlexCard.h"
-#include "../../Cards/CardImplementations/DualCard/FlipCard/FlipCard.h"
+#include "../Cards/Card.h"
+#include "../Cards/BasicCard.h"
+#include "../Cards/DoubleCard.h"
+#include "../Cards/FlexCard.h"
+#include "../Cards/FlipCard.h"
 
 class Deck {
 private:
@@ -236,6 +236,12 @@ private:
     static void listDecksMessage(const std::vector<std::string> &files);
 
     static void selectDeckPrompt();
+
+    static void displayDecksMessage(const std::vector<std::string> &files);
+
+    static void saveDeckAsPrompt();
+
+    static void fileExistsMessage();
 };
 
 #endif //PAZAAK_DECK_H
