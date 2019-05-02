@@ -9,6 +9,7 @@
 
 #include "../Cards/Card.h"
 #include "../Cards/BasicCard.h"
+#include "../Utilities/RandomNumberGenerator.h"
 
 
 class PlayerBoard {
@@ -20,23 +21,11 @@ private:
     bool standing;
     std::vector<int> playedCards;
     std::vector<BasicCard *> mainDeck;
+    RandomNumberGenerator randomNumberGenerator;
 
 
     void generateMainDeck();
 
-    /**
-     *
-     * @return
-     */
-    size_t generateRandomBoundIndex() const;
-
-
-    /**
-     *
-     * @param index
-     * @return
-     */
-    BasicCard *getCardAt(size_t index) const;
 
     /**
      *
@@ -76,7 +65,7 @@ public:
      *
      * @return
      */
-    int getOpener() const;
+    int getOpener();
 
     /**
      *

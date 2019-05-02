@@ -11,7 +11,7 @@
 using namespace std;
 
 //TODO rework players to be a pair and change appropriate calls
-Game::Game(Player *player1, Player *player2, const map<string, Card *> &allCards) : players({player1, player2}) {
+Game::Game(Player *player1, Player *player2, const map<string, Card *> &allCards) : players({player1, player2}){
     chooseDecks(allCards);
     selectStartingPlayer();
     gameStartMessage();

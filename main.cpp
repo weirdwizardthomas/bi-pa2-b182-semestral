@@ -15,6 +15,8 @@
 using namespace std;
 
 int main() {
+
+
     map<string, Card *> cards = CardParser::loadAllCards();
 
     /*//Main menu--------------------------------------------

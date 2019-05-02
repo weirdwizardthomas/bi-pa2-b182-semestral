@@ -5,6 +5,7 @@
 
 #include "Deck.h"
 #include "../Cards/CardType.h"
+#include "../Utilities/Utilities.cpp"
 
 //Namespaces--------------------------------
 using namespace std;
@@ -22,17 +23,28 @@ const string Deck::FLIP_CARD_LEAD = "FlipCards";
 
 class CannotOpenDirectory : public exception {
 public:
-    const char *what() const throw() override {
+    const char *what() const noexcept override {
         return ("Cannot open the" + Deck::DECKS_DIRECTORY_PATH + "directory.").c_str();
     }
 };
 
-ostream &operator<<(ostream &out, const vector<string> &a) { //TODO make this into a method instead of an operator
-    size_t i = 0;
-    for (const auto &file : a)
-        out << "(" << i++ << ") " << file << endl;
-    return out;
-}
+class ParseError : public exception {
+    const char *what() const noexcept override {
+        return ("Error reading file");
+    }
+};
+
+class InvalidLine : public exception {
+    const char *what() const noexcept override {
+        return ("Error reading file");
+    }
+};
+
+class CannotOpenFile : public exception {
+    const char *what() const noexcept override {
+        return ("Cannot open file.");
+    }
+};
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
@@ -67,9 +79,11 @@ void removeSubstring(string &master, const string &pattern) {
 //--------------------------------------------------------------------------------------------------------------------//
 
 //Constructors
-Deck::Deck(vector<Card *> cards) : cards(std::move(cards)) {}
+Deck::Deck() : randomGenerator(0, DECK_SIZE) {}
 
-Deck::Deck(const map<string, Card *> &allCards) {
+Deck::Deck(vector<Card *> cards) : cards(std::move(cards)), randomGenerator(0, DECK_SIZE) {}
+
+Deck::Deck(const map<string, Card *> &allCards) : randomGenerator(0, DECK_SIZE) {
     size_t i = 0;
     for (auto &card : allCards) {
         cout << (i < 10 ? " " : "") //Offsets single digit indices
@@ -83,10 +97,6 @@ Deck::Deck(const map<string, Card *> &allCards) {
     deckForgedMessage();
 }
 
-void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
-
-void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
-
 //Other-methods-----------------------
 void Deck::addCard(Card *card) { this->cards.push_back(card); }
 
@@ -96,9 +106,10 @@ vector<Card *> Deck::drawCardsFromDeck() {
     for (size_t i = 0; i < MAX_CARDS_DRAWN; i++) {
         if (cards.empty())
             break;
-        size_t pickedCardIndex = rand() % this->cards.size(); //TODO change the randomness
+        size_t pickedCardIndex = randomGenerator();
         drawnCards.push_back(this->cards[pickedCardIndex]);
         this->cards.erase(this->cards.begin() + pickedCardIndex);
+        randomGenerator.lowerCeiling(cards.size());
     }
 
     return drawnCards;
@@ -106,7 +117,6 @@ vector<Card *> Deck::drawCardsFromDeck() {
 
 size_t Deck::getDeckSize() const { return this->cards.size(); }
 
-//TODO allow replacing cards during the selection using cin.fail && cin.clear and cin >> string/char
 void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     vector<Card *> allCardsVector = copyMapToVector(allCards);
 
@@ -138,7 +148,7 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
 
 void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
 
-vector<string> Deck::prepareDeckForSaving() const { //TODO refactor
+vector<string> Deck::prepareDeckForSaving() const { //TODO refactor - use typeof
     vector<string> fileLines;
 
     vector<string> categorised[5];
@@ -193,7 +203,7 @@ void Deck::saveToFile() const {
 
     fstream deckFile;
 
-    vector<string> files = getDecksFromDirectory(); //TODO Change to a set?
+    vector<string> files = getDecksFromDirectory();
 
     string filename = QueryUserInputFilename(files);
 
@@ -201,7 +211,7 @@ void Deck::saveToFile() const {
     path.append(Deck::DECKS_DIRECTORY_PATH).append(Deck::FOLDER_DELIMITER).append(filename);
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
-        throw "File error"; //TODO proper exception
+        throw CannotOpenFile();
 
     vector<string> cardLines = prepareDeckForSaving();
 
@@ -231,15 +241,14 @@ void Deck::convertFlipCardToFileFormat(vector<string> *categorised) {
     for (size_t i = 1; i < categorised[3].size(); i++) {
         string currentFlipCard = categorised[3][i];
         //Split the string (X <~> -X | Y <~> -Y) into X<~>-X and Y<~>-Y
-        vector<string> splitValues = splitStringByDelimiter(currentFlipCard, "|"); //TODO replace with an array
-
+        vector<string> splitValues = splitStringByDelimiter(currentFlipCard, "|");
         //Extract the X from each substring
         string parsedFlipCard;
         for (size_t j = 0; j < 2; j++) {
             //Extract the first number from each operand
             string extractedValue = (splitStringByDelimiter(splitValues[j], "<~>")[0]);
             //Remove redundant symbols - sign and white spaces
-            extractedValue = to_string(stoi(extractedValue)); //TODO can be made easier, but this works for now
+            extractedValue = to_string(stoi(extractedValue));
             //Add to the line with a white space between if necessary
             parsedFlipCard.append(extractedValue).append((j == 0 ? " " : ""));
         }
@@ -270,11 +279,10 @@ vector<string> Deck::getDecksFromDirectory() {
 }
 
 int *Deck::getDualValuesFromString(const string &value) {
-    //TODO CAN MAKE PAIR
     vector<string> parsedValue = splitStringByDelimiter(value, " ");
 
     if (parsedValue.size() != 2)
-        throw "Parse error"; //TODO PROPER EXCEPTION, invalid count of doubling cards
+        throw ParseError();
 
     auto effects = new int[2];
     effects[0] = stoi(parsedValue[0]);
@@ -291,7 +299,7 @@ vector<string> Deck::loadFileContent(const string &file) {
 
     deckFile.open(path);
     if (!deckFile.is_open())
-        throw "File opening error"; //TODO proper exception
+        throw CannotOpenFile();
 
     string line;
     vector<string> fileContent;
@@ -369,13 +377,15 @@ map<string, vector<string>> Deck::parseAllFileLines(vector<string> &deckFileCont
     for (const auto &line : deckFileContent) {
         size_t delimiterPosition = line.find(Deck::CARD_TYPE_VALUE_DELIMITER);
         if (delimiterPosition == string::npos) //contains delimiter?
-            throw "Invalid line";  //TODO PROPER EXCEPTION
+            throw InvalidLine();
         else {
-            string cardType = line.substr(0, delimiterPosition); //TODO trim
-            string cardValues = line.substr(delimiterPosition + 1, string::npos); //TODO trim
+            string dummy = line.substr(0, delimiterPosition);
+            string cardType = trim(dummy);
 
-            vector<string> parsedValues = splitStringByDelimiter(cardValues,
-                                                                 Deck::FILE_CARD_VALUE_DELIMITER); //TODO trim
+            dummy = line.substr(delimiterPosition + 1, string::npos);
+            string cardValues = trim(dummy);
+
+            vector<string> parsedValues = splitStringByDelimiter(cardValues, Deck::FILE_CARD_VALUE_DELIMITER);
             pair<string, vector<string>> parsedLine = make_pair(cardType, parsedValues);
             parsedLines.insert(parsedLine);
         }
@@ -385,8 +395,7 @@ map<string, vector<string>> Deck::parseAllFileLines(vector<string> &deckFileCont
 
 vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vector<string> &deckFileContent) {
     vector<Card *> cards;
-    map<string, vector<string>> parsedLines = Deck::parseAllFileLines(deckFileContent);//TODO TRIM
-
+    map<string, vector<string>> parsedLines = Deck::parseAllFileLines(deckFileContent);
     insertBasicCards(allCards, cards, parsedLines.at(Deck::BASIC_CARD_LEAD));
     insertDualCards(allCards, cards, parsedLines.at(Deck::DUAL_CARD_LEAD));
     insertFlipCards(allCards, cards, parsedLines.at(Deck::FLIP_CARD_LEAD));
@@ -396,7 +405,7 @@ vector<Card *> Deck::parseLinesForCards(const map<string, Card *> &allCards, vec
     //TODO try catch the stoi, might be an extra comma - no value to be parsed after a comma
     //TODO if card count doesn't match, ask to remove/add more cards - bleeding edge, do later
     if (cards.size() != DECK_SIZE)
-        throw "Error parsing"; //TODO PROPER EXCEPTION - not enough cards in a deck
+        throw ParseError();
 
     return cards;
 }
@@ -417,11 +426,11 @@ string Deck::QueryUserInputFilename(const vector<string> &files) {
 
 int Deck::singleParameterValue(const vector<string> &lineValues) {
     if (lineValues.size() != 1)
-        throw "Parse error"; //TODO PROPER EXCEPTION - invalid amount of arguments
+        throw ParseError();
 
     int flexCardCount = stoi(lineValues[0]);
     if (flexCardCount < 0)
-        throw "Parse error"; //TODO PROPER EXCEPTION, invalid count of doubling cards
+        throw ParseError();
 
     return flexCardCount;
 }
@@ -459,10 +468,24 @@ size_t Deck::userDeckIndexInput(const vector<string> &files) {
 
 void Deck::selectDeckPrompt() { cout << "Select a deck:"; }
 
-void Deck::listDecksMessage(const vector<string> &files) { cout << "Decks available" << endl << files; }
+void Deck::listDecksMessage(const vector<string> &files) {
+    cout << "Decks available" << endl;
+    size_t i = 0;
+    for (const auto &file : files)
+        cout << "(" << i++ << ") " << file << endl;
+}
 
 void Deck::fileExistsMessage() { cout << "File already exists, please try another name: "; }
 
 void Deck::saveDeckAsPrompt() { cout << "Save deck as:"; }
 
-void Deck::displayDecksMessage(const vector<string> &files) { cout << "Saved decks" << endl << files; }
+void Deck::displayDecksMessage(const vector<string> &files) {
+    cout << "Saved decks" << endl;
+    size_t i = 0;
+    for (const auto &file : files)
+        cout << "(" << i++ << ") " << file << endl;
+}
+
+void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
+
+void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }

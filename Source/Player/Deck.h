@@ -18,11 +18,13 @@
 #include "../Cards/DoubleCard.h"
 #include "../Cards/FlexCard.h"
 #include "../Cards/FlipCard.h"
+#include "../Utilities/RandomNumberGenerator.h"
 
 class Deck {
 private:
     //Attributes----------------------------------------------
     std::vector<Card *> cards;
+    RandomNumberGenerator randomGenerator;
 
     /**
      * Queries the player with a choice of card indices to add to the deck
@@ -53,8 +55,7 @@ public:
     static const std::string FLIP_CARD_LEAD;
 
     //Constructors--------------------------------------------
-    Deck() = default;
-
+    Deck();
     explicit Deck(const std::map<std::string, Card *> &allCards);
 
     explicit Deck(std::vector<Card *> cards);

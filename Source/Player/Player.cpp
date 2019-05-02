@@ -135,7 +135,7 @@ const string &Player::getName() const { return name; }
 
 int Player::getCurrentRoundScore() const { return board.getCurrentScore(); }
 
-int Player::getOpener() const {
+int Player::getOpener() {
     int opener = board.getOpener();
     openerMessage(opener);
     return opener;

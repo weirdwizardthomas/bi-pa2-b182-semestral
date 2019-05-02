@@ -6,12 +6,12 @@
 #define PAZAAK_GAME_H
 
 #include "Player/Player.h"
+#include "Utilities/RandomNumberGenerator.h"
 
 class Game {
 private:
     //Attributes------------------------------
     std::pair<Player *, Player *> players;
-
     //Methods--------------------------------
 
     /**

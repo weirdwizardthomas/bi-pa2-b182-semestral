@@ -131,7 +131,7 @@ public:
      *
      * @return
      */
-    int getOpener() const;
+    int getOpener();
 
     /**
      *

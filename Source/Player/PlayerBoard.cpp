@@ -5,13 +5,15 @@
 #include "PlayerBoard.h"
 
 using namespace std;
+
 const std::string PlayerBoard::PLAYED_CARDS_DELIMITER = " ";
 
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Constructor-Destructor----------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
-PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false) {
+PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
+                             randomNumberGenerator(0, Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES) {
     playedCards.reserve(PlayerBoard::TABLE_SIZE);
     mainDeck.reserve(Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES);
     generateMainDeck();
@@ -19,7 +21,7 @@ PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false) {
 
 void PlayerBoard::generateMainDeck() {
     for (size_t i = 1; i <= Card::UPPER_BOUND; i++)
-        for (size_t j = 0; j < MAIN_DECK_CARD_COPIES; ++j)
+        for (size_t j = 0; j < PlayerBoard::MAIN_DECK_CARD_COPIES; ++j)
             mainDeck.push_back(new BasicCard(i));
 }
 
@@ -32,8 +34,8 @@ PlayerBoard::~PlayerBoard() {
 //Getters-------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
 int PlayerBoard::drawCardFromMainDeck() {
-    size_t index = generateRandomBoundIndex();
-    int value = getCardAt(index)->play();
+    size_t index = randomNumberGenerator();
+    int value = mainDeck[index]->play();
     delete mainDeck[index];
     mainDeck.erase(mainDeck.begin() + index);
     return value;
@@ -41,7 +43,7 @@ int PlayerBoard::drawCardFromMainDeck() {
 
 int PlayerBoard::getCurrentScore() const { return currentScore; }
 
-int PlayerBoard::getOpener() const { return getCardAt(generateRandomBoundIndex())->play(); }
+int PlayerBoard::getOpener() { return mainDeck[randomNumberGenerator()]->play(); }
 
 vector<int> &PlayerBoard::getPlayedCards() { return playedCards; }
 
@@ -94,8 +96,4 @@ void PlayerBoard::recalculateScore() {
     for (auto playedCard : playedCards)
         currentScore += playedCard;
 }
-
-BasicCard *PlayerBoard::getCardAt(size_t index) const { return mainDeck[index]; }
-
-unsigned long PlayerBoard::generateRandomBoundIndex() const { return (size_t) rand() % mainDeck.size(); }
 
