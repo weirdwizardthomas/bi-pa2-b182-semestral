@@ -123,11 +123,7 @@ void Game::selectStartingPlayer() {
         swapPlayers();
 }
 
-void Game::swapPlayers() {
-    auto dummy = players.first;
-    players.first = players.second;
-    players.second = dummy;
-}
+void Game::swapPlayers() { swap(players.first, players.second); }
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Queries and prompts-------------------------------------------------------------------------------------------------//
@@ -136,7 +132,7 @@ const int rowsCleared = 18;
 
 void Game::clearScreen(ostream &out) {
     ios_base::fmtflags f(out.flags());
-    out << setfill('\n') << setw(rowsCleared)<<endl;
+    out << setfill('\n') << setw(rowsCleared) << endl;
     out.flags(f);
 }
 
