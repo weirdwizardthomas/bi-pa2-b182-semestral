@@ -38,6 +38,7 @@ int PlayerBoard::drawCardFromMainDeck() {
     int value = mainDeck[index]->play();
     delete mainDeck[index];
     mainDeck.erase(mainDeck.begin() + index);
+    randomNumberGenerator.lowerCeiling(mainDeck.size());
     return value;
 }
 

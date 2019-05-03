@@ -3,11 +3,12 @@
 // Created by tomtom on 15/02/19.
 //
 
+
 //Libraries---------------------------------
 #include <string>
 #include <vector>
-#include<iostream>
-#include<iomanip>
+#include <iostream>
+#include <iomanip>
 
 //Namespaces--------------------------------
 using namespace std;
@@ -33,3 +34,4 @@ inline std::string &ltrim(std::string &s) {
 
 // trim from both ends of string (right then left)
 inline std::string &trim(std::string &s) { return ltrim(rtrim(s)); }
+

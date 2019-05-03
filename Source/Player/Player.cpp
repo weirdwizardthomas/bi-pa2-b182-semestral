@@ -6,7 +6,7 @@
 
 #include "Player.h"
 #include "../Game.h"
-
+#include "../Utilities/DeckParser.h"
 
 //Namespaces--------------------------------
 using namespace std;
@@ -109,7 +109,7 @@ void Player::chooseDeck(const map<string, Card *> &allCards) {
         }
 
         //Construct the deck, assign it and show it
-        deck = (input == "F" ? Deck(allCards) : Deck::loadFromFile(allCards));
+        deck = (input == "F" ? Deck(allCards) : DeckParser::loadFromFile(allCards));
         printDeck();
         deckApprovalQuery();
 
