@@ -4,39 +4,20 @@
 
 #include <list>
 #include "DeckParser.h"
-#include "Utilities.cpp"
+#include "Exceptions.h"
 
 using namespace std;
 
 const char DeckParser::NEWLINE = '\n';
 const string DeckParser::FOLDER_DELIMITER = "/";
-const string DeckParser::FILE_CARD_VALUE_DELIMITER = ",";
-const string DeckParser::CARD_TYPE_VALUE_DELIMITER = ":";
+const string DeckParser::CARD_DESCRIPTION_DELIMITER = ": ";
 const string DeckParser::DECKS_DIRECTORY_PATH{"../Data/Decks"};
-const string DeckParser::BASIC_CARD_LEAD{"Basic Cards: "};
-const string DeckParser::DOUBLE_CARD_LEAD{"Double Cards: "};
-const string DeckParser::DUAL_CARD_LEAD{"Dual Card: "};
-const string DeckParser::FLEX_CARD_LEAD{"Flex Card: "};
-const string DeckParser::FLIP_CARD_LEAD{"Flip Card: "};
+const string DeckParser::BASIC_CARD_LEAD{"Basic Cards" + DeckParser::CARD_DESCRIPTION_DELIMITER};
+const string DeckParser::DOUBLE_CARD_LEAD{"Double Cards" + DeckParser::CARD_DESCRIPTION_DELIMITER};
+const string DeckParser::DUAL_CARD_LEAD{"Dual Card" + DeckParser::CARD_DESCRIPTION_DELIMITER};
+const string DeckParser::FLEX_CARD_LEAD{"Flex Card" + DeckParser::CARD_DESCRIPTION_DELIMITER};
+const string DeckParser::FLIP_CARD_LEAD{"Flip Card" + DeckParser::CARD_DESCRIPTION_DELIMITER};
 
-class CannotOpenDirectory : public exception {
-public:
-    const char *what() const noexcept override {
-        return ("Cannot open the" + DeckParser::DECKS_DIRECTORY_PATH + "directory.").c_str();
-    }
-};
-
-class CannotOpenFile : public exception {
-    const char *what() const noexcept override {
-        return ("Cannot open file.");
-    }
-};
-
-class ParseError : public exception {
-    const char *what() const noexcept override {
-        return ("Error reading file");
-    }
-};
 
 const vector<string> DeckParser::loadFileContent(const string &file) {
     fstream deckFile;
@@ -60,7 +41,7 @@ const vector<string> DeckParser::loadFileContent(const string &file) {
     return fileContent;
 }
 
-Deck DeckParser::loadFromFile(const map<string, Card *> &allCards) {
+Deck DeckParser::loadFromFile(const CardDatabase &allCards) {
     //Select a file
     vector<string> files = DeckParser::getDecksFromDirectory(); //Find all files in a directory
     string loadedFile = files[DeckParser::userDeckIndexInput(files)]; //pick a file in the directory
@@ -70,17 +51,15 @@ Deck DeckParser::loadFromFile(const map<string, Card *> &allCards) {
     return Deck(cards); //forge the deck
 }
 
-vector<Card *> DeckParser::parseLinesForCards(const map<string, Card *> &allCards, const vector<string> &fileLines) {
-    list < Card * > cards;
+vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &allCards, const vector<string> &fileLines) {
+    list<Card *> cards;
 
     for (const string &line: fileLines) {
-        auto splitLine = splitStringByDelimiter(line, ": ");
+        auto splitLine = splitStringByDelimiter(line, DeckParser::CARD_DESCRIPTION_DELIMITER);
         if (splitLine.size() != 2)
             throw ParseError();
 
-        try {
-            cards.push_back(allCards.at(splitLine[1]));
-        }
+        try { cards.push_back(allCards.get(splitLine.back())); }
         catch (out_of_range &e) {
             throw ParseError();
         }
@@ -113,8 +92,8 @@ vector<string> DeckParser::getDecksFromDirectory() {
     return files;
 }
 
-vector<string> DeckParser::splitStringByDelimiter(string phrase, const string &delimiter) {
-    vector<string> list;
+list<string> DeckParser::splitStringByDelimiter(string phrase, const string &delimiter) {
+    list<string> list;
     size_t pos = 0;
     string token;
     while ((pos = phrase.find(delimiter)) != string::npos) {

@@ -5,7 +5,7 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
-#include "Player/Player.h"
+#include "Player/Player/Player.h"
 #include "Utilities/RandomNumberGenerator.h"
 
 class Game {
@@ -24,7 +24,7 @@ private:
      * Queries both players to select an existing deck of cards or to build a new one
      * @param allCards Database of all available cards
      */
-    void chooseDecks(const std::map<std::string, Card *> &allCards) const;
+    void chooseDecks(const CardDatabase &allCards) const;
 
     /**
      * Returns the player who is not currently on turn
@@ -123,7 +123,7 @@ public:
     static const int TARGET_SCORE = 20;
 
     //Constructor----------------------------
-    Game(Player *player1, Player *player2, const std::map<std::string, Card *> &allCards);
+    Game(Player *player1, Player *player2, const CardDatabase &allCards);
 
     ~Game();
 

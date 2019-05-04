@@ -21,7 +21,7 @@ int FlipCard::play(vector<int> &playedCards, int currentScore, int opponentScore
 
 string FlipCard::getDescription() const {
     return Card::PLUS_SIGN + to_string(values.first) + FlipCard::FLIP_SIGN +
-           Card::MINUS_SIGN + to_string(values.first) + " " + Card::DUAL_DELIMITER + " " +
+           Card::MINUS_SIGN + to_string(values.first) + " " + DualCard::DUAL_DELIMITER + " " +
            Card::PLUS_SIGN + to_string(values.second) + FlipCard::FLIP_SIGN +
            Card::MINUS_SIGN + to_string(values.second);
 }

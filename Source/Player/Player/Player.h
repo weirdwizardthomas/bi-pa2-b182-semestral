@@ -10,9 +10,10 @@
 #include <map>
 #include <sstream>
 
-#include "Deck.h"
-#include "PlayerBoard.h"
-#include "Hand.h"
+#include "../Deck/Deck.h"
+#include "../PlayerBoard.h"
+#include "../Hand.h"
+#include "../../Cards/CardDatabase.h"
 
 class Player {
 private:
@@ -110,7 +111,7 @@ public:
      *
      * @param allCards
      */
-    void chooseDeck(const std::map<std::string, Card *> &allCards);
+    void chooseDeck(const CardDatabase &allCards);
 
     /**
      *
@@ -121,6 +122,8 @@ public:
      *
      */
     void resetBoard();
+
+    void stand();
 
     //Getters------------------------------------------------------------
     int getCurrentRoundScore() const;

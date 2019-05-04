@@ -6,7 +6,7 @@
 
 //Classes-----------------------------------
 #include "Source/Game.h"
-#include "Source/Utilities/CardParser.h"
+#include "Source/Cards/CardDatabase.h"
 
 //Definitions-------------------------------
 #define LEFT_INDEX_WRAPPER "("
@@ -18,23 +18,8 @@ using namespace std;
 int main() {
 
 
-    map<string, Card *> cards = CardParser::loadAllCards();
-    for (const auto &a: cards) {
+    CardDatabase database;
 
-        if (typeid(*a.second) == typeid(BasicCard))
-            cout << "Basic Card: ";
-        if (typeid(*a.second) == typeid(DualCard))
-            cout << "Dual Card: ";
-        if (typeid(*a.second) == typeid(FlexCard))
-            cout << "Flex Card: ";
-        if (typeid(*a.second) == typeid(FlipCard))
-            cout << "Flip Card: ";
-        if (typeid(*a.second) == typeid(DoubleCard))
-            cout << "Double Card: ";
-
-
-        cout << a.second->getDescription() << endl;
-    }
     /*//Main menu--------------------------------------------
     cout << "Pazaak, a game from the Old Republic, implemented by weirdwizardtom:koristo1@fit.cvut.cz" << endl;
 */
@@ -82,13 +67,14 @@ int main() {
     cin >> name2;
     cout << "Created a player with the name " << name2 << endl;
 
-    Game game = Game(new Player(name1), new Player(name2), cards);
+    Game game = Game(new Player(name1), new Player(name2), database);
 
     game.play();
 
 
-    for (auto &card : cards)
+    for (auto &card : database)
         free(card.second);
+
 
     return EXIT_SUCCESS;
 }

@@ -6,7 +6,9 @@
 #define PAZAAK_SIDEDECK_H
 
 
-class SideDeck {
+#include "Deck.h"
+
+class SideDeck : public Deck {
 
 };
 

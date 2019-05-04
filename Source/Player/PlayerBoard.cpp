@@ -9,9 +9,7 @@ using namespace std;
 const std::string PlayerBoard::PLAYED_CARDS_DELIMITER = " ";
 
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Constructor-Destructor----------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
+
 PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
                              randomNumberGenerator(0, Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES) {
     playedCards.reserve(PlayerBoard::TABLE_SIZE);
@@ -30,9 +28,6 @@ PlayerBoard::~PlayerBoard() {
         delete i;
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Getters-------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
 int PlayerBoard::drawCardFromMainDeck() {
     size_t index = randomNumberGenerator();
     int value = mainDeck[index]->play();
@@ -63,9 +58,6 @@ string PlayerBoard::showCardsPlayed() const {
     return output;
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Setters-------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
 void PlayerBoard::addPlayedCard(int cardValue) {
     //No added value, card was either a double or a flip, which isn't recorded as played
     if (cardValue == 0) //A card whose value can't be added
@@ -89,9 +81,6 @@ void PlayerBoard::resetPlayedCards() {
     playedCards.reserve(PlayerBoard::TABLE_SIZE);
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Other methods-------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
 void PlayerBoard::recalculateScore() {
     currentScore = 0;
     for (auto playedCard : playedCards)

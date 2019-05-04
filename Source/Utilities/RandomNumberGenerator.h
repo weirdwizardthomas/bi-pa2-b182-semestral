@@ -12,14 +12,11 @@ private:
     std::mt19937 generator;
     std::uniform_int_distribution<size_t> distribution;
 public:
-    RandomNumberGenerator(size_t min, size_t max, unsigned int seed = std::random_device()()) :
-            generator(seed), distribution(min, max) {}
+    RandomNumberGenerator(size_t min, size_t max, unsigned int seed= std::random_device()());
 
-    size_t operator()() { return distribution(generator); }
+    size_t operator()();
 
-    void lowerCeiling(size_t max) {
-        distribution = std::uniform_int_distribution<size_t>(distribution.min(), max);
-    }
+    void lowerCeiling(size_t max);
 };
 
 

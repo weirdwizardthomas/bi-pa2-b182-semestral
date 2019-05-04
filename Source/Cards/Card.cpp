@@ -7,7 +7,7 @@
 //Namespaces--------------------------------
 using namespace std;
 
-const std::string Card::DUAL_DELIMITER = "|";
+
 const std::string Card::PLUS_SIGN = "+";
 const std::string Card::MINUS_SIGN = "-";
 

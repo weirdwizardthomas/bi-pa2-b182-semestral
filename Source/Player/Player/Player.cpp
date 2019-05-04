@@ -5,8 +5,8 @@
 //
 
 #include "Player.h"
-#include "../Game.h"
-#include "../Utilities/DeckParser.h"
+#include "../../Game.h"
+#include "../../Utilities/DeckParser.h"
 
 //Namespaces--------------------------------
 using namespace std;
@@ -88,12 +88,9 @@ void Player::drawHand() {
 
 int Player::autoPlayCard() { return board.drawCardFromMainDeck(); }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Setters-------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
 void Player::addPoint() { board.addPoint(); }
 
-void Player::chooseDeck(const map<string, Card *> &allCards) {
+void Player::chooseDeck(const CardDatabase &allCards) {
     choosingDeckMessage();
 
     bool confirmed = false;
@@ -110,12 +107,14 @@ void Player::chooseDeck(const map<string, Card *> &allCards) {
 
         //Construct the deck, assign it and show it
         deck = (input == "F" ? Deck(allCards) : DeckParser::loadFromFile(allCards));
+        Game::clearScreen(cout);
         printDeck();
         deckApprovalQuery();
 
         //Ask for approval
         cin >> input;
         while (cin.fail() || (input != "Y" && input != "N" && input != "E")) {
+            Game::clearScreen(cout);
             invalidInputMessage();
             deckApprovalQuery();
             cin >> input;
@@ -128,9 +127,6 @@ void Player::printDeck() const { cout << deck << endl; }
 
 void Player::resetBoard() { return board.reset(); }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Getters-------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
 const string &Player::getName() const { return name; }
 
 int Player::getCurrentRoundScore() const { return board.getCurrentScore(); }
@@ -182,6 +178,11 @@ void Player::choosingDeckMessage() const {
 
 void Player::isPassingTurnMessage() const { cout << name << " is passing their turn." << endl; }
 
+//TODO change to Stand and give more answer possibilities
 void Player::standPrompt() const { cout << "Would you like to [S]tand?" << endl; }
 
 void Player::openerMessage(int opener) const { cout << "Player " << name << "'s opener:" << opener << endl; }
+
+void Player::stand() {
+board.stand();
+}

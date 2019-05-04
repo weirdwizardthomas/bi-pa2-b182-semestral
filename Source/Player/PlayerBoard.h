@@ -23,7 +23,9 @@ private:
     std::vector<BasicCard *> mainDeck;
     RandomNumberGenerator randomNumberGenerator;
 
-
+    /**
+     *
+     */
     void generateMainDeck();
 
 

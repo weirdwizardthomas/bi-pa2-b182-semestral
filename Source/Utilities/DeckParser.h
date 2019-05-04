@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "../Player/Deck.h"
+#include "../Player/Deck/Deck.h"
 
 class DeckParser {
 
@@ -20,7 +20,7 @@ private:
      * @param file name of the file to be opened
      * @return individual lines of the file
      */
-    static const std::vector <std::string> loadFileContent(const std::string &file);
+    static const std::vector<std::string> loadFileContent(const std::string &file);
 
     /**
      * Based on the chosen file inserts appropriate card into a vector
@@ -29,7 +29,7 @@ private:
      * @return Vector of cards based on the file
      */
     static std::vector<Card *>
-    parseLinesForCards(const std::map<std::string, Card *> &allCards, const std::vector<std::string> &fileLines);
+    parseLinesForCards(const CardDatabase &allCards, const std::vector<std::string> &fileLines);
 
     /**
      * Queries the user with deck name to pick from
@@ -48,6 +48,7 @@ private:
      *
      */
     static void selectDeckPrompt();
+
     /**
      *
      */
@@ -57,7 +58,7 @@ public:
     static const char NEWLINE;
     static const std::string FOLDER_DELIMITER;
     static const std::string FILE_CARD_VALUE_DELIMITER;
-    static const std::string CARD_TYPE_VALUE_DELIMITER;
+    static const std::string CARD_DESCRIPTION_DELIMITER;
     static const std::string DECKS_DIRECTORY_PATH;
     static const std::string BASIC_CARD_LEAD;
     static const std::string DOUBLE_CARD_LEAD;
@@ -71,7 +72,7 @@ public:
     * @param allCards Map of all available cards, used as a database
     * @return Deck containing cards corresponding to records in a file
     */
-    static Deck loadFromFile(const std::map<std::string, Card *> &allCards);
+    static Deck loadFromFile(const CardDatabase &allCards);
 
     /**
      * Finds all non-trivial (excluding current and parent folder references) files in the /Data/Decks directory
@@ -79,7 +80,13 @@ public:
      */
     static std::vector<std::string> getDecksFromDirectory();
 
-    static std::vector<std::string> splitStringByDelimiter(std::string phrase, const std::string &delimiter);
+    /**
+     *
+     * @param phrase
+     * @param delimiter
+     * @return
+     */
+    static std::list<std::string> splitStringByDelimiter(std::string phrase, const std::string &delimiter);
 
 };
 

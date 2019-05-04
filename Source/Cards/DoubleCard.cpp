@@ -7,10 +7,10 @@
 using namespace std;
 
 int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
-    int dummy = playedCards.back();
-    dummy *= 2;
+    int lastPlayedCard = playedCards.back();
+    lastPlayedCard *= 2;
     playedCards.erase(playedCards.end());
-    return dummy;
+    return lastPlayedCard;
 }
 
 string DoubleCard::getDescription() const { return "Double the value of the last played card."; }

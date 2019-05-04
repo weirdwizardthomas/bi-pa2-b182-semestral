@@ -37,6 +37,7 @@ protected:
     void invalidInputMessage() const;
 
 public:
+    static const std::string DUAL_DELIMITER;
     //Constructor---------------------------
     DualCard(int left, int right);
 

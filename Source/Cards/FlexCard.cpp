@@ -9,7 +9,6 @@ using namespace std;
 
 const string FlexCard::SIGN_DELIMITER = "/";
 
-
 FlexCard::FlexCard() : DualCard(FlexCard::LEFT, FlexCard::RIGHT) {}
 
 int FlexCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
@@ -19,7 +18,7 @@ int FlexCard::play(vector<int> &playedCards, int currentScore, int opponentScore
 }
 
 string FlexCard::getDescription() const {
-    return getSignedAttribute() + "\t" + to_string(LEFT) + string(Card::DUAL_DELIMITER) + to_string(RIGHT);
+    return getSignedAttribute() + "\t" + to_string(LEFT) + string(DualCard::DUAL_DELIMITER) + to_string(RIGHT);
 }
 
 string FlexCard::getSignedAttribute() const {

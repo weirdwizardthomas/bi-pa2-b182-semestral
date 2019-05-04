@@ -7,18 +7,20 @@
 
 //Libraries---------------------------------
 #include <vector>
+#include <list>
 #include <random>
 #include <algorithm>
 #include <cstdlib>
 #include <dirent.h>
 
 //Classes-----------------------------------
-#include "../Cards/Card.h"
-#include "../Cards/BasicCard.h"
-#include "../Cards/DoubleCard.h"
-#include "../Cards/FlexCard.h"
-#include "../Cards/FlipCard.h"
-#include "../Utilities/RandomNumberGenerator.h"
+#include "../../Cards/Card.h"
+#include "../../Cards/BasicCard.h"
+#include "../../Cards/DoubleCard.h"
+#include "../../Cards/FlexCard.h"
+#include "../../Cards/FlipCard.h"
+#include "../../Utilities/RandomNumberGenerator.h"
+#include "../../Cards/CardDatabase.h"
 
 class Deck {
 private:
@@ -37,24 +39,20 @@ private:
      * Queries the player with a choice of card indices to add to the deck
      * @param allCards All Cards eligible to be placed in the a deck
      */
-    void loadCardsFromUser(const std::map<std::string, Card *> &allCards);
+    void loadCardsFromUser(const CardDatabase &allCards);
 
     /**
      *
      * @param pickedCardIndex
      */
     void removeCardFromDeck(size_t pickedCardIndex);
+
     /**
-     * Adds the leading categories(card types) to each category in the vector to meet the required format
-     * @param categorised
+     *
+     * @param files
+     * @param filename
+     * @return
      */
-    static void addLeadingCategories(std::vector<std::string> *categorised);
-
-    /**
- * Converts FlipCards to their in-file form
- */
-    static void convertFlipCardToFileFormat(std::vector<std::string> *categorised);
-
     static bool fileAlreadyExists(const std::vector<std::string> &files, const std::string &filename);
 
     //Messages and prompts----------------------------------------------------------------------------------------------
@@ -74,6 +72,9 @@ private:
      */
     static void fileExistsMessage();
 
+    /**
+     *
+     */
     static void invalidInputMessage();
 
     /**
@@ -93,7 +94,6 @@ private:
      */
     static void selectCardsDeckSizePrompt();
 
-
 public:
     static const int DECK_SIZE;
     static const int MAX_CARDS_DRAWN;
@@ -102,7 +102,7 @@ public:
     //Constructors--------------------------------------------
     Deck();
 
-    explicit Deck(const std::map<std::string, Card *> &allCards);
+    explicit Deck(const CardDatabase &allCards);
 
     explicit Deck(std::vector<Card *> cards);
 
@@ -123,7 +123,7 @@ public:
      * Analyses the deck's cards and splits them based on their card type
      * @return
      */
-    std::vector<std::string> prepareDeckForSaving() const;
+    std::list<std::string> toLines() const;
 
     /**
      * Saves the deck's contents to a readable form in the DECKS_DIRECTORY_PATH to be reconstructed later

@@ -3,6 +3,7 @@
 //
 
 #include "Game.h"
+#include "Cards/CardDatabase.h"
 
 #include <iostream>
 #include <iomanip>
@@ -10,8 +11,8 @@
 //Namespaces--------------------------
 using namespace std;
 
-//TODO rework players to be a pair and change appropriate calls
-Game::Game(Player *player1, Player *player2, const map<string, Card *> &allCards) : players({player1, player2}) {
+
+Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}) {
     chooseDecks(allCards);
     selectStartingPlayer();
 }
@@ -21,9 +22,6 @@ Game::~Game() {
     delete players.second;
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Gameplay------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
 void Game::play() {
     size_t roundNumber = 1;
     gameStartMessage();
@@ -63,9 +61,10 @@ Player *Game::round() {
             currentlyPlaying()->getCurrentRoundScore() <= Game::TARGET_SCORE)
             return currentlyPlaying();
 
+        if(currentlyPlaying()->getCurrentRoundScore() == Game::TARGET_SCORE)
+            currentlyPlaying()->stand();
         swapPlayers();
     }
-
 
     return getRoundVictor();
 }
@@ -81,14 +80,9 @@ void Game::turn(Player *currentPlayer) {
     currentPlayer->takeTurn(opponentScore);
 }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Supportive-methods--------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
-bool Game::bothPlayersStanding() const {
-    return players.first->isStanding() && players.second->isStanding();
-}
+bool Game::bothPlayersStanding() const { return players.first->isStanding() && players.second->isStanding(); }
 
-void Game::chooseDecks(const map<string, Card *> &allCards) const {
+void Game::chooseDecks(const CardDatabase &allCards) const {
     players.first->chooseDeck(allCards);
     players.second->chooseDeck(allCards);
 }
@@ -132,22 +126,23 @@ const int rowsCleared = 18;
 
 void Game::clearScreen(ostream &out) {
     ios_base::fmtflags f(out.flags());
-    out << setfill('\n') << setw(rowsCleared) << endl;
+    //out << setfill('\n') << setw(rowsCleared) << endl;
+    for (size_t i = 0; i < rowsCleared; ++i)
+        out << endl;
     out.flags(f);
 }
 
 void Game::currentScoreMessage() const {
-    cout << "Current score: " << endl;
-    cout << players.first->getName() << ":" << players.first->getCurrentRoundScore() << endl;
-    cout << players.second->getName() << ":" << players.second->getCurrentRoundScore() << endl;
+    cout << "Current score: " << players.first->getName() << ":" << players.first->getCurrentRoundScore()
+         << " |" << players.second->getName() << ":" << players.second->getCurrentRoundScore() << endl;
 }
 
 void Game::gameStartMessage() const {
     Game::clearScreen(cout);
     //TODO more ZAZ around here
-    cout << "Starting a game of Pazaak between " << players.first->getName() << " and " << players.second->getName()
-         << "." << endl;
-    cout << players.first->getName() << " goes first." << endl;
+    cout << "Starting a game of Pazaak between "
+         << players.first->getName() << " and "
+         << players.second->getName() << "." << endl;
 }
 
 void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " won the game!" << endl; }
@@ -158,4 +153,4 @@ void Game::roundTieMessage() const { cout << "Tie" << endl; }
 
 void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
 
-void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play." << endl; }
+void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }

@@ -3,10 +3,11 @@
 // Created by tomtom on 08/02/19.
 //
 
+#include <list>
 #include "Deck.h"
-#include "../Cards/CardType.h"
-#include "../Utilities/Utilities.cpp"
-#include "../Utilities/DeckParser.h"
+#include "../../Cards/CardType.h"
+#include "../../Utilities/DeckParser.h"
+#include "../../Utilities/Exceptions.h"
 
 //Namespaces--------------------------------
 using namespace std;
@@ -15,12 +16,6 @@ const int Deck::DECK_SIZE = 10;
 const int Deck::MAX_CARDS_DRAWN = 4;
 
 
-class CannotOpenFile : public exception {
-    const char *what() const noexcept override {
-        return ("Cannot open file.");
-    }
-};
-
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
     for (const Card *card : deck.cards)
@@ -28,39 +23,13 @@ ostream &operator<<(ostream &out, const Deck &deck) {
     return out;
 }
 
-bool containsSubstring(const string &master, const string &slave) { return master.find(slave) != string::npos; }
-
-vector<Card *> copyMapToVector(const map<string, Card *> &allCards) {
-    vector<Card *> allCardsVector;
-    allCardsVector.reserve(allCards.size());
-
-    for (const auto &allCard : allCards)
-        allCardsVector.push_back(allCard.second);
-
-    return allCardsVector;
-}
-
-void removeSubstring(string &master, const string &pattern) {
-    string::size_type n = pattern.length();
-    for (string::size_type i = master.find(pattern);
-         i != string::npos;
-         i = master.find(pattern))
-        master.erase(i, n);
-}
 
 Deck::Deck() : randomGenerator(0, DECK_SIZE - 1) {}
 
 Deck::Deck(vector<Card *> cards) : cards(std::move(cards)), randomGenerator(0, DECK_SIZE - 1) {}
 
-Deck::Deck(const map<string, Card *> &allCards) : randomGenerator(0, DECK_SIZE - 1) {
-    size_t i = 0;
-    for (auto &card : allCards) {
-        cout << (i < 10 ? " " : "") //Offsets single digit indices
-             << (i < 100 ? " " : "")  //Offsets double digit indices
-             << "(" << i << ")" << " " << (card.second)->getDescription() << endl;
-        i++;
-    }
-
+Deck::Deck(const CardDatabase &allCards) : randomGenerator(0, DECK_SIZE - 1) {
+    cout << allCards;
     selectCardsDeckSizePrompt();
     loadCardsFromUser(allCards);
     deckForgedMessage();
@@ -84,8 +53,8 @@ vector<Card *> Deck::drawCardsFromDeck() {
 
 size_t Deck::getDeckSize() const { return this->cards.size(); }
 
-void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
-    vector<Card *> allCardsVector = copyMapToVector(allCards);
+void Deck::loadCardsFromUser(const CardDatabase &allCards) {
+    vector<Card *> allCardsVector = allCards.toVector();
 
     this->cards.reserve(DECK_SIZE);
     size_t i = 0; //initial index
@@ -113,14 +82,24 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
     }
 }
 
-vector<string> Deck::prepareDeckForSaving() const { //TODO refactor - use typeof
-    vector<string> fileLines;
+list<string> Deck::toLines() const {
+    list<string> fileLines;
+    for (const auto &card: cards) {
+        string line;
 
-    for(const auto &card: cards)
-    {
-        //TODO check all type ids and save it based on the card type
-        //TODO add a save method to Card ( and subsequently all its children
+        if (typeid(*card) == typeid(BasicCard))
+            line.append(DeckParser::BASIC_CARD_LEAD);
+        if (typeid(*card) == typeid(DualCard))
+            line.append(DeckParser::DUAL_CARD_LEAD);
+        if (typeid(*card) == typeid(DoubleCard))
+            line.append(DeckParser::DOUBLE_CARD_LEAD);
+        if (typeid(*card) == typeid(FlexCard))
+            line.append(DeckParser::FLEX_CARD_LEAD);
+        if (typeid(*card) == typeid(FlipCard))
+            line.append(DeckParser::FLIP_CARD_LEAD);
 
+        line.append(card->getDescription());
+        fileLines.emplace_back(line);
     }
 
     return fileLines;
@@ -143,7 +122,7 @@ void Deck::saveToFile() const {
     if (!deckFile.is_open())
         throw CannotOpenFile();
 
-    vector<string> cardLines = prepareDeckForSaving();
+    auto cardLines = toLines();
 
     for (const auto &cardLine : cardLines)
         deckFile << cardLine << endl;
@@ -151,39 +130,11 @@ void Deck::saveToFile() const {
     deckFile.close();
 }
 
-void Deck::addLeadingCategories(vector<string> *categorised) {
-    string leads[5] = {DeckParser::BASIC_CARD_LEAD, DeckParser::DOUBLE_CARD_LEAD, DeckParser::DUAL_CARD_LEAD,
-                       DeckParser::FLIP_CARD_LEAD,
-                       DeckParser::FLEX_CARD_LEAD}; //TODO change this, it's too static
-    for (size_t k = 0; k < 5; ++k)
-        categorised[k].push_back(leads[k] + DeckParser::CARD_TYPE_VALUE_DELIMITER);
-}
-
 bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename) {
     for (const string &currentFile : files)
         if (currentFile == filename)
             return true;
     return false;
-}
-
-void Deck::convertFlipCardToFileFormat(vector<string> *categorised) {
-    for (size_t i = 1; i < categorised[3].size(); i++) {
-        string currentFlipCard = categorised[3][i];
-        //Split the string (X <~> -X | Y <~> -Y) into X<~>-X and Y<~>-Y
-        vector<string> splitValues = DeckParser::splitStringByDelimiter(currentFlipCard, "|");
-        //Extract the X from each substring
-        string parsedFlipCard;
-        for (size_t j = 0; j < 2; j++) {
-            //Extract the first number from each operand
-            string extractedValue = (DeckParser::splitStringByDelimiter(splitValues[j], "<~>")[0]);
-            //Remove redundant symbols - sign and white spaces
-            extractedValue = to_string(stoi(extractedValue));
-            //Add to the line with a white space between if necessary
-            parsedFlipCard.append(extractedValue).append((j == 0 ? " " : ""));
-        }
-        //replace the value
-        categorised[3][i] = parsedFlipCard;
-    }
 }
 
 void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
