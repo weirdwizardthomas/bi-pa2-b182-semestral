@@ -1,5 +1,10 @@
-BasicCards: 1, -1, 2, 3
-DoubleCards:1
-DualCards:3 4,2 5
-FlexCards:1
-FlipCards:2 5,3 4
+Basic Card: +1
+Basic Card: -1
+Basic Card: +2
+Basic Card: +3
+Double Card: Double the value of the last played card.
+Dual Card: +4 | +3
+Dual Card: +5 | +2
+Flex Card: +/-	1|2
+Flip Card: +5 <~> -5 | +2 <~> -2
+Flip Card: +4 <~> -4 | +3 <~> -3

@@ -41,7 +41,7 @@ int DualCard::chooseEffect() const {
 }
 
 string DualCard::getDescription() const {
-    return offsetPositiveNumber(values.first) + Card::DUAL_DELIMITER + " " + offsetPositiveNumber(values.second);
+    return offsetPositiveNumber(values.first) + " " + Card::DUAL_DELIMITER + " " + offsetPositiveNumber(values.second);
 }
 
 void DualCard::invalidInputMessage() const { cout << "Invalid choice, please try again." << endl << endl; }

@@ -24,6 +24,8 @@ public:
 
     ~BasicCard() override = default;
 
+    std::string getDescription() const override;
+
     /**
      * Puts the card's effect in play
      * @param playedCards Cards previously played by the current player
@@ -38,8 +40,6 @@ public:
      */
     int play() const;
 
-public:
-    std::string getDescription() const override;
 };
 
 

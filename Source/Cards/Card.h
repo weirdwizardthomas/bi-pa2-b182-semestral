@@ -48,6 +48,12 @@ public:
     virtual ~Card() = default;
 
     /**
+     * Generates card's effect's description
+     * @return a verbose effect of the card
+     */
+    virtual std::string getDescription() const = 0;
+
+    /**
      * Puts the card's effect in play
      * @param playedCards Cards previously played by the current player
      * @param currentScore Current player's current round's score
@@ -57,14 +63,8 @@ public:
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
-     * Generates card's effect's description
-     * @return a verbose effect of the card
-     */
-    virtual std::string getDescription() const = 0;
-
-    /**
      *
-     * @param out the Stream into which the card's decription will be sent
+     * @param out the Stream into which the card's description will be sent
      * @param card card to be placed into the stream
      * @return getDescription()
      */

@@ -2,6 +2,7 @@
 // Created by tomtom on 03/05/19.
 //
 
+#include <list>
 #include "DeckParser.h"
 #include "Utilities.cpp"
 
@@ -12,11 +13,11 @@ const string DeckParser::FOLDER_DELIMITER = "/";
 const string DeckParser::FILE_CARD_VALUE_DELIMITER = ",";
 const string DeckParser::CARD_TYPE_VALUE_DELIMITER = ":";
 const string DeckParser::DECKS_DIRECTORY_PATH{"../Data/Decks"};
-const string DeckParser::BASIC_CARD_LEAD{"BasicCards"};
-const string DeckParser::DOUBLE_CARD_LEAD{"DoubleCards"};
-const string DeckParser::DUAL_CARD_LEAD{"DualCards"};
-const string DeckParser::FLEX_CARD_LEAD{"FlexCards"};
-const string DeckParser::FLIP_CARD_LEAD{"FlipCards"};
+const string DeckParser::BASIC_CARD_LEAD{"Basic Cards: "};
+const string DeckParser::DOUBLE_CARD_LEAD{"Double Cards: "};
+const string DeckParser::DUAL_CARD_LEAD{"Dual Card: "};
+const string DeckParser::FLEX_CARD_LEAD{"Flex Card: "};
+const string DeckParser::FLIP_CARD_LEAD{"Flip Card: "};
 
 class CannotOpenDirectory : public exception {
 public:
@@ -31,63 +32,13 @@ class CannotOpenFile : public exception {
     }
 };
 
-class InvalidLine : public exception {
-    const char *what() const noexcept override {
-        return ("Error reading file");
-    }
-};
-
 class ParseError : public exception {
     const char *what() const noexcept override {
         return ("Error reading file");
     }
 };
 
-void DeckParser::loadBasic(const std::map<string, Card *> &allCards, std::vector<Card *> &cards,
-                           const std::vector<string> &currentLineValues) {
-    for (const auto &value : currentLineValues) {
-        Card *dummy = new BasicCard(stoi(value));
-        cards.push_back(allCards.at(dummy->getDescription()));
-        delete dummy;
-    }
-}
-
-void DeckParser::loadDouble(const map<string, Card *> &allCards, vector<Card *> &cards, int cardCount = 0) {
-    Card *dummy = new DoubleCard();
-    for (int i = 0; i < cardCount; i++)
-        cards.push_back(allCards.at(dummy->getDescription()));
-    delete dummy;
-}
-
-void DeckParser::loadDual(const map<string, Card *> &allCards, vector<Card *> &cards,
-                          const vector<string> &currentLineValues) {
-    for (const auto &value : currentLineValues) {
-        pair<int, int> effects = getDualValuesFromString(value);
-        Card *dummy = new DualCard(effects.first, effects.second);
-        cards.push_back(allCards.at(dummy->getDescription()));
-        delete dummy;
-    }
-}
-
-void DeckParser::loadFlip(const map<string, Card *> &allCards, vector<Card *> &cards,
-                          const vector<string> &currentLineValues) {
-
-    for (const auto &value : currentLineValues) {
-        pair<int, int> effects = getDualValuesFromString(value);
-        Card *dummy = new FlipCard(effects.first, effects.second);
-        cards.push_back(allCards.at(dummy->getDescription()));
-        delete dummy;
-    }
-}
-
-void DeckParser::loadFlex(const map<string, Card *> &allCards, vector<Card *> &cards, int cardCount = 0) {
-    Card *dummy = new FlexCard();
-    for (int i = 0; i < cardCount; i++)
-        cards.push_back(allCards.at(dummy->getDescription()));
-    delete dummy;
-}
-
-vector<string> DeckParser::loadFileContent(const string &file) {
+const vector<string> DeckParser::loadFileContent(const string &file) {
     fstream deckFile;
 
     string path;
@@ -114,57 +65,31 @@ Deck DeckParser::loadFromFile(const map<string, Card *> &allCards) {
     vector<string> files = DeckParser::getDecksFromDirectory(); //Find all files in a directory
     string loadedFile = files[DeckParser::userDeckIndexInput(files)]; //pick a file in the directory
 
-    //Parse the file
-    vector<string> deckFileContent = DeckParser::loadFileContent(loadedFile); //load the picked file's content
-    vector<Card *> cards = parseLinesForCards(allCards, deckFileContent); //Load the cards from the 'database'
-
+    //Load the cards from the 'database' based on the ones in the file
+    vector<Card *> cards = parseLinesForCards(allCards, DeckParser::loadFileContent(loadedFile));
     return Deck(cards); //forge the deck
 }
 
-map<string, vector<string>> DeckParser::parseAllFileLines(vector<string> &fileLines) {
-    map<string, vector<string>> parsedLines;
-    for (const auto &fileLine : fileLines) {
-        size_t delimiterPosition = fileLine.find(DeckParser::CARD_TYPE_VALUE_DELIMITER);
-        if (delimiterPosition == string::npos)
-            throw InvalidLine();
-        else {
-            string dummy = fileLine.substr(0, delimiterPosition);
-            string cardType = trim(dummy);
+vector<Card *> DeckParser::parseLinesForCards(const map<string, Card *> &allCards, const vector<string> &fileLines) {
+    list < Card * > cards;
 
-            dummy = fileLine.substr(delimiterPosition + 1, string::npos);
-            string cardValues = trim(dummy);
+    for (const string &line: fileLines) {
+        auto splitLine = splitStringByDelimiter(line, ": ");
+        if (splitLine.size() != 2)
+            throw ParseError();
 
-            parsedLines.insert({cardType, splitStringByDelimiter(cardValues, DeckParser::FILE_CARD_VALUE_DELIMITER)});
+        try {
+            cards.push_back(allCards.at(splitLine[1]));
+        }
+        catch (out_of_range &e) {
+            throw ParseError();
         }
     }
-    return parsedLines;
-}
 
-vector<Card *> DeckParser::parseLinesForCards(const map<string, Card *> &allCards, vector<string> &fileLines) {
-    vector<Card *> cards;
-    map<string, vector<string>> parsedLines = DeckParser::parseAllFileLines(fileLines);
-    loadBasic(allCards, cards, parsedLines.at(DeckParser::BASIC_CARD_LEAD));
-    loadDual(allCards, cards, parsedLines.at(DeckParser::DUAL_CARD_LEAD));
-    loadFlip(allCards, cards, parsedLines.at(DeckParser::FLIP_CARD_LEAD));
-    loadDouble(allCards, cards, singleParameterValue(parsedLines.at(DeckParser::DOUBLE_CARD_LEAD)));
-    loadFlex(allCards, cards, singleParameterValue(parsedLines.at(DeckParser::FLEX_CARD_LEAD)));
-
-    //TODO try catch the stoi, might be an extra comma - no value to be parsed after a comma
     if (cards.size() != Deck::DECK_SIZE)
         throw ParseError();
 
-    return cards;
-}
-
-int DeckParser::singleParameterValue(const vector<string> &lineValues) {
-    if (lineValues.size() != 1)
-        throw ParseError();
-
-    int flexCardCount = stoi(lineValues[0]);
-    if (flexCardCount < 0)
-        throw ParseError();
-
-    return flexCardCount;
+    return vector<Card *>(cards.begin(), cards.end());
 }
 
 //Adapted from https://stackoverflow.com/a/612176
@@ -187,16 +112,6 @@ vector<string> DeckParser::getDecksFromDirectory() {
 
     return files;
 }
-
-pair<int, int> DeckParser::getDualValuesFromString(const string &value) {
-    vector<string> parsedValue = splitStringByDelimiter(value, " ");
-
-    if (parsedValue.size() != 2)
-        throw ParseError();
-
-    return {stoi(parsedValue[0]), stoi(parsedValue[1])};
-}
-
 
 vector<string> DeckParser::splitStringByDelimiter(string phrase, const string &delimiter) {
     vector<string> list;

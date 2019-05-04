@@ -116,49 +116,11 @@ void Deck::loadCardsFromUser(const map<string, Card *> &allCards) {
 vector<string> Deck::prepareDeckForSaving() const { //TODO refactor - use typeof
     vector<string> fileLines;
 
-    vector<string> categorised[5];
-    addLeadingCategories(categorised);
+    for(const auto &card: cards)
+    {
+        //TODO check all type ids and save it based on the card type
+        //TODO add a save method to Card ( and subsequently all its children
 
-    size_t DoubleCardCounter = 0;
-    size_t FlexCardCounter = 0;
-
-    //categorise cards in the deck
-    for (Card *card : cards) {
-        const string &cardDescription = card->getDescription();
-        if (containsSubstring(cardDescription, "Double the value of the last played card"))
-            DoubleCardCounter++;
-        else if (containsSubstring(cardDescription, "+/-"))
-            FlexCardCounter++;
-        else if (containsSubstring(cardDescription, FlipCard::FLIP_SIGN))
-            categorised[FLIP].push_back(cardDescription);
-        else if (containsSubstring(cardDescription, Card::DUAL_DELIMITER))
-            categorised[DUAL].push_back(cardDescription);
-        else
-            categorised[BASIC].push_back(cardDescription);
-    }
-
-    //add the counters of the unique cards
-    categorised[DOUBLE].push_back(to_string(DoubleCardCounter));
-    categorised[FLEX].push_back(to_string(FlexCardCounter));
-
-    //Prepare FlipCards for saving
-    convertFlipCardToFileFormat(categorised);
-
-    //Remove the card operands
-    for (auto &category : categorised)
-        for (auto &currentValue : category) {
-            removeSubstring(currentValue, Card::PLUS_SIGN);
-            removeSubstring(currentValue, Card::DUAL_DELIMITER);
-            removeSubstring(currentValue, FlipCard::FLIP_SIGN);
-        }
-
-    //Construct the line in the output vector
-    for (auto &currentCategory : categorised) {
-        string line;
-        for (size_t j = 0; j < currentCategory.size(); j++)
-            line.append(currentCategory[j]).append(
-                    (j == 0 || j == currentCategory.size() - 1 ? "" : DeckParser::FILE_CARD_VALUE_DELIMITER));
-        fileLines.push_back(line);
     }
 
     return fileLines;

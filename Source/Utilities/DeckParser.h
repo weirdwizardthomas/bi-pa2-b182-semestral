@@ -14,72 +14,13 @@
 class DeckParser {
 
 private:
-    /**
-     * Given a string, extracts two values per delimiter and converts them into integers
-     * @param value String to be parsed
-     * @return Pointer to a 2 element array of the parsed integers
-     */
-    static pair<int, int> getDualValuesFromString(const std::string &value);
 
     /**
      * loads content of a single file in DECKS_DIRECTORY_PATH
      * @param file name of the file to be opened
      * @return individual lines of the file
      */
-    static std::vector<std::string> loadFileContent(const std::string &file);
-
-    /**
-     *
-     * @param allCards
-     * @param cards
-     * @param currentLineValues
-     */
-    static void loadBasic(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
-                          const std::vector<std::string> &currentLineValues);
-
-    /**
-     *
-     * @param cards
-     * @param currentLineValues
-     * @param allCards
-     */
-    static void loadDual(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
-                         const std::vector<std::string> &currentLineValues);
-
-    /**
-     *
-     * @param allCards
-     * @param cards
-     * @param cardCount
-     */
-    static void
-    loadDouble(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
-
-    /**
-     *
-     * @param allCards
-     * @param cards
-     * @param cardCount
-     */
-    static void
-    loadFlex(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
-
-    /**
-     *
-     * @param cards
-     * @param currentLineValues
-     * @param allCards
-     */
-    static void
-    loadFlip(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
-             const std::vector<std::string> &currentLineValues);
-
-    /**
-     * Processes the text file and splits it by the delimiter CARD_TYPE_VALUE_DELIMITER into key and value
-     * @param fileLines Text file to be processed
-     * @return Map of lines of the text file split by the CARD_TYPE_VALUE_DELIMITER
-     */
-    static std::map<std::string, std::vector<std::string>> parseAllFileLines(std::vector<std::string> &fileLines);
+    static const std::vector <std::string> loadFileContent(const std::string &file);
 
     /**
      * Based on the chosen file inserts appropriate card into a vector
@@ -88,14 +29,7 @@ private:
      * @return Vector of cards based on the file
      */
     static std::vector<Card *>
-    parseLinesForCards(const std::map<std::string, Card *> &allCards, std::vector<std::string> &fileLines);
-
-    /**
-  * Extracts a single integer representing the card count of the constant, valueless cards - Double, Flip
-  * @param lineValues String to be processed
-  * @return Count of cards of the given type to be added
-  */
-    static int singleParameterValue(const std::vector<std::string> &lineValues);
+    parseLinesForCards(const std::map<std::string, Card *> &allCards, const std::vector<std::string> &fileLines);
 
     /**
      * Queries the user with deck name to pick from
@@ -105,16 +39,18 @@ private:
     static size_t userDeckIndexInput(const std::vector<std::string> &files);
 
     /**
-   *
-   * @param files
-   */
+     *
+     * @param files
+     */
     static void listDecksMessage(const std::vector<std::string> &files);
 
     /**
-        *
-        */
+     *
+     */
     static void selectDeckPrompt();
-
+    /**
+     *
+     */
     static void invalidInputMessage();
 
 public:
