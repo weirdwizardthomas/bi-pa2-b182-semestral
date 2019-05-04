@@ -43,6 +43,49 @@ class ParseError : public exception {
     }
 };
 
+void DeckParser::loadBasic(const std::map<string, Card *> &allCards, std::vector<Card *> &cards,
+                           const std::vector<string> &currentLineValues) {
+    for (const auto &value : currentLineValues) {
+        Card *dummy = new BasicCard(stoi(value));
+        cards.push_back(allCards.at(dummy->getDescription()));
+        delete dummy;
+    }
+}
+
+void DeckParser::loadDouble(const map<string, Card *> &allCards, vector<Card *> &cards, int cardCount = 0) {
+    Card *dummy = new DoubleCard();
+    for (int i = 0; i < cardCount; i++)
+        cards.push_back(allCards.at(dummy->getDescription()));
+    delete dummy;
+}
+
+void DeckParser::loadDual(const map<string, Card *> &allCards, vector<Card *> &cards,
+                          const vector<string> &currentLineValues) {
+    for (const auto &value : currentLineValues) {
+        pair<int, int> effects = getDualValuesFromString(value);
+        Card *dummy = new DualCard(effects.first, effects.second);
+        cards.push_back(allCards.at(dummy->getDescription()));
+        delete dummy;
+    }
+}
+
+void DeckParser::loadFlip(const map<string, Card *> &allCards, vector<Card *> &cards,
+                          const vector<string> &currentLineValues) {
+
+    for (const auto &value : currentLineValues) {
+        pair<int, int> effects = getDualValuesFromString(value);
+        Card *dummy = new FlipCard(effects.first, effects.second);
+        cards.push_back(allCards.at(dummy->getDescription()));
+        delete dummy;
+    }
+}
+
+void DeckParser::loadFlex(const map<string, Card *> &allCards, vector<Card *> &cards, int cardCount = 0) {
+    Card *dummy = new FlexCard();
+    for (int i = 0; i < cardCount; i++)
+        cards.push_back(allCards.at(dummy->getDescription()));
+    delete dummy;
+}
 
 vector<string> DeckParser::loadFileContent(const string &file) {
     fstream deckFile;
@@ -50,7 +93,7 @@ vector<string> DeckParser::loadFileContent(const string &file) {
     string path;
     path.append(DeckParser::DECKS_DIRECTORY_PATH).append(DeckParser::FOLDER_DELIMITER).append(file);
 
-    deckFile.open(path);
+    deckFile.open(path, fstream::in);
     if (!deckFile.is_open())
         throw CannotOpenFile();
 
@@ -66,52 +109,6 @@ vector<string> DeckParser::loadFileContent(const string &file) {
     return fileContent;
 }
 
-void DeckParser::insertBasicCards(const std::map<string, Card *> &allCards, std::vector<Card *> &cards,
-                                  const std::vector<string> &currentLineValues) {
-    for (const auto &value : currentLineValues) {
-        Card *dummy = new BasicCard(stoi(value));
-        cards.push_back(allCards.at(dummy->getDescription()));
-        delete dummy;
-    }
-}
-
-void DeckParser::insertDoubleCards(const map<string, Card *> &allCards, vector<Card *> &cards, int cardCount = 0) {
-    Card *dummy = new DoubleCard();
-    for (int i = 0; i < cardCount; i++)
-        cards.push_back(allCards.at(dummy->getDescription()));
-    delete dummy;
-}
-
-void DeckParser::insertDualCards(const map<string, Card *> &allCards, vector<Card *> &cards,
-                                 const vector<string> &currentLineValues) {
-    for (const auto &value : currentLineValues) {
-        int *effects = getDualValuesFromString(value);
-        Card *dummy = new DualCard(effects[0], effects[1]);
-        cards.push_back(allCards.at(dummy->getDescription()));
-        delete[] effects;
-        delete dummy;
-    }
-}
-
-void DeckParser::insertFlipCards(const map<string, Card *> &allCards, vector<Card *> &cards,
-                                 const vector<string> &currentLineValues) {
-
-    for (const auto &value : currentLineValues) {
-        int *effects = getDualValuesFromString(value);
-        Card *dummy = new FlipCard(effects[0], effects[1]);
-        cards.push_back(allCards.at(dummy->getDescription()));
-        delete[] effects;
-        delete dummy;
-    }
-}
-
-void DeckParser::insertFlexCards(const map<string, Card *> &allCards, vector<Card *> &cards, int cardCount = 0) {
-    Card *dummy = new FlexCard();
-    for (int i = 0; i < cardCount; i++)
-        cards.push_back(allCards.at(dummy->getDescription()));
-    delete dummy;
-}
-
 Deck DeckParser::loadFromFile(const map<string, Card *> &allCards) {
     //Select a file
     vector<string> files = DeckParser::getDecksFromDirectory(); //Find all files in a directory
@@ -124,39 +121,35 @@ Deck DeckParser::loadFromFile(const map<string, Card *> &allCards) {
     return Deck(cards); //forge the deck
 }
 
-map<string, vector<string>> DeckParser::parseAllFileLines(vector<string> &deckFileContent) {
-
+map<string, vector<string>> DeckParser::parseAllFileLines(vector<string> &fileLines) {
     map<string, vector<string>> parsedLines;
-    for (const auto &line : deckFileContent) {
-        size_t delimiterPosition = line.find(DeckParser::CARD_TYPE_VALUE_DELIMITER);
-        if (delimiterPosition == string::npos) //contains delimiter?
+    for (const auto &fileLine : fileLines) {
+        size_t delimiterPosition = fileLine.find(DeckParser::CARD_TYPE_VALUE_DELIMITER);
+        if (delimiterPosition == string::npos)
             throw InvalidLine();
         else {
-            string dummy = line.substr(0, delimiterPosition);
+            string dummy = fileLine.substr(0, delimiterPosition);
             string cardType = trim(dummy);
 
-            dummy = line.substr(delimiterPosition + 1, string::npos);
+            dummy = fileLine.substr(delimiterPosition + 1, string::npos);
             string cardValues = trim(dummy);
 
-            vector<string> parsedValues = splitStringByDelimiter(cardValues, DeckParser::FILE_CARD_VALUE_DELIMITER);
-            pair<string, vector<string>> parsedLine = make_pair(cardType, parsedValues);
-            parsedLines.insert(parsedLine);
+            parsedLines.insert({cardType, splitStringByDelimiter(cardValues, DeckParser::FILE_CARD_VALUE_DELIMITER)});
         }
     }
     return parsedLines;
 }
 
-vector<Card *> DeckParser::parseLinesForCards(const map<string, Card *> &allCards, vector<string> &deckFileContent) {
+vector<Card *> DeckParser::parseLinesForCards(const map<string, Card *> &allCards, vector<string> &fileLines) {
     vector<Card *> cards;
-    map<string, vector<string>> parsedLines = DeckParser::parseAllFileLines(deckFileContent);
-    insertBasicCards(allCards, cards, parsedLines.at(DeckParser::BASIC_CARD_LEAD));
-    insertDualCards(allCards, cards, parsedLines.at(DeckParser::DUAL_CARD_LEAD));
-    insertFlipCards(allCards, cards, parsedLines.at(DeckParser::FLIP_CARD_LEAD));
-    insertDoubleCards(allCards, cards, singleParameterValue(parsedLines.at(DeckParser::DOUBLE_CARD_LEAD)));
-    insertFlexCards(allCards, cards, singleParameterValue(parsedLines.at(DeckParser::FLEX_CARD_LEAD)));
+    map<string, vector<string>> parsedLines = DeckParser::parseAllFileLines(fileLines);
+    loadBasic(allCards, cards, parsedLines.at(DeckParser::BASIC_CARD_LEAD));
+    loadDual(allCards, cards, parsedLines.at(DeckParser::DUAL_CARD_LEAD));
+    loadFlip(allCards, cards, parsedLines.at(DeckParser::FLIP_CARD_LEAD));
+    loadDouble(allCards, cards, singleParameterValue(parsedLines.at(DeckParser::DOUBLE_CARD_LEAD)));
+    loadFlex(allCards, cards, singleParameterValue(parsedLines.at(DeckParser::FLEX_CARD_LEAD)));
 
     //TODO try catch the stoi, might be an extra comma - no value to be parsed after a comma
-    //TODO if card count doesn't match, ask to remove/add more cards - bleeding edge, do later
     if (cards.size() != Deck::DECK_SIZE)
         throw ParseError();
 
@@ -195,21 +188,31 @@ vector<string> DeckParser::getDecksFromDirectory() {
     return files;
 }
 
-int *DeckParser::getDualValuesFromString(const string &value) {
+pair<int, int> DeckParser::getDualValuesFromString(const string &value) {
     vector<string> parsedValue = splitStringByDelimiter(value, " ");
 
     if (parsedValue.size() != 2)
         throw ParseError();
 
-    auto effects = new int[2];
-    effects[0] = stoi(parsedValue[0]);
-    effects[1] = stoi(parsedValue[1]);
+    return {stoi(parsedValue[0]), stoi(parsedValue[1])};
+}
 
-    return effects;
+
+vector<string> DeckParser::splitStringByDelimiter(string phrase, const string &delimiter) {
+    vector<string> list;
+    size_t pos = 0;
+    string token;
+    while ((pos = phrase.find(delimiter)) != string::npos) {
+        token = phrase.substr(0, pos);
+        list.push_back(token);
+        phrase.erase(0, pos + delimiter.length());
+    }
+    list.push_back(phrase);
+
+    return list;
 }
 
 size_t DeckParser::userDeckIndexInput(const vector<string> &files) {
-
     listDecksMessage(files);
     selectDeckPrompt();
 
@@ -235,17 +238,3 @@ void DeckParser::listDecksMessage(const vector<string> &files) {
 }
 
 void DeckParser::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
-
-vector<string> DeckParser::splitStringByDelimiter(string phrase, const string &delimiter) {
-    vector<string> list;
-    size_t pos = 0;
-    string token;
-    while ((pos = phrase.find(delimiter)) != string::npos) {
-        token = phrase.substr(0, pos);
-        list.push_back(token);
-        phrase.erase(0, pos + delimiter.length());
-    }
-    list.push_back(phrase);
-
-    return list;
-}

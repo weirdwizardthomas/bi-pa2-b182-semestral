@@ -100,7 +100,6 @@ void CardParser::loadBasicCards(map<string, Card *> &cards) {
 
     for (const string &line : fileLines) {
         Card *dummy = new BasicCard(stoi(line));
-
         cards.insert(pair<string, Card *>(dummy->getDescription(), dummy));
     }
 }
@@ -121,7 +120,7 @@ void CardParser::validLines(vector<string> fileLines, const string& mode) {
 
     if (mode == BASIC_CARD) {
         for (const string &line : fileLines)
-            stoi(line); //TODO throws an exception when NaN - maybe TRY CATCH ?
+            stoi(line);
 
     } else {
         for (const string &line : fileLines) {

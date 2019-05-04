@@ -170,15 +170,13 @@ void Deck::removeCardFromDeck(size_t pickedCardIndex) {
 }
 
 void Deck::saveToFile() const {
-
-    fstream deckFile;
-
     vector<string> files = DeckParser::getDecksFromDirectory();
-
     string filename = QueryUserInputFilename(files);
 
     string path;
     path.append(DeckParser::DECKS_DIRECTORY_PATH).append(DeckParser::FOLDER_DELIMITER).append(filename);
+
+    fstream deckFile;
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
         throw CannotOpenFile();
@@ -189,7 +187,6 @@ void Deck::saveToFile() const {
         deckFile << cardLine << endl;
 
     deckFile.close();
-
 }
 
 void Deck::addLeadingCategories(vector<string> *categorised) {

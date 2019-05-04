@@ -54,6 +54,7 @@ int main() {
       }
 
       //can do a switch whose default value is call of the method again with a warning*/
+/*
 
     string name1, name2;
 
@@ -68,6 +69,7 @@ int main() {
     Game game = Game(new Player(name1), new Player(name2), cards);
 
     game.play();
+*/
 
     for (auto &card : cards)
         free(card.second);

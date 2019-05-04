@@ -19,7 +19,7 @@ private:
      * @param value String to be parsed
      * @return Pointer to a 2 element array of the parsed integers
      */
-    static int *getDualValuesFromString(const std::string &value);
+    static pair<int, int> getDualValuesFromString(const std::string &value);
 
     /**
      * loads content of a single file in DECKS_DIRECTORY_PATH
@@ -34,8 +34,8 @@ private:
      * @param cards
      * @param currentLineValues
      */
-    static void insertBasicCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
-                                 const std::vector<std::string> &currentLineValues);
+    static void loadBasic(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
+                          const std::vector<std::string> &currentLineValues);
 
     /**
      *
@@ -43,8 +43,8 @@ private:
      * @param currentLineValues
      * @param allCards
      */
-    static void insertDualCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
-                                const std::vector<std::string> &currentLineValues);
+    static void loadDual(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
+                         const std::vector<std::string> &currentLineValues);
 
     /**
      *
@@ -53,7 +53,7 @@ private:
      * @param cardCount
      */
     static void
-    insertDoubleCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
+    loadDouble(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
 
     /**
      *
@@ -62,7 +62,7 @@ private:
      * @param cardCount
      */
     static void
-    insertFlexCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
+    loadFlex(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards, int cardCount);
 
     /**
      *
@@ -71,24 +71,24 @@ private:
      * @param allCards
      */
     static void
-    insertFlipCards(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
-                    const std::vector<std::string> &currentLineValues);
+    loadFlip(const std::map<std::string, Card *> &allCards, std::vector<Card *> &cards,
+             const std::vector<std::string> &currentLineValues);
 
     /**
      * Processes the text file and splits it by the delimiter CARD_TYPE_VALUE_DELIMITER into key and value
-     * @param deckFileContent Text file to be processed
+     * @param fileLines Text file to be processed
      * @return Map of lines of the text file split by the CARD_TYPE_VALUE_DELIMITER
      */
-    static std::map<std::string, std::vector<std::string>> parseAllFileLines(std::vector<std::string> &deckFileContent);
+    static std::map<std::string, std::vector<std::string>> parseAllFileLines(std::vector<std::string> &fileLines);
 
     /**
      * Based on the chosen file inserts appropriate card into a vector
      * @param allCards Map of all available cards
-     * @param deckFileContent File from which the cards will be extracted
+     * @param fileLines File from which the cards will be extracted
      * @return Vector of cards based on the file
      */
     static std::vector<Card *>
-    parseLinesForCards(const std::map<std::string, Card *> &allCards, std::vector<std::string> &deckFileContent);
+    parseLinesForCards(const std::map<std::string, Card *> &allCards, std::vector<std::string> &fileLines);
 
     /**
   * Extracts a single integer representing the card count of the constant, valueless cards - Double, Flip
