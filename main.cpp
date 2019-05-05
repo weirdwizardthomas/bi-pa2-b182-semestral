@@ -43,7 +43,7 @@ int main() {
               break;
           case 1: {
               Deck deck = Deck(cards);
-              deck.saveToFile();
+              deck.manualSave();
               break;
           }
           case 2: {

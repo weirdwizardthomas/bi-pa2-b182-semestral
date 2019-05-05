@@ -44,11 +44,11 @@ public:
     static const int MAIN_DECK_CARD_COPIES = 4;
     static const std::string PLAYED_CARDS_DELIMITER;
 
-    //Constructors-----------------------
     PlayerBoard();
 
-    //Destructors------------------------
     ~PlayerBoard();
+
+    void saveToFile(std::fstream &out) const;
 
     //Getters----------------------------
     /**

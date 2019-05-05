@@ -18,8 +18,11 @@ public:
 
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
+    void saveToFile(std::fstream &file) const;
+
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
 
+    static const std::string HAND_FILE_LEAD;
 };
 
 

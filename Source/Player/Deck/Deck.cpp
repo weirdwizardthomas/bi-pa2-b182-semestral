@@ -15,14 +15,14 @@ using namespace std;
 const int Deck::DECK_SIZE = 10;
 const int Deck::MAX_CARDS_DRAWN = 4;
 
+const string Deck::DECK_FILE_LEAD = "Deck:";
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
     for (const Card *card : deck.cards)
-        cout << "(" << i++ << ") " << *card << endl;
+        out << "(" << i++ << ") " << *card << endl;
     return out;
 }
-
 
 Deck::Deck() : randomGenerator(0, DECK_SIZE - 1) {}
 
@@ -130,6 +130,11 @@ void Deck::saveToFile() const {
     deckFile.close();
 }
 
+void Deck::saveToFile(std::fstream &file) const {
+    file << DECK_FILE_LEAD << endl;
+    file << *this;
+}
+
 bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename) {
     for (const string &currentFile : files)
         if (currentFile == filename)
@@ -167,3 +172,5 @@ void Deck::displayDecksMessage(const vector<string> &files) {
 void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
 
 void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
+
+

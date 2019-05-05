@@ -11,6 +11,8 @@
 //Namespaces--------------------------
 using namespace std;
 
+const string Game::SAVES_FOLDER = "../Data/Games/";
+const string Game::CURRENT_SCORE_LEAD = "Current score:";
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}) {
     chooseDecks(allCards);
@@ -26,7 +28,9 @@ void Game::play() {
     size_t roundNumber = 1;
     gameStartMessage();
 
+
     while (roundNumber <= ROUNDS) {
+        autoSave(roundNumber);
         currentScoreMessage();
         roundPrompt(roundNumber);
         Player *roundVictor = round();
@@ -40,7 +44,6 @@ void Game::play() {
             roundVictorMessage(roundVictor);
         }
     }
-
     Game::clearScreen(cout);
     gameVictorMessage();
 }
@@ -61,7 +64,7 @@ Player *Game::round() {
             currentlyPlaying()->getCurrentRoundScore() <= Game::TARGET_SCORE)
             return currentlyPlaying();
 
-        if(currentlyPlaying()->getCurrentRoundScore() == Game::TARGET_SCORE)
+        if (currentlyPlaying()->getCurrentRoundScore() == Game::TARGET_SCORE)
             currentlyPlaying()->stand();
         swapPlayers();
     }
@@ -133,8 +136,9 @@ void Game::clearScreen(ostream &out) {
 }
 
 void Game::currentScoreMessage() const {
-    cout << "Current score: " << players.first->getName() << ":" << players.first->getCurrentRoundScore()
-         << " |" << players.second->getName() << ":" << players.second->getCurrentRoundScore() << endl;
+    cout << "Current score: "
+         << players.first->getName() << ":" << players.first->getRoundsWon() << " |"
+         << players.second->getName() << ":" << players.second->getRoundsWon() << endl;
 }
 
 void Game::gameStartMessage() const {
@@ -154,3 +158,38 @@ void Game::roundTieMessage() const { cout << "Tie" << endl; }
 void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
 
 void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }
+
+void Game::manualSave(size_t roundNumber) const {
+    cout << "Enter a file name to save the game ['Q' to quit]: " << endl;
+    string filename;
+    cin >> filename;
+    if (filename == "Q")
+        return;
+    saveToFile(Game::SAVES_FOLDER + filename, roundNumber);
+}
+
+
+void Game::saveToFile(const string &outputPath, size_t roundNumber) const {
+    fstream file;
+
+    file.open(outputPath, fstream::out);
+    if (!file.is_open())
+        cout << "wtf" << endl; //TODO something here
+
+    file << CURRENT_SCORE_LEAD << roundNumber << endl;
+    players.first->saveToFile(file);
+    players.second->saveToFile(file);
+
+    file.close();
+}
+
+void Game::autoSave(size_t roundNumber) const {
+    string output = Game::SAVES_FOLDER + "autosave_";
+
+    if (players.first->getName() < players.second->getName())
+        output.append(players.first->getName() + "_" + players.second->getName());
+    else
+        output.append(players.second->getName() + "_" + players.first->getName());
+
+    saveToFile(output, roundNumber);
+}

@@ -91,6 +91,9 @@ private:
 
 
 public:
+    static const std::string NAME_FILE_LEAD;
+    static const std::string ROUND_SCORE_LEAD;
+
     Player() = default;
 
     explicit Player(std::string name);
@@ -153,6 +156,9 @@ public:
     void printDeck() const;
 
     bool isStandingUp() const;
+
+    void saveToFile(std::fstream &file) const;
+
 };
 
 #endif //PAZAAK_PLAYER_H

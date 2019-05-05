@@ -97,7 +97,7 @@ private:
 public:
     static const int DECK_SIZE;
     static const int MAX_CARDS_DRAWN;
-
+    static const std::string DECK_FILE_LEAD;
 
     //Constructors--------------------------------------------
     Deck();
@@ -129,6 +129,8 @@ public:
      * Saves the deck's contents to a readable form in the DECKS_DIRECTORY_PATH to be reconstructed later
      */
     void saveToFile() const;
+
+    void saveToFile(std::fstream &file) const;
 
     /**
      * Displays contents of the cards' container in the stream

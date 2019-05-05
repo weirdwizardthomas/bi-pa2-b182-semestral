@@ -80,7 +80,30 @@ private:
      */
     void selectStartingPlayer();
 
+    /**
+     *
+     * @param currentPlayer
+     */
     void turn(Player *currentPlayer);
+
+    /**
+     *
+     * @param roundNumber
+     */
+    void autoSave(size_t roundNumber) const;
+
+    /**
+     *
+     * @param roundNumber
+     */
+    void manualSave(size_t roundNumber) const;
+
+    /**
+     *
+     * @param outputPath
+     * @param roundNumber
+     */
+    void saveToFile(const std::string &outputPath, size_t roundNumber) const;
 
     //Messages & prompts-----------------------
     void currentScoreMessage() const;
@@ -117,10 +140,11 @@ private:
      */
     void turnPrompt() const;
 
-
 public:
     static const int ROUNDS = 3;
     static const int TARGET_SCORE = 20;
+    static const std::string SAVES_FOLDER;
+    static const std::string CURRENT_SCORE_LEAD;
 
     //Constructor----------------------------
     Game(Player *player1, Player *player2, const CardDatabase &allCards);
@@ -129,6 +153,12 @@ public:
 
     //Methods--------------------------------
     void play();
+
+    /**
+     *
+     * @return
+     */
+    static Game *loadFromFile();
 
     /**
      * Clears the 'out' stream by sending a number of new lines into it

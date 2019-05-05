@@ -9,7 +9,6 @@ using namespace std;
 const std::string PlayerBoard::PLAYED_CARDS_DELIMITER = " ";
 
 
-
 PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
                              randomNumberGenerator(0, Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES) {
     playedCards.reserve(PlayerBoard::TABLE_SIZE);
@@ -85,5 +84,22 @@ void PlayerBoard::recalculateScore() {
     currentScore = 0;
     for (auto playedCard : playedCards)
         currentScore += playedCard;
+}
+
+void PlayerBoard::saveToFile(fstream &out) const {
+    // round score
+    out << "Rounds won: " << roundsWon << endl;
+
+    // current score
+    out << "Current round score: " << currentScore << endl;
+
+    // played cards
+    out << "Cards played: " << showCardsPlayed() << endl;
+    // is standing
+    out << "Is standing: " << (standing ? "True" : "False") << endl;
+    // main deck
+    out << "Main deck:" << endl;
+    for (size_t i = 0; i < mainDeck.size(); ++i)
+        out << "(" << i << ") " << *mainDeck[i] << endl;
 }
 
