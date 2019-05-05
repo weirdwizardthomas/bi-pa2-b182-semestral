@@ -41,8 +41,8 @@ protected:
 public:
     static const int LOWER_BOUND = -10;
     static const int UPPER_BOUND = 10;
-    static const std::string PLUS_SIGN;
-    static const std::string MINUS_SIGN;
+    static const char *PLUS_SIGN;
+    static const char *MINUS_SIGN;
 
     virtual ~Card() = default;
 

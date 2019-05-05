@@ -97,7 +97,7 @@ private:
 public:
     static const int DECK_SIZE;
     static const int MAX_CARDS_DRAWN;
-    static const std::string DECK_FILE_LEAD;
+    static const char *DECK_FILE_LEAD;
 
     //Constructors--------------------------------------------
     Deck();

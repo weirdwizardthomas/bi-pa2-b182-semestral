@@ -7,7 +7,7 @@
 //Namespaces--------------------------------
 using namespace std;
 
-const string Hand::HAND_FILE_LEAD = "Hand:";
+const char * Hand::HAND_FILE_LEAD{"Hand:"};
 
 
 ostream &operator<<(ostream &out, const Hand &hand) {

@@ -11,10 +11,10 @@
 
 using namespace std;
 
-const string CardDatabase::CARD_FOLDER_PATH = "../Data/Cards/";
-const string CardDatabase::BASIC_CARD = "BasicCards";
-const string CardDatabase::DUAL_CARD = "DualCards";
-const string CardDatabase::FLIP_CARD = "FlipCards";
+const char *CardDatabase::CARD_FOLDER_PATH{"../Data/Cards/"};
+const char *CardDatabase::BASIC_CARD{"BasicCards"};
+const char *CardDatabase::DUAL_CARD{"DualCards"};
+const char *CardDatabase::FLIP_CARD{"FlipCards"};
 
 CardDatabase::CardDatabase() {
     loadBasicCards();

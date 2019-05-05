@@ -11,8 +11,8 @@
 //Namespaces--------------------------
 using namespace std;
 
-const string Game::SAVES_FOLDER = "../Data/Games/";
-const string Game::CURRENT_SCORE_LEAD = "Current score:";
+const char *Game::SAVES_FOLDER = "../Data/Games/";
+const char *Game::CURRENT_SCORE_LEAD = "Current score:";
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}) {
     chooseDecks(allCards);
@@ -184,7 +184,7 @@ void Game::saveToFile(const string &outputPath, size_t roundNumber) const {
 }
 
 void Game::autoSave(size_t roundNumber) const {
-    string output = Game::SAVES_FOLDER + "autosave_";
+    string output = string(Game::SAVES_FOLDER) + "autosave_";
 
     if (players.first->getName() < players.second->getName())
         output.append(players.first->getName() + "_" + players.second->getName());

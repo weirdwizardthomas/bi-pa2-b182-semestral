@@ -9,14 +9,14 @@
 using namespace std;
 
 const char DeckParser::NEWLINE = '\n';
-const string DeckParser::FOLDER_DELIMITER = "/";
-const string DeckParser::CARD_DESCRIPTION_DELIMITER = ": ";
-const string DeckParser::DECKS_DIRECTORY_PATH{"../Data/Decks"};
-const string DeckParser::BASIC_CARD_LEAD{"Basic Cards" + DeckParser::CARD_DESCRIPTION_DELIMITER};
-const string DeckParser::DOUBLE_CARD_LEAD{"Double Cards" + DeckParser::CARD_DESCRIPTION_DELIMITER};
-const string DeckParser::DUAL_CARD_LEAD{"Dual Card" + DeckParser::CARD_DESCRIPTION_DELIMITER};
-const string DeckParser::FLEX_CARD_LEAD{"Flex Card" + DeckParser::CARD_DESCRIPTION_DELIMITER};
-const string DeckParser::FLIP_CARD_LEAD{"Flip Card" + DeckParser::CARD_DESCRIPTION_DELIMITER};
+const char *DeckParser::FOLDER_DELIMITER{"/"};
+const char *DeckParser::CARD_DESCRIPTION_DELIMITER{": "};
+const char *DeckParser::DECKS_DIRECTORY_PATH{"../Data/Decks"};
+const char *DeckParser::BASIC_CARD_LEAD{"Basic Cards: "};
+const char *DeckParser::DOUBLE_CARD_LEAD{"Double Cards: "};
+const char *DeckParser::DUAL_CARD_LEAD{"Dual Card: "};
+const char *DeckParser::FLEX_CARD_LEAD{"Flex Card: "};
+const char *DeckParser::FLIP_CARD_LEAD{"Flip Card: "};
 
 
 const vector<string> DeckParser::loadFileContent(const string &file) {
@@ -77,7 +77,7 @@ vector<string> DeckParser::getDecksFromDirectory() {
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir(DeckParser::DECKS_DIRECTORY_PATH.c_str())) != nullptr) {
+    if ((dir = opendir(DeckParser::DECKS_DIRECTORY_PATH)) != nullptr) {
         /* print all the files and directories within directory */
         while ((ent = readdir(dir)) != nullptr) {
             string fileName = ent->d_name;

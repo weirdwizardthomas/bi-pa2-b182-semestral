@@ -143,8 +143,8 @@ private:
 public:
     static const int ROUNDS = 3;
     static const int TARGET_SCORE = 20;
-    static const std::string SAVES_FOLDER;
-    static const std::string CURRENT_SCORE_LEAD;
+    static const char *SAVES_FOLDER;
+    static const char *CURRENT_SCORE_LEAD;
 
     //Constructor----------------------------
     Game(Player *player1, Player *player2, const CardDatabase &allCards);

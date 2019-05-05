@@ -20,7 +20,7 @@
 class FlipCard : public DualCard {
 
 public:
-    static const std::string FLIP_SIGN;
+    static const char *FLIP_SIGN;
 
     FlipCard(int left, int right);
 

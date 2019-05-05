@@ -7,7 +7,7 @@
 //Namespaces-------------------------------
 using namespace std;
 
-const string FlexCard::SIGN_DELIMITER = "/";
+const char *FlexCard::SIGN_DELIMITER{"/"};
 
 FlexCard::FlexCard() : DualCard(FlexCard::LEFT, FlexCard::RIGHT) {}
 

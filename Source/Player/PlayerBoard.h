@@ -42,7 +42,7 @@ private:
 public:
     static const int TABLE_SIZE = 9;
     static const int MAIN_DECK_CARD_COPIES = 4;
-    static const std::string PLAYED_CARDS_DELIMITER;
+    static const char *PLAYED_CARDS_DELIMITER;
 
     PlayerBoard();
 

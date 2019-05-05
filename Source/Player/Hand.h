@@ -14,6 +14,8 @@ private:
     std::vector<Card *> cards;
 
 public:
+    static const char *HAND_FILE_LEAD;
+
     void addCard(Card *card);
 
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
@@ -22,7 +24,6 @@ public:
 
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
 
-    static const std::string HAND_FILE_LEAD;
 };
 
 

@@ -91,8 +91,7 @@ private:
 
 
 public:
-    static const std::string NAME_FILE_LEAD;
-    static const std::string ROUND_SCORE_LEAD;
+    static const char *NAME_FILE_LEAD;
 
     Player() = default;
 

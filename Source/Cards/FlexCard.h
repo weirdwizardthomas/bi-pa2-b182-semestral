@@ -21,7 +21,7 @@ private:
 public:
     static const int LEFT = 1;
     static const int RIGHT = 2;
-    static const std::string SIGN_DELIMITER;
+    static const char *SIGN_DELIMITER;
 
     //Constructor---------------------------
     FlexCard();

@@ -7,7 +7,7 @@
 //Namespace---------------------------------
 using namespace std;
 
-const std::string FlipCard::FLIP_SIGN = " <~> ";
+const char *FlipCard::FLIP_SIGN{" <~> "};
 
 FlipCard::FlipCard(int left, int right) : DualCard(abs(left), abs(right)) {}
 

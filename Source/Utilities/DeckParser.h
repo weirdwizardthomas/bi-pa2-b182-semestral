@@ -56,15 +56,15 @@ private:
 
 public:
     static const char NEWLINE;
-    static const std::string FOLDER_DELIMITER;
-    static const std::string FILE_CARD_VALUE_DELIMITER;
-    static const std::string CARD_DESCRIPTION_DELIMITER;
-    static const std::string DECKS_DIRECTORY_PATH;
-    static const std::string BASIC_CARD_LEAD;
-    static const std::string DOUBLE_CARD_LEAD;
-    static const std::string DUAL_CARD_LEAD;
-    static const std::string FLEX_CARD_LEAD;
-    static const std::string FLIP_CARD_LEAD;
+    static const char * FOLDER_DELIMITER;
+    static const char * FILE_CARD_VALUE_DELIMITER;
+    static const char * CARD_DESCRIPTION_DELIMITER;
+    static const char * DECKS_DIRECTORY_PATH;
+    static const char * BASIC_CARD_LEAD;
+    static const char * DOUBLE_CARD_LEAD;
+    static const char * DUAL_CARD_LEAD;
+    static const char * FLEX_CARD_LEAD;
+    static const char * FLIP_CARD_LEAD;
 
 
     /**

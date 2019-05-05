@@ -8,8 +8,8 @@
 using namespace std;
 
 
-const std::string Card::PLUS_SIGN = "+";
-const std::string Card::MINUS_SIGN = "-";
+const char *Card::PLUS_SIGN{"+"};
+const char *Card::MINUS_SIGN{"-"};
 
 
 ostream &operator<<(ostream &out, const Card &card) {

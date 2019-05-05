@@ -14,7 +14,7 @@ using namespace std;
 class CannotOpenDirectory : public exception {
 public:
     const char *what() const noexcept override {
-        return ("Cannot open the" + DeckParser::DECKS_DIRECTORY_PATH + "directory.").c_str();
+        return (string("Cannot open the") + DeckParser::DECKS_DIRECTORY_PATH + "directory.").c_str();
     }
 };
 

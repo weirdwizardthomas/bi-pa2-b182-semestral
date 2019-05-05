@@ -11,7 +11,7 @@
 //Namespaces--------------------------------
 using namespace std;
 
-const string Player::NAME_FILE_LEAD = "Name:";
+const char *Player::NAME_FILE_LEAD{"Name:"};
 
 
 Player::Player(string name) : name(std::move(name)) {}

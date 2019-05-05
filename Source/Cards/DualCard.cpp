@@ -7,7 +7,7 @@
 //Namespaces--------------------------------
 using namespace std;
 
-const std::string DualCard::DUAL_DELIMITER = "|";
+const char *DualCard::DUAL_DELIMITER{"|"};
 
 DualCard::DualCard(int left, int right) : values({left, right}) {
     if (!validInput(left) || !validInput(right))

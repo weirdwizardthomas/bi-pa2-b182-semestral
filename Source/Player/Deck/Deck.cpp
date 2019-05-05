@@ -15,7 +15,7 @@ using namespace std;
 const int Deck::DECK_SIZE = 10;
 const int Deck::MAX_CARDS_DRAWN = 4;
 
-const string Deck::DECK_FILE_LEAD = "Deck:";
+const char * Deck::DECK_FILE_LEAD{"Deck:"};
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;

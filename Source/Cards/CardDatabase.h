@@ -38,10 +38,10 @@ private:
     static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
 public:
-    static const std::string CARD_FOLDER_PATH;
-    static const std::string BASIC_CARD;
-    static const std::string DUAL_CARD;
-    static const std::string FLIP_CARD;
+    static const char *CARD_FOLDER_PATH;
+    static const char *BASIC_CARD;
+    static const char *DUAL_CARD;
+    static const char *FLIP_CARD;
 
     CardDatabase();
 

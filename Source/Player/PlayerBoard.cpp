@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const std::string PlayerBoard::PLAYED_CARDS_DELIMITER = " ";
+const char *PlayerBoard::PLAYED_CARDS_DELIMITER{" "};
 
 
 PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
@@ -87,6 +87,13 @@ void PlayerBoard::recalculateScore() {
 }
 
 void PlayerBoard::saveToFile(fstream &out) const {
+/*
+    int currentScore;
+    size_t roundsWon;
+    bool standing;
+    std::vector<int> playedCards;
+    std::vector<BasicCard *> mainDeck;
+*/
     // round score
     out << "Rounds won: " << roundsWon << endl;
 
