@@ -14,7 +14,7 @@
 class MainMenu {
 private:
     std::list<std::string> items;
-    CardDatabase database;
+    CardDatabase cardDatabase;
 
     void listItems() const;
 
@@ -30,6 +30,10 @@ public:
     void loop() const;
 
     void printHeader() const;
+
+    void playerNameQuery() const;
+
+    std::string getPlayerName() const;
 };
 
 

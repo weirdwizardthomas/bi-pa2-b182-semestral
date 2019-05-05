@@ -10,6 +10,7 @@
 #include "../Cards/Card.h"
 #include "../Cards/BasicCard.h"
 #include "../Utilities/RandomNumberGenerator.h"
+#include "../Cards/CardDatabase.h"
 
 
 class PlayerBoard {
@@ -48,7 +49,7 @@ public:
 
     ~PlayerBoard();
 
-    void saveToFile(std::fstream &out) const;
+    void saveToFile(std::ofstream &out) const;
 
     //Getters----------------------------
     /**
@@ -121,6 +122,7 @@ public:
      */
     void reset();
 
+    static PlayerBoard loadFromFile(std::ifstream &ifstream, const CardDatabase &database);
 };
 
 

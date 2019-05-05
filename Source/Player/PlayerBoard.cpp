@@ -86,27 +86,30 @@ void PlayerBoard::recalculateScore() {
         currentScore += playedCard;
 }
 
-void PlayerBoard::saveToFile(fstream &out) const {
-/*
-    int currentScore;
-    size_t roundsWon;
-    bool standing;
-    std::vector<int> playedCards;
-    std::vector<BasicCard *> mainDeck;
-*/
+void PlayerBoard::saveToFile(ofstream &out) const {
     // round score
     out << "Rounds won: " << roundsWon << endl;
-
     // current score
     out << "Current round score: " << currentScore << endl;
-
     // played cards
     out << "Cards played: " << showCardsPlayed() << endl;
     // is standing
     out << "Is standing: " << (standing ? "True" : "False") << endl;
     // main deck
-    out << "Main deck:" << endl;
+    out << "Main deck: " << mainDeck.size() << endl;
     for (size_t i = 0; i < mainDeck.size(); ++i)
         out << "(" << i << ") " << *mainDeck[i] << endl;
+}
+
+PlayerBoard PlayerBoard::loadFromFile(std::ifstream &ifstream, const CardDatabase &database) {
+    PlayerBoard playerBoard;
+
+    //rounds won
+    //current score
+    //cards played
+    //is standing
+    //main deck
+
+    return playerBoard;
 }
 

@@ -9,7 +9,7 @@ using namespace std;
 int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
     int lastPlayedCard = playedCards.back();
     lastPlayedCard *= 2;
-    playedCards.erase(playedCards.end());
+    playedCards.erase(playedCards.end() - 1);
     return lastPlayedCard;
 }
 

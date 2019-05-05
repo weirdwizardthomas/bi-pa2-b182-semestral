@@ -12,28 +12,145 @@
 //Namespaces--------------------------
 using namespace std;
 
-const char *Game::SAVES_FOLDER = "../Data/Games/";
-const char *Game::CURRENT_SCORE_LEAD = "Current score:";
+const char *Game::SAVES_FOLDER{"../Data/Games/"};
+const char *Game::CURRENT_SCORE_LEAD{"Current score"};
+const char *Game::SCORE_DELIMITER{": "};
 
-Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}) {
+const int rowsCleared = 18;
+
+Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}),
+                                                                             roundNumber(0) {
     chooseDecks(allCards);
     selectStartingPlayer();
 }
+
+
+Game::Game() : players(nullptr, nullptr), roundNumber(0) {}
+
 
 Game::~Game() {
     delete players.first;
     delete players.second;
 }
 
+void Game::autoSave() const {
+    string output = string(Game::SAVES_FOLDER) + "autosave_";
+
+    if (players.first->getName() < players.second->getName())
+        output.append(players.first->getName() + "_" + players.second->getName());
+    else
+        output.append(players.second->getName() + "_" + players.first->getName());
+
+    saveToFile(output);
+}
+
+bool Game::bothPlayersStanding() const { return players.first->isStanding() && players.second->isStanding(); }
+
+void Game::chooseDecks(const CardDatabase &allCards) const {
+    players.first->chooseDeck(allCards);
+    players.second->chooseDeck(allCards);
+}
+
+Player *Game::currentlyNotPlaying() const { return players.second; }
+
+Player *Game::currentlyPlaying() const { return players.first; }
+
+void Game::drawHands() const {
+    players.first->drawHand();
+    players.second->drawHand();
+}
+
+string Game::getGameFileName(const vector<string> &savedGames) {
+    size_t choice = 0;
+    bool invalidInput = true;
+    string fileNumber;
+
+    while (invalidInput) {
+        cin >> fileNumber;
+        choice = stoull(fileNumber);
+        invalidInput = (choice >= savedGames.size());
+        if (invalidInput)
+            invalidInputMessage();
+    }
+
+    return SAVES_FOLDER + savedGames[choice];
+}
+
+Player *Game::getGameVictor() const {
+    return players.first->getRoundsWon() > players.second->getRoundsWon() ? players.first : players.second;
+}
+
+Player *Game::getRoundVictor() const {
+    if (roundIsTie())
+        return nullptr;
+
+    return players.first->getCurrentRoundScore() > players.second->getCurrentRoundScore() ? players.first
+                                                                                          : players.second;
+}
+
+vector<string> Game::getSavedGames() {
+    vector<string> files;
+
+    DIR *dir;
+    struct dirent *ent;
+    if ((dir = opendir(SAVES_FOLDER)) != nullptr) {
+        while ((ent = readdir(dir)) != nullptr) {
+            string fileName = ent->d_name;
+            if (fileName != "." && fileName != "..")
+                files.emplace_back(ent->d_name);
+        }
+        closedir(dir);
+    } else
+        throw CannotOpenDirectory();
+
+    return files;
+}
+
+void Game::listGamesInDirectory(const vector<string> &savedGames) {
+    size_t i = 0;
+    for (const auto &game : savedGames)
+        cout << "(" << i++ << ") " << game << endl;
+}
+
+Game *Game::loadFromFile(const CardDatabase &cardDatabase) {
+    vector<string> savedGames = getSavedGames();
+    listGamesInDirectory(savedGames);
+    string outputPath(getGameFileName(savedGames));
+
+    ifstream file;
+    file.open(outputPath, fstream::in);
+    if (!file.is_open())
+        throw InvalidFileException();
+
+    string currentScore;
+    getline(file, currentScore);
+
+    list<string> parsed = CardDatabase::split(currentScore, SCORE_DELIMITER);
+    if (parsed.front() != CURRENT_SCORE_LEAD)
+        throw ParseError();
+
+    Game *game = new Game();
+    game->roundNumber = stoull(parsed.back());
+    game->loadPlayersFromFile(file, cardDatabase);
+    return game;
+}
+
+void Game::manualSave() const {
+    cout << "Enter a file name to save the game ['Q' to quit]: " << endl;
+    string filename;
+    cin >> filename;
+    if (filename == "Q")
+        return;
+    saveToFile(Game::SAVES_FOLDER + filename);
+}
+
 void Game::play() {
-    size_t roundNumber = 1;
     gameStartMessage();
 
-
     while (roundNumber <= ROUNDS) {
-        autoSave(roundNumber);
+        autoSave();
         currentScoreMessage();
-        roundPrompt(roundNumber);
+        roundPrompt();
         Player *roundVictor = round();
         if (roundVictor == nullptr) {
             Game::clearScreen(cout);
@@ -47,6 +164,11 @@ void Game::play() {
     }
     Game::clearScreen(cout);
     gameVictorMessage();
+}
+
+void Game::resetBoards() {
+    players.first->resetBoard();
+    players.second->resetBoard();
 }
 
 Player *Game::round() {
@@ -73,45 +195,6 @@ Player *Game::round() {
     return getRoundVictor();
 }
 
-void Game::drawHands() const {
-    players.first->drawHand();
-    players.second->drawHand();
-}
-
-void Game::turn(Player *currentPlayer) {
-    turnPrompt();
-    const int opponentScore = players.second->getCurrentRoundScore();
-    currentPlayer->takeTurn(opponentScore);
-}
-
-bool Game::bothPlayersStanding() const { return players.first->isStanding() && players.second->isStanding(); }
-
-void Game::chooseDecks(const CardDatabase &allCards) const {
-    players.first->chooseDeck(allCards);
-    players.second->chooseDeck(allCards);
-}
-
-Player *Game::currentlyNotPlaying() const { return players.second; }
-
-Player *Game::currentlyPlaying() const { return players.first; }
-
-Player *Game::getGameVictor() const {
-    return players.first->getRoundsWon() > players.second->getRoundsWon() ? players.first : players.second;
-}
-
-Player *Game::getRoundVictor() const {
-    if (roundIsTie())
-        return nullptr;
-
-    return players.first->getCurrentRoundScore() > players.second->getCurrentRoundScore() ? players.first
-                                                                                          : players.second;
-}
-
-void Game::resetBoards() {
-    players.first->resetBoard();
-    players.second->resetBoard();
-}
-
 bool Game::roundIsTie() const {
     return players.first->getCurrentRoundScore() == players.second->getCurrentRoundScore();
 }
@@ -123,98 +206,29 @@ void Game::selectStartingPlayer() {
 
 void Game::swapPlayers() { swap(players.first, players.second); }
 
-void Game::manualSave(size_t roundNumber) const {
-    cout << "Enter a file name to save the game ['Q' to quit]: " << endl;
-    string filename;
-    cin >> filename;
-    if (filename == "Q")
-        return;
-    saveToFile(Game::SAVES_FOLDER + filename, roundNumber);
-}
-
-
-void Game::saveToFile(const string &outputPath, size_t roundNumber) const {
-    fstream file;
+void Game::saveToFile(const string &outputPath) const {
+    ofstream file;
 
     file.open(outputPath, fstream::out);
     if (!file.is_open())
         cout << "wtf" << endl; //TODO something here
 
-    file << CURRENT_SCORE_LEAD << roundNumber << endl;
+    file << CURRENT_SCORE_LEAD << SCORE_DELIMITER << roundNumber << endl;
     players.first->saveToFile(file);
     players.second->saveToFile(file);
 
     file.close();
 }
 
-void Game::autoSave(size_t roundNumber) const {
-    string output = string(Game::SAVES_FOLDER) + "autosave_";
-
-    if (players.first->getName() < players.second->getName())
-        output.append(players.first->getName() + "_" + players.second->getName());
-    else
-        output.append(players.second->getName() + "_" + players.first->getName());
-
-    saveToFile(output, roundNumber);
-}
-
-Game *Game::loadFromFile() {
-    vector<string> savedGames = getSavedGames();
-    listGamesInDirectory(savedGames);
-    string outputPath(getGameFileName(savedGames));
-
-    fstream file;
-    file.open(outputPath, fstream::in);
-
-    return nullptr;
-}
-
-string Game::getGameFileName(const vector<string> &savedGames) {
-    size_t choice = 0;
-    bool invalidInput = false;
-    string fileNumber;
-
-    while (invalidInput) {
-        cin >> fileNumber;
-        choice = stoull(fileNumber);
-        invalidInput = (choice >= savedGames.size());
-        if (invalidInput)
-            invalidInputMessage();
-    }
-    string filepath(SAVES_FOLDER + savedGames[choice]);
-    return fileNumber;
-}
-
-void Game::listGamesInDirectory(const vector<string> &savedGames) {
-    size_t i = 0;
-    for (const auto &game : savedGames)
-        cout << "(" << i++ << ") " << game << endl;
-}
-
-void Game::invalidInputMessage() { cout << "Invalid input, please try again," << endl; }
-
-vector<string> Game::getSavedGames() {
-    vector<string> files;
-
-    DIR *dir;
-    struct dirent *ent;
-    if ((dir = opendir(SAVES_FOLDER)) != nullptr) {
-        while ((ent = readdir(dir)) != nullptr) {
-            string fileName = ent->d_name;
-            if (fileName != "." && fileName != "..")
-                files.emplace_back(ent->d_name);
-        }
-        closedir(dir);
-    } else
-        throw CannotOpenDirectory();
-
-    return files;
+void Game::turn(Player *currentPlayer) {
+    turnPrompt();
+    const int opponentScore = players.second->getCurrentRoundScore();
+    currentPlayer->takeTurn(opponentScore);
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
 //Queries and prompts-------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
-const int rowsCleared = 18;
 
 void Game::clearScreen(ostream &out) {
     ios_base::fmtflags f(out.flags());
@@ -239,7 +253,9 @@ void Game::gameStartMessage() const {
 
 void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " won the game!" << endl; }
 
-void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round #" << roundNumber << endl; }
+void Game::invalidInputMessage() { cout << "Invalid input, please try again," << endl; }
+
+void Game::roundPrompt() const { cout << "Starting round #" << roundNumber << endl; }
 
 void Game::roundTieMessage() const { cout << "Tie" << endl; }
 
@@ -247,4 +263,7 @@ void Game::roundVictorMessage(const Player *victor) const { cout << victor->getN
 
 void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }
 
-
+void Game::loadPlayersFromFile(ifstream &file, const CardDatabase &cardDatabase) {
+    players.first->loadFromFile(file, cardDatabase);
+    players.second->loadFromFile(file, cardDatabase);
+}

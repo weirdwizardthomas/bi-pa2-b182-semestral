@@ -98,6 +98,7 @@ public:
     static const int DECK_SIZE;
     static const int MAX_CARDS_DRAWN;
     static const char *DECK_FILE_LEAD;
+    static const char *DECK_HEADER_DELIMITER;
 
     //Constructors--------------------------------------------
     Deck();
@@ -130,7 +131,7 @@ public:
      */
     void saveToFile() const;
 
-    void saveToFile(std::fstream &file) const;
+    void saveToFile(std::ofstream &file) const;
 
     /**
      * Displays contents of the cards' container in the stream
@@ -140,6 +141,7 @@ public:
      */
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
+    static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 #endif //PAZAAK_DECK_H

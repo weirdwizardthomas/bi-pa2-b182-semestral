@@ -35,7 +35,6 @@ private:
 
     static std::vector<std::string> getFileLines(const std::string &filePath);
 
-    static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
 public:
     static const char *CARD_FOLDER_PATH;
@@ -52,6 +51,8 @@ public:
     std::vector<Card *> toVector() const;
 
     size_t size() const;
+
+    static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
     friend std::ostream &operator<<(std::ostream &out, const CardDatabase &cardDatabase);
 

@@ -5,6 +5,7 @@
 #ifndef PAZAAK_PLAYER_H
 #define PAZAAK_PLAYER_H
 
+
 #include <cstdlib>
 #include <string>
 #include <map>
@@ -91,6 +92,8 @@ private:
 
 public:
     static const char *NAME_FILE_LEAD;
+    static const char *NAME_DELIMITER;
+
 
     Player() = default;
 
@@ -155,8 +158,9 @@ public:
 
     bool isStandingUp() const;
 
-    void saveToFile(std::fstream &file) const;
+    void saveToFile(std::ofstream &file) const;
 
+    Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 #endif //PAZAAK_PLAYER_H

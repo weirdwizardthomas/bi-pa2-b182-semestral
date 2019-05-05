@@ -15,7 +15,9 @@ using namespace std;
 const int Deck::DECK_SIZE = 10;
 const int Deck::MAX_CARDS_DRAWN = 4;
 
-const char * Deck::DECK_FILE_LEAD{"Deck:"};
+const char *Deck::DECK_FILE_LEAD{"Deck"};
+const char *Deck::DECK_HEADER_DELIMITER{": "};
+
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
@@ -130,8 +132,8 @@ void Deck::saveToFile() const {
     deckFile.close();
 }
 
-void Deck::saveToFile(std::fstream &file) const {
-    file << DECK_FILE_LEAD << endl;
+void Deck::saveToFile(ofstream &file) const {
+    file << DECK_FILE_LEAD << ": " << cards.size() << endl;
     file << *this;
 }
 
@@ -172,5 +174,28 @@ void Deck::displayDecksMessage(const vector<string> &files) {
 void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
 
 void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
+
+Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
+    Deck deck;
+
+    string input;
+    getline(file, input);
+
+    list<string> parsed = CardDatabase::split(input, Deck::DECK_HEADER_DELIMITER);
+    if (parsed.front() != Deck::DECK_FILE_LEAD)
+        throw ParseError();
+
+    size_t cardCount = stoull(parsed.back());
+
+    deck.cards.reserve(cardCount);
+    for (size_t i = 0; i < cardCount; ++i) {
+        getline(file, input);
+        parsed = CardDatabase::split(input, ") ");
+        deck.cards.push_back(cardDatabase.get(parsed.back()));
+
+    }
+
+    return deck;
+}
 
 

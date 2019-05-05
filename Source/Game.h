@@ -5,6 +5,7 @@
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
+
 #include "Player/Player/Player.h"
 #include "Utilities/RandomNumberGenerator.h"
 
@@ -12,6 +13,7 @@ class Game {
 private:
     //Attributes------------------------------
     std::pair<Player *, Player *> players;
+    size_t roundNumber;
     //Methods--------------------------------
 
     /**
@@ -90,20 +92,20 @@ private:
      *
      * @param roundNumber
      */
-    void autoSave(size_t roundNumber) const;
+    void autoSave() const;
 
     /**
      *
      * @param roundNumber
      */
-    void manualSave(size_t roundNumber) const;
+    void manualSave() const;
 
     /**
      *
      * @param outputPath
      * @param roundNumber
      */
-    void saveToFile(const std::string &outputPath, size_t roundNumber) const;
+    void saveToFile(const std::string &outputPath) const;
 
     static std::vector<std::string> getSavedGames();
 
@@ -124,7 +126,7 @@ private:
      * Shows a message that a round is commencing
      * @param roundNumber current round's number to be displayed
      */
-    void roundPrompt(size_t roundNumber) const;
+    void roundPrompt() const;
 
     /**
      * Shows a message to tell players that the round ended in a tie
@@ -147,9 +149,13 @@ public:
     static const int TARGET_SCORE = 20;
     static const char *SAVES_FOLDER;
     static const char *CURRENT_SCORE_LEAD;
+    static const char *SCORE_DELIMITER;
+
 
     //Constructor----------------------------
     Game(Player *player1, Player *player2, const CardDatabase &allCards);
+
+    Game();
 
     ~Game();
 
@@ -160,7 +166,7 @@ public:
      *
      * @return
      */
-    static Game *loadFromFile();
+    static Game *loadFromFile(const CardDatabase &cardDatabase);
 
     /**
      * Clears the 'out' stream by sending a number of new lines into it
@@ -173,6 +179,8 @@ public:
     static void listGamesInDirectory(const std::vector<std::string> &savedGames);
 
     static std::string getGameFileName(const std::vector<std::string> &savedGames);
+
+    void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 #endif //PAZAAK_GAME_H

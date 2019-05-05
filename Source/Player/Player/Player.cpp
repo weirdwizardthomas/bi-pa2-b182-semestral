@@ -7,11 +7,13 @@
 #include "Player.h"
 #include "../../Game.h"
 #include "../../Utilities/DeckParser.h"
+#include "../../Utilities/Exceptions.h"
 
 //Namespaces--------------------------------
 using namespace std;
 
-const char *Player::NAME_FILE_LEAD{"Name:"};
+const char *Player::NAME_FILE_LEAD{"Name"};
+const char *Player::NAME_DELIMITER{": "};
 
 
 Player::Player(string name) : name(std::move(name)) {}
@@ -187,9 +189,34 @@ void Player::openerMessage(int opener) const { cout << "Player " << name << "'s 
 
 void Player::stand() { board.stand(); }
 
-void Player::saveToFile(fstream &file) const {
-    file << Player::NAME_FILE_LEAD << name << endl;
+void Player::saveToFile(ofstream &file) const {
+    file << Player::NAME_FILE_LEAD << NAME_DELIMITER << name << endl;
     hand.saveToFile(file);
     deck.saveToFile(file);
     board.saveToFile(file);
+}
+
+Player *Player::loadFromFile(ifstream &file, const CardDatabase &cardDatabase) {
+    //name
+    string nameField;
+    getline(file, nameField);
+    list<string> parsed = CardDatabase::split(nameField, Player::NAME_DELIMITER);
+    if (parsed.front() != Player::NAME_FILE_LEAD)
+        throw ParseError();
+    Player *player = new Player(parsed.back());
+    //hand
+    player->hand = Hand::loadFromFile(file, cardDatabase);
+    //side deck
+    player->deck = Deck::loadFromFile(file, cardDatabase);
+
+    //board
+    player->board = PlayerBoard::loadFromFile(file, cardDatabase);
+    //rounds won
+
+
+    //current round score
+    //cards played
+    //is standing
+    //main deck
+    return player;
 }

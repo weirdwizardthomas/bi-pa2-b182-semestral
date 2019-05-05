@@ -6,8 +6,13 @@
 #define PAZAAK_DRAWCARD_H
 
 
-class DrawCard {
+#include "Card.h"
 
+class DrawCard : public Card {
+public:
+    std::string getDescription() const override;
+
+    int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 };
 
 

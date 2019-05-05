@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "../Cards/Card.h"
+#include "../Cards/CardDatabase.h"
 
 class Hand {
 private:
@@ -15,15 +16,17 @@ private:
 
 public:
     static const char *HAND_FILE_LEAD;
+    static const char *FILE_VALUE_DELIMITER;
 
     void addCard(Card *card);
 
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
-    void saveToFile(std::fstream &file) const;
+    void saveToFile(std::ofstream &file) const;
 
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
 
+    static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 
