@@ -105,6 +105,8 @@ private:
      */
     void saveToFile(const std::string &outputPath, size_t roundNumber) const;
 
+    static std::vector<std::string> getSavedGames();
+
     //Messages & prompts-----------------------
     void currentScoreMessage() const;
 
@@ -166,6 +168,11 @@ public:
      */
     static void clearScreen(std::ostream &out);
 
+    static void invalidInputMessage();
+
+    static void listGamesInDirectory(const std::vector<std::string> &savedGames);
+
+    static std::string getGameFileName(const std::vector<std::string> &savedGames);
 };
 
 #endif //PAZAAK_GAME_H

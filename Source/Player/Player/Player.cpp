@@ -170,8 +170,8 @@ void Player::actionPrompt() const {
 }
 
 void Player::deckChoicePrompt() const {
-    cout << "============================================" << endl;
-    cout << "[F]orge a new deck or [L]oad an existing one?" << endl;
+    cout << "=========================================================" << endl;
+    cout << "Forge a new deck or Load an existing one([F]orge/[L]oad)?" << endl;
 }
 
 void Player::choosingDeckMessage() const {
@@ -181,8 +181,7 @@ void Player::choosingDeckMessage() const {
 
 void Player::isPassingTurnMessage() const { cout << name << " is passing their turn." << endl; }
 
-//TODO change to Stand and give more answer possibilities
-void Player::standPrompt() const { cout << "Would you like to Stand?" << endl; }
+void Player::standPrompt() const { cout << "Would you like to Stand([S]tand/[Y]es/[N]o)?" << endl; }
 
 void Player::openerMessage(int opener) const { cout << "Player " << name << "'s opener:" << opener << endl; }
 

@@ -4,6 +4,7 @@
 
 #include "Game.h"
 #include "Cards/CardDatabase.h"
+#include "Utilities/Exceptions.h"
 
 #include <iostream>
 #include <iomanip>
@@ -122,43 +123,6 @@ void Game::selectStartingPlayer() {
 
 void Game::swapPlayers() { swap(players.first, players.second); }
 
-//--------------------------------------------------------------------------------------------------------------------//
-//Queries and prompts-------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------//
-const int rowsCleared = 18;
-
-void Game::clearScreen(ostream &out) {
-    ios_base::fmtflags f(out.flags());
-    //out << setfill('\n') << setw(rowsCleared) << endl;
-    for (size_t i = 0; i < rowsCleared; ++i)
-        out << endl;
-    out.flags(f);
-}
-
-void Game::currentScoreMessage() const {
-    cout << "Current score: "
-         << players.first->getName() << ":" << players.first->getRoundsWon() << " |"
-         << players.second->getName() << ":" << players.second->getRoundsWon() << endl;
-}
-
-void Game::gameStartMessage() const {
-    Game::clearScreen(cout);
-    //TODO more ZAZ around here
-    cout << "Starting a game of Pazaak between "
-         << players.first->getName() << " and "
-         << players.second->getName() << "." << endl;
-}
-
-void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " won the game!" << endl; }
-
-void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round #" << roundNumber << endl; }
-
-void Game::roundTieMessage() const { cout << "Tie" << endl; }
-
-void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
-
-void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }
-
 void Game::manualSave(size_t roundNumber) const {
     cout << "Enter a file name to save the game ['Q' to quit]: " << endl;
     string filename;
@@ -193,3 +157,94 @@ void Game::autoSave(size_t roundNumber) const {
 
     saveToFile(output, roundNumber);
 }
+
+Game *Game::loadFromFile() {
+    vector<string> savedGames = getSavedGames();
+    listGamesInDirectory(savedGames);
+    string outputPath(getGameFileName(savedGames));
+
+    fstream file;
+    file.open(outputPath, fstream::in);
+
+    return nullptr;
+}
+
+string Game::getGameFileName(const vector<string> &savedGames) {
+    size_t choice = 0;
+    bool invalidInput = false;
+    string fileNumber;
+
+    while (invalidInput) {
+        cin >> fileNumber;
+        choice = stoull(fileNumber);
+        invalidInput = (choice >= savedGames.size());
+        if (invalidInput)
+            invalidInputMessage();
+    }
+    string filepath(SAVES_FOLDER + savedGames[choice]);
+    return fileNumber;
+}
+
+void Game::listGamesInDirectory(const vector<string> &savedGames) {
+    size_t i = 0;
+    for (const auto &game : savedGames)
+        cout << "(" << i++ << ") " << game << endl;
+}
+
+void Game::invalidInputMessage() { cout << "Invalid input, please try again," << endl; }
+
+vector<string> Game::getSavedGames() {
+    vector<string> files;
+
+    DIR *dir;
+    struct dirent *ent;
+    if ((dir = opendir(SAVES_FOLDER)) != nullptr) {
+        while ((ent = readdir(dir)) != nullptr) {
+            string fileName = ent->d_name;
+            if (fileName != "." && fileName != "..")
+                files.emplace_back(ent->d_name);
+        }
+        closedir(dir);
+    } else
+        throw CannotOpenDirectory();
+
+    return files;
+}
+
+//--------------------------------------------------------------------------------------------------------------------//
+//Queries and prompts-------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
+const int rowsCleared = 18;
+
+void Game::clearScreen(ostream &out) {
+    ios_base::fmtflags f(out.flags());
+    //out << setfill('\n') << setw(rowsCleared) << endl;
+    for (size_t i = 0; i < rowsCleared; ++i)
+        out << endl;
+    out.flags(f);
+}
+
+void Game::currentScoreMessage() const {
+    cout << "Current score: "
+         << players.first->getName() << ":" << players.first->getRoundsWon() << " |"
+         << players.second->getName() << ":" << players.second->getRoundsWon() << endl;
+}
+
+void Game::gameStartMessage() const {
+    Game::clearScreen(cout);
+    cout << "Starting a game of Pazaak between "
+         << players.first->getName() << " and "
+         << players.second->getName() << "." << endl;
+}
+
+void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " won the game!" << endl; }
+
+void Game::roundPrompt(size_t roundNumber) const { cout << "Starting round #" << roundNumber << endl; }
+
+void Game::roundTieMessage() const { cout << "Tie" << endl; }
+
+void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
+
+void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }
+
+

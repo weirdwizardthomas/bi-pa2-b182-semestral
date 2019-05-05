@@ -22,7 +22,6 @@ private:
     Deck deck;
     Hand hand;
     PlayerBoard board;
-    //Statistics statistics; TODO, games played, victories, cards played, favourite card,...
 
     //Methods------------------------------------------------------------
 
