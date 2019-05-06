@@ -186,7 +186,7 @@ Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
         throw ParseError();
 
     size_t cardCount = stoull(parsed.back());
-
+    deck.randomGenerator.lowerCeiling(cardCount - 1);
     deck.cards.reserve(cardCount);
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);

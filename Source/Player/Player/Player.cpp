@@ -211,12 +211,5 @@ Player *Player::loadFromFile(ifstream &file, const CardDatabase &cardDatabase) {
 
     //board
     player->board = PlayerBoard::loadFromFile(file, cardDatabase);
-    //rounds won
-
-
-    //current round score
-    //cards played
-    //is standing
-    //main deck
     return player;
 }

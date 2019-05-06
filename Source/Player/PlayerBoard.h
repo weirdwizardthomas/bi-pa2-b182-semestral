@@ -21,7 +21,7 @@ private:
     size_t roundsWon;
     bool standing;
     std::vector<int> playedCards;
-    std::vector<BasicCard *> mainDeck;
+    std::vector<BasicCard> mainDeck;
     RandomNumberGenerator randomNumberGenerator;
 
     /**
@@ -46,8 +46,6 @@ public:
     static const char *PLAYED_CARDS_DELIMITER;
 
     PlayerBoard();
-
-    ~PlayerBoard();
 
     void saveToFile(std::ofstream &out) const;
 
@@ -122,7 +120,17 @@ public:
      */
     void reset();
 
-    static PlayerBoard loadFromFile(std::ifstream &ifstream, const CardDatabase &database);
+    static PlayerBoard loadFromFile(std::ifstream &file, const CardDatabase &database);
+
+    static std::vector<int> loadPlayedCards(std::ifstream &file);
+
+    static int loadCurrentScore(std::ifstream &file);
+
+    static size_t loadRoundsWon(std::ifstream &file);
+
+    static bool loadStanding(std::ifstream &file);
+
+    static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
 };
 
 

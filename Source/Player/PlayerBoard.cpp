@@ -2,7 +2,9 @@
 // Created by tomtom on 08/02/19.
 //
 
+#include <sstream>
 #include "PlayerBoard.h"
+#include "../Utilities/Exceptions.h"
 
 using namespace std;
 
@@ -19,18 +21,13 @@ PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
 void PlayerBoard::generateMainDeck() {
     for (size_t i = 1; i <= Card::UPPER_BOUND; i++)
         for (size_t j = 0; j < PlayerBoard::MAIN_DECK_CARD_COPIES; ++j)
-            mainDeck.push_back(new BasicCard(i));
+            mainDeck.emplace_back(i);
 }
 
-PlayerBoard::~PlayerBoard() {
-    for (auto &i : mainDeck)
-        delete i;
-}
 
 int PlayerBoard::drawCardFromMainDeck() {
     size_t index = randomNumberGenerator();
-    int value = mainDeck[index]->play();
-    delete mainDeck[index];
+    int value = mainDeck[index].play();
     mainDeck.erase(mainDeck.begin() + index);
     randomNumberGenerator.lowerCeiling(mainDeck.size());
     return value;
@@ -38,7 +35,7 @@ int PlayerBoard::drawCardFromMainDeck() {
 
 int PlayerBoard::getCurrentScore() const { return currentScore; }
 
-int PlayerBoard::getOpener() { return mainDeck[randomNumberGenerator()]->play(); }
+int PlayerBoard::getOpener() { return mainDeck[randomNumberGenerator()].play(); }
 
 vector<int> &PlayerBoard::getPlayedCards() { return playedCards; }
 
@@ -98,18 +95,76 @@ void PlayerBoard::saveToFile(ofstream &out) const {
     // main deck
     out << "Main deck: " << mainDeck.size() << endl;
     for (size_t i = 0; i < mainDeck.size(); ++i)
-        out << "(" << i << ") " << *mainDeck[i] << endl;
+        out << "(" << i << ") " << mainDeck[i] << endl;
 }
 
-PlayerBoard PlayerBoard::loadFromFile(std::ifstream &ifstream, const CardDatabase &database) {
+PlayerBoard PlayerBoard::loadFromFile(ifstream &file, const CardDatabase &database) {
     PlayerBoard playerBoard;
 
-    //rounds won
-    //current score
-    //cards played
-    //is standing
-    //main deck
+    playerBoard.roundsWon = loadRoundsWon(file);
+    playerBoard.currentScore = loadCurrentScore(file);
+    playerBoard.playedCards = loadPlayedCards(file);
+    playerBoard.standing = loadStanding(file);
+    playerBoard.mainDeck = loadMainDeck(file);
 
     return playerBoard;
+}
+
+bool PlayerBoard::loadStanding(ifstream &file) {
+    string input;
+    getline(file, input);
+    list<string> parsed = CardDatabase::split(input, ": ");//is standing
+    return parsed.back() == "True";
+}
+
+size_t PlayerBoard::loadRoundsWon(ifstream &file) {
+    string input;
+    getline(file, input);
+    list<string> parsed = CardDatabase::split(input, ": ");
+    if (parsed.front() != "Rounds won")
+        throw ParseError();
+    return stoull(parsed.back());
+}
+
+int PlayerBoard::loadCurrentScore(ifstream &file) {
+    string input;
+    getline(file, input);
+    list<string> parsed = CardDatabase::split(input, ": ");
+    if (parsed.front() != "Current round score")
+        throw ParseError();
+    return stoi(parsed.back());
+}
+
+vector<int> PlayerBoard::loadPlayedCards(ifstream &file) {
+    string input;
+    getline(file, input);
+    list<string> parsed = CardDatabase::split(input, ": ");
+    //get the cards played
+    stringstream playedCards;
+    playedCards.str(parsed.back());
+
+    int loadedCard = 0;
+    vector<int> cards;
+    while (playedCards >> loadedCard)
+        cards.push_back(loadedCard);
+
+    return cards;
+}
+
+vector<BasicCard> PlayerBoard::loadMainDeck(ifstream &file) {
+    string input;
+    getline(file, input);
+    list<string> parsed = CardDatabase::split(input, ": ");
+    if (parsed.front() != "Main deck")
+        throw ParseError();
+    size_t cardCount = stoull(parsed.back());
+
+    vector<BasicCard> cards;
+    for (size_t i = 0; i < cardCount; ++i) {
+        getline(file, input);
+        parsed = CardDatabase::split(input, ") ");
+        cards.emplace_back(stoi(parsed.back()));
+    }
+    return cards;
 }
 

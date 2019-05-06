@@ -132,6 +132,7 @@ Game *Game::loadFromFile(const CardDatabase &cardDatabase) {
     Game *game = new Game();
     game->roundNumber = stoull(parsed.back());
     game->loadPlayersFromFile(file, cardDatabase);
+    file.close();
     return game;
 }
 
@@ -148,7 +149,6 @@ void Game::play() {
     gameStartMessage();
 
     while (roundNumber <= ROUNDS) {
-        autoSave();
         currentScoreMessage();
         roundPrompt();
         Player *roundVictor = round();
@@ -161,6 +161,8 @@ void Game::play() {
             Game::clearScreen(cout);
             roundVictorMessage(roundVictor);
         }
+        autoSave();
+
     }
     Game::clearScreen(cout);
     gameVictorMessage();
@@ -264,6 +266,6 @@ void Game::roundVictorMessage(const Player *victor) const { cout << victor->getN
 void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }
 
 void Game::loadPlayersFromFile(ifstream &file, const CardDatabase &cardDatabase) {
-    players.first->loadFromFile(file, cardDatabase);
-    players.second->loadFromFile(file, cardDatabase);
+    players.first = Player::loadFromFile(file, cardDatabase);
+    players.second = Player::loadFromFile(file, cardDatabase);
 }

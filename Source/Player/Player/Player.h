@@ -160,7 +160,7 @@ public:
 
     void saveToFile(std::ofstream &file) const;
 
-    Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
+    static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 #endif //PAZAAK_PLAYER_H
