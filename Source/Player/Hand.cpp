@@ -16,12 +16,14 @@ const char *Hand::FILE_VALUE_DELIMITER{": "};
 
 ostream &operator<<(ostream &out, const Hand &hand) {
     size_t i = 0;
-    for (auto &card : hand.cards)
+    for (const auto &card : hand.cards)
         out << "(" << i++ << ") " << *card << endl;
     return out;
 }
 
 int Hand::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
+    if (cardIndex >= cards.size())
+        throw invalid_argument("");
     const int cardValue = cards[cardIndex]->play(playedCards, currentScore, opponentScore);
     cards.erase(cards.begin() + cardIndex);
     return cardValue;

@@ -17,7 +17,7 @@ DualCard::DualCard(int left, int right) : values({left, right}) {
         swap(values.first, values.second);
 }
 
-int DualCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
+int DualCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
 
     int value = chooseEffect() == 0 ? values.first : values.second;
     valueChosenMessage(value);
@@ -53,5 +53,9 @@ void DualCard::effectChoicesMessage() const { cout << "[" << values.first << DUA
 
 void DualCard::chooseEffectPrompt() const {
     cout << "Choose an effect [0 for the first choice/1 for the second choice]" << endl;
+}
+
+vector<int> DualCard::getValues() const {
+    return {values.first, values.second};
 }
 

@@ -53,8 +53,6 @@ vector<Card *> Deck::drawCardsFromDeck() {
     return drawnCards;
 }
 
-size_t Deck::getDeckSize() const { return this->cards.size(); }
-
 void Deck::loadCardsFromUser(const CardDatabase &allCards) {
     vector<Card *> allCardsVector = allCards.toVector();
 

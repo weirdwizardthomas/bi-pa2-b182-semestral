@@ -40,6 +40,8 @@ public:
      */
     int play() const;
 
+    std::vector<int> getValues() const override;
+
 };
 
 

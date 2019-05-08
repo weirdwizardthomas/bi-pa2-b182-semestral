@@ -17,11 +17,9 @@
 #include "../../Cards/CardDatabase.h"
 
 class Player {
-private:
+protected:
     //Attributes---------------------------------------------------------
     std::string name;
-    Deck deck;
-    Hand hand;
     PlayerBoard board;
 
     //Methods------------------------------------------------------------
@@ -32,31 +30,12 @@ private:
      */
     int autoPlayCard();
 
-    /**
-     * Takes input from the player and either passes the turn or plays a card from the player's hand
-     * @param opponentScore
-     * @return
-     */
-    bool playCard(int opponentScore);
-
     //Messages-and-prompts-----------------------------------------------
-    void actionPrompt() const;
-
     /**
      *
      * @param opponentScore
      */
     void boardStatusMessage(int opponentScore) const;
-
-    /**
-     *
-     */
-    void deckApprovalQuery() const;
-
-    /**
-     *
-     */
-    void invalidInputMessage() const;
 
     /**
      *
@@ -79,31 +58,29 @@ private:
      */
     void isPassingTurnMessage() const;
 
-    /**
-     *
-     */
-    void choosingDeckMessage() const;
-
-    /**
-     *
-     */
-    void deckChoicePrompt() const;
-
 
 public:
     static const char *NAME_FILE_LEAD;
     static const char *NAME_DELIMITER;
 
-
     Player() = default;
 
+    virtual ~Player() = default;
+
     explicit Player(std::string name);
+
+    virtual void chooseDeck(const CardDatabase &allCards) = 0;
+
+    /**
+     *
+     */
+    virtual void drawHand() = 0;
 
     /**
      *
      * @param opponentScore
      */
-    void takeTurn(int opponentScore);
+    virtual void takeTurn(int opponentScore) = 0;
 
     //Setters------------------------------------------------------------
     /**
@@ -113,25 +90,25 @@ public:
 
     /**
      *
-     * @param allCards
-     */
-    void chooseDeck(const CardDatabase &allCards);
-
-    /**
-     *
-     */
-    void drawHand();
-
-    /**
-     *
      */
     void resetBoard();
 
+    /**
+     *
+     */
     void stand();
 
     //Getters------------------------------------------------------------
+    /**
+     *
+     * @return
+     */
     int getCurrentRoundScore() const;
 
+    /**
+     *
+     * @return
+     */
     const std::string &getName() const;
 
     /**
@@ -152,15 +129,31 @@ public:
      */
     size_t getRoundsWon() const;
 
+    /**
+     *
+     * @return
+     */
     bool isStanding() const;
 
-    void printDeck() const;
 
-    bool isStandingUp() const;
+    /**
+     *
+     */
+    virtual void saveToFile(std::ofstream &file) const = 0;
 
-    void saveToFile(std::ofstream &file) const;
+    /**
+     *
+     * @param file
+     * @param cardDatabase
+     * @return
+     */
+    static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
-    static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
+    /**
+     *
+     * @param file
+     */
+    virtual void saveNameToFile(std::ofstream &file) const = 0;
 };
 
 #endif //PAZAAK_PLAYER_H

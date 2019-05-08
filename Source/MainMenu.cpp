@@ -5,6 +5,8 @@
 #include <iostream>
 #include "MainMenu.h"
 #include "Game.h"
+#include "Player/Player/HumanPlayer.h"
+#include "Player/Player/ComputerPlayer.h"
 
 using namespace std;
 
@@ -31,14 +33,15 @@ size_t MainMenu::selectItem() const {
 bool MainMenu::invoke(size_t itemIndex) const {
     switch (itemIndex) {
         case 0: {
-            Game *game = new Game(new Player(getPlayerName()), new Player(getPlayerName()), cardDatabase);
+            Game *game = new Game(new HumanPlayer(getPlayerName()), new HumanPlayer(getPlayerName()), cardDatabase);
             game->play();
             delete game;
             break;
         }
 
         case 1: {
-            Game *game = new Game(new Player(getPlayerName()), new Player(getPlayerName()), cardDatabase);
+            Player *player = new HumanPlayer(getPlayerName());
+            Game *game = new Game(player, new ComputerPlayer(player), cardDatabase);
             game->play();
             delete game;
             break;
@@ -51,7 +54,6 @@ bool MainMenu::invoke(size_t itemIndex) const {
             delete game;
             break;
         }
-
 
         case 3: {
             Deck deck(cardDatabase);

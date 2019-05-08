@@ -12,6 +12,7 @@
 #include <fstream>
 #include <map>
 
+//TODO input stream as a parameter
 
 class Card {
 
@@ -39,8 +40,8 @@ protected:
     void invalidSignMessage() const;
 
 public:
-    static const int LOWER_BOUND = -10;
-    static const int UPPER_BOUND = 10;
+    static const int LOWER_BOUND;
+    static const int UPPER_BOUND;
     static const char *PLUS_SIGN;
     static const char *MINUS_SIGN;
 
@@ -60,6 +61,8 @@ public:
      * @return current player's score updated by playing a card
      */
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
+
+    virtual std::vector<int> getValues() const = 0;
 
     /**
      *

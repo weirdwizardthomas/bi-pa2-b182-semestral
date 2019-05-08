@@ -5,11 +5,36 @@
 #ifndef PAZAAK_COMPUTERPLAYER_H
 #define PAZAAK_COMPUTERPLAYER_H
 
+static const char *const REMAINING_CARDS_LEAD = "Remaining cards";
 
 #include "Player.h"
 
-class ComputerPlayer: public Player {
+#include <queue>
 
+class ComputerPlayer : public Player {
+private:
+    std::vector<std::pair<BasicCard, BasicCard>> deck;
+    int remainingCards;
+    Player *opponent;
+
+    void saveNameToFile(std::ofstream &file) const override;
+
+public:
+    explicit ComputerPlayer(Player *opponent);
+
+    void drawHand() override;
+
+    void saveToFile(std::ofstream &file) const override;
+
+    void takeTurn(int opponentScore) override;
+
+    void chooseDeck(const CardDatabase &allCards) override;
+
+    void findPositive(int opponentScore, int currentScore);
+
+    void findNegative(int currentScore);
+
+    static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent);
 };
 
 

@@ -115,12 +115,6 @@ public:
     std::vector<Card *> drawCardsFromDeck();
 
     /**
-     * Shows Deck's container's size
-     * @return number of Cards in the deck
-     */
-    size_t getDeckSize() const;
-
-    /**
      * Analyses the deck's cards and splits them based on their card type
      * @return
      */

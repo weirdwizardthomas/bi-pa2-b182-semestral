@@ -10,6 +10,9 @@ using namespace std;
 
 const char *Card::PLUS_SIGN{"+"};
 const char *Card::MINUS_SIGN{"-"};
+const int Card::LOWER_BOUND = -10;
+const int Card::UPPER_BOUND = 10;
+
 
 
 ostream &operator<<(ostream &out, const Card &card) {

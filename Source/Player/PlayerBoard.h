@@ -5,6 +5,7 @@
 #ifndef TMPPAZAAK_PLAYERBOARD_H
 #define TMPPAZAAK_PLAYERBOARD_H
 
+
 #include <vector>
 
 #include "../Cards/Card.h"
@@ -29,6 +30,46 @@ private:
      */
     void generateMainDeck();
 
+    /**
+     *
+     * @param file
+     * @return
+     */
+    static std::vector<int> loadPlayedCards(std::ifstream &file);
+
+    /**
+     *
+     * @param file
+     * @return
+     */
+    static int loadCurrentScore(std::ifstream &file);
+
+    /**
+     *
+     * @param file
+     * @return
+     */
+    static size_t loadRoundsWon(std::ifstream &file);
+
+    /**
+     *
+     * @param file
+     * @return
+     */
+    static bool loadStanding(std::ifstream &file);
+
+    /**
+     *
+     */
+    static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
+
+    /**
+     *
+     * @param field
+     * @param file
+     * @return
+     */
+    static std::string loadValue(const std::string &field, std::ifstream &file);
 
     /**
      *
@@ -44,9 +85,20 @@ public:
     static const int TABLE_SIZE = 9;
     static const int MAIN_DECK_CARD_COPIES = 4;
     static const char *PLAYED_CARDS_DELIMITER;
+    static const char *ROUNDS_WON_LEAD;
+    static const char *CURRENT_SCORE_LEAD;
+    static const char *FIELD_DELIMITER;
+    static const char *ITEM_LIST_DELIMITER;
+    static const char *MAIN_DECK_LEAD;
+    static const char *CARDS_PLAYED_LEAD;
+    static const char *IS_STANDING_LEAD;
 
     PlayerBoard();
 
+    /**
+     *
+     * @param out
+     */
     void saveToFile(std::ofstream &out) const;
 
     //Getters----------------------------
@@ -112,25 +164,21 @@ public:
 
     /**
      *
+     * @param file
+     * @param database
+     * @return
      */
-    void stand();
+    static PlayerBoard loadFromFile(std::ifstream &file, const CardDatabase &database);
 
     /**
      *
      */
     void reset();
 
-    static PlayerBoard loadFromFile(std::ifstream &file, const CardDatabase &database);
-
-    static std::vector<int> loadPlayedCards(std::ifstream &file);
-
-    static int loadCurrentScore(std::ifstream &file);
-
-    static size_t loadRoundsWon(std::ifstream &file);
-
-    static bool loadStanding(std::ifstream &file);
-
-    static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
+    /**
+     *
+     */
+    void stand();
 };
 
 

@@ -11,7 +11,7 @@ const char *FlipCard::FLIP_SIGN{" <~> "};
 
 FlipCard::FlipCard(int left, int right) : DualCard(abs(left), abs(right)) {}
 
-int FlipCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
+int FlipCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
     for (int &card : playedCards)
         if (card == values.first || card == values.second)
             card = -card;

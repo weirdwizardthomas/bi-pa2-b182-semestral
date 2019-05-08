@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const {
+int DoubleCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
     int lastPlayedCard = playedCards.back();
     lastPlayedCard *= 2;
     playedCards.erase(playedCards.end() - 1);
@@ -14,3 +14,7 @@ int DoubleCard::play(vector<int> &playedCards, int currentScore, int opponentSco
 }
 
 string DoubleCard::getDescription() const { return "Double the value of the last played card."; }
+
+vector<int> DoubleCard::getValues() const {
+    return {};
+}

@@ -19,7 +19,7 @@ const char *Game::SCORE_DELIMITER{": "};
 const int rowsCleared = 18;
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}),
-                                                                             roundNumber(0) {
+                                                                             roundNumber(1) {
     chooseDecks(allCards);
     selectStartingPlayer();
 }
@@ -137,7 +137,7 @@ Game *Game::loadFromFile(const CardDatabase &cardDatabase) {
 }
 
 void Game::manualSave() const {
-    cout << "Enter a file name to save the game ['Q' to quit]: " << endl;
+    enterFileNameQuery();
     string filename;
     cin >> filename;
     if (filename == "Q")
@@ -246,6 +246,8 @@ void Game::currentScoreMessage() const {
          << players.second->getName() << ":" << players.second->getRoundsWon() << endl;
 }
 
+void Game::enterFileNameQuery() { cout << "Enter a file name to save the game ['Q' to quit]: " << endl; }
+
 void Game::gameStartMessage() const {
     Game::clearScreen(cout);
     cout << "Starting a game of Pazaak between "
@@ -257,15 +259,15 @@ void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " w
 
 void Game::invalidInputMessage() { cout << "Invalid input, please try again," << endl; }
 
-void Game::roundPrompt() const { cout << "Starting round #" << roundNumber << endl; }
-
-void Game::roundTieMessage() const { cout << "Tie" << endl; }
-
-void Game::roundVictorMessage(const Player *victor) const { cout << victor->getName() << " won the round!" << endl; }
+void Game::loadPlayersFromFile(ifstream &file, const CardDatabase &cardDatabase) {
+    players.first = Player::loadFromFile(file, cardDatabase, nullptr);
+    players.second = Player::loadFromFile(file, cardDatabase, players.first);
+}
 
 void Game::turnPrompt() const { cout << players.first->getName() << "'s turn to play!" << endl; }
 
-void Game::loadPlayersFromFile(ifstream &file, const CardDatabase &cardDatabase) {
-    players.first = Player::loadFromFile(file, cardDatabase);
-    players.second = Player::loadFromFile(file, cardDatabase);
-}
+void Game::roundPrompt() const { cout << "Starting round #" << roundNumber << endl; }
+
+void Game::roundTieMessage() { cout << "Tie" << endl; }
+
+void Game::roundVictorMessage(const Player *victor) { cout << victor->getName() << " won the round!" << endl; }

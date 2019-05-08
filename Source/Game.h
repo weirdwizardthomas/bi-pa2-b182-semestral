@@ -15,6 +15,11 @@ private:
     std::pair<Player *, Player *> players;
     size_t roundNumber;
     //Methods--------------------------------
+    /**
+     *
+     * @param roundNumber
+     */
+    void autoSave() const;
 
     /**
      * Determines whether both players are standing, and effectively ends the current round if so
@@ -40,7 +45,23 @@ private:
      */
     Player *currentlyPlaying() const;
 
+    /**
+     *
+     */
     void drawHands() const;
+
+    /**
+     *
+     * @param savedGames
+     * @return
+     */
+    static std::string getGameFileName(const std::vector<std::string> &savedGames);
+
+    /**
+     * Examines the round scores of either players and determines the victor of the game
+     * @return Player with a higher score than the other one
+     */
+    Player *getGameVictor() const;
 
     /**
      * Examines the score and determines the victor of the round
@@ -48,11 +69,33 @@ private:
      */
     Player *getRoundVictor() const;
 
+    static std::vector<std::string> getSavedGames();
+
     /**
-     * Examines the round scores of either players and determines the victor of the game
-     * @return Player with a higher score than the other one
+     *
+     * @param roundNumber
      */
-    Player *getGameVictor() const;
+    void manualSave() const;
+
+    /**
+     *
+     * @param savedGames
+     */
+    static void listGamesInDirectory(const std::vector<std::string> &savedGames);
+
+    /**
+     *
+     * @param file
+     * @param cardDatabase
+     */
+    void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
+
+    /**
+     *
+     * @param outputPath
+     * @param roundNumber
+     */
+    void saveToFile(const std::string &outputPath) const;
 
     /**
      * Resets the board for both players
@@ -88,29 +131,17 @@ private:
      */
     void turn(Player *currentPlayer);
 
-    /**
-     *
-     * @param roundNumber
-     */
-    void autoSave() const;
-
-    /**
-     *
-     * @param roundNumber
-     */
-    void manualSave() const;
-
-    /**
-     *
-     * @param outputPath
-     * @param roundNumber
-     */
-    void saveToFile(const std::string &outputPath) const;
-
-    static std::vector<std::string> getSavedGames();
 
     //Messages & prompts-----------------------
+    /**
+     *
+     */
     void currentScoreMessage() const;
+
+    /**
+     *
+     */
+    static void enterFileNameQuery();
 
     /**
      * Shows a message to tell players the game has commenced
@@ -123,6 +154,11 @@ private:
     void gameVictorMessage() const;
 
     /**
+     *
+     */
+    static void invalidInputMessage();
+
+    /**
      * Shows a message that a round is commencing
      * @param roundNumber current round's number to be displayed
      */
@@ -131,18 +167,19 @@ private:
     /**
      * Shows a message to tell players that the round ended in a tie
      */
-    void roundTieMessage() const;
+    static void roundTieMessage();
 
     /**
      * Shows a message to tell the players who won the round
      * @param victor
      */
-    void roundVictorMessage(const Player *victor) const;
+    static void roundVictorMessage(const Player *victor);
 
     /**
      * Shows a message to tell the player he is eligible to take his turn
      */
     void turnPrompt() const;
+
 
 public:
     static const int ROUNDS = 3;
@@ -151,8 +188,6 @@ public:
     static const char *CURRENT_SCORE_LEAD;
     static const char *SCORE_DELIMITER;
 
-
-    //Constructor----------------------------
     Game(Player *player1, Player *player2, const CardDatabase &allCards);
 
     Game();
@@ -160,6 +195,9 @@ public:
     ~Game();
 
     //Methods--------------------------------
+    /**
+     *
+     */
     void play();
 
     /**
@@ -174,13 +212,6 @@ public:
      */
     static void clearScreen(std::ostream &out);
 
-    static void invalidInputMessage();
-
-    static void listGamesInDirectory(const std::vector<std::string> &savedGames);
-
-    static std::string getGameFileName(const std::vector<std::string> &savedGames);
-
-    void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 #endif //PAZAAK_GAME_H

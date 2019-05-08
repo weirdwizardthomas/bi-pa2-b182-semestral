@@ -13,10 +13,13 @@ BasicCard::BasicCard(int value) : value(value) {
         throw invalid_argument("Invalid Basic Card value");
 }
 
-int BasicCard::play(vector<int> &playedCards, int currentScore, int opponentScore) const { return play(); }
+int BasicCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const { return value; }
 
 int BasicCard::play() const { return value; }
 
 string BasicCard::getDescription() const { return offsetPositiveNumber(value); }
 
+vector<int> BasicCard::getValues() const {
+    return {value};
+}
 
