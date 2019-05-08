@@ -29,6 +29,3 @@ void FlexCard::chooseSignPrompt() const {
     cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl;
 }
 
-vector<int> FlexCard::getValues() const {
-    return {values.first, -values.first, values.second, -values.second};
-}

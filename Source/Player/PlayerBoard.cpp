@@ -8,21 +8,20 @@
 
 using namespace std;
 
+
+const int PlayerBoard::TABLE_SIZE{9};
+const int PlayerBoard::MAIN_DECK_CARD_COPIES{4};
 const char *PlayerBoard::ROUNDS_WON_LEAD{"Rounds won"};
-
 const char *PlayerBoard::CURRENT_SCORE_LEAD{"Current round score"};
-
-const char *PlayerBoard::FIELD_DELIMITER{":"};
-
-const char *PlayerBoard::ITEM_LIST_DELIMITER{")"};
-
+const char *PlayerBoard::FIELD_VALUE_DELIMITER{": "};
+const char *PlayerBoard::ITEM_INDEX_LEAD{"("};
+const char *PlayerBoard::ITEM_LIST_DELIMITER{") "};
 const char *PlayerBoard::MAIN_DECK_LEAD{"Main deck"};
-
 const char *PlayerBoard::CARDS_PLAYED_LEAD{"Cards played"};
-
 const char *PlayerBoard::IS_STANDING_LEAD{"Is standing"};
-
 const char *PlayerBoard::PLAYED_CARDS_DELIMITER{" "};
+const char *PlayerBoard::IS_STANDING_VALUE{"True"};
+const char *PlayerBoard::IS_NOT_STANDING_VALUE{"False"};
 
 
 PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
@@ -69,7 +68,6 @@ string PlayerBoard::showCardsPlayed() const {
 }
 
 void PlayerBoard::addPlayedCard(int cardValue) {
-    //No added value, card was either a double or a flip, which isn't recorded as played
     if (cardValue == 0) //A card whose value can't be added
         return;
     playedCards.push_back(cardValue);
@@ -98,13 +96,14 @@ void PlayerBoard::recalculateScore() {
 }
 
 void PlayerBoard::saveToFile(ofstream &out) const {
-    out << ROUNDS_WON_LEAD << FIELD_DELIMITER << roundsWon << endl;
-    out << CURRENT_SCORE_LEAD << FIELD_DELIMITER << currentScore << endl;
-    out << CARDS_PLAYED_LEAD << FIELD_DELIMITER << showCardsPlayed() << endl;
-    out << IS_STANDING_LEAD << FIELD_DELIMITER << (standing ? "True" : "False") << endl;
-    out << MAIN_DECK_LEAD << FIELD_DELIMITER << mainDeck.size() << endl;
+    out << PlayerBoard::ROUNDS_WON_LEAD << PlayerBoard::FIELD_VALUE_DELIMITER << roundsWon << endl;
+    out << PlayerBoard::CURRENT_SCORE_LEAD << PlayerBoard::FIELD_VALUE_DELIMITER << currentScore << endl;
+    out << PlayerBoard::CARDS_PLAYED_LEAD << PlayerBoard::FIELD_VALUE_DELIMITER << showCardsPlayed() << endl;
+    out << PlayerBoard::IS_STANDING_LEAD << PlayerBoard::FIELD_VALUE_DELIMITER
+        << (standing ? IS_STANDING_VALUE : IS_NOT_STANDING_VALUE) << endl;
+    out << PlayerBoard::MAIN_DECK_LEAD << PlayerBoard::FIELD_VALUE_DELIMITER << mainDeck.size() << endl;
     for (size_t i = 0; i < mainDeck.size(); ++i)
-        out << "(" << i << ITEM_LIST_DELIMITER << mainDeck[i] << endl;
+        out << PlayerBoard::ITEM_INDEX_LEAD << i << PlayerBoard::ITEM_LIST_DELIMITER << mainDeck[i] << endl;
 }
 
 PlayerBoard PlayerBoard::loadFromFile(ifstream &file, const CardDatabase &database) {
@@ -120,18 +119,18 @@ PlayerBoard PlayerBoard::loadFromFile(ifstream &file, const CardDatabase &databa
 }
 
 bool PlayerBoard::loadStanding(ifstream &file) {
-    return loadValue(IS_STANDING_LEAD, file) == "True";
+    return loadValue(PlayerBoard::IS_STANDING_LEAD, file) == IS_STANDING_VALUE;
 }
 
 size_t PlayerBoard::loadRoundsWon(ifstream &file) {
-    return stoull(loadValue(ROUNDS_WON_LEAD, file));
+    return stoull(loadValue(PlayerBoard::ROUNDS_WON_LEAD, file));
 }
 
 //TODO extract higher
 string PlayerBoard::loadValue(const string &field, ifstream &file) {
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, FIELD_DELIMITER);
+    list<string> parsed = CardDatabase::split(input, PlayerBoard::FIELD_VALUE_DELIMITER);
     if (parsed.front() != field)
         throw ParseError();
 
@@ -144,7 +143,7 @@ int PlayerBoard::loadCurrentScore(ifstream &file) {
 
 vector<int> PlayerBoard::loadPlayedCards(ifstream &file) {
     stringstream playedCards;
-    playedCards.str(loadValue(CARDS_PLAYED_LEAD, file));
+    playedCards.str(loadValue(PlayerBoard::CARDS_PLAYED_LEAD, file));
     int loadedCard = 0;
     vector<int> cards;
     while (playedCards >> loadedCard)
@@ -154,13 +153,13 @@ vector<int> PlayerBoard::loadPlayedCards(ifstream &file) {
 }
 
 vector<BasicCard> PlayerBoard::loadMainDeck(ifstream &file) {
-    size_t cardCount = stoull(loadValue(MAIN_DECK_LEAD, file));
+    size_t cardCount = stoull(loadValue(PlayerBoard::MAIN_DECK_LEAD, file));
 
     vector<BasicCard> cards;
     for (size_t i = 0; i < cardCount; ++i) {
         string input;
         getline(file, input);
-        list<string> parsed = CardDatabase::split(input, ITEM_LIST_DELIMITER);
+        list<string> parsed = CardDatabase::split(input, PlayerBoard::ITEM_LIST_DELIMITER);
         cards.emplace_back(stoi(parsed.back()));
     }
     return cards;

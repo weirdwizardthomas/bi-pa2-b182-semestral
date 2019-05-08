@@ -16,6 +16,7 @@ using namespace std;
 
 const char *Player::NAME_FILE_LEAD{"Name"};
 const char *Player::NAME_DELIMITER{": "};
+const char *Player::PLAYER_TYPE_DELIMITER{" - "};
 
 Player::Player(string name) : name(std::move(name)) {}
 
@@ -46,10 +47,10 @@ Player *Player::loadFromFile(std::ifstream &file, const CardDatabase &cardDataba
     if (parsed.front() != Player::NAME_FILE_LEAD)
         throw ParseError();
 
-    parsed = CardDatabase::split(parsed.back(), " - ");
+    parsed = CardDatabase::split(parsed.back(), PLAYER_TYPE_DELIMITER);
     Player *player;
 
-    if (parsed.front() == "Human")
+    if (parsed.front() == HumanPlayer::HUMAN_FILE_LEAD)
         player = HumanPlayer::loadFromFile(file, cardDatabase);
     else
         player = ComputerPlayer::loadFromFile(file, cardDatabase, opponent);

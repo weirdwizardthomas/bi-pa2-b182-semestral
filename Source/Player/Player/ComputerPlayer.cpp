@@ -8,22 +8,22 @@
 
 using namespace std;
 
+const char *ComputerPlayer::COMPUTER_FILE_LEAD{"Computer"};
+const char *ComputerPlayer::REMAINING_CARDS_LEAD{"Remaining cards"};
+const char *ComputerPlayer::FIELD_VALUE_DELIMITER{": "};
+
+
 ComputerPlayer::ComputerPlayer(Player *opponent) : Player("Computer"), remainingCards(0), opponent(opponent) {}
 
 void ComputerPlayer::saveNameToFile(std::ofstream &file) const {
-    file << NAME_FILE_LEAD << NAME_DELIMITER << "Computer - " << name << endl;
+    file << NAME_FILE_LEAD << NAME_DELIMITER
+         << ComputerPlayer::COMPUTER_FILE_LEAD << Player::PLAYER_TYPE_DELIMITER << name << endl;
 }
 
-//TODO add all the unplayed cards from toBePlayed to main deck when saving
 void ComputerPlayer::takeTurn(int opponentScore) {
-    cout << "PC TURN" << endl;
-
     board.addPlayedCard(board.drawCardFromMainDeck());
 
     int currentScore = board.getCurrentScore();
-    //determine whether the current round is winnable - look at each card
-    //to be automatically played and consider all possible combinations
-
 
     if (currentScore == Game::TARGET_SCORE) {
         board.stand();
@@ -96,34 +96,35 @@ void ComputerPlayer::drawHand() {
 void ComputerPlayer::saveToFile(std::ofstream &file) const {
     saveNameToFile(file);
     size_t i = 0;
-    file << REMAINING_CARDS_LEAD << ": " << remainingCards << endl;
-    file << Deck::DECK_FILE_LEAD << ": " << deck.size() << endl;
+    file << REMAINING_CARDS_LEAD << FIELD_VALUE_DELIMITER << remainingCards << endl;
+    file << Deck::DECK_FILE_LEAD << FIELD_VALUE_DELIMITER << deck.size() << endl;
     for (const auto &card : deck)
-        file << "(" << i++ << ") " << card.first << endl;
+        file << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << card.first << endl;
 
     board.saveToFile(file);
 }
 
+//TODO refactor this - need to extract loadValues and use it here and elsewhere
 Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent) {
     auto *player = new ComputerPlayer(opponent);
 
     //load remaining
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, PlayerBoard::FIELD_DELIMITER);
-    if (parsed.front() != REMAINING_CARDS_LEAD)
+    list<string> parsed = CardDatabase::split(input, ComputerPlayer::FIELD_VALUE_DELIMITER);
+    if (parsed.front() != ComputerPlayer::REMAINING_CARDS_LEAD)
         throw ParseError();
     player->remainingCards = stoi(parsed.back());
 
     //load deck
     getline(file, input);
-    parsed = CardDatabase::split(input, PlayerBoard::FIELD_DELIMITER);
+    parsed = CardDatabase::split(input, ComputerPlayer::FIELD_VALUE_DELIMITER);
     if (parsed.front() != Deck::DECK_FILE_LEAD)
         throw ParseError();
     size_t cardCount = stoull(parsed.back());
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
-        parsed = CardDatabase::split(input, ") ");
+        parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
         int effect = stoi(parsed.back());
         player->deck.emplace_back(effect, -effect);
     }

@@ -15,6 +15,3 @@ int DoubleCard::play(std::vector<int> &playedCards, int currentScore, int oppone
 
 string DoubleCard::getDescription() const { return "Double the value of the last played card."; }
 
-vector<int> DoubleCard::getValues() const {
-    return {};
-}

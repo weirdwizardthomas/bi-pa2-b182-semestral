@@ -18,13 +18,10 @@ DualCard::DualCard(int left, int right) : values({left, right}) {
 }
 
 int DualCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
-
     int value = chooseEffect() == 0 ? values.first : values.second;
     valueChosenMessage(value);
     return value;
 }
-
-void DualCard::valueChosenMessage(int value) const { cout << "You've chosen: " << value << endl; }
 
 int DualCard::chooseEffect() const {
     bool invalidInput = true;
@@ -47,15 +44,13 @@ string DualCard::getDescription() const {
            Card::offsetPositiveNumber(values.second);
 }
 
-void DualCard::invalidInputMessage() const { cout << "Invalid choice, please try again." << endl << endl; }
+void DualCard::valueChosenMessage(int value) const { cout << "You've chosen: " << value << endl; }
 
-void DualCard::effectChoicesMessage() const { cout << "[" << values.first << DUAL_DELIMITER << values.second << "]: "; }
+void DualCard::invalidInputMessage() const { cout << "Invalid choice, please try again." << endl; }
+
+void DualCard::effectChoicesMessage() const { cout << "[" << values.first << DualCard::DUAL_DELIMITER << values.second << "]: "; }
 
 void DualCard::chooseEffectPrompt() const {
     cout << "Choose an effect [0 for the first choice/1 for the second choice]" << endl;
-}
-
-vector<int> DualCard::getValues() const {
-    return {values.first, values.second};
 }
 

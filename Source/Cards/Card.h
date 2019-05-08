@@ -37,6 +37,9 @@ protected:
      */
     std::string chooseSign() const;
 
+    /**
+     *
+     */
     void invalidSignMessage() const;
 
 public:
@@ -49,7 +52,7 @@ public:
 
     /**
      * Generates card's effect's description
-     * @return a verbose effect of the card
+     * @return String representing a verbose effect of the card
      */
     virtual std::string getDescription() const = 0;
 
@@ -62,12 +65,10 @@ public:
      */
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
-    virtual std::vector<int> getValues() const = 0;
-
     /**
-     *
-     * @param out the Stream into which the card's description will be sent
-     * @param card card to be placed into the stream
+     * Prints the 'card''s description into the 'out' stream
+     * @param out The tream into which the 'card''s description will be sent
+     * @param card Card to be placed into the stream
      * @return getDescription()
      */
     friend std::ostream &operator<<(std::ostream &out, const Card &card);

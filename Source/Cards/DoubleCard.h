@@ -25,8 +25,6 @@ public:
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
-    std::vector<int> getValues() const override;
-
     std::string getDescription() const override;
 
 };

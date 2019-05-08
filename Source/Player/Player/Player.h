@@ -62,6 +62,7 @@ protected:
 public:
     static const char *NAME_FILE_LEAD;
     static const char *NAME_DELIMITER;
+    static const char *PLAYER_TYPE_DELIMITER;
 
     Player() = default;
 

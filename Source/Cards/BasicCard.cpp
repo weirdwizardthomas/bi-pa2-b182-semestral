@@ -19,7 +19,3 @@ int BasicCard::play() const { return value; }
 
 string BasicCard::getDescription() const { return offsetPositiveNumber(value); }
 
-vector<int> BasicCard::getValues() const {
-    return {value};
-}
-

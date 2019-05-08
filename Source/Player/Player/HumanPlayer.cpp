@@ -9,6 +9,9 @@
 
 using namespace std;
 
+const char *HumanPlayer::HUMAN_FILE_LEAD{"Human"};
+
+
 HumanPlayer::HumanPlayer(const string &name) : Player(name) {}
 
 void HumanPlayer::drawHand() {
@@ -42,7 +45,8 @@ void HumanPlayer::takeTurn(const int opponentScore) {
 }
 
 void HumanPlayer::saveNameToFile(std::ofstream &file) const {
-    file << NAME_FILE_LEAD << NAME_DELIMITER << "Human - " << name << endl;
+    file << NAME_FILE_LEAD << NAME_DELIMITER << HumanPlayer::HUMAN_FILE_LEAD << Player::PLAYER_TYPE_DELIMITER << name
+         << endl;
 }
 
 bool HumanPlayer::isStandingUp() const {

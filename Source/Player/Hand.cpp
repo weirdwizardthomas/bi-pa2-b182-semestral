@@ -12,12 +12,14 @@ using namespace std;
 
 const char *Hand::HAND_FILE_LEAD{"Hand"};
 const char *Hand::FILE_VALUE_DELIMITER{": "};
+const char *Hand::RIGHT_INDEX_DELIMITER{") "};
+const char *Hand::LEFT_INDEX_DELIMITER{"("};
 
 
 ostream &operator<<(ostream &out, const Hand &hand) {
     size_t i = 0;
     for (const auto &card : hand.cards)
-        out << "(" << i++ << ") " << *card << endl;
+        out << Hand::LEFT_INDEX_DELIMITER << i++ << Hand::RIGHT_INDEX_DELIMITER << *card << endl;
     return out;
 }
 
@@ -32,15 +34,15 @@ int Hand::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore,
 void Hand::addCard(Card *card) { cards.push_back(card); }
 
 void Hand::saveToFile(ofstream &file) const {
-    file << HAND_FILE_LEAD << ": " << cards.size() << endl;
+    file << Hand::HAND_FILE_LEAD << ": " << cards.size() << endl;
     file << *this;
 }
 
 Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, FILE_VALUE_DELIMITER);
-    if (parsed.front() != HAND_FILE_LEAD)
+    list<string> parsed = CardDatabase::split(input, Hand::FILE_VALUE_DELIMITER);
+    if (parsed.front() != Hand::HAND_FILE_LEAD)
         throw ParseError();
 
     size_t cardCount = stoull(parsed.back());
@@ -52,7 +54,7 @@ Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     //TODO this will repeat with each loaded card container
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
-        parsed = CardDatabase::split(input, ") ");
+        parsed = CardDatabase::split(input, Hand::RIGHT_INDEX_DELIMITER);
         hand.cards.push_back(cardDatabase.get(parsed.back()));
     }
 

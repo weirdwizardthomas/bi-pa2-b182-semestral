@@ -5,24 +5,25 @@
 
 #include <list>
 #include "Deck.h"
-#include "../../Cards/CardType.h"
 #include "../../Utilities/DeckParser.h"
 #include "../../Utilities/Exceptions.h"
 
 //Namespaces--------------------------------
 using namespace std;
 
-const int Deck::DECK_SIZE = 10;
-const int Deck::MAX_CARDS_DRAWN = 4;
-
+const int Deck::DECK_SIZE{10};
+const int Deck::MAX_CARDS_DRAWN{4};
 const char *Deck::DECK_FILE_LEAD{"Deck"};
 const char *Deck::DECK_HEADER_DELIMITER{": "};
+const char *Deck::LEFT_INDEX_BRACKET{"("};
+const char *Deck::RIGHT_INDEX_BRACKET{") "};
+const char *Deck::FIELD_VALUE_DELIMITER{": "};
 
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
     for (const Card *card : deck.cards)
-        out << "(" << i++ << ") " << *card << endl;
+        out << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << *card << endl;
     return out;
 }
 
@@ -56,11 +57,11 @@ vector<Card *> Deck::drawCardsFromDeck() {
 void Deck::loadCardsFromUser(const CardDatabase &allCards) {
     vector<Card *> allCardsVector = allCards.toVector();
 
-    this->cards.reserve(DECK_SIZE);
+    this->cards.reserve(Deck::DECK_SIZE);
     size_t i = 0; //initial index
 
-    while (i != DECK_SIZE) {
-        cout << "(" << i << "): ";
+    while (i != Deck::DECK_SIZE) {
+        cout << Deck::LEFT_INDEX_BRACKET << i << Deck::RIGHT_INDEX_BRACKET << Deck::FIELD_VALUE_DELIMITER;
 
         size_t input = 0;
         cin >> input;
@@ -70,7 +71,7 @@ void Deck::loadCardsFromUser(const CardDatabase &allCards) {
                 invalidInputMessage();//out of bounds
             else { //valid input
                 this->addCard(allCardsVector[input]);
-                cout << "You've selected: " << *(this->cards[i]) << endl;
+                selectedCardMessage(i);
                 i++;
             }
         } else {
@@ -131,7 +132,7 @@ void Deck::saveToFile() const {
 }
 
 void Deck::saveToFile(ofstream &file) const {
-    file << DECK_FILE_LEAD << ": " << cards.size() << endl;
+    file << Deck::DECK_FILE_LEAD << Deck::DECK_HEADER_DELIMITER << cards.size() << endl;
     file << *this;
 }
 
@@ -142,7 +143,27 @@ bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename
     return false;
 }
 
-void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
+Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
+    Deck deck;
+
+    string input;
+    getline(file, input);
+
+    list<string> parsed = CardDatabase::split(input, Deck::FIELD_VALUE_DELIMITER);
+    if (parsed.front() != Deck::DECK_FILE_LEAD)
+        throw ParseError();
+
+    size_t cardCount = stoull(parsed.back());
+    deck.randomGenerator.lowerCeiling(cardCount - 1);
+    deck.cards.reserve(cardCount);
+    for (size_t i = 0; i < cardCount; ++i) {
+        getline(file, input);
+        parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
+        deck.cards.push_back(cardDatabase.get(parsed.back()));
+    }
+
+    return deck;
+}
 
 string Deck::QueryUserInputFilename(const vector<string> &files) {
     displayDecksMessage(files);
@@ -162,38 +183,17 @@ void Deck::fileExistsMessage() { cout << "File already exists, please try anothe
 
 void Deck::saveDeckAsPrompt() { cout << "Save deck as:"; }
 
-void Deck::displayDecksMessage(const vector<string> &files) {
-    cout << "Saved decks" << endl;
-    size_t i = 0;
-    for (const auto &file : files)
-        cout << "(" << i++ << ") " << file << endl;
-}
 
 void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
 
 void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
 
-Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
-    Deck deck;
+void Deck::selectedCardMessage(size_t index) const { cout << "You've selected: " << *(cards[index]) << endl; }
 
-    string input;
-    getline(file, input);
-
-    list<string> parsed = CardDatabase::split(input, Deck::DECK_HEADER_DELIMITER);
-    if (parsed.front() != Deck::DECK_FILE_LEAD)
-        throw ParseError();
-
-    size_t cardCount = stoull(parsed.back());
-    deck.randomGenerator.lowerCeiling(cardCount - 1);
-    deck.cards.reserve(cardCount);
-    for (size_t i = 0; i < cardCount; ++i) {
-        getline(file, input);
-        parsed = CardDatabase::split(input, ") ");
-        deck.cards.push_back(cardDatabase.get(parsed.back()));
-
-    }
-
-    return deck;
+void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
+void Deck::displayDecksMessage(const vector<string> &files) {
+    cout << "Saved decks" << endl;
+    size_t i = 0;
+    for (const auto &file : files)
+        cout << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << file << endl;
 }
-
-

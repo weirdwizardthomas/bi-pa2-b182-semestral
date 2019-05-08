@@ -99,6 +99,9 @@ public:
     static const int MAX_CARDS_DRAWN;
     static const char *DECK_FILE_LEAD;
     static const char *DECK_HEADER_DELIMITER;
+    static const char *LEFT_INDEX_BRACKET;
+    static const char *RIGHT_INDEX_BRACKET;
+    static const char *FIELD_VALUE_DELIMITER;
 
     //Constructors--------------------------------------------
     Deck();
@@ -136,6 +139,8 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
     static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
+
+    void selectedCardMessage(size_t index) const;
 };
 
 #endif //PAZAAK_DECK_H
