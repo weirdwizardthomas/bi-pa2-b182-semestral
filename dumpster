@@ -1,3 +1,36 @@
+appname := myapp
+CXX= g++
+CXXFLAGS= -g -Wall -pedantic
+LDFLAGS=
+EXECUTABLE= Pazaak
+SOURCE_FOLDER = ./Source
+CARDS_FOLDER = $(SOURCE_FOLDER)/Cards
+PLAYER_FOLDER =  $(SOURCE_FOLDER)/Player
+UTILITIES_FOLDER =  $(SOURCE_FOLDER)/Utilities
+OUTPUT_FOLDER =  ./Output
+srcfiles :=  $(CARDS_FOLDER)/Card.cpp $(CARDS_FOLDER)/DoubleCard.cpp $(CARDS_FOLDER)/DualCard.cpp $(CARDS_FOLDER)/FlexCard.cpp $(CARDS_FOLDER)/FlipCard.cpp
+objects  := $(patsubst %.cpp, %.o, $(srcfiles))
+
+all: $(appname)
+
+$(appname): $(objects)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(appname) $(objects) $(LDLIBS)
+
+depend: .depend
+
+.depend: $(srcfiles)
+	rm -f ./.depend
+	$(CXX) $(CXXFLAGS) -MM $^>>./.depend;
+
+clean:
+	rm -rf $(objects)
+
+dist-clean: clean
+	rm -rf *~ .depend
+
+include .depend
+
+--------------------------
 CXX= g++
 CXXFLAGS= -g -Wall -pedantic
 LDFLAGS=
@@ -13,7 +46,7 @@ CARDS_OBJECTS = $(patsubst $(CARDS_FOLDER)%, $(OUTPUT_FOLDER)%, $(patsubst %.cpp
 
 
 cards.o: $(CARDS_SOURCE)
-	$(CXX) $(CXXFLAGS) -c $(LDFLAGS) $(CARDS_SOURCE) -o $(OUTPUT_FOLDER)/cards.o
+	$(CXX) $(CXXFLAGS) -c $(LDFLAGS) $(CARDS_SOURCE)
 
 clean:
 	rm -f ./Output/*.o

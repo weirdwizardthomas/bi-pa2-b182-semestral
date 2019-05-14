@@ -11,8 +11,8 @@
 //Namespaces--------------------------------
 using namespace std;
 
-const int Deck::DECK_SIZE{10};
-const int Deck::MAX_CARDS_DRAWN{4};
+const size_t Deck::DECK_SIZE{10};
+const size_t Deck::MAX_CARDS_DRAWN{4};
 const char *Deck::DECK_FILE_LEAD{"Deck"};
 const char *Deck::DECK_HEADER_DELIMITER{": "};
 const char *Deck::LEFT_INDEX_BRACKET{"("};

@@ -82,8 +82,8 @@ private:
     void resetPlayedCards();
 
 public:
-    static const int TABLE_SIZE;
-    static const int MAIN_DECK_CARD_COPIES;
+    static const size_t TABLE_SIZE;
+    static const size_t MAIN_DECK_CARD_COPIES;
     static const char *PLAYED_CARDS_DELIMITER;
     static const char *ROUNDS_WON_LEAD;
     static const char *CURRENT_SCORE_LEAD;

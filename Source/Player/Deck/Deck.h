@@ -95,8 +95,8 @@ private:
     static void selectCardsDeckSizePrompt();
 
 public:
-    static const int DECK_SIZE;
-    static const int MAX_CARDS_DRAWN;
+    static const size_t DECK_SIZE;
+    static const size_t MAX_CARDS_DRAWN;
     static const char *DECK_FILE_LEAD;
     static const char *DECK_HEADER_DELIMITER;
     static const char *LEFT_INDEX_BRACKET;

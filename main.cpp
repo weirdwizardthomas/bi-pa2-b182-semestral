@@ -9,10 +9,6 @@
 #include "Source/Cards/CardDatabase.h"
 #include "Source/MainMenu.h"
 
-//Definitions-------------------------------
-#define LEFT_INDEX_WRAPPER "("
-#define RIGHT_INDEX_WRAPPER ")"
-
 //Namespaces--------------------------------
 using namespace std;
 

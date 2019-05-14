@@ -9,8 +9,8 @@
 using namespace std;
 
 
-const int PlayerBoard::TABLE_SIZE{9};
-const int PlayerBoard::MAIN_DECK_CARD_COPIES{4};
+const size_t PlayerBoard::TABLE_SIZE{9};
+const size_t PlayerBoard::MAIN_DECK_CARD_COPIES{4};
 const char *PlayerBoard::ROUNDS_WON_LEAD{"Rounds won"};
 const char *PlayerBoard::CURRENT_SCORE_LEAD{"Current round score"};
 const char *PlayerBoard::FIELD_VALUE_DELIMITER{": "};
@@ -32,7 +32,7 @@ PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
 }
 
 void PlayerBoard::generateMainDeck() {
-    for (size_t cardValue = 1; cardValue <= Card::UPPER_BOUND; cardValue++)
+    for (int cardValue = 1; cardValue <= Card::UPPER_BOUND; ++cardValue)
         for (size_t cardCount = 0; cardCount < PlayerBoard::MAIN_DECK_CARD_COPIES; ++cardCount)
             mainDeck.emplace_back(cardValue);
 }
