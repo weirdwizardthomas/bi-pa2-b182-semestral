@@ -23,7 +23,7 @@ protected:
     bool validInput(int x) const;
 
     /**
-     * Uniforms the @param x's text length by prefixing it with a PLUS_SIGN if the number is positive.
+     * Uniforms the @param x 's text length by prefixing it with a PLUS_SIGN if the number is positive.
      * @param x Integer to be formatted based on its sign.
      * @return the input number with a sign (+ for positive, -for negative)
      */
@@ -64,10 +64,10 @@ public:
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
-     * Prints the @param card's description into the @param out stream
-     * @param out The stream into which the @param card's description will be sent.
+     * Prints the @param card 's description into the @param out stream
+     * @param out The stream into which the @param card 's description will be sent.
      * @param card Card to be placed into the stream.
-     * @return @param out containing @param card's description.
+     * @return @param out containing @param card 's description.
      */
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
 

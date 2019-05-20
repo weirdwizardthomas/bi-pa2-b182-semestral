@@ -28,7 +28,7 @@ ostream &operator<<(ostream &out, const Deck &deck) {
 
 Deck::Deck() : randomGenerator(0, DECK_SIZE - 1) {}
 
-Deck::Deck(vector<Card *> cards) : cards(std::move(cards)), randomGenerator(0, DECK_SIZE - 1) {}
+Deck::Deck(std::vector<Card *> cards) : cards(std::move(cards)), randomGenerator(0, DECK_SIZE - 1) {}
 
 Deck::Deck(const CardDatabase &cardDatabase) : randomGenerator(0, DECK_SIZE - 1) {
     cout << cardDatabase;
@@ -130,7 +130,7 @@ void Deck::saveToFile() const {
     deckFile.close();
 }
 
-void Deck::saveToFile(ofstream &file) const {
+void Deck::saveToFile(std::ofstream &file) const {
     file << Deck::DECK_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << cards.size() << endl;
     file << *this;
 }

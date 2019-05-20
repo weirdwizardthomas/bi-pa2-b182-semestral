@@ -26,10 +26,10 @@ public:
     void addCard(Card *card);
 
     /**
-     * Loads the Hand from its text representation from the @param file stream with the aid of @param cardDatabase.
+     * Loads the Hand from its text representation from the @param file stream with the aid of @param cardDatabase
      * @param file File from which the Hand is loaded.
      * @param cardDatabase Database containing all the available cards.
-     * @return Hand instance built from @param file's contents.
+     * @return Hand instance built from @param file 's contents.
      */
     static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
@@ -50,7 +50,7 @@ public:
     void saveToFile(std::ofstream &file) const;
 
     /**
-     * Puts the @param hand's 'cards' in the @param out stream.
+     * Puts the @param hand 's 'cards' in the @param out stream.
      * @param out Stream in which the hand is being placed.
      * @param hand Hand to be put in the 'out' stream.
      * @return @param out containing the 'hand'.

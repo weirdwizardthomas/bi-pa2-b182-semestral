@@ -67,7 +67,7 @@ private:
     static void deckForgedMessage();
 
     /**
-     * Displays all the deck files, represented by @param files, to the user.
+     * Displays all the deck files, represented by @param files to the user.
      * @param files Names of the deck files.
      */
     static void displayDecksMessage(const std::vector<std::string> &files);
@@ -113,12 +113,14 @@ public:
     /**
      * Creates a new 'Deck' instance by querying the user to pick individual cards from the @param cardDatabase database
      * @param cardDatabase
+     * @overload
      */
     explicit Deck(const CardDatabase &cardDatabase);
 
     /**
      * Creates a new 'Deck' instance with the @param cards parameter as its 'cards' container.
      * @param cards Card container to represent the deck.
+     * @overload
      */
     explicit Deck(std::vector<Card *> cards);
 
@@ -155,10 +157,10 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
     /**
-     * Loads the deck from its text representation in  @param file with the aid of @param cardDatabase database.
+     * Loads the deck from its text representation in @param file with the aid of @param cardDatabase database.
      * @param file File containing the deck's text representation.
      * @param cardDatabase Database of all available cards.
-     * @return Instance of the 'Deck' class loaded from @param file.
+     * @return Instance of the 'Deck' class loaded from @param file
      */
     static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 

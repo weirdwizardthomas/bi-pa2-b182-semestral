@@ -40,7 +40,7 @@ private:
     static size_t userDeckIndexInput(const std::vector<std::string> &files);
 
     /**
-     * Displays all filenames, represented by @param files, of the 'DECK_DIRECTORY' directory.
+     * Displays all filenames, represented by @param files
      * @param files Container of all the names of files in 'DECK_DIRECTORY' directory.
      */
     static void listDecksMessage(const std::vector<std::string> &files);
@@ -68,7 +68,7 @@ public:
 
     /**
      * Constructs a deck based on contents of a user chosen file within the 'DECK_DIRECTORY' directory with the aid of
-     * the  @param cardDatabase.
+     * the @param cardDatabase
      * @param cardDatabase Database of all the current cards.
      * @return Deck containing cards corresponding to records in a file.
      */

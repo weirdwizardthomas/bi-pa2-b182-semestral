@@ -46,7 +46,7 @@ private:
     void loadFlipCards();
 
     /**
-     * Reads two numerical values from the @param line.
+     * Reads two numerical values from the @param line
      * @throws invalid_argument  if either is not found.
      * @param line Text to be parsed for the values.
      * @return A pair of two different integer values.
@@ -86,9 +86,9 @@ public:
     ~CardDatabase();
 
     /**
-     * Finds and returns a pointer to an element stored by the @param key.
+     * Finds and returns a pointer to an element stored by the @param key
      * @param key Key by which the element will be found.
-     * @return A Card pointer which has a key equal to @param key.
+     * @return A Card pointer which has a key equal to @param key
      */
     Card *get(const std::string &key) const;
 
@@ -105,10 +105,10 @@ public:
     size_t size() const;
 
     /**
-     * Splits the @param phrase string into substring delimited by the @param delimiter.
+     * Splits the @param phrase string into substring delimited by the @param delimiter
      * @param phrase Text to be split.
      * @param delimiter Text by which the @param phrase will be split.
-     * @return Container of substrings split by the @param delimiter.
+     * @return Container of substrings split by the @param delimiter
      */
     static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
@@ -118,7 +118,7 @@ public:
      * @param field Field to be found in the line.
      * @param delimiter Delimiter by which the line is parsed.
      * @param file File from which the line will be read.
-     * @return The value of the @param field.
+     * @return The value of the @param field
      */
     static std::string loadValue(const std::string &field, const std::string &delimiter, std::ifstream &file);
 

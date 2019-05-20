@@ -51,7 +51,7 @@ private:
     void drawHands() const;
 
     /**
-     * Queries the user to select a deck from the container provided by @param savedGames.
+     * Queries the user to select a deck from the container provided by @param savedGames
      * @param savedGames Container of all filenames within the directory of saved games.
      * @return Relative path to the picked 'Game' file.
      */
@@ -88,7 +88,7 @@ private:
     void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
     /**
-     * Saves the current state of the game to a file as @param outputPath.
+     * Saves the current state of the game to a file as @param outputPath
      * @param outputPath Path to the saving file.
      */
     void saveToFile(const std::string &outputPath) const;
@@ -170,7 +170,6 @@ private:
 
     /**
      * Shows a message that a round is commencing.
-     * @param roundNumber current round's number to be displayed.
      */
     void roundPrompt() const;
 
@@ -201,7 +200,7 @@ public:
     static const char *FILE_NAME_ITEMS_DELIMITER;
 
     /**
-     * Creates an instance of the 'Game' class with existing players @param player1 @param player2.
+     * Creates an instance of the 'Game' class with existing players @param player1 player2
      * @param player1 Dynamically allocated instance of a first player.
      * @param player2 Dynamically allocated instance of a second player.
      * @param cardDatabase Database of all available cards.

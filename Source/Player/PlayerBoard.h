@@ -31,37 +31,37 @@ private:
     void generateMainDeck();
 
     /**
-     * Loads the line representing 'playedCards' from the @param file file.
+     * Loads the line representing 'playedCards' from the @param file
      * @param file Game file to be read from.
      * @return Container
      */
     static std::vector<int> loadPlayedCards(std::ifstream &file);
 
     /**
-     * Loads the current round's score from the @param file file.
+     * Loads the current round's score from the @param file
      * @param file Game file to be read from.
-     * @return Current score loaded from the @param file.
+     * @return Current score loaded from the @param file
      */
     static int loadCurrentScore(std::ifstream &file);
 
     /**
-     * Load the current game's rounds won from the @param file file.
+     * Load the current game's rounds won from the @param file
      * @param file Game file to be read from.
-     * @return Rounds won loaded from the @param file.
+     * @return Rounds won loaded from the @param file
      */
     static size_t loadRoundsWon(std::ifstream &file);
 
     /**
-     * Load the 'standing' attribute from the @param file file.
+     * Load the 'standing' attribute from the @param file
      * @param file Game file to be read from.
      * @return True if the value read was 'IS_STANDING_VALUE', false otherwise.
      */
     static bool loadStanding(std::ifstream &file);
 
     /**
-     * Loads the mainDeck from its text representation with the aid of the @param file file.
+     * Loads the mainDeck from its text representation from @param file
      * @param file Game file to be read from.
-     * @return Container representing the mainDeck from file.
+     * @return Container representing the mainDeck from @param file
      */
     static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
 
