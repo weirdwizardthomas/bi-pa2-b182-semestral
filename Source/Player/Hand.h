@@ -20,39 +20,40 @@ public:
     static const char *LEFT_INDEX_WRAPPER;
 
     /**
-     *
-     * @param card
+     * Adds the 'card' pointer to 'cards' container.
+     * @param card Card pointer to be added.
      */
     void addCard(Card *card);
 
     /**
-     *
-     * @param cardIndex
-     * @param playedCards
-     * @param currentScore
-     * @param opponentScore
+     * Plays a single card from the 'cards' container at the 'cardIndex' index and removes it from 'cards'.
+     * @param cardIndex Index of the card to be played.
+     * @param playedCards Cards played by the this instance's owner so far.
+     * @param currentScore Instance's owner's current score.
+     * @param opponentScore Instance's owner's opponent's current score.
      * @return
      */
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
     /**
-     *
+     * Saves the hand's content in a text representation to the file represented by the 'file' stream
+     * @param file Stream representing the output file
      */
     void saveToFile(std::ofstream &file) const;
 
     /**
-     *
-     * @param out
-     * @param hand
-     * @return
+     * Puts the hand's 'cards' in the 'out' stream.
+     * @param out Stream in which the hand is being placed.
+     * @param hand Hand to be put in the 'out' stream.
+     * @return Ostream 'out' containing the 'hand'.
      */
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
 
     /**
-     *
-     * @param file
-     * @param cardDatabase
-     * @return
+     * Loads the Hand from its text representation from the 'file' stream with the aid of 'cardDatabase'.
+     * @param file File from which the Hand is loaded.
+     * @param cardDatabase Database containing all the available cards.
+     * @return Hand instance built from 'file's' contents.
      */
     static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
