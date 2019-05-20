@@ -23,7 +23,6 @@ protected:
     PlayerBoard board;
 
     //Methods------------------------------------------------------------
-
     /**
      * Plays a random card from the Main deck
      * @return Value of the 'BasicCard' played
@@ -32,29 +31,29 @@ protected:
 
     //Messages-and-prompts-----------------------------------------------
     /**
-     *
+     * Displays information about the player's in-game objects.
      * @param opponentScore
      */
     void boardStatusMessage(int opponentScore) const;
 
     /**
-     *
+     * Informs the players that this player is standing and thus skipping their turns for this round.
      */
     void playerIsStandingMessage() const;
 
     /**
-     *
+     * Displays a message informing the user of their opening card.
      * @param opener
      */
     void openerMessage(int opener) const;
 
     /**
-     *
+     * Queries the user to pick whether they want to stand in this round.
      */
     void standPrompt() const;
 
     /**
-     *
+     * Informs the user that they are passing their turn.
      */
     void isPassingTurnMessage() const;
 
@@ -63,16 +62,18 @@ public:
     static const char *NAME_FILE_LEAD;
     static const char *PLAYER_TYPE_DELIMITER;
 
-    Player() = default;
-
     virtual ~Player() = default;
 
     explicit Player(std::string name);
 
+    /**
+     * Adds a specific deck for the player.
+     * @param allCards Database of all available cards.
+     */
     virtual void chooseDeck(const CardDatabase &allCards) = 0;
 
     /**
-     *
+     * Moves cards from 'Deck' container to 'Hand' container.
      */
     virtual void drawHand() = 0;
 
@@ -87,74 +88,76 @@ public:
 
     //Setters------------------------------------------------------------
     /**
-     *
+     * Increments the player's counter of rounds won.
      */
     void addPoint();
 
     /**
-     *
+     * Resets all the round related attributes of the player to default values - current score, cards played, standing.
      */
     void resetBoard();
 
     /**
-     *
+     * Sets the 'standing' attribute to 'true'.
      */
     void stand();
 
     //Getters------------------------------------------------------------
     /**
-     *
+     * Gets the current round's score.
      * @return
      */
     int getCurrentRoundScore() const;
 
     /**
-     *
+     * Gets the 'name' attribute.
      * @return
      */
     const std::string &getName() const;
 
     /**
-     *
-     * @return
+     * Gets the top card of the player's main deck.
+     * @return Value of the deck's top card.
      */
     int getOpener();
 
     /**
-     *
-     * @return
+     * Gets the number of cards played in current round.
+     * @return Number of cards played by this instance of 'Player' in the current round.
      */
     size_t getPlayedCardsCount() const;
 
     /**
-     *
-     * @return
+     * Gets the total rounds won in the current game.
+     * @return Number of rounds won by this instance of 'Player' in the current game.
      */
     size_t getRoundsWon() const;
 
     /**
-     *
-     * @return
+     * Shows whether the player is standing(skipping all their turns within the current round) or not.
+     * @return True if is standing, false otherwise.
      */
     bool isStanding() const;
 
-
     /**
-     *
+     * Saves the instance in a text representation in the 'file' file.
      */
     virtual void saveToFile(std::ofstream &file) const = 0;
 
     /**
-     *
-     * @param file
-     * @param cardDatabase
-     * @return
+     * Loads the player from its text representation from the 'file' file. The type of player and the subsequent
+     * specific attributes are determined by the leading text in the 'file' file. Cards are found by the clues in the
+     * 'file' file within the 'cardDatabase' database.
+     * @param file File from which the player data will be read.
+     * @param cardDatabase Database of all cards.
+     * @return A dynamically allocated instance of the player.
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
     /**
-     *
-     * @param file
+     * Saves the string identifying the specific child class of the 'Player' class within the file,
+     * and the specific name of the instance.
+     * @param file Stream in which the identifier and the name are to be saved.
      */
     virtual void saveNameToFile(std::ofstream &file) const = 0;
 };

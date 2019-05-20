@@ -26,12 +26,20 @@ public:
     void addCard(Card *card);
 
     /**
+     * Loads the Hand from its text representation from the 'file' stream with the aid of 'cardDatabase'.
+     * @param file File from which the Hand is loaded.
+     * @param cardDatabase Database containing all the available cards.
+     * @return Hand instance built from 'file's' contents.
+     */
+    static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
+
+    /**
      * Plays a single card from the 'cards' container at the 'cardIndex' index and removes it from 'cards'.
      * @param cardIndex Index of the card to be played.
      * @param playedCards Cards played by the this instance's owner so far.
      * @param currentScore Instance's owner's current score.
      * @param opponentScore Instance's owner's opponent's current score.
-     * @return
+     * @return Value of the played card, 0 if the card does not add any value.
      */
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
@@ -42,20 +50,13 @@ public:
     void saveToFile(std::ofstream &file) const;
 
     /**
-     * Puts the hand's 'cards' in the 'out' stream.
-     * @param out Stream in which the hand is being placed.
-     * @param hand Hand to be put in the 'out' stream.
-     * @return Ostream 'out' containing the 'hand'.
-     */
+       * Puts the hand's 'cards' in the 'out' stream.
+       * @param out Stream in which the hand is being placed.
+       * @param hand Hand to be put in the 'out' stream.
+       * @return Ostream 'out' containing the 'hand'.
+       */
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
 
-    /**
-     * Loads the Hand from its text representation from the 'file' stream with the aid of 'cardDatabase'.
-     * @param file File from which the Hand is loaded.
-     * @param cardDatabase Database containing all the available cards.
-     * @return Hand instance built from 'file's' contents.
-     */
-    static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 };
 
 

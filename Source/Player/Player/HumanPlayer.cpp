@@ -45,8 +45,7 @@ void HumanPlayer::takeTurn(const int opponentScore) {
 
 void HumanPlayer::saveNameToFile(std::ofstream &file) const {
     file << NAME_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << HumanPlayer::HUMAN_FILE_LEAD
-         << Player::PLAYER_TYPE_DELIMITER << name
-         << endl;
+         << Player::PLAYER_TYPE_DELIMITER << name << endl;
 }
 
 bool HumanPlayer::isStandingUp() const {

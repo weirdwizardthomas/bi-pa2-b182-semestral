@@ -116,7 +116,7 @@ private:
     void swapPlayers();
 
     /**
-     * Determines the starting player by examining the first card of either player's main deck. Higher value goes first
+     * Determines the starting player by examining the first card of either player's main deck. Higher value goes first.
      */
     void selectStartingPlayer();
 

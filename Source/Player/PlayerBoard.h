@@ -89,6 +89,9 @@ public:
     static const char *IS_NOT_STANDING_VALUE;
     static const char *ITEM_INDEX_LEAD;
 
+    /**
+     * Creates an instance of the 'PlayerBoard' class with a generated main deck, with other attributes set to default.
+     */
     PlayerBoard();
 
     /**

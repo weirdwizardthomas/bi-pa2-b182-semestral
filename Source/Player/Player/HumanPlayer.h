@@ -14,6 +14,10 @@ protected:
     Deck deck;
     Hand hand;
 
+    /**
+     *
+     * @return
+     */
     bool isStandingUp() const;
 
     /**
@@ -23,18 +27,40 @@ protected:
      */
     bool playCard(int opponentScore);
 
+    /**
+     *
+     * @param file
+     */
     void saveToFile(std::ofstream &file) const override;
 
+    /**
+     *
+     */
     void printDeck() const;
 
+    /**
+     *
+     */
     void invalidInputMessage() const;
 
+    /**
+     *
+     */
     void deckApprovalQuery() const;
 
+    /**
+     *
+     */
     void actionPrompt() const;
 
+    /**
+     *
+     */
     void deckChoicePrompt() const;
 
+    /**
+     *
+     */
     void choosingDeckMessage() const;
 
 public:
@@ -54,10 +80,25 @@ public:
      */
     void drawHand() override;
 
+    /**
+     *
+     * @param file
+     * @param cardDatabase
+     * @param opponent
+     * @return
+     */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
+    /**
+     * Saves the string identifying the specific child class of the 'Player' class within the file.
+     * @param file File to
+     */
     void saveNameToFile(std::ofstream &file) const override;
 
+    /**
+     *
+     * @param opponentScore
+     */
     void takeTurn(int opponentScore) override;
 
 };

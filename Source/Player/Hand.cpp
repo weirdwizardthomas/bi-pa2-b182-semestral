@@ -23,20 +23,7 @@ ostream &operator<<(ostream &out, const Hand &hand) {
     return out;
 }
 
-int Hand::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
-    if (cardIndex >= cards.size())
-        throw invalid_argument("Index out of range");
-    const int cardValue = cards[cardIndex]->play(playedCards, currentScore, opponentScore);
-    cards.erase(cards.begin() + cardIndex);
-    return cardValue;
-}
-
 void Hand::addCard(Card *card) { cards.push_back(card); }
-
-void Hand::saveToFile(ofstream &file) const {
-    file << Hand::HAND_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << cards.size() << endl;
-    file << *this;
-}
 
 Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     string input;
@@ -57,6 +44,18 @@ Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
         hand.cards.push_back(cardDatabase.get(parsed.back()));
     }
 
-
     return hand;
+}
+
+int Hand::playCard(size_t cardIndex, vector<int> &playedCards, int currentScore, int opponentScore) {
+    if (cardIndex >= cards.size())
+        throw invalid_argument("Index out of range");
+    const int cardValue = cards[cardIndex]->play(playedCards, currentScore, opponentScore);
+    cards.erase(cards.begin() + cardIndex);
+    return cardValue;
+}
+
+void Hand::saveToFile(ofstream &file) const {
+    file << Hand::HAND_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << cards.size() << endl;
+    file << *this;
 }
