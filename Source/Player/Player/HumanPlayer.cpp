@@ -99,23 +99,22 @@ void HumanPlayer::chooseDeck(const CardDatabase &allCards) {
 
         string input;
         cin >> input;
-        while (cin.fail() || (input != "F" && input != "L")) { //TODO add more input choices
+        while (cin.fail() || (input != "F" && input != "L")) {
             invalidInputMessage();
             cin >> input;
         }
 
-        //Construct the deck, assign it and show it
         deck = (input == "F" ? Deck(allCards) : DeckParser::loadFromFile(allCards));
         Game::clearScreen(cout);
         printDeck();
-        deckApprovalQuery();
+        deckApprovalPrompt();
 
         //Ask for approval
         cin >> input;
         while (cin.fail() || (input != "Y" && input != "N" && input != "E")) {
             Game::clearScreen(cout);
             invalidInputMessage();
-            deckApprovalQuery();
+            deckApprovalPrompt();
             cin >> input;
         }
         confirmed = (input == "Y");
@@ -131,11 +130,8 @@ void HumanPlayer::saveToFile(ofstream &file) const {
 
 Player *HumanPlayer::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent) {
     HumanPlayer *player = new HumanPlayer("dummy");
-    //hand
     player->hand = Hand::loadFromFile(file, cardDatabase);
-    //side deck
     player->deck = Deck::loadFromFile(file, cardDatabase);
-    //board
     player->board = PlayerBoard::loadFromFile(file, cardDatabase);
 
     return player;
@@ -145,7 +141,7 @@ void HumanPlayer::printDeck() const { cout << deck << endl; }
 
 void HumanPlayer::invalidInputMessage() const { cout << "Invalid input, try again." << endl; }
 
-void HumanPlayer::deckApprovalQuery() const { cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl; }
+void HumanPlayer::deckApprovalPrompt() const { cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl; }
 
 void HumanPlayer::actionPrompt() const {
     cout << endl << "Pick a card to play or [P]ass" << endl;
@@ -154,7 +150,6 @@ void HumanPlayer::actionPrompt() const {
 }
 
 void HumanPlayer::deckChoicePrompt() const {
-    cout << "=========================================================" << endl;
     cout << "Forge a new deck or Load an existing one([F]orge/[L]oad)?" << endl;
 }
 
