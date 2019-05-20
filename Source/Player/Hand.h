@@ -20,21 +20,21 @@ public:
     static const char *LEFT_INDEX_WRAPPER;
 
     /**
-     * Adds the 'card' pointer to 'cards' container.
+     * Adds the @param card pointer to 'cards' container.
      * @param card Card pointer to be added.
      */
     void addCard(Card *card);
 
     /**
-     * Loads the Hand from its text representation from the 'file' stream with the aid of 'cardDatabase'.
+     * Loads the Hand from its text representation from the @param `file stream with the aid of @param cardDatabase.
      * @param file File from which the Hand is loaded.
      * @param cardDatabase Database containing all the available cards.
-     * @return Hand instance built from 'file's' contents.
+     * @return Hand instance built from @param file's contents.
      */
     static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
     /**
-     * Plays a single card from the 'cards' container at the 'cardIndex' index and removes it from 'cards'.
+     * Plays a single card from the 'cards' container at the @param cardIndex index and removes it from 'cards'.
      * @param cardIndex Index of the card to be played.
      * @param playedCards Cards played by the this instance's owner so far.
      * @param currentScore Instance's owner's current score.
@@ -44,13 +44,13 @@ public:
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);
 
     /**
-     * Saves the hand's content in a text representation to the file represented by the 'file' stream
-     * @param file Stream representing the output file
+     * Saves the hand's content in a text representation to the file represented by the @param file stream.
+     * @param file Stream representing the output file.
      */
     void saveToFile(std::ofstream &file) const;
 
     /**
-       * Puts the hand's 'cards' in the 'out' stream.
+       * Puts the @param hand's 'cards' in the @param out stream.
        * @param out Stream in which the hand is being placed.
        * @param hand Hand to be put in the 'out' stream.
        * @return Ostream 'out' containing the 'hand'.

@@ -30,10 +30,10 @@ Deck::Deck() : randomGenerator(0, DECK_SIZE - 1) {}
 
 Deck::Deck(vector<Card *> cards) : cards(std::move(cards)), randomGenerator(0, DECK_SIZE - 1) {}
 
-Deck::Deck(const CardDatabase &allCards) : randomGenerator(0, DECK_SIZE - 1) {
-    cout << allCards;
+Deck::Deck(const CardDatabase &cardDatabase) : randomGenerator(0, DECK_SIZE - 1) {
+    cout << cardDatabase;
     selectCardsDeckSizePrompt();
-    loadCardsFromUser(allCards);
+    loadCardsFromUser(cardDatabase);
     deckForgedMessage();
 }
 

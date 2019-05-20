@@ -20,9 +20,9 @@ const int Game::ROUNDS = 3;
 const int Game::TARGET_SCORE = 20;
 const int Game::ROWS_CLEARED = 100;
 
-Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}),
+Game::Game(Player *player1, Player *player2, const CardDatabase &cardDatabase) : players({player1, player2}),
                                                                              roundNumber(1) {
-    chooseDecks(allCards);
+    chooseDecks(cardDatabase);
     selectStartingPlayer();
 }
 
@@ -48,9 +48,9 @@ void Game::autoSave() const {
 
 bool Game::bothPlayersStanding() const { return players.first->isStanding() && players.second->isStanding(); }
 
-void Game::chooseDecks(const CardDatabase &allCards) const {
-    players.first->chooseDeck(allCards);
-    players.second->chooseDeck(allCards);
+void Game::chooseDecks(const CardDatabase &cardDatabase) const {
+    players.first->chooseDeck(cardDatabase);
+    players.second->chooseDeck(cardDatabase);
 }
 
 Player *Game::currentlyNotPlaying() const { return players.second; }

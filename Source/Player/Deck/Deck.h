@@ -111,13 +111,13 @@ public:
     Deck();
 
     /**
-     * Creates a new 'Deck' instance by quering the user to pick individual cards from the 'allCards' database
-     * @param allCards
+     * Creates a new 'Deck' instance by querying the user to pick individual cards from the @param cardDatabase database
+     * @param cardDatabase
      */
-    explicit Deck(const CardDatabase &allCards);
+    explicit Deck(const CardDatabase &cardDatabase);
 
     /**
-     * Creates a new 'Deck' instance with the 'cards' parameter as its 'cards' container.
+     * Creates a new 'Deck' instance with the @param cards parameter as its 'cards' container.
      * @param cards Card container to represent the deck.
      */
     explicit Deck(std::vector<Card *> cards);
@@ -155,7 +155,7 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
     /**
-     * Loads the deck from its text representation in 'file' with the aid of 'cardDatabase'
+     * Loads the deck from its text representation in  @param file with the aid of @param cardDatabase
      * @param file File containing the deck's text representation.
      * @param cardDatabase Database of all available cards.
      * @return
