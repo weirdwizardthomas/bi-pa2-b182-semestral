@@ -12,33 +12,31 @@
 #include <fstream>
 #include <map>
 
-//TODO input stream as a parameter
-
 class Card {
 
 protected:
     /**
-     *
+     * Checks whether @param x satisfies all the constraints.
      * @param x Integer to be checked as a valid card value
-     * @return Whether the input satisfies the constraint
+     * @return True if the input satisfies the constraints, false otherwise.
      */
     bool validInput(int x) const;
 
     /**
-     *
-     * @param x Integer to be formatted based on its sign
+     * Uniforms the @param x's text length by prefixing it with a PLUS_SIGN if the number is positive.
+     * @param x Integer to be formatted based on its sign.
      * @return the input number with a sign (+ for positive, -for negative)
      */
     std::string offsetPositiveNumber(int x) const;
 
     /**
-     * queries the user to choose between a positive and negative sign - used at flip cards,...
-     * @return chosen sign
+     * Queries the user to choose between a positive and negative sign.
+     * @return PLUS_SIGN or MINUS_SIGN.
      */
     std::string chooseSign() const;
 
     /**
-     *
+     * Informs the user that the input does not match either of PLUS_SIGN, MINUS_SIGN.
      */
     void invalidSignMessage() const;
 
@@ -58,18 +56,18 @@ public:
 
     /**
      * Puts the card's effect in play
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
-     * @return current player's score updated by playing a card
+     * @param playedCards Cards previously played by the current player.
+     * @param currentScore Current player's current round's score.
+     * @param opponentScore Opponent's current round's score.
+     * @return Card's value, 0 if the card doesn't add a new value.
      */
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
-     * Prints the 'card''s description into the 'out' stream
-     * @param out The stream into which the 'card''s description will be sent
-     * @param card Card to be placed into the stream
-     * @return getDescription()
+     * Prints the @param card's description into the @param out stream
+     * @param out The stream into which the @param card's description will be sent.
+     * @param card Card to be placed into the stream.
+     * @return @param out containing @param card's description.
      */
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
 
