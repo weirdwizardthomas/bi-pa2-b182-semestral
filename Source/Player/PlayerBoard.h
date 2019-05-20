@@ -63,13 +63,6 @@ private:
      */
     static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
 
-    /**
-     *
-     * @param field
-     * @param file
-     * @return
-     */
-    static std::string loadValue(const std::string &field, std::ifstream &file);
 
     /**
      *

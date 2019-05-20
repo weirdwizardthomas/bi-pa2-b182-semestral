@@ -12,6 +12,7 @@
 //Namespaces--------------------------------
 using namespace std;
 
+
 int main() {
     MainMenu mainMenu;
     mainMenu.loop();

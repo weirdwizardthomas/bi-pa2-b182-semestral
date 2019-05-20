@@ -3,8 +3,8 @@ CXX=g++
 LD=g++
 
 # variables: flags
-CXXFLAGS=-std=c++11  -Wall -pedantic -Wno-long-long -O0 -ggdb
-LDFLAGS=-std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb
+CXXFLAGS=-std=c++11  -Wall -pedantic -Wno-long-long -g
+LDFLAGS=
 
 # compile and generate documentation
 all: obj compile doc

@@ -31,6 +31,7 @@ private:
     static std::vector<Card *>
     parseLinesForCards(const CardDatabase &allCards, const std::vector<std::string> &fileLines);
 
+
     /**
      * Queries the user with deck name to pick from
      * @param files Contents of the /Data/Decks directory
@@ -56,15 +57,15 @@ private:
 
 public:
     static const char NEWLINE;
-    static const char * FOLDER_DELIMITER;
-    static const char * FILE_CARD_VALUE_DELIMITER;
-    static const char * CARD_DESCRIPTION_DELIMITER;
-    static const char * DECKS_DIRECTORY_PATH;
-    static const char * BASIC_CARD_LEAD;
-    static const char * DOUBLE_CARD_LEAD;
-    static const char * DUAL_CARD_LEAD;
-    static const char * FLEX_CARD_LEAD;
-    static const char * FLIP_CARD_LEAD;
+    static const char *FOLDER_DELIMITER;
+    static const char *FILE_CARD_VALUE_DELIMITER;
+    static const char *CARD_DESCRIPTION_DELIMITER;
+    static const char *DECKS_DIRECTORY_PATH;
+    static const char *BASIC_CARD_LEAD;
+    static const char *DOUBLE_CARD_LEAD;
+    static const char *DUAL_CARD_LEAD;
+    static const char *FLEX_CARD_LEAD;
+    static const char *FLIP_CARD_LEAD;
 
 
     /**
@@ -87,7 +88,6 @@ public:
      * @return
      */
     static std::list<std::string> splitStringByDelimiter(std::string phrase, const std::string &delimiter);
-
 };
 
 

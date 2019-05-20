@@ -54,6 +54,8 @@ public:
 
     static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
+    static std::string loadValue(const std::string &field, const std::string &delimiter, std::ifstream &file);
+
     friend std::ostream &operator<<(std::ostream &out, const CardDatabase &cardDatabase);
 
     std::map<std::string, Card *>::const_iterator cbegin() const;

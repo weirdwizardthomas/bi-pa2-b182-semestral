@@ -121,6 +121,15 @@ list<string> CardDatabase::split(string phrase, const string &delimiter) {
     return list;
 }
 
+string CardDatabase::loadValue(const string &field, const string &delimiter, ifstream &file) {
+    string input;
+    getline(file, input);
+    list <string> parsed = split(input, delimiter);
+    if (parsed.front() != field)
+        throw ParseError();
+
+    return parsed.back();
+}
 std::vector<Card *> CardDatabase::toVector() const {
     vector<Card *> asVector;
     asVector.reserve(cards.size());

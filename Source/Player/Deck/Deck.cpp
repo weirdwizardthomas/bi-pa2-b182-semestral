@@ -60,7 +60,7 @@ void Deck::loadCardsFromUser(const CardDatabase &allCards) {
     size_t i = 0; //initial index
 
     while (i != Deck::DECK_SIZE) {
-        cout << Deck::LEFT_INDEX_BRACKET << i << Deck::RIGHT_INDEX_BRACKET << Game::FILE_NAME_ITEMS_DELIMITER;
+        cout << Deck::LEFT_INDEX_BRACKET << i << Deck::RIGHT_INDEX_BRACKET;
 
         size_t input = 0;
         cin >> input;
@@ -131,7 +131,7 @@ void Deck::saveToFile() const {
 }
 
 void Deck::saveToFile(ofstream &file) const {
-    file << Deck::DECK_FILE_LEAD << Game::FILE_NAME_ITEMS_DELIMITER << cards.size() << endl;
+    file << Deck::DECK_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << cards.size() << endl;
     file << *this;
 }
 
@@ -145,19 +145,14 @@ bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename
 Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     Deck deck;
 
-    string input;
-    getline(file, input);
-
-    list<string> parsed = CardDatabase::split(input, Game::FILE_NAME_ITEMS_DELIMITER);
-    if (parsed.front() != Deck::DECK_FILE_LEAD)
-        throw ParseError();
-
-    size_t cardCount = stoull(parsed.back());
+    string input = CardDatabase::loadValue(Deck::DECK_FILE_LEAD, Game::FILE_FIELD_VALUE_DELIMITER, file);
+    size_t cardCount = stoull(input);
     deck.randomGenerator.lowerCeiling(cardCount - 1);
     deck.cards.reserve(cardCount);
+
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
-        parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
+        list<string> parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
         deck.cards.push_back(cardDatabase.get(parsed.back()));
     }
 

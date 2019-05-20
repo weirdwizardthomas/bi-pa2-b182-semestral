@@ -41,12 +41,11 @@ void Hand::saveToFile(ofstream &file) const {
 Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, Game::FILE_NAME_ITEMS_DELIMITER);
+    list<string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != Hand::HAND_FILE_LEAD)
         throw ParseError();
 
     size_t cardCount = stoull(parsed.back());
-
     Hand hand;
     hand.cards.reserve(cardCount);
 
@@ -57,6 +56,7 @@ Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
         parsed = CardDatabase::split(input, Hand::RIGHT_INDEX_WRAPPER);
         hand.cards.push_back(cardDatabase.get(parsed.back()));
     }
+
 
     return hand;
 }
