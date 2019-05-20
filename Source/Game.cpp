@@ -2,23 +2,23 @@
 // Created by tomtom on 11/02/19.
 //
 
+#include <iostream>
+#include <iomanip>
+
 #include "Game.h"
 #include "Cards/CardDatabase.h"
 #include "Utilities/Exceptions.h"
 
-#include <iostream>
-#include <iomanip>
-
-//Namespaces--------------------------
 using namespace std;
 
 const char *Game::SAVES_FOLDER{"./Data/Games/"};
 const char *Game::CURRENT_SCORE_LEAD{"Current score"};
-const char *Game::SCORE_DELIMITER{": "};
+const char *Game::FILE_FIELD_VALUE_DELIMITER{": "};
 const char *Game::FILE_NAME_ITEMS_DELIMITER{"_"};
 const char *Game::AUTOSAVE_LEADING{"autosave"};
-
-const int rowsCleared = 100;
+const int Game::ROUNDS = 3;
+const int Game::TARGET_SCORE = 20;
+const int Game::rowsCleared = 100;
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}),
                                                                              roundNumber(1) {
@@ -128,7 +128,7 @@ Game *Game::loadFromFile(const CardDatabase &cardDatabase) {
     string currentScore;
     getline(file, currentScore);
 
-    list<string> parsed = CardDatabase::split(currentScore, SCORE_DELIMITER);
+    list<string> parsed = CardDatabase::split(currentScore, FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != CURRENT_SCORE_LEAD)
         throw ParseError();
 
@@ -143,7 +143,7 @@ void Game::manualSave() const {
     enterFileNameQuery();
     string filename;
     cin >> filename;
-    if (filename == "Q")
+    if (filename == "Q") //TODO extract this constant, maybe make a method that encapsulates it (allows multiple checks)
         return;
     saveToFile(Game::SAVES_FOLDER + filename);
 }
@@ -225,7 +225,7 @@ void Game::saveToFile(const string &outputPath) const {
     if (!file.is_open())
         throw CannotOpenFile();
 
-    file << CURRENT_SCORE_LEAD << SCORE_DELIMITER << roundNumber << endl;
+    file << CURRENT_SCORE_LEAD << FILE_FIELD_VALUE_DELIMITER << roundNumber << endl;
     players.first->saveToFile(file);
     players.second->saveToFile(file);
 
@@ -246,7 +246,7 @@ void Game::anyKeyToContinueQuery() { cout << "Press any key to return to main me
 void Game::clearScreen(ostream &out) {
     ios_base::fmtflags f(out.flags());
     //out << setfill('\n') << setw(rowsCleared) << endl;
-    for (size_t i = 0; i < rowsCleared; ++i)
+    for (size_t i = 0; i < Game::rowsCleared; ++i)
         out << endl;
     out.flags(f);
 }

@@ -4,20 +4,15 @@
 
 #include "Card.h"
 
-//Namespaces--------------------------------
 using namespace std;
-
 
 const char *Card::PLUS_SIGN{"+"};
 const char *Card::MINUS_SIGN{"-"};
 const int Card::LOWER_BOUND = -10;
 const int Card::UPPER_BOUND = 10;
 
-
-
 ostream &operator<<(ostream &out, const Card &card) {
     out << card.getDescription();
-
     return out;
 }
 
@@ -41,4 +36,3 @@ string Card::chooseSign() const {
 }
 
 void Card::invalidSignMessage() const { cout << "Invalid sign, please try again."; }
-

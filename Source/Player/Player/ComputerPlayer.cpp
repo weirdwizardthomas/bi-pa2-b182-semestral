@@ -10,13 +10,11 @@ using namespace std;
 
 const char *ComputerPlayer::COMPUTER_FILE_LEAD{"Computer"};
 const char *ComputerPlayer::REMAINING_CARDS_LEAD{"Remaining cards"};
-const char *ComputerPlayer::FIELD_VALUE_DELIMITER{": "};
-
 
 ComputerPlayer::ComputerPlayer(Player *opponent) : Player("Computer"), remainingCards(0), opponent(opponent) {}
 
 void ComputerPlayer::saveNameToFile(std::ofstream &file) const {
-    file << NAME_FILE_LEAD << NAME_DELIMITER
+    file << Player::NAME_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER
          << ComputerPlayer::COMPUTER_FILE_LEAD << Player::PLAYER_TYPE_DELIMITER << name << endl;
 }
 
@@ -56,7 +54,6 @@ void ComputerPlayer::takeTurn(int opponentScore) {
 }
 
 void ComputerPlayer::findNegative(int currentScore) {
-    //TODO add a loop and try bigger negative values if none is found to be optimal
     int optimalValue = Game::TARGET_SCORE - currentScore;
 
     for (size_t i = 0; i < deck.size(); ++i)
@@ -96,8 +93,8 @@ void ComputerPlayer::drawHand() {
 void ComputerPlayer::saveToFile(std::ofstream &file) const {
     saveNameToFile(file);
     size_t i = 0;
-    file << REMAINING_CARDS_LEAD << FIELD_VALUE_DELIMITER << remainingCards << endl;
-    file << Deck::DECK_FILE_LEAD << FIELD_VALUE_DELIMITER << deck.size() << endl;
+    file << ComputerPlayer::REMAINING_CARDS_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << remainingCards << endl;
+    file << Deck::DECK_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << deck.size() << endl;
     for (const auto &card : deck)
         file << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << card.first << endl;
 
@@ -111,14 +108,14 @@ Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &ca
     //load remaining
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, ComputerPlayer::FIELD_VALUE_DELIMITER);
+    list<string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != ComputerPlayer::REMAINING_CARDS_LEAD)
         throw ParseError();
     player->remainingCards = stoi(parsed.back());
 
     //load deck
     getline(file, input);
-    parsed = CardDatabase::split(input, ComputerPlayer::FIELD_VALUE_DELIMITER);
+    parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != Deck::DECK_FILE_LEAD)
         throw ParseError();
     size_t cardCount = stoull(parsed.back());

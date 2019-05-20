@@ -16,9 +16,8 @@ private:
 
 public:
     static const char *HAND_FILE_LEAD;
-    static const char *FILE_VALUE_DELIMITER;
-    static const char *RIGHT_INDEX_DELIMITER;
-    static const char *LEFT_INDEX_DELIMITER;
+    static const char *RIGHT_INDEX_WRAPPER;
+    static const char *LEFT_INDEX_WRAPPER;
 
     /**
      *

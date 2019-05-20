@@ -6,7 +6,6 @@
 #define PAZAAK_GAME_H
 
 
-
 #include "Player/Player/Player.h"
 #include "Utilities/RandomNumberGenerator.h"
 
@@ -192,15 +191,14 @@ private:
 
 
 public:
-    static const int ROUNDS = 3;
-    static const int TARGET_SCORE = 20;
+    static const int ROUNDS;
+    static const int TARGET_SCORE;
+    static const int rowsCleared;
     static const char *SAVES_FOLDER;
     static const char *CURRENT_SCORE_LEAD;
-    static const char *SCORE_DELIMITER;
+    static const char *FILE_FIELD_VALUE_DELIMITER;
     static const char *AUTOSAVE_LEADING;
     static const char *FILE_NAME_ITEMS_DELIMITER;
-
-
 
     Game(Player *player1, Player *player2, const CardDatabase &allCards);
 

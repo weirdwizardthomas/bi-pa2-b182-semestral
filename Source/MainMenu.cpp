@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+
 #include "MainMenu.h"
 #include "Game.h"
 #include "Player/Player/HumanPlayer.h"
@@ -10,8 +11,8 @@
 
 using namespace std;
 
-const char *MainMenu::LEFT_INDEX_WRAPPER{"("};
-const char *MainMenu::RIGHT_INDEX_WRAPPER{")"};
+const char MainMenu::LEFT_INDEX_WRAPPER = '(';
+const char MainMenu::RIGHT_INDEX_WRAPPER = ')';
 
 
 MainMenu::MainMenu() : items({"Play locally", "Play against a computer", "Load game", "Craft a deck", "Quit"}),
@@ -67,13 +68,11 @@ bool MainMenu::invoke(size_t itemIndex) const {
 }
 
 string MainMenu::getPlayerName() const {
-    string name1;
+    string name;
     playerNameQuery();
-    cin >> name1;
-    return name1;
+    cin >> name;
+    return name;
 }
-
-void MainMenu::playerNameQuery() const { cout << "Enter the name of the player:"; }
 
 void MainMenu::loop() const {
     do {
@@ -82,6 +81,9 @@ void MainMenu::loop() const {
         listItems();
     } while (invoke(selectItem()));
 }
+
+
+void MainMenu::playerNameQuery() const { cout << "Enter the name of the player:"; }
 
 
 void MainMenu::listItems() const {

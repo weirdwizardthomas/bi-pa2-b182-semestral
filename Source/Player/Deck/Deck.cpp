@@ -7,17 +7,16 @@
 #include "Deck.h"
 #include "../../Utilities/DeckParser.h"
 #include "../../Utilities/Exceptions.h"
+#include "../../Game.h"
 
 //Namespaces--------------------------------
 using namespace std;
 
-const size_t Deck::DECK_SIZE{10};
-const size_t Deck::MAX_CARDS_DRAWN{4};
+const size_t Deck::DECK_SIZE = 10;
+const size_t Deck::MAX_CARDS_DRAWN = 4;
 const char *Deck::DECK_FILE_LEAD{"Deck"};
-const char *Deck::DECK_HEADER_DELIMITER{": "};
 const char *Deck::LEFT_INDEX_BRACKET{"("};
 const char *Deck::RIGHT_INDEX_BRACKET{") "};
-const char *Deck::FIELD_VALUE_DELIMITER{": "};
 
 
 ostream &operator<<(ostream &out, const Deck &deck) {
@@ -61,7 +60,7 @@ void Deck::loadCardsFromUser(const CardDatabase &allCards) {
     size_t i = 0; //initial index
 
     while (i != Deck::DECK_SIZE) {
-        cout << Deck::LEFT_INDEX_BRACKET << i << Deck::RIGHT_INDEX_BRACKET << Deck::FIELD_VALUE_DELIMITER;
+        cout << Deck::LEFT_INDEX_BRACKET << i << Deck::RIGHT_INDEX_BRACKET << Game::FILE_NAME_ITEMS_DELIMITER;
 
         size_t input = 0;
         cin >> input;
@@ -132,7 +131,7 @@ void Deck::saveToFile() const {
 }
 
 void Deck::saveToFile(ofstream &file) const {
-    file << Deck::DECK_FILE_LEAD << Deck::DECK_HEADER_DELIMITER << cards.size() << endl;
+    file << Deck::DECK_FILE_LEAD << Game::FILE_NAME_ITEMS_DELIMITER << cards.size() << endl;
     file << *this;
 }
 
@@ -149,7 +148,7 @@ Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     string input;
     getline(file, input);
 
-    list<string> parsed = CardDatabase::split(input, Deck::FIELD_VALUE_DELIMITER);
+    list<string> parsed = CardDatabase::split(input, Game::FILE_NAME_ITEMS_DELIMITER);
     if (parsed.front() != Deck::DECK_FILE_LEAD)
         throw ParseError();
 
@@ -183,7 +182,6 @@ void Deck::fileExistsMessage() { cout << "File already exists, please try anothe
 
 void Deck::saveDeckAsPrompt() { cout << "Save deck as:"; }
 
-
 void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
 
 void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
@@ -191,6 +189,7 @@ void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " car
 void Deck::selectedCardMessage(size_t index) const { cout << "You've selected: " << *(cards[index]) << endl; }
 
 void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
+
 void Deck::displayDecksMessage(const vector<string> &files) {
     cout << "Saved decks" << endl;
     size_t i = 0;

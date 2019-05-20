@@ -22,7 +22,6 @@ public:
 
     static const char *COMPUTER_FILE_LEAD;
     static const char *REMAINING_CARDS_LEAD ;
-    static const char *FIELD_VALUE_DELIMITER;
 
     explicit ComputerPlayer(Player *opponent);
 

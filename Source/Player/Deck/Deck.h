@@ -98,10 +98,8 @@ public:
     static const size_t DECK_SIZE;
     static const size_t MAX_CARDS_DRAWN;
     static const char *DECK_FILE_LEAD;
-    static const char *DECK_HEADER_DELIMITER;
     static const char *LEFT_INDEX_BRACKET;
     static const char *RIGHT_INDEX_BRACKET;
-    static const char *FIELD_VALUE_DELIMITER;
 
     //Constructors--------------------------------------------
     Deck();

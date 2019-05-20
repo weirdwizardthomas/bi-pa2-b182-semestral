@@ -87,7 +87,6 @@ public:
     static const char *PLAYED_CARDS_DELIMITER;
     static const char *ROUNDS_WON_LEAD;
     static const char *CURRENT_SCORE_LEAD;
-    static const char *FIELD_VALUE_DELIMITER;
     static const char *ITEM_LIST_DELIMITER;
     static const char *MAIN_DECK_LEAD;
     static const char *CARDS_PLAYED_LEAD;

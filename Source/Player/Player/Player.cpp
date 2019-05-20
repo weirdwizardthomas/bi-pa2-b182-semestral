@@ -11,11 +11,9 @@
 #include "HumanPlayer.h"
 #include "ComputerPlayer.h"
 
-//Namespaces--------------------------------
 using namespace std;
 
 const char *Player::NAME_FILE_LEAD{"Name"};
-const char *Player::NAME_DELIMITER{": "};
 const char *Player::PLAYER_TYPE_DELIMITER{" - "};
 
 Player::Player(string name) : name(std::move(name)) {}
@@ -43,7 +41,7 @@ bool Player::isStanding() const { return board.isStanding(); }
 Player *Player::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent) {
     string nameField;
     getline(file, nameField);
-    list<string> parsed = CardDatabase::split(nameField, Player::NAME_DELIMITER);
+    list<string> parsed = CardDatabase::split(nameField, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != Player::NAME_FILE_LEAD)
         throw ParseError();
 

@@ -21,9 +21,10 @@ private:
     size_t selectItem() const;
 
     bool invoke(size_t itemIndex) const;
+
 public:
-    static const char *LEFT_INDEX_WRAPPER;
-    static const char *RIGHT_INDEX_WRAPPER;
+    static const char LEFT_INDEX_WRAPPER;
+    static const char RIGHT_INDEX_WRAPPER;
 
     MainMenu();
 
