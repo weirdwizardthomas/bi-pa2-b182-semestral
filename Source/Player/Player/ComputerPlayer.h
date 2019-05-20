@@ -17,8 +17,8 @@ private:
     Player *opponent;
 
     /**
-     *
-     * @param file
+     * Saves the string identifying the specific child class of the 'Player' class and instance within the file.
+     * @param file File to which the class identifier and instance identifier is saved to.
      */
     void saveNameToFile(std::ofstream &file) const override;
 
@@ -30,47 +30,51 @@ public:
     explicit ComputerPlayer(Player *opponent);
 
     /**
-     *
+     * Increases the remaningCards counter by up to MAX_CARDS_DRAWN.
      */
     void drawHand() override;
 
     /**
-     *
-     * @param file
+     * Saves the instance to the @param file.
+     * @param file File into which the instance will be saved.
      */
     void saveToFile(std::ofstream &file) const override;
 
     /**
-     *
+     * Evaluates the next auto-played card and the possible remaining cards in deck to stand
+     * or play a card from the deck.
+     * Finds the most optimal card to play to stay ahead of the opponent without breaking the threshold.
      * @param opponentScore
      */
     void takeTurn(int opponentScore) override;
 
     /**
-     *
-     * @param allCards
+     * Loads a set of flexible cards to 'deck'.
+     * @param cardDatabase Database of all available cards.
      */
-    void chooseDeck(const CardDatabase &allCards) override;
+    void chooseDeck(const CardDatabase &cardDatabase) override;
 
     /**
-     *
-     * @param opponentScore
-     * @param currentScore
+     * Finds the lowest Card to play to attain a score higher than @param currentScore without crossing the threshold,
+     * and plays it.
+     * @param opponentScore Score to surpass.
+     * @param currentScore Computer's current score to raise above @param opponentScore.
      */
     void findPositive(int opponentScore, int currentScore);
 
     /**
-     *
-     * @param currentScore
+     * Finds lowest negative value to bring the score below the threshold.
+     * If no such value can be found the computer stands.
+     * @param currentScore Computer's current score to bring below the threshold.
      */
     void findNegative(int currentScore);
 
     /**
-     *
-     * @param file
-     * @param cardDatabase
-     * @param opponent
-     * @return
+     * Loads the instance from the @param file.
+     * @param file File from which the data to construct the instance is loaded.
+     * @param cardDatabase Database of all the available cards.
+     * @param opponent Pointer to the opposing player.
+     * @return Dynamically allocated instance of the Player's child class ComputerPlayer.
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent);
 };

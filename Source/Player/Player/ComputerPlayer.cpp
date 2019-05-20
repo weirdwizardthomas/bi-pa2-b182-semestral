@@ -81,7 +81,7 @@ void ComputerPlayer::findPositive(int opponentScore, int currentScore) {
     }
 }
 
-void ComputerPlayer::chooseDeck(const CardDatabase &allCards) {
+void ComputerPlayer::chooseDeck(const CardDatabase &cardDatabase) {
     for (int i = 1; i <= 6; ++i)
         deck.emplace_back(i, -i);
 }
