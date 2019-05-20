@@ -26,7 +26,6 @@ const char *PlayerBoard::IS_NOT_STANDING_VALUE{"False"};
 
 PlayerBoard::PlayerBoard() : currentScore(0), roundsWon(0), standing(false),
                              randomNumberGenerator(0, Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES) {
-    playedCards.reserve(PlayerBoard::TABLE_SIZE);
     mainDeck.reserve(Card::UPPER_BOUND * PlayerBoard::MAIN_DECK_CARD_COPIES);
     generateMainDeck();
 }
@@ -60,9 +59,11 @@ bool PlayerBoard::isStanding() const { return standing; }
 
 string PlayerBoard::showCardsPlayed() const {
     string output;
-    auto playedEnd = *(playedCards.end());
-    for (auto &cardValue : playedCards) //places a PLAYED_CARDS_DELIMITER between each substring of the output string
-        output.append(to_string(cardValue) + (cardValue != playedEnd ? PlayerBoard::PLAYED_CARDS_DELIMITER : ""));
+    if (playedCards.empty())
+        return output;
+
+    for (size_t i = 0; i < playedCards.size(); ++i)
+        output.append((i == 0 ? "" : PlayerBoard::PLAYED_CARDS_DELIMITER) + to_string(playedCards[i]));
 
     return output;
 }

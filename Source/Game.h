@@ -6,6 +6,7 @@
 #define PAZAAK_GAME_H
 
 
+
 #include "Player/Player/Player.h"
 #include "Utilities/RandomNumberGenerator.h"
 
@@ -69,6 +70,10 @@ private:
      */
     Player *getRoundVictor() const;
 
+    /**
+     *
+     * @return
+     */
     static std::vector<std::string> getSavedGames();
 
     /**
@@ -115,8 +120,8 @@ private:
     bool roundIsTie() const;
 
     /**
- * Swaps between currently playing and not playing player
- */
+     * Swaps between currently playing and not playing player
+     */
     void swapPlayers();
 
     /**
@@ -159,6 +164,11 @@ private:
     static void invalidInputMessage();
 
     /**
+     *
+     */
+    static void returnToMainMenu();
+
+    /**
      * Shows a message that a round is commencing
      * @param roundNumber current round's number to be displayed
      */
@@ -187,6 +197,10 @@ public:
     static const char *SAVES_FOLDER;
     static const char *CURRENT_SCORE_LEAD;
     static const char *SCORE_DELIMITER;
+    static const char *AUTOSAVE_LEADING;
+    static const char *FILE_NAME_ITEMS_DELIMITER;
+
+
 
     Game(Player *player1, Player *player2, const CardDatabase &allCards);
 
@@ -212,6 +226,7 @@ public:
      */
     static void clearScreen(std::ostream &out);
 
+    static void anyKeyToContinueQuery();
 };
 
 #endif //PAZAAK_GAME_H

@@ -12,11 +12,13 @@
 //Namespaces--------------------------
 using namespace std;
 
-const char *Game::SAVES_FOLDER{"../Data/Games/"};
+const char *Game::SAVES_FOLDER{"./Data/Games/"};
 const char *Game::CURRENT_SCORE_LEAD{"Current score"};
 const char *Game::SCORE_DELIMITER{": "};
+const char *Game::FILE_NAME_ITEMS_DELIMITER{"_"};
+const char *Game::AUTOSAVE_LEADING{"autosave"};
 
-const int rowsCleared = 18;
+const int rowsCleared = 100;
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}),
                                                                              roundNumber(1) {
@@ -27,19 +29,20 @@ Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : pla
 
 Game::Game() : players(nullptr, nullptr), roundNumber(0) {}
 
-
 Game::~Game() {
     delete players.first;
     delete players.second;
 }
 
 void Game::autoSave() const {
-    string output = string(Game::SAVES_FOLDER) + "autosave_";
+    string output = string(Game::SAVES_FOLDER)
+                    + string(Game::AUTOSAVE_LEADING)
+                    + string(Game::FILE_NAME_ITEMS_DELIMITER);
 
     if (players.first->getName() < players.second->getName())
-        output.append(players.first->getName() + "_" + players.second->getName());
+        output.append(players.first->getName() + Game::FILE_NAME_ITEMS_DELIMITER + players.second->getName());
     else
-        output.append(players.second->getName() + "_" + players.first->getName());
+        output.append(players.second->getName() + Game::FILE_NAME_ITEMS_DELIMITER + players.first->getName());
 
     saveToFile(output);
 }
@@ -152,7 +155,7 @@ void Game::play() {
         currentScoreMessage();
         roundPrompt();
         Player *roundVictor = round();
-        if (roundVictor == nullptr) {
+        if (!roundVictor) {
             Game::clearScreen(cout);
             roundTieMessage();
         } else {
@@ -166,6 +169,13 @@ void Game::play() {
     }
     Game::clearScreen(cout);
     gameVictorMessage();
+    returnToMainMenu();
+}
+
+void Game::returnToMainMenu() {
+    anyKeyToContinueQuery();
+    string anyKey;
+    cin >> anyKey;
 }
 
 void Game::resetBoards() {
@@ -213,7 +223,7 @@ void Game::saveToFile(const string &outputPath) const {
 
     file.open(outputPath, fstream::out);
     if (!file.is_open())
-        cout << "wtf" << endl; //TODO something here
+        throw CannotOpenFile();
 
     file << CURRENT_SCORE_LEAD << SCORE_DELIMITER << roundNumber << endl;
     players.first->saveToFile(file);
@@ -231,6 +241,7 @@ void Game::turn(Player *currentPlayer) {
 //--------------------------------------------------------------------------------------------------------------------//
 //Queries and prompts-------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------//
+void Game::anyKeyToContinueQuery() { cout << "Press any key to return to main menu" << endl; }
 
 void Game::clearScreen(ostream &out) {
     ios_base::fmtflags f(out.flags());

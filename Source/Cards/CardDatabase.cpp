@@ -11,7 +11,7 @@
 
 using namespace std;
 
-const char *CardDatabase::CARD_FOLDER_PATH{"../Data/Cards/"};
+const char *CardDatabase::CARD_FOLDER_PATH{"./Data/Cards/"};
 const char *CardDatabase::BASIC_CARD{"BasicCards"};
 const char *CardDatabase::DUAL_CARD{"DualCards"};
 const char *CardDatabase::FLIP_CARD{"FlipCards"};
@@ -82,9 +82,11 @@ vector<string> CardDatabase::getFileLines(const string &filePath) {
     fstream cardFile;
     cardFile.open(filePath, ios::in);
 
-    if (!cardFile.is_open())
+    if (!cardFile.is_open()) {
+        cout << "Invalid file at CardDatabase.cpp 87" << endl;
         throw InvalidFileException();
 
+    }
     string line;
     vector<string> lines;
 
