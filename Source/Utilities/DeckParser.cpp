@@ -11,7 +11,7 @@ using namespace std;
 const char DeckParser::NEWLINE = '\n';
 const char *DeckParser::FOLDER_DELIMITER{"/"};
 const char *DeckParser::CARD_DESCRIPTION_DELIMITER{": "};
-const char *DeckParser::DECKS_DIRECTORY_PATH{"./Data/Decks"};
+const char *DeckParser::DECKS_DIRECTORY{"./Data/Decks"};
 //todo EXTRACT THE ": "
 const char *DeckParser::BASIC_CARD_LEAD{"Basic Cards: "};
 const char *DeckParser::DOUBLE_CARD_LEAD{"Double Cards: "};
@@ -24,7 +24,7 @@ const vector<string> DeckParser::loadFileContent(const string &file) {
     fstream deckFile;
 
     string path;
-    path.append(DeckParser::DECKS_DIRECTORY_PATH).append(DeckParser::FOLDER_DELIMITER).append(file);
+    path.append(DeckParser::DECKS_DIRECTORY).append(DeckParser::FOLDER_DELIMITER).append(file);
 
     deckFile.open(path, fstream::in);
     if (!deckFile.is_open())
@@ -56,7 +56,7 @@ vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &allCards, cons
     list<Card *> cards;
 
     for (const string &line: fileLines) {
-        auto splitLine = splitStringByDelimiter(line, DeckParser::CARD_DESCRIPTION_DELIMITER);
+        auto splitLine = CardDatabase::split(line, DeckParser::CARD_DESCRIPTION_DELIMITER);
         if (splitLine.size() != 2)
             throw ParseError();
 
@@ -78,7 +78,7 @@ vector<string> DeckParser::getDecksFromDirectory() {
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir(DeckParser::DECKS_DIRECTORY_PATH)) != nullptr) {
+    if ((dir = opendir(DeckParser::DECKS_DIRECTORY)) != nullptr) {
         /* print all the files and directories within directory */
         while ((ent = readdir(dir)) != nullptr) {
             string fileName = ent->d_name;
@@ -93,19 +93,6 @@ vector<string> DeckParser::getDecksFromDirectory() {
     return files;
 }
 
-list<string> DeckParser::splitStringByDelimiter(string phrase, const string &delimiter) {
-    list<string> list;
-    size_t pos = 0;
-    string token;
-    while ((pos = phrase.find(delimiter)) != string::npos) {
-        token = phrase.substr(0, pos);
-        list.push_back(token);
-        phrase.erase(0, pos + delimiter.length());
-    }
-    list.push_back(phrase);
-
-    return list;
-}
 
 size_t DeckParser::userDeckIndexInput(const vector<string> &files) {
     listDecksMessage(files);

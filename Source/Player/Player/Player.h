@@ -76,8 +76,11 @@ public:
      */
     virtual void drawHand() = 0;
 
-    /**
-     *
+    /** If the user is not 'standing' = skipping their turn,
+    * queries the user to stand up or play, plays the top card of the 'mainDeck' element of the 'currentPlayer'
+    * and prompts the user to choose a card to play from their hand.
+    * The player may choose to stand up before the 'mainDeck' card is auto-played, and may choose not to play a card
+    * from their hand.
      * @param opponentScore
      */
     virtual void takeTurn(int opponentScore) = 0;

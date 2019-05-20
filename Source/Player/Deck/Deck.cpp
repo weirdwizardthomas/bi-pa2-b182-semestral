@@ -115,7 +115,7 @@ void Deck::saveToFile() const {
     string filename = QueryUserInputFilename(files);
 
     string path;
-    path.append(DeckParser::DECKS_DIRECTORY_PATH).append(DeckParser::FOLDER_DELIMITER).append(filename);
+    path.append(DeckParser::DECKS_DIRECTORY).append(DeckParser::FOLDER_DELIMITER).append(filename);
 
     fstream deckFile;
     deckFile.open(path, fstream::out);
@@ -161,7 +161,7 @@ Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
 
 string Deck::QueryUserInputFilename(const vector<string> &files) {
     displayDecksMessage(files);
-    saveDeckAsPrompt();
+    deckNamePrompt();
 
     string filename;
     cin >> filename;
@@ -175,7 +175,7 @@ string Deck::QueryUserInputFilename(const vector<string> &files) {
 
 void Deck::fileExistsMessage() { cout << "File already exists, please try another name: "; }
 
-void Deck::saveDeckAsPrompt() { cout << "Save deck as:"; }
+void Deck::deckNamePrompt() { cout << "Save deck as:"; }
 
 void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
 

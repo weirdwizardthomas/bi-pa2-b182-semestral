@@ -18,14 +18,13 @@ const char *Game::FILE_NAME_ITEMS_DELIMITER{"_"};
 const char *Game::AUTOSAVE_LEADING{"autosave"};
 const int Game::ROUNDS = 3;
 const int Game::TARGET_SCORE = 20;
-const int Game::rowsCleared = 100;
+const int Game::ROWS_CLEARED = 100;
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &allCards) : players({player1, player2}),
                                                                              roundNumber(1) {
     chooseDecks(allCards);
     selectStartingPlayer();
 }
-
 
 Game::Game() : players(nullptr, nullptr), roundNumber(0) {}
 
@@ -109,11 +108,6 @@ vector<string> Game::getSavedGames() {
     return files;
 }
 
-void Game::listGamesInDirectory(const vector<string> &savedGames) {
-    size_t i = 0;
-    for (const auto &game : savedGames)
-        cout << "(" << i++ << ") " << game << endl;
-}
 
 Game *Game::loadFromFile(const CardDatabase &cardDatabase) {
     vector<string> savedGames = getSavedGames();
@@ -245,8 +239,8 @@ void Game::anyKeyToContinueQuery() { cout << "Press any key to return to main me
 
 void Game::clearScreen(ostream &out) {
     ios_base::fmtflags f(out.flags());
-    //out << setfill('\n') << setw(rowsCleared) << endl;
-    for (size_t i = 0; i < Game::rowsCleared; ++i)
+    //out << setfill('\n') << setw(ROWS_CLEARED) << endl;
+    for (size_t i = 0; i < Game::ROWS_CLEARED; ++i)
         out << endl;
     out.flags(f);
 }
@@ -269,6 +263,12 @@ void Game::gameStartMessage() const {
 void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " won the game!" << endl; }
 
 void Game::invalidInputMessage() { cout << "Invalid input, please try again," << endl; }
+
+void Game::listGamesInDirectory(const vector<string> &savedGames) {
+    size_t i = 0;
+    for (const auto &game : savedGames)
+        cout << "(" << i++ << ") " << game << endl;
+}
 
 void Game::loadPlayersFromFile(ifstream &file, const CardDatabase &cardDatabase) {
     players.first = Player::loadFromFile(file, cardDatabase, nullptr);
