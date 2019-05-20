@@ -91,16 +91,16 @@ void PlayerBoard::recalculateScore() {
         currentScore += playedCard;
 }
 
-void PlayerBoard::saveToFile(ofstream &out) const {
-    out << PlayerBoard::ROUNDS_WON_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << roundsWon << endl;
-    out << PlayerBoard::CURRENT_SCORE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << currentScore << endl;
-    out << PlayerBoard::CARDS_PLAYED_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << showCardsPlayed() << endl;
-    out << PlayerBoard::IS_STANDING_LEAD << Game::FILE_FIELD_VALUE_DELIMITER
+void PlayerBoard::saveToFile(ofstream &file) const {
+    file << PlayerBoard::ROUNDS_WON_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << roundsWon << endl;
+    file << PlayerBoard::CURRENT_SCORE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << currentScore << endl;
+    file << PlayerBoard::CARDS_PLAYED_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << showCardsPlayed() << endl;
+    file << PlayerBoard::IS_STANDING_LEAD << Game::FILE_FIELD_VALUE_DELIMITER
         << (standing ? IS_STANDING_VALUE : IS_NOT_STANDING_VALUE) << endl;
-    out << PlayerBoard::MAIN_DECK_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << mainDeck.size() << endl;
+    file << PlayerBoard::MAIN_DECK_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << mainDeck.size() << endl;
 
     for (size_t i = 0; i < mainDeck.size(); ++i)
-        out << PlayerBoard::ITEM_INDEX_LEAD << i << PlayerBoard::ITEM_LIST_DELIMITER << mainDeck[i] << endl;
+        file << PlayerBoard::ITEM_INDEX_LEAD << i << PlayerBoard::ITEM_LIST_DELIMITER << mainDeck[i] << endl;
 }
 
 PlayerBoard PlayerBoard::loadFromFile(ifstream &file, const CardDatabase &database) {

@@ -6,42 +6,39 @@ LD=g++
 CXXFLAGS=-std=c++11  -Wall -pedantic -Wno-long-long -g
 LDFLAGS=
 
-# compile and generate documentation
-all: obj compile doc
+OBJECTS = Output/main.o Output/Source/Game.o Output/Source/MainMenu.o Output/Source/Cards/BasicCard.o Output/Source/Cards/Card.o \
+                                   Output/Source/Cards/CardDatabase.o Output/Source/Cards/DoubleCard.o Output/Source/Cards/DualCard.o Output/Source/Cards/FlexCard.o \
+                                   Output/Source/Cards/FlipCard.o Output/Source/Player/Hand.o Output/Source/Player/PlayerBoard.o Output/Source/Player/Deck/Deck.o \
+                                   Output/Source/Player/Player/ComputerPlayer.o Output/Source/Player/Player/HumanPlayer.o Output/Source/Player/Player/Player.o \
+                                   Output/Source/Utilities/DeckParser.o Output/Source/Utilities/RandomNumberGenerator.o \
 
-# just compile
-compile: obj obj/main.o obj/Source/Game.o obj/Source/MainMenu.o obj/Source/Cards/BasicCard.o obj/Source/Cards/Card.o \
-         obj/Source/Cards/CardDatabase.o obj/Source/Cards/DoubleCard.o obj/Source/Cards/DualCard.o obj/Source/Cards/FlexCard.o \
-         obj/Source/Cards/FlipCard.o obj/Source/Player/Hand.o obj/Source/Player/PlayerBoard.o obj/Source/Player/Deck/Deck.o \
-         obj/Source/Player/Player/ComputerPlayer.o obj/Source/Player/Player/HumanPlayer.o obj/Source/Player/Player/Player.o \
-         obj/Source/Utilities/DeckParser.o obj/Source/Utilities/RandomNumberGenerator.o
-	$(LD) $(LDFLAGS) obj/main.o obj/Source/Game.o obj/Source/MainMenu.o obj/Source/Cards/BasicCard.o obj/Source/Cards/Card.o \
-                         obj/Source/Cards/CardDatabase.o obj/Source/Cards/DoubleCard.o obj/Source/Cards/DualCard.o obj/Source/Cards/FlexCard.o \
-                         obj/Source/Cards/FlipCard.o obj/Source/Player/Hand.o obj/Source/Player/PlayerBoard.o obj/Source/Player/Deck/Deck.o \
-                         obj/Source/Player/Player/ComputerPlayer.o obj/Source/Player/Player/HumanPlayer.o obj/Source/Player/Player/Player.o \
-                         obj/Source/Utilities/DeckParser.o obj/Source/Utilities/RandomNumberGenerator.o \
-                         -o game
+all: Output compile doc
 
-obj/%.o: %.cpp
+compile: Output Output/main.o Output/Source/Game.o Output/Source/MainMenu.o Output/Source/Cards/BasicCard.o Output/Source/Cards/Card.o \
+         Output/Source/Cards/CardDatabase.o Output/Source/Cards/DoubleCard.o Output/Source/Cards/DualCard.o Output/Source/Cards/FlexCard.o \
+         Output/Source/Cards/FlipCard.o Output/Source/Player/Hand.o Output/Source/Player/PlayerBoard.o Output/Source/Player/Deck/Deck.o \
+         Output/Source/Player/Player/ComputerPlayer.o Output/Source/Player/Player/HumanPlayer.o Output/Source/Player/Player/Player.o \
+         Output/Source/Utilities/DeckParser.o Output/Source/Utilities/RandomNumberGenerator.o
+	$(LD) $(LDFLAGS) $(OBJECTS) -o game
+
+Output/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# make directory clean again
 clean:
 	rm -rf game
-	rm -rf obj doc
+	rm -rf Output doc
 
-# make doxygen documentation
 doc:
 	doxygen Doxyfile
 # run program
 run:
 	./game
-# create dir for storing object files
-obj:
-	mkdir obj
-	mkdir obj/Source
-	mkdir obj/Source/Cards obj/Source/Player obj/Source/Utilities
-	mkdir obj/Source/Player/Deck obj/Source/Player/Player
+
+Output:
+	mkdir Output
+	mkdir Output/Source
+	mkdir Output/Source/Cards Output/Source/Player Output/Source/Utilities
+	mkdir Output/Source/Player/Deck Output/Source/Player/Player
 
 # automatically generated dependencies
 main.o: main.cpp Source/Game.h Source/Player/Player/Player.h \
