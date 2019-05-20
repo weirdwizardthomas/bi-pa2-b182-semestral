@@ -66,7 +66,6 @@ bool HumanPlayer::isStandingUp() const {
 bool HumanPlayer::playCard(const int opponentScore) {
     string input;
     cin >> input;
-    //TODO more inputs
     if (input == "P" || input == "PASS" || input == "Y" || input == "YES") {
         isPassingTurnMessage();
         return true;
@@ -89,7 +88,7 @@ bool HumanPlayer::playCard(const int opponentScore) {
 
 }
 
-void HumanPlayer::chooseDeck(const CardDatabase &allCards) {
+void HumanPlayer::chooseDeck(const CardDatabase &cardDatabase) {
     choosingDeckMessage();
 
     bool confirmed = false;
@@ -104,7 +103,7 @@ void HumanPlayer::chooseDeck(const CardDatabase &allCards) {
             cin >> input;
         }
 
-        deck = (input == "F" ? Deck(allCards) : DeckParser::loadFromFile(allCards));
+        deck = (input == "F" ? Deck(cardDatabase) : DeckParser::loadFromFile(cardDatabase));
         Game::clearScreen(cout);
         printDeck();
         deckApprovalPrompt();

@@ -68,21 +68,21 @@ public:
 
     /**
      * Adds a specific deck for the player.
-     * @param allCards Database of all available cards.
+     * @param cardDatabase Database of all available cards.
      */
-    virtual void chooseDeck(const CardDatabase &allCards) = 0;
+    virtual void chooseDeck(const CardDatabase &cardDatabase) = 0;
 
     /**
-     * Moves cards from 'Deck' container to 'Hand' container.
+     * Adds the ability to play more cards to the player.
      */
     virtual void drawHand() = 0;
 
     /** If the user is not 'standing' = skipping their turn,
-    * queries the user to stand up or play, plays the top card of the 'mainDeck' element of the 'currentPlayer'
-    * and prompts the user to choose a card to play from their hand.
-    * The player may choose to stand up before the 'mainDeck' card is auto-played, and may choose not to play a card
-    * from their hand.
-     * @param opponentScore
+     * queries the user to stand up or play, plays the top card of the 'mainDeck' element of the 'currentPlayer'
+     * and prompts the user to choose a card to play from their hand.
+     * The player may choose to stand up before the 'mainDeck' card is auto-played, and may choose not to play a card
+     * from their hand.
+     * @param opponentScore Opposing player's current round score.
      */
     virtual void takeTurn(int opponentScore) = 0;
 
@@ -140,14 +140,15 @@ public:
     bool isStanding() const;
 
     /**
-     * Saves the instance in a text representation in the 'file' file.
+     * Saves the instance in a text representation in the @param file file.
+     * @param file Output file into which the 'Player' instance is being saved.
      */
     virtual void saveToFile(std::ofstream &file) const = 0;
 
     /**
-     * Loads the player from its text representation from the 'file' file. The type of player and the subsequent
-     * specific attributes are determined by the leading text in the 'file' file. Cards are found by the clues in the
-     * 'file' file within the 'cardDatabase' database.
+     * Loads the player from its text representation from the @param file file. The type of player and the subsequent
+     * specific attributes are determined by the leading text in the @param file file. Cards are found by the clues in the
+     * @param file file within the @param cardDatabase database.
      * @param file File from which the player data will be read.
      * @param cardDatabase Database of all cards.
      * @return A dynamically allocated instance of the player.
@@ -155,7 +156,7 @@ public:
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
     /**
-     * Saves the string identifying the specific child class of the 'Player' class within the file,
+     * Saves the string identifying the specific child class of the 'Player' class within the @param file file,
      * and the specific name of the instance.
      * @param file Stream in which the identifier and the name are to be saved.
      */

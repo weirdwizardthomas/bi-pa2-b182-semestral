@@ -30,7 +30,7 @@ public:
     explicit ComputerPlayer(Player *opponent);
 
     /**
-     * Increases the remaningCards counter by up to MAX_CARDS_DRAWN.
+     * Increases the remainingCards counter by up to MAX_CARDS_DRAWN.
      */
     void drawHand() override;
 
@@ -43,8 +43,9 @@ public:
     /**
      * Evaluates the next auto-played card and the possible remaining cards in deck to stand
      * or play a card from the deck.
-     * Finds the most optimal card to play to stay ahead of the opponent without breaking the threshold.
-     * @param opponentScore
+     * Finds the most optimal card to play to stay ahead of the opponent with the lowest advantage
+     * without breaking the threshold.
+     * @param opponentScore Score of the opposing player.
      */
     void takeTurn(int opponentScore) override;
 

@@ -23,17 +23,30 @@ protected:
     std::pair<int, int> values;
 
     /**
-     * queries the user for a card effect choice
-     * @return numeric value of the chosen effect
+     * Queries the user to choose between the card's two values.
+     * @return User selected card value.
      */
     int chooseEffect() const;
 
+    /**
+     * Informs the user of the @param value they have selected.
+     * @param value Value to be displayed to the user.
+     */
     void valueChosenMessage(int value) const;
 
-    void chooseEffectPrompt() const;
+    /**
+     * Prompts the user to select between the card's two values.
+     */
+    void chooseValuePrompt() const;
 
-    void effectChoicesMessage() const;
+    /**
+     * Displays the possible values to select from.
+     */
+    void listChoices() const;
 
+    /**
+     * Informs the user that the input is not valid for the given scenario.
+     */
     void invalidInputMessage() const;
 
 public:
@@ -45,16 +58,15 @@ public:
     ~DualCard() override = default;
     //Methods-------------------------------
     /**
-     * Presents the player with two values to choose from to be played
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
-     * @return current player's score updated by playing a card
+     * Presents the player with two values to choose from to be played.
+     * @param playedCards Cards previously played by the current player.
+     * @param currentScore Current player's current round's score.
+     * @param opponentScore Opponent's current round's score.
+     * @return One of the user selected values.
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
     std::string getDescription() const override;
-
 };
 
 

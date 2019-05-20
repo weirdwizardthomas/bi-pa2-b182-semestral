@@ -6,11 +6,8 @@
 #define PAZAAK_FLIPCARD_H
 
 
-//Libraries---------------------------------
-
 #include <cstdlib>
 
-//Classes-----------------------------------
 #include "DualCard.h"
 
 
@@ -25,11 +22,11 @@ public:
     FlipCard(int left, int right);
 
     /**
-     * Swaps the sign's on all cards with the value equal to this card's effects
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
-     * @return current player's score updated by flipping the respective cards' sign
+     * Swaps the signs on all cards with  value equal to this card's effects.
+     * @param playedCards Cards previously played by the current player.
+     * @param currentScore Current player's current round's score.
+     * @param opponentScore Opponent's current round's score.
+     * @return 0, as the card itself does not add any new value.
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 

@@ -21,14 +21,14 @@ protected:
     bool isStandingUp() const;
 
     /**
-     * Takes input from the player and either passes the turn or plays a card from the player's hand
-     * @param opponentScore
-     * @return
+     * Takes input from the player and either passes the turn or plays a card from the player's hand.
+     * @param opponentScore Human player's current score.
+     * @return True if player is passing their turn or selects a valid Card to play, false otherwise.
      */
     bool playCard(int opponentScore);
 
     /**
-     * Saves the instance to the 'file' file.
+     * Saves the instance to the @param file file.
      * @param file
      */
     void saveToFile(std::ofstream &file) const override;
@@ -70,9 +70,9 @@ public:
 
     /**
      * Queries the player to either create a new deck of cards, or load an existing one from 'DECK_DIRECTORY'.
-     * @param allCards
+     * @param cardDatabase Database of all available cards.
      */
-    void chooseDeck(const CardDatabase &allCards) override;
+    void chooseDeck(const CardDatabase &cardDatabase) override;
 
     /**
      * Moves up to 'MAX_CARDS_DRAWN' Cards from the player's 'deck' to their 'hand'.
@@ -80,11 +80,11 @@ public:
     void drawHand() override;
 
     /**
-     * Loads the player's instance from the 'file' stream.
+     * Loads the player's instance from the @param file stream.
      * @param file Stream containing the contents of the game from which the player data will be read.
      * @param cardDatabase Database of all the available cards.
      * @param opponent Pointer to the opposing player.
-     * @return Dynamically allocated instance of the Player's HumanPlayer child with data read from the 'file'.
+     * @return Dynamically allocated instance of the Player's HumanPlayer child with data read from the @param file.
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 

@@ -31,35 +31,35 @@ private:
     void generateMainDeck();
 
     /**
-     * Loads the line representing 'playedCards' from the 'file' file.
+     * Loads the line representing 'playedCards' from the @param file file.
      * @param file Game file to be read from.
-     * @return
+     * @return Container
      */
     static std::vector<int> loadPlayedCards(std::ifstream &file);
 
     /**
-     * Loads the current round's score from the 'file' file.
+     * Loads the current round's score from the @param file file.
      * @param file Game file to be read from.
-     * @return Current score loaded from the 'file'.
+     * @return Current score loaded from the @param file.
      */
     static int loadCurrentScore(std::ifstream &file);
 
     /**
-     * Load the current game's rounds won from the 'file' file.
+     * Load the current game's rounds won from the @param file file.
      * @param file Game file to be read from.
-     * @return Rounds won loaded from the 'file'.
+     * @return Rounds won loaded from the @param file.
      */
     static size_t loadRoundsWon(std::ifstream &file);
 
     /**
-     * Load the 'standing' attribute from the 'file' file.
+     * Load the 'standing' attribute from the @param file file.
      * @param file Game file to be read from.
      * @return True if the value read was 'IS_STANDING_VALUE', false otherwise.
      */
     static bool loadStanding(std::ifstream &file);
 
     /**
-     * Loads the mainDeck from its text representation with the aid of the 'file' file.
+     * Loads the mainDeck from its text representation with the aid of the @param file file.
      * @param file Game file to be read from.
      * @return Container representing the mainDeck from file.
      */
@@ -95,12 +95,11 @@ public:
     PlayerBoard();
 
     /**
-     * Saves the board's contents to a text representation within the 'file' stream.
+     * Saves the board's contents to a text representation within the @param file stream.
      * @param file Stream in which the board is to be saved.
      */
     void saveToFile(std::ofstream &file) const;
 
-    //Getters----------------------------
     /**
      * Gets a random card from the main deck and then removes it.
      * @return Value of the removed card.
@@ -149,7 +148,6 @@ public:
      */
     std::string showCardsPlayed() const;
 
-    //Setters----------------------------
     /**
      * Adds a card's value to the 'cardsPlayed' container.
      * @param cardValue Value to be added to the end of 'cardsPlayed' container.
@@ -162,10 +160,10 @@ public:
     void addPoint();
 
     /**
-     * Loads the 'playerBoard' from its text representation from the 'file' stream.
-     * @param file File from which the playerBoard will be instantiated.
+     * Loads the 'playerBoard' from its text representation from the @param file stream.
+     * @param file File from which the 'playerBoard' will be instantiated.
      * @param database Database containing all the available cards.
-     * @return PlayerBoard instance loaded from the 'file' file
+     * @return PlayerBoard instance loaded from the @param file file.
      */
     static PlayerBoard loadFromFile(std::ifstream &file, const CardDatabase &database);
 

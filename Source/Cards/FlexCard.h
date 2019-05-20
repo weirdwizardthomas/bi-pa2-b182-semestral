@@ -19,20 +19,19 @@ private:
     void chooseSignPrompt() const;
 
 public:
-    static const int LEFT = 1;
-    static const int RIGHT = 2;
+    static const int LEFT;
+    static const int RIGHT;
     static const char *SIGN_DELIMITER;
 
     FlexCard();
 
     //Methods-------------------------------
     /**
-     * Presents the player with a choice of sign and 1/2 to be played
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
-     * @return current player's score updated by flipping the respective cards' sign
-     * @return currentScore updated by incrementing the chosen effects
+     * Presents the player with a choice of sign and LEFT-RIGHT to be played
+     * @param playedCards Cards previously played by the current player.
+     * @param currentScore Current player's current round's score.
+     * @param opponentScore Opponent's current round's score.
+     * @return A positive or negative LEFT/RIGHT value.
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 

@@ -16,12 +16,13 @@ class DoubleCard : public Card {
 public:
 
     ~DoubleCard() override = default;
+
     /**
-     * Puts the card's effect in play - doubles the effective value of the last played card
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
-     * @return current player's score updated by doubling last card's value
+     * Removes the last played card and returns a card with a value double of it.
+     * @param playedCards Cards previously played by the current player.
+     * @param currentScore Current player's current round's score.
+     * @param opponentScore Opponent's current round's score.
+     * @return Value of the last card doubled.
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 

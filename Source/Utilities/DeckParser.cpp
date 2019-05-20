@@ -42,17 +42,17 @@ const vector<string> DeckParser::loadFileContent(const string &file) {
     return fileContent;
 }
 
-Deck DeckParser::loadFromFile(const CardDatabase &allCards) {
+Deck DeckParser::loadFromFile(const CardDatabase &cardDatabase) {
     //Select a file
     vector<string> files = DeckParser::getDecksFromDirectory(); //Find all files in a directory
     string loadedFile = files[DeckParser::userDeckIndexInput(files)]; //pick a file in the directory
 
     //Load the cards from the 'database' based on the ones in the file
-    vector<Card *> cards = parseLinesForCards(allCards, DeckParser::loadFileContent(loadedFile));
+    vector<Card *> cards = parseLinesForCards(cardDatabase, DeckParser::loadFileContent(loadedFile));
     return Deck(cards); //forge the deck
 }
 
-vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &allCards, const vector<string> &fileLines) {
+vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &cardDatabase, const vector<string> &fileLines) {
     list<Card *> cards;
 
     for (const string &line: fileLines) {
@@ -60,7 +60,7 @@ vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &allCards, cons
         if (splitLine.size() != 2)
             throw ParseError();
 
-        try { cards.push_back(allCards.get(splitLine.back())); }
+        try { cards.push_back(cardDatabase.get(splitLine.back())); }
         catch (out_of_range &e) {
             throw ParseError();
         }

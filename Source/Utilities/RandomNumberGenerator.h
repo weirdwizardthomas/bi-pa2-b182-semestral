@@ -15,8 +15,8 @@ public:
     RandomNumberGenerator(size_t min, size_t max, unsigned int seed = std::random_device()());
 
     /**
-     * Generates a random number from the min-max range.
-     * @return Randomly generated number from the min-max range.
+     * Generates a random number from the 'min'-'max' range.
+     * @return Randomly generated number from the 'min'-'max' range.
      */
     size_t operator()();
 

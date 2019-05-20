@@ -28,8 +28,8 @@ int DualCard::chooseEffect() const {
     int input = -1;
 
     while (invalidInput) {
-        chooseEffectPrompt();
-        effectChoicesMessage();
+        chooseValuePrompt();
+        listChoices();
         cin >> input;
         invalidInput = (input != 0 && input != 1);
         if (invalidInput)
@@ -48,9 +48,9 @@ void DualCard::valueChosenMessage(int value) const { cout << "You've chosen: " <
 
 void DualCard::invalidInputMessage() const { cout << "Invalid choice, please try again." << endl; }
 
-void DualCard::effectChoicesMessage() const { cout << "[" << values.first << DualCard::DUAL_DELIMITER << values.second << "]: "; }
+void DualCard::listChoices() const { cout << "[" << values.first << DualCard::DUAL_DELIMITER << values.second << "]: "; }
 
-void DualCard::chooseEffectPrompt() const {
+void DualCard::chooseValuePrompt() const {
     cout << "Choose an effect [0 for the first choice/1 for the second choice]" << endl;
 }
 

@@ -46,8 +46,8 @@ private:
     void loadFlipCards();
 
     /**
-     * Reads two numerical values from the 'line'.
-     * Throws invalid_argument exception if either is not found.
+     * Reads two numerical values from the @param line.
+     * @throws invalid_argument  if either is not found.
      * @param line Text to be parsed for the values.
      * @return A pair of two different integer values.
      */
@@ -55,23 +55,23 @@ private:
 
     /**
      * Checks whether the elements of 'fileLines' represent valid file lines for the card type 'mode'.
-     * Throws invalid_argument exception if the line is not valid.
+     * @throws invalid_argument  if the line is not valid.
      * @param fileLines Lines representing individual cards.
      * @param mode Mode by which the lines are validated.
      */
     static void validLines(const std::vector<std::string> &fileLines, const std::string &mode = "");
 
     /**
-     * Constructs a path to the 'filename' file in the 'CARD_DIRECTORY' DIRECTORY.
+     * Constructs a path to the @param filename file in the 'CARD_DIRECTORY' DIRECTORY.
      * @param filename Name of the file for which the path is constructed.
-     * @return Path to the 'filename' file.
+     * @return Path to the @param filename file.
      */
     static std::string pathOf(const std::string &filename);
 
     /**
-     * Loads the file at 'filePath' and splits it into individual lines.
+     * Loads the file at @param filePath and splits it into individual lines.
      * @param filePath Path to the file to be processed.
-     * @return Container of individual lines of the 'filePath' file.
+     * @return Container of individual lines of the @param filePath file.
      */
     static std::vector<std::string> getFileLines(const std::string &filePath);
 
@@ -86,9 +86,9 @@ public:
     ~CardDatabase();
 
     /**
-     * Finds and returns a pointer to an element stored by the 'key'.
+     * Finds and returns a pointer to an element stored by the @param key.
      * @param key Key by which the element will be found.
-     * @return A Card pointer which has a key equal to 'key'.
+     * @return A Card pointer which has a key equal to @param key.
      */
     Card *get(const std::string &key) const;
 
@@ -105,28 +105,28 @@ public:
     size_t size() const;
 
     /**
-     * Splits the 'phrase' string into substring delimited by the 'delimiter'.
+     * Splits the @param phrase string into substring delimited by the @param delimiter.
      * @param phrase Text to be split.
-     * @param delimiter Text by which the 'phrase' will be split.
-     * @return Container of substrings split by the 'delimiter'.
+     * @param delimiter Text by which the @param phrase will be split.
+     * @return Container of substrings split by the @param delimiter.
      */
     static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
     /**
-     * Reads a line from the 'file' stream and parses it for a pair of field-value.
-     * Throws a 'ParseError' exception if 'field' and the parsed value mismatch.
+     * Reads a line from the @param file stream and parses it for a pair of field-value.
+     * @throws ParseError if @param field and the parsed value mismatch.
      * @param field Field to be found in the line.
      * @param delimiter Delimiter by which the line is parsed.
      * @param file File from which the line will be read.
-     * @return The value of the 'field'.
+     * @return The value of the @param field.
      */
     static std::string loadValue(const std::string &field, const std::string &delimiter, std::ifstream &file);
 
     /**
-     * Places the 'cards' container's elements in the 'out' stream.
+     * Places the 'cards' container's elements in the @param out stream.
      * @param out Stream into which 'cards' will be placed.
      * @param cardDatabase Database whose 'cards' will be placed in the stream.
-     * @return 'out' stream with the 'cards' container placed into it.
+     * @return @param out stream with the 'cards' container placed into it.
      */
     friend std::ostream &operator<<(std::ostream &out, const CardDatabase &cardDatabase);
 

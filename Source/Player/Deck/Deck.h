@@ -67,7 +67,7 @@ private:
     static void deckForgedMessage();
 
     /**
-     * Displays all the deck files to the user.
+     * Displays all the deck files, represented by @param files, to the user.
      * @param files Names of the deck files.
      */
     static void displayDecksMessage(const std::vector<std::string> &files);
@@ -95,7 +95,7 @@ private:
     static void selectCardsDeckSizePrompt();
 
     /**
-     * Displays the card at the 'index' index of the deck's 'cards' container to the user.
+     * Displays the card at the @param index of the deck's 'cards' container to the user.
      * @param index Index of the card to be displayed.
      */
     void selectedCardMessage(size_t index) const;
@@ -155,10 +155,10 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
     /**
-     * Loads the deck from its text representation in  @param file with the aid of @param cardDatabase
+     * Loads the deck from its text representation in  @param file with the aid of @param cardDatabase database.
      * @param file File containing the deck's text representation.
      * @param cardDatabase Database of all available cards.
-     * @return
+     * @return Instance of the 'Deck' class loaded from @param file.
      */
     static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
