@@ -66,7 +66,6 @@ protected:
 public:
     static const char *HUMAN_FILE_LEAD;
 
-
     explicit HumanPlayer(const std::string &name);
 
     /**

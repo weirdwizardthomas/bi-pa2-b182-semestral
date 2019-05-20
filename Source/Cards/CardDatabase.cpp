@@ -11,7 +11,7 @@
 
 using namespace std;
 
-const char *CardDatabase::CARD_FOLDER_PATH{"./Data/Cards/"};
+const char *CardDatabase::CARD_DIRECTORY{"./Data/Cards/"};
 const char *CardDatabase::BASIC_CARD{"BasicCards"};
 const char *CardDatabase::DUAL_CARD{"DualCards"};
 const char *CardDatabase::FLIP_CARD{"FlipCards"};
@@ -31,7 +31,7 @@ CardDatabase::~CardDatabase() {
 
 void CardDatabase::loadFlipCards() {
     vector<string> fileLines = getFileLines(pathOf(CardDatabase::FLIP_CARD));
-    validLines(fileLines, CardDatabase::FLIP_CARD);
+    validLines(fileLines);
 
     for (const string &line : fileLines) {
         pair<int, int> extractedValues = getDualValues(line);
@@ -42,7 +42,7 @@ void CardDatabase::loadFlipCards() {
 
 void CardDatabase::loadDualCards() {
     vector<string> fileLines = getFileLines(pathOf(DUAL_CARD));
-    validLines(fileLines, DUAL_CARD);
+    validLines(fileLines);
 
     for (const string &line : fileLines) {
         pair<int, int> extractedValues = getDualValues(line);
@@ -82,11 +82,9 @@ vector<string> CardDatabase::getFileLines(const string &filePath) {
     fstream cardFile;
     cardFile.open(filePath, ios::in);
 
-    if (!cardFile.is_open()) {
-        cout << "Invalid file at CardDatabase.cpp 87" << endl;
+    if (!cardFile.is_open())
         throw InvalidFileException();
 
-    }
     string line;
     vector<string> lines;
 
@@ -97,7 +95,7 @@ vector<string> CardDatabase::getFileLines(const string &filePath) {
     return lines;
 }
 
-string CardDatabase::pathOf(const string &filename) { return CARD_FOLDER_PATH + filename; }
+string CardDatabase::pathOf(const string &filename) { return CARD_DIRECTORY + filename; }
 
 size_t CardDatabase::size() const { return cards.size(); }
 
@@ -124,12 +122,13 @@ list<string> CardDatabase::split(string phrase, const string &delimiter) {
 string CardDatabase::loadValue(const string &field, const string &delimiter, ifstream &file) {
     string input;
     getline(file, input);
-    list <string> parsed = split(input, delimiter);
+    list<string> parsed = split(input, delimiter);
     if (parsed.front() != field)
         throw ParseError();
 
     return parsed.back();
 }
+
 std::vector<Card *> CardDatabase::toVector() const {
     vector<Card *> asVector;
     asVector.reserve(cards.size());

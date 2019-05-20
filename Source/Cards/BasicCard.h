@@ -27,15 +27,16 @@ public:
     std::string getDescription() const override;
 
     /**
-     * Puts the card's effect in play
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
-     * @return currentScore incremented by the card's value
+     * Gets the card's 'value'.
+     * @param playedCards Cards previously played by the current player.
+     * @param currentScore Current player's current round's score.
+     * @param opponentScore Opponent's current round's score.
+     * @return Card's Value.
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
+
     /**
-     * Put's the card's effect in play automatically from the main deck
+     * Gets the card's 'value' without taking any context in regard.
      * @return Card's value
      */
     int play() const;
