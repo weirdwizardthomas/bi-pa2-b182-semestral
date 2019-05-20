@@ -15,8 +15,8 @@ protected:
     Hand hand;
 
     /**
-     *
-     * @return
+     * Queries the player whether they want to stand or not, i.e. forfeiting any further turns in the current round.
+     * @return True if the player chooses to stand, false otherwise.
      */
     bool isStandingUp() const;
 

@@ -67,7 +67,7 @@ public:
 
     /**
      * Prints the 'card''s description into the 'out' stream
-     * @param out The tream into which the 'card''s description will be sent
+     * @param out The stream into which the 'card''s description will be sent
      * @param card Card to be placed into the stream
      * @return getDescription()
      */
