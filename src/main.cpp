@@ -1,10 +1,3 @@
-//Libraries---------------------------------
-#include <cmath>
-#include <iostream>
-#include <map>
-#include <typeinfo>
-
-//Classes-----------------------------------
 #include "Source/Game.h"
 #include "Source/Cards/CardDatabase.h"
 #include "Source/MainMenu.h"
@@ -16,6 +9,7 @@ using namespace std;
 int main() {
     MainMenu mainMenu;
     mainMenu.loop();
+    cout << "Exiting." << endl;
     return EXIT_SUCCESS;
 
 }

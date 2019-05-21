@@ -4,6 +4,8 @@
 //
 
 #include <list>
+#include <typeinfo>
+
 #include "Deck.h"
 #include "../../Utilities/DeckParser.h"
 #include "../../Utilities/Exceptions.h"
@@ -39,7 +41,7 @@ Deck::Deck(const CardDatabase &cardDatabase) : randomGenerator(0, DECK_SIZE - 1)
 void Deck::addCard(Card *card) { this->cards.push_back(card); }
 
 vector<Card *> Deck::drawCardsFromDeck() {
-    vector<Card *> drawnCards;
+    vector < Card * > drawnCards;
 
     for (size_t i = 0; i < MAX_CARDS_DRAWN; i++) {
         if (cards.empty())
@@ -53,7 +55,7 @@ vector<Card *> Deck::drawCardsFromDeck() {
 }
 
 void Deck::loadCardsFromUser(const CardDatabase &cardDatabase) {
-    vector<Card *> allCardsVector = cardDatabase.toVector();
+    vector < Card * > allCardsVector = cardDatabase.toVector();
 
     this->cards.reserve(Deck::DECK_SIZE);
     size_t i = 0; //initial index
@@ -76,13 +78,13 @@ void Deck::loadCardsFromUser(const CardDatabase &cardDatabase) {
             invalidInputMessage(); //NaN
             cin.clear();
             //ignores the entire cin until a newline is encountered
-            cin.ignore(numeric_limits<streamsize>::max(), DeckParser::NEWLINE);
+            cin.ignore(numeric_limits<streamsize>::max(), MainMenu::NEWLINE);
         }
     }
 }
 
-list<string> Deck::toLines() const {
-    list<string> fileLines;
+list <string> Deck::toLines() const {
+    list <string> fileLines;
     for (const auto &card: cards) {
         string line;
 
@@ -110,7 +112,7 @@ void Deck::removeCardFromDeck(size_t pickedCardIndex) {
 }
 
 void Deck::saveToFile() const {
-    vector<string> files = DeckParser::getDecksFromDirectory();
+    vector <string> files = DeckParser::getDecksFromDirectory();
     string filename = QueryUserInputFilename(files);
 
     string path;
@@ -119,7 +121,7 @@ void Deck::saveToFile() const {
     fstream deckFile;
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
-        throw CannotOpenFile();
+        throw InvalidFileException(path);
 
     auto cardLines = toLines();
 
@@ -134,7 +136,7 @@ void Deck::saveToFile(std::ofstream &file) const {
     file << *this;
 }
 
-bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename) {
+bool Deck::fileAlreadyExists(const vector <string> &files, const string &filename) {
     for (const string &currentFile : files)
         if (currentFile == filename)
             return true;
@@ -151,14 +153,14 @@ Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
 
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
-        list<string> parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
+        list <string> parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
         deck.cards.push_back(cardDatabase.get(parsed.back()));
     }
 
     return deck;
 }
 
-string Deck::QueryUserInputFilename(const vector<string> &files) {
+string Deck::QueryUserInputFilename(const vector <string> &files) {
     displayDecksMessage(files);
     deckNamePrompt();
 
@@ -184,7 +186,7 @@ void Deck::selectedCardMessage(size_t index) const { cout << "You've selected: "
 
 void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
 
-void Deck::displayDecksMessage(const vector<string> &files) {
+void Deck::displayDecksMessage(const vector <string> &files) {
     cout << "Saved decks" << endl;
     size_t i = 0;
     for (const auto &file : files)

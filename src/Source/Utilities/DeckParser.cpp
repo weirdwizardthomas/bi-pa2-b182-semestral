@@ -5,13 +5,13 @@
 #include <list>
 #include "DeckParser.h"
 #include "Exceptions.h"
+#include "../MainMenu.h"
 
 using namespace std;
 
-const char DeckParser::NEWLINE = '\n';
 const char *DeckParser::FOLDER_DELIMITER{"/"};
 const char *DeckParser::CARD_DESCRIPTION_DELIMITER{": "};
-const char *DeckParser::DECKS_DIRECTORY{"./Data/Decks"};
+const char *DeckParser::DECKS_DIRECTORY{"./src/Data/Decks"};
 const char *DeckParser::BASIC_CARD_LEAD{"Basic Cards: "};
 const char *DeckParser::DOUBLE_CARD_LEAD{"Double Cards: "};
 const char *DeckParser::DUAL_CARD_LEAD{"Dual Card: "};
@@ -19,7 +19,7 @@ const char *DeckParser::FLEX_CARD_LEAD{"Flex Card: "};
 const char *DeckParser::FLIP_CARD_LEAD{"Flip Card: "};
 
 
-const vector<string> DeckParser::loadFileContent(const string &file) {
+const vector <string> DeckParser::loadFileContent(const string &file) {
     fstream deckFile;
 
     string path;
@@ -27,10 +27,10 @@ const vector<string> DeckParser::loadFileContent(const string &file) {
 
     deckFile.open(path, fstream::in);
     if (!deckFile.is_open())
-        throw CannotOpenFile();
+        throw InvalidFileException(path);
 
     string line;
-    vector<string> fileContent;
+    vector <string> fileContent;
 
     while (getline(deckFile, line))
         if (line.find_first_not_of(' ') != string::npos) //not an empty line
@@ -42,17 +42,21 @@ const vector<string> DeckParser::loadFileContent(const string &file) {
 }
 
 Deck DeckParser::loadFromFile(const CardDatabase &cardDatabase) {
-    //Select a file
-    vector<string> files = DeckParser::getDecksFromDirectory(); //Find all files in a directory
+
+    vector <string> files = DeckParser::getDecksFromDirectory(); //Find all files in a directory
     string loadedFile = files[DeckParser::userDeckIndexInput(files)]; //pick a file in the directory
 
-    //Load the cards from the 'database' based on the ones in the file
-    vector<Card *> cards = parseLinesForCards(cardDatabase, DeckParser::loadFileContent(loadedFile));
-    return Deck(cards); //forge the deck
+    try {
+        vector < Card * > cards = parseLinesForCards(cardDatabase, DeckParser::loadFileContent(loadedFile));
+        return Deck(cards);
+    }
+    catch (ParseError &e) {
+        throw InvalidFileException(string(DeckParser::DECKS_DIRECTORY) + DeckParser::FOLDER_DELIMITER + loadedFile);
+    }
 }
 
-vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &cardDatabase, const vector<string> &fileLines) {
-    list<Card *> cards;
+vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &cardDatabase, const vector <string> &fileLines) {
+    list < Card * > cards;
 
     for (const string &line: fileLines) {
         auto splitLine = CardDatabase::split(line, DeckParser::CARD_DESCRIPTION_DELIMITER);
@@ -72,8 +76,8 @@ vector<Card *> DeckParser::parseLinesForCards(const CardDatabase &cardDatabase, 
 }
 
 //Adapted from https://stackoverflow.com/a/612176
-vector<string> DeckParser::getDecksFromDirectory() {
-    vector<string> files;
+vector <string> DeckParser::getDecksFromDirectory() {
+    vector <string> files;
 
     DIR *dir;
     struct dirent *ent;
@@ -87,13 +91,13 @@ vector<string> DeckParser::getDecksFromDirectory() {
         closedir(dir);
     } else
         /* could not open directory */
-        throw CannotOpenDirectory();
+        throw CannotOpenDirectory(DeckParser::DECKS_DIRECTORY);
 
     return files;
 }
 
 
-size_t DeckParser::userDeckIndexInput(const vector<string> &files) {
+size_t DeckParser::userDeckIndexInput(const vector <string> &files) {
     listDecksMessage(files);
     selectDeckPrompt();
 
@@ -103,7 +107,7 @@ size_t DeckParser::userDeckIndexInput(const vector<string> &files) {
         invalidInputMessage(); //NaN
         cin.clear();
         //ignores the entire cin until a newline is encountered
-        cin.ignore(numeric_limits<streamsize>::max(), NEWLINE);
+        cin.ignore(numeric_limits<streamsize>::max(), MainMenu::NEWLINE);
     }
 
     return input;
@@ -111,7 +115,7 @@ size_t DeckParser::userDeckIndexInput(const vector<string> &files) {
 
 void DeckParser::selectDeckPrompt() { cout << "Select a deck:"; }
 
-void DeckParser::listDecksMessage(const vector<string> &files) {
+void DeckParser::listDecksMessage(const vector <string> &files) {
     cout << "Decks available" << endl;
     size_t i = 0;
     for (const auto &file : files)

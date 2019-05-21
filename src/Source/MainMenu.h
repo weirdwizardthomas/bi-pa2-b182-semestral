@@ -9,14 +9,16 @@
 #include <string>
 #include <vector>
 #include <functional>
+
 #include "Cards/CardDatabase.h"
+
 
 /**
  * Crossroad interface that lets the user access all the elements of the game
  */
 class MainMenu {
 private:
-    std::list<std::string> items;
+    std::list <std::string> items;
     CardDatabase cardDatabase;
 
     /**
@@ -40,6 +42,7 @@ private:
 public:
     static const char LEFT_INDEX_WRAPPER;
     static const char RIGHT_INDEX_WRAPPER;
+    static const char NEWLINE;
 
     MainMenu();
 

@@ -59,7 +59,6 @@ private:
     static void invalidInputMessage();
 
 public:
-    static const char NEWLINE;
     static const char *FOLDER_DELIMITER;
     static const char *CARD_DESCRIPTION_DELIMITER;
     static const char *DECKS_DIRECTORY;

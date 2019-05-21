@@ -229,7 +229,7 @@ public:
      * @param[in] cardDatabase Database of all available cards
      * @return Dynamically allocated instance loaded from a selected file
      */
-    static Game *loadFromFile(const CardDatabase &cardDatabase);
+    static Game loadFromFile(const CardDatabase &cardDatabase);
 
     /**
      * Clears the output stream by sending a Game::ROWS_CLEARED number of new lines into it

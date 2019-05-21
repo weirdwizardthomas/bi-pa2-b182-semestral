@@ -1,13 +1,13 @@
 CXX=g++
 LD=g++
 
-CXXFLAGS=-std=c++11  -Wall -pedantic -Wno-long-long -g
+CXXFLAGS=-std=c++11 -Wall -pedantic -Wno-long-long -g
 LDFLAGS=
 
-TARGET = Pazaak
+TARGET = koristo1
 DEBUGGER = valgrind
 DOXYGEN_CONFIGURATION_FILE = Doxyfile
-OBJECT_OUTPUT_FILE = ./Output
+OBJECT_OUTPUT_FILE = ./src
 LOGIN = koristo1
 
 OBJECTS = $(OBJECT_OUTPUT_FILE)/main.o \
@@ -39,7 +39,8 @@ $(OBJECT_OUTPUT_FILE)/%.o: %.cpp
 
 clean:
 	rm -rf $(TARGET)
-	rm -rf Output doc
+	rm -rf $(OBJECTS)
+	rm -rf doc
 
 doc:
 	doxygen $(DOXYGEN_CONFIGURATION_FILE)	
@@ -53,7 +54,8 @@ debug: compile
 $(OBJECT_OUTPUT_FILE):
 	mkdir $(OBJECT_OUTPUT_FILE)
 	mkdir $(OBJECT_OUTPUT_FILE)/Source
-	mkdir $(OBJECT_OUTPUT_FILE)/Source/Cards $(OBJECT_OUTPUT_FILE)/Source/Player
+	mkdir $(OBJECT_OUTPUT_FILE)/Source/Cards
+	mkdir $(OBJECT_OUTPUT_FILE)/Source/Player
 	mkdir $(OBJECT_OUTPUT_FILE)/Source/Utilities
 	mkdir $(OBJECT_OUTPUT_FILE)/Source/Player/Deck
 	mkdir $(OBJECT_OUTPUT_FILE)/Source/Player/Player

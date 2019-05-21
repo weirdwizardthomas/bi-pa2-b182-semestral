@@ -11,7 +11,7 @@
 
 using namespace std;
 
-const char *Game::SAVES_FOLDER{"./Data/Games/"};
+const char *Game::SAVES_FOLDER{"./src/Data/Games/"};
 const char *Game::CURRENT_SCORE_LEAD{"Current score"};
 const char *Game::FILE_FIELD_VALUE_DELIMITER{": "};
 const char *Game::FILE_NAME_ITEMS_DELIMITER{"_"};
@@ -22,7 +22,7 @@ const int Game::ROWS_CLEARED = 100;
 
 
 Game::Game(Player *player1, Player *player2, const CardDatabase &cardDatabase) : players({player1, player2}),
-                                                                             roundNumber(1) {
+                                                                                 roundNumber(1) {
     chooseDecks(cardDatabase);
     selectStartingPlayer();
 }
@@ -63,7 +63,7 @@ void Game::drawHands() const {
     players.second->drawHand();
 }
 
-string Game::getGameFileName(const vector<string> &savedGames) {
+string Game::getGameFileName(const vector <string> &savedGames) {
     size_t choice = 0;
     bool invalidInput = true;
     string fileNumber;
@@ -91,12 +91,12 @@ Player *Game::getRoundVictor() const {
                                                                                           : players.second;
 }
 
-vector<string> Game::getSavedGames() {
-    vector<string> files;
+vector <string> Game::getSavedGames() {
+    vector <string> files;
 
     DIR *dir;
     struct dirent *ent;
-    if ((dir = opendir(SAVES_FOLDER)) != nullptr) {
+    if ((dir = opendir(Game::SAVES_FOLDER)) != nullptr) {
         while ((ent = readdir(dir)) != nullptr) {
             string fileName = ent->d_name;
             if (fileName != "." && fileName != "..")
@@ -104,32 +104,38 @@ vector<string> Game::getSavedGames() {
         }
         closedir(dir);
     } else
-        throw CannotOpenDirectory();
+        throw CannotOpenDirectory(Game::SAVES_FOLDER);
 
     return files;
 }
 
 
-Game *Game::loadFromFile(const CardDatabase &cardDatabase) {
-    vector<string> savedGames = getSavedGames();
+Game Game::loadFromFile(const CardDatabase &cardDatabase) {
+    vector <string> savedGames = getSavedGames();
     listGamesInDirectory(savedGames);
     string outputPath(getGameFileName(savedGames));
 
     ifstream file;
     file.open(outputPath, fstream::in);
     if (!file.is_open())
-        throw InvalidFileException();
+        throw InvalidFileException(outputPath);
 
     string currentScore;
     getline(file, currentScore);
 
-    list<string> parsed = CardDatabase::split(currentScore, FILE_FIELD_VALUE_DELIMITER);
-    if (parsed.front() != CURRENT_SCORE_LEAD)
-        throw ParseError();
+    list <string> parsed = CardDatabase::split(currentScore, FILE_FIELD_VALUE_DELIMITER);
 
-    Game *game = new Game();
-    game->roundNumber = stoull(parsed.back());
-    game->loadPlayersFromFile(file, cardDatabase);
+    if (parsed.front() != CURRENT_SCORE_LEAD)
+        throw InvalidFileException(outputPath);
+
+    Game game;
+    game.roundNumber = stoull(parsed.back());
+    try {
+        game.loadPlayersFromFile(file, cardDatabase);
+    }
+    catch (ParseError &e) {
+        throw InvalidFileException(outputPath);
+    }
     file.close();
     return game;
 }
@@ -218,7 +224,7 @@ void Game::saveToFile(const string &outputPath) const {
 
     file.open(outputPath, fstream::out);
     if (!file.is_open())
-        throw CannotOpenFile();
+        throw InvalidFileException(outputPath);
 
     file << CURRENT_SCORE_LEAD << FILE_FIELD_VALUE_DELIMITER << roundNumber << endl;
     players.first->saveToFile(file);
@@ -265,7 +271,7 @@ void Game::gameVictorMessage() const { cout << getGameVictor()->getName() << " w
 
 void Game::invalidInputMessage() { cout << "Invalid input, please try again," << endl; }
 
-void Game::listGamesInDirectory(const vector<string> &savedGames) {
+void Game::listGamesInDirectory(const vector <string> &savedGames) {
     size_t i = 0;
     for (const auto &game : savedGames)
         cout << "(" << i++ << ") " << game << endl;

@@ -20,6 +20,7 @@
 #include "../../Cards/FlipCard.h"
 #include "../../Utilities/RandomNumberGenerator.h"
 #include "../../Cards/CardDatabase.h"
+#include "../../MainMenu.h"
 
 
 /**
@@ -56,7 +57,7 @@ private:
      * @param filename Name of the saving file to be compared to the existing ones
      * @return True if a file with filename already exists, false otherwise
      */
-    static bool fileAlreadyExists(const std::vector<std::string> &files, const std::string &filename);
+    static bool fileAlreadyExists(const std::vector <std::string> &files, const std::string &filename);
 
     //Messages and prompts----------------------------------------------------------------------------------------------
     /**
@@ -73,7 +74,7 @@ private:
      * Displays all the deck files, represented files to the user
      * @param files Names of the deck files
      */
-    static void displayDecksMessage(const std::vector<std::string> &files);
+    static void displayDecksMessage(const std::vector <std::string> &files);
 
     /**
      * Informs the user that a file already exists
@@ -90,7 +91,7 @@ private:
        * @param files Existing file names
        * @return name of the file being saved
        */
-    static std::string QueryUserInputFilename(const std::vector<std::string> &files);
+    static std::string QueryUserInputFilename(const std::vector <std::string> &files);
 
     /**
      * Informs the user of how many cards they are to add to their deck
@@ -139,7 +140,7 @@ public:
      * Converts the deck's contents to a format suitable for saving to a file
      * @return Container of lines, each representing a single card from the deck
      */
-    std::list<std::string> toLines() const;
+    std::list <std::string> toLines() const;
 
     /**
      * Saves the deck's contents to a readable form in the DeckParser::DECKS_DIRECTORY to be reconstructed later
