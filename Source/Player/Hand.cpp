@@ -8,7 +8,6 @@
 #include "../Utilities/Exceptions.h"
 #include "../Game.h"
 
-//Namespaces--------------------------------
 using namespace std;
 
 const char *Hand::HAND_FILE_LEAD{"Hand"};

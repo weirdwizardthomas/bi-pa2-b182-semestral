@@ -2,11 +2,12 @@
 // Created by tomtom on 03/02/19.
 //
 
-#include "BasicCard.h"
-
 #include <exception>
 
+#include "BasicCard.h"
+
 using namespace std;
+
 
 BasicCard::BasicCard(int value) : value(value) {
     if (!validInput(value))

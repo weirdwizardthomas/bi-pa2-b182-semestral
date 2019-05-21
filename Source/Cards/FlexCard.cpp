@@ -4,13 +4,12 @@
 
 #include "FlexCard.h"
 
-//Namespaces-------------------------------
 using namespace std;
-
 
 const int FlexCard::LEFT = 1;
 const int FlexCard::RIGHT = 2;
 const char *FlexCard::SIGN_DELIMITER{"/"};
+
 
 FlexCard::FlexCard() : DualCard(FlexCard::LEFT, FlexCard::RIGHT) {}
 

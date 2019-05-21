@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 int DoubleCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
     int lastPlayedCard = playedCards.back();
     lastPlayedCard *= 2;

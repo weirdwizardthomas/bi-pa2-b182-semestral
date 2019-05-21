@@ -9,7 +9,6 @@
 #include "../../Utilities/Exceptions.h"
 #include "../../Game.h"
 
-//Namespaces--------------------------------
 using namespace std;
 
 const size_t Deck::DECK_SIZE = 10;

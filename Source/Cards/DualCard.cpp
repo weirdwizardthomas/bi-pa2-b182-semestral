@@ -4,10 +4,10 @@
 
 #include "DualCard.h"
 
-//Namespaces--------------------------------
 using namespace std;
 
 const char *DualCard::DUAL_DELIMITER{"|"};
+
 
 DualCard::DualCard(int left, int right) : values({left, right}) {
     if (!validInput(left) || !validInput(right))

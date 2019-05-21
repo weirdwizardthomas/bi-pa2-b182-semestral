@@ -11,6 +11,7 @@ using namespace std;
 const char *ComputerPlayer::COMPUTER_FILE_LEAD{"Computer"};
 const char *ComputerPlayer::REMAINING_CARDS_LEAD{"Remaining cards"};
 
+
 ComputerPlayer::ComputerPlayer(Player *opponent) : Player("Computer"), remainingCards(0), opponent(opponent) {}
 
 void ComputerPlayer::saveNameToFile(std::ofstream &file) const {

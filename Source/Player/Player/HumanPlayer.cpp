@@ -11,6 +11,7 @@ using namespace std;
 
 const char *HumanPlayer::HUMAN_FILE_LEAD{"Human"};
 
+
 HumanPlayer::HumanPlayer(const string &name) : Player(name) {}
 
 void HumanPlayer::drawHand() {

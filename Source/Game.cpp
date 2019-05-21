@@ -20,6 +20,7 @@ const int Game::ROUNDS = 3;
 const int Game::TARGET_SCORE = 20;
 const int Game::ROWS_CLEARED = 100;
 
+
 Game::Game(Player *player1, Player *player2, const CardDatabase &cardDatabase) : players({player1, player2}),
                                                                              roundNumber(1) {
     chooseDecks(cardDatabase);

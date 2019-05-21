@@ -16,6 +16,7 @@ const char *CardDatabase::BASIC_CARD{"BasicCards"};
 const char *CardDatabase::DUAL_CARD{"DualCards"};
 const char *CardDatabase::FLIP_CARD{"FlipCards"};
 
+
 CardDatabase::CardDatabase() {
     loadBasicCards();
     loadDualCards();
