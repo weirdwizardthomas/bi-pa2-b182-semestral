@@ -9,7 +9,7 @@
 #include "Card.h"
 
 /**
- * DoubleCard Multiplies the value of the last played card by 2. Does not add any new value on its own
+ * Multiplies the value of the last played card by 2. Does not add any new value on its own
  */
 class DoubleCard : public Card {
 

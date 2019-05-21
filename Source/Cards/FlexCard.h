@@ -10,7 +10,7 @@
 
 
 /**
- * FlexCard Offers a choice of one of four fixed values: +1,-1,+2,-2
+ * Offers a choice of one of four fixed values: +1,-1,+2,-2
  */
 class FlexCard : public DualCard {
 private:

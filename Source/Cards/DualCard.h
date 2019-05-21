@@ -14,7 +14,7 @@
 
 
 /**
- * DualCard Offers a choice of two different values when played
+ * Offers a choice of two different values when played
  */
 class DualCard : public Card {
 

@@ -137,7 +137,7 @@ void Game::manualSave() const {
     enterFileNameQuery();
     string filename;
     cin >> filename;
-    if (filename == "Q") //TODO extract this constant, maybe make a method that encapsulates it (allows multiple checks)
+    if (filename == "Q")
         return;
     saveToFile(Game::SAVES_FOLDER + filename);
 }

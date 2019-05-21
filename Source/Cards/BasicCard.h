@@ -12,7 +12,7 @@
 
 
 /**
- * BasicCard adds its singular value to the player's current score when played
+ * Adds its singular value to the player's current score when played
  */
 class BasicCard : public Card {
 

@@ -37,7 +37,6 @@ Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     hand.cards.reserve(cardCount);
 
     //TODO add try-catch here - check whether all have been read
-    //TODO this will repeat with each loaded card container
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
         parsed = CardDatabase::split(input, Hand::RIGHT_INDEX_WRAPPER);

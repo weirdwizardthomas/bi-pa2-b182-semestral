@@ -10,7 +10,7 @@
 #include "Utilities/RandomNumberGenerator.h"
 
 /**
- * Containts the actual game logic, with players taking turns playing against each other in a set of rounds.
+ * Contains the actual game logic, with players taking turns playing against each other in a set of rounds.
  */
 class Game {
 private:

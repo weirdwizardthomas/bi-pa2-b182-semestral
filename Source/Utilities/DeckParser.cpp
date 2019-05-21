@@ -12,7 +12,6 @@ const char DeckParser::NEWLINE = '\n';
 const char *DeckParser::FOLDER_DELIMITER{"/"};
 const char *DeckParser::CARD_DESCRIPTION_DELIMITER{": "};
 const char *DeckParser::DECKS_DIRECTORY{"./Data/Decks"};
-//todo EXTRACT THE ": "
 const char *DeckParser::BASIC_CARD_LEAD{"Basic Cards: "};
 const char *DeckParser::DOUBLE_CARD_LEAD{"Double Cards: "};
 const char *DeckParser::DUAL_CARD_LEAD{"Dual Card: "};

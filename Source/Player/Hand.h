@@ -11,7 +11,7 @@
 #include "../Cards/CardDatabase.h"
 
 /**
- * Collection of cards available to be played during a round.
+ * Collection of cards available to be played during a round of the Game
  */
 class Hand {
 private:

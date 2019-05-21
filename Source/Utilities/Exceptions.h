@@ -26,8 +26,8 @@ class ParseError : public exception {
     const char *what() const noexcept override { return ("Error reading file"); }
 };
 
-class InvalidFileException : public exception {//TODO add the file name
-    const char *what() const noexcept override { return "Error loading that file."; }
+class InvalidFileException : public exception {/
+    const char *what() const noexcept override { return "Error loading file."; }
 };
 
 

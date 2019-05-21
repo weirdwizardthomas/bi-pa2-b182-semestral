@@ -101,11 +101,9 @@ void ComputerPlayer::saveToFile(std::ofstream &file) const {
     board.saveToFile(file);
 }
 
-//TODO refactor this - need to extract loadValues and use it here and elsewhere
 Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent) {
     auto *player = new ComputerPlayer(opponent);
 
-    //load remaining
     string input;
     getline(file, input);
     list<string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
@@ -113,7 +111,6 @@ Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &ca
         throw ParseError();
     player->remainingCards = stoi(parsed.back());
 
-    //load deck
     getline(file, input);
     parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != Deck::DECK_FILE_LEAD)
@@ -126,7 +123,6 @@ Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &ca
         player->deck.emplace_back(effect, -effect);
     }
 
-    //load board
     player->board = PlayerBoard::loadFromFile(file, cardDatabase);
     return player;
 }

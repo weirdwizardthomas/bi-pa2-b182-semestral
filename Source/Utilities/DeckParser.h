@@ -12,7 +12,7 @@
 #include "../Player/Deck/Deck.h"
 
 /**
- * Purely static class responsible for loading a Deck from its text representation in a file to an instance
+ * Tools responsible for loading a Deck from its text representation in a file to an instance
  */
 class DeckParser {
 

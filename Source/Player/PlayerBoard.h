@@ -14,7 +14,7 @@
 #include "../Cards/CardDatabase.h"
 
 /**
- * Contains all the player's information bound to the current round.
+ * Contains all the player's information bound to the current round of the Game
  */
 class PlayerBoard {
 
