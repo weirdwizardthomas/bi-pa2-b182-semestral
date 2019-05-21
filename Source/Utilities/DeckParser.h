@@ -15,16 +15,16 @@ class DeckParser {
 
 private:
     /**
-     * Loads content of a single file, represented by @param file in DECKS_DIRECTORY_PATH.
-     * @param file Name of the file to be opened.
-     * @return Individual lines of the file.
+     * Loads content of a single file, represented by @param file in DECKS_DIRECTORY_PATH
+     * @param file Name of the file to be opened
+     * @return Individual lines of the file
      */
     static const std::vector<std::string> loadFileContent(const std::string &file);
 
     /**
-     * Loads all the cards represented by @param fileLines' to their respective 'Card' instances.
-     * @param cardDatabase Map of all available cards.
-     * @param fileLines File from which the cards will be extracted.
+     * Loads all the cards represented by @param fileLines to their respective @class Card instances.
+     * @param cardDatabase Map of all available cards
+     * @param fileLines File from which the cards will be extracted
      * @return Vector of cards based on the file.
      */
     static std::vector<Card *>
@@ -33,25 +33,25 @@ private:
 
     /**
      * Lists all existing decks within DECK_DIRECTORY directory, represented by @param files
-     * and queries the user  to pick a file's index.
-     * @param files Contents of the DECKS_DIRECTORY.
-     * @return index of the deck chosen.
+     * and queries the user  to pick a file's index
+     * @param files Contents of the DECKS_DIRECTORY
+     * @return index of the file chosen
      */
     static size_t userDeckIndexInput(const std::vector<std::string> &files);
 
     /**
-     * Displays all filenames, represented by @param files
-     * @param files Container of all the names of files in 'DECK_DIRECTORY' directory.
+     * Displays all files' names, represented by @param files
+     * @param files Container of all the names of files in 'DECK_DIRECTORY' directory
      */
     static void listDecksMessage(const std::vector<std::string> &files);
 
     /**
-     * Prompts the user to select a deck.
+     * Prompts the user to select a deck
      */
     static void selectDeckPrompt();
 
     /**
-     * Informs the user that the input is not valid for the given scenario.
+     * Informs the user that the input is not valid for the given scenario
      */
     static void invalidInputMessage();
 
@@ -69,14 +69,14 @@ public:
     /**
      * Constructs a deck based on contents of a user chosen file within the 'DECK_DIRECTORY' directory with the aid of
      * the @param cardDatabase
-     * @param cardDatabase Database of all the current cards.
-     * @return Deck containing cards corresponding to records in a file.
+     * @param cardDatabase Database of all the current cards
+     * @return Deck containing cards corresponding to records in a file
      */
     static Deck loadFromFile(const CardDatabase &cardDatabase);
 
     /**
-     * Finds all non-trivial (excluding current and parent folder references) files in the 'DECK_DIRECTORY' directory.
-     * @return names of files within 'DECK_DIRECTORY' directory.
+     * Finds all non-trivial (excluding current and parent folder references) files in the 'DECK_DIRECTORY' directory
+     * @return names of files within 'DECK_DIRECTORY' directory
      */
     static std::vector<std::string> getDecksFromDirectory();
 };

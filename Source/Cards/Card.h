@@ -12,6 +12,9 @@
 #include <fstream>
 #include <map>
 
+/**
+ * Represents an interface for playable Cards.
+ */
 class Card {
 
 protected:

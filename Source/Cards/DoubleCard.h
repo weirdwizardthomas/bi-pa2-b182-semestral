@@ -9,7 +9,8 @@
 #include "Card.h"
 
 /**
- * Double cards double the value of the current player's last played card when played
+ * A child of @class Card
+ * Multiplies the value of the last played card by 2. Does not add any new value on its own
  */
 class DoubleCard : public Card {
 
@@ -18,11 +19,11 @@ public:
     ~DoubleCard() override = default;
 
     /**
-     * Removes the last played card and returns a card with a value double of it.
-     * @param playedCards Cards previously played by the current player.
-     * @param currentScore Current player's current round's score.
-     * @param opponentScore Opponent's current round's score.
-     * @return Value of the last card doubled.
+     * Removes the last played card and returns a card with a value double of it
+     * @param playedCards Cards previously played by the current player
+     * @param currentScore Current player's current round's score
+     * @param opponentScore Opponent's current round's score
+     * @return Value of the last card doubled
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 

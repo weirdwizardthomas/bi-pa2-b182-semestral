@@ -5,12 +5,13 @@
 #ifndef TMPPAZAAK_PLUSMINUSONETWOCARD_H
 #define TMPPAZAAK_PLUSMINUSONETWOCARD_H
 
-//Classes-----------------------------------
+
 #include "DualCard.h"
 
 
 /**
- * A special case of the Dual card, Flex cards offer the choice of four choices: +/- 1/2
+ * A child of @class DualCard
+ * A special case of the @class DualCard; offers a choice of one of four fixed values: +1,-1,+2,-2
  */
 class FlexCard : public DualCard {
 private:
@@ -28,10 +29,10 @@ public:
     //Methods-------------------------------
     /**
      * Presents the player with a choice of sign and LEFT-RIGHT to be played
-     * @param playedCards Cards previously played by the current player.
-     * @param currentScore Current player's current round's score.
-     * @param opponentScore Opponent's current round's score.
-     * @return A positive or negative LEFT/RIGHT value.
+     * @param playedCards Cards previously played by the current player
+     * @param currentScore Current player's current round's score
+     * @param opponentScore Opponent's current round's score
+     * @return A positive or negative LEFT/RIGHT value
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 

@@ -26,41 +26,41 @@ private:
     RandomNumberGenerator randomNumberGenerator;
 
     /**
-     * Populates the main deck with 'MAIN_DECK_CARD_COPIES' of each BasicCard.
+     * Populates the main deck with 'MAIN_DECK_CARD_COPIES' of each @class BasicCard
      */
     void generateMainDeck();
 
     /**
      * Loads the line representing 'playedCards' from the @param file
-     * @param file Game file to be read from.
-     * @return Container
+     * @param file Game file to be read from
+     * @return Container of numerical values of all played cards in play order
      */
     static std::vector<int> loadPlayedCards(std::ifstream &file);
 
     /**
      * Loads the current round's score from the @param file
-     * @param file Game file to be read from.
+     * @param file Game file to be read from
      * @return Current score loaded from the @param file
      */
     static int loadCurrentScore(std::ifstream &file);
 
     /**
      * Load the current game's rounds won from the @param file
-     * @param file Game file to be read from.
+     * @param file Game file to be read from
      * @return Rounds won loaded from the @param file
      */
     static size_t loadRoundsWon(std::ifstream &file);
 
     /**
      * Load the 'standing' attribute from the @param file
-     * @param file Game file to be read from.
-     * @return True if the value read was 'IS_STANDING_VALUE', false otherwise.
+     * @param file Game file to be read from
+     * @return True if the value read was 'IS_STANDING_VALUE', false otherwise
      */
     static bool loadStanding(std::ifstream &file);
 
     /**
      * Loads the mainDeck from its text representation from @param file
-     * @param file Game file to be read from.
+     * @param file Game file to be read from
      * @return Container representing the mainDeck from @param file
      */
     static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
@@ -90,72 +90,72 @@ public:
     static const char *ITEM_INDEX_LEAD;
 
     /**
-     * Creates an instance of the 'PlayerBoard' class with a generated main deck, with other attributes set to default.
+     * Creates an instance of the @class PlayerBoard class with a generated main deck, with other attributes set to default.
      */
     PlayerBoard();
 
     /**
-     * Saves the board's contents to a text representation within the @param file stream.
-     * @param file Stream in which the board is to be saved.
+     * Saves the board's contents to a text representation within the @param file
+     * @param file Stream in which the board is to be saved
      */
     void saveToFile(std::ofstream &file) const;
 
     /**
-     * Gets a random card from the main deck and then removes it.
-     * @return Value of the removed card.
+     * Gets a random card from the main deck and then removes it
+     * @return Value of the removed card
      */
     int drawCardFromMainDeck();
 
     /**
-     * Gets the current round's score.
-     * @return Current round's score.
+     * Gets the current round's score
+     * @return Current round's score
      */
     int getCurrentScore() const;
 
     /**
-     * Gets a random card from the 'mainDeck' and shows its value without removing the card.
-     * @return Value of a randomly selected card from the 'mainDeck'.
+     * Gets a random card from the 'mainDeck' and shows its value without removing the card
+     * @return Value of a randomly selected card from the 'mainDeck'
      */
     int getOpener();
 
     /**
-     * Gets the container of all the cards played so far withing the current round.
+     * Gets the container of all the cards played so far withing the current round
      * @return A container of cards identical to 'playedCards'
      */
     std::vector<int> &getPlayedCards();
 
     /**
-     * Gets the number of cards played in current round.
+     * Gets the number of cards played in current round
      * @return size of 'playedCards'.
      */
     size_t getPlayedCardsCount() const;
 
     /**
-     * Gets the total rounds won in the current game.
-     * @return Current game's rounds won by the instance owner.
+     * Gets the total rounds won in the current game
+     * @return Current game's rounds won by the instance owner
      */
     size_t getRoundsWon() const;
 
     /**
-     * Shows whether the player is standing(skipping all their turns within the current round) or not.
-     * @return True if is standing, false otherwise.
+     * Shows whether the player is standing(skipping all their turns within the current round) or not
+     * @return True if is standing, false otherwise
      */
     bool isStanding() const;
 
     /**
-     * Creates a text representation of the 'playedCards' container.
-     * @return Text representation of all the cards played so far in the current round.
+     * Creates a text representation of the 'playedCards' container
+     * @return Text representation of all the cards played so far in the current round
      */
     std::string showCardsPlayed() const;
 
     /**
-     * Adds a card's value to the 'cardsPlayed' container.
-     * @param cardValue Value to be added to the end of 'cardsPlayed' container.
+     * Adds a card's value to the 'cardsPlayed' container
+     * @param cardValue Value to be added to the end of 'cardsPlayed' container
      */
     void addPlayedCard(int cardValue);
 
     /**
-     * Increments the 'roundsWon' counter.
+     * Increments the 'roundsWon' counter
      */
     void addPoint();
 

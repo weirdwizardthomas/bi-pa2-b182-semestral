@@ -5,7 +5,7 @@
 #ifndef PAZAAK_DECK_H
 #define PAZAAK_DECK_H
 
-//Libraries---------------------------------
+
 #include <vector>
 #include <list>
 #include <random>
@@ -13,7 +13,6 @@
 #include <cstdlib>
 #include <dirent.h>
 
-//Classes-----------------------------------
 #include "../../Cards/Card.h"
 #include "../../Cards/BasicCard.h"
 #include "../../Cards/DoubleCard.h"
@@ -22,6 +21,9 @@
 #include "../../Utilities/RandomNumberGenerator.h"
 #include "../../Cards/CardDatabase.h"
 
+/**
+ *
+ */
 class Deck {
 private:
     //Attributes----------------------------------------------
@@ -48,10 +50,10 @@ private:
     void removeCardFromDeck(size_t pickedCardIndex);
 
     /**
-     * Determines whether a file with the name 'filename' already exists in a directory.
+     * Determines whether a file @param filename already exists in a directory.
      * @param files Names of existing files.
      * @param filename Name of the saving file to be compared to the existing ones.
-     * @return True if a file with the 'filename' name already exists, false otherwise.
+     * @return True if a file @param filename already exists, false otherwise.
      */
     static bool fileAlreadyExists(const std::vector<std::string> &files, const std::string &filename);
 
@@ -111,14 +113,14 @@ public:
     Deck();
 
     /**
-     * Creates a new 'Deck' instance by querying the user to pick individual cards from the @param cardDatabase database
+     * Creates a new @class Deck instance by querying the user to pick individual cards from the @param cardDatabase database
      * @param cardDatabase
      * @overload
      */
     explicit Deck(const CardDatabase &cardDatabase);
 
     /**
-     * Creates a new 'Deck' instance with the @param cards parameter as its 'cards' container.
+     * Creates a @class Deck instance with the @param cards parameter as its 'cards' container.
      * @param cards Card container to represent the deck.
      * @overload
      */
@@ -143,16 +145,16 @@ public:
     void saveToFile() const;
 
     /**
-     * Saves the deck's contents to a readable form into the 'file' stream to be reconstructed later.
+     * Saves the deck's contents to a readable form into the @param file stream to be reconstructed later.
      * @param file Stream representing the output file.
      */
     void saveToFile(std::ofstream &file) const;
 
     /**
-     * Displays contents of the cards' container in the 'out' stream.
+     * Displays contents of the cards' container in the @param out stream.
      * @param out Stream in which the Deck will be placed.
      * @param deck Deck to be placed into the stream.
-     * @return the 'out' stream containing the deck's contents
+     * @return @param out stream containing the deck's contents
      */
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
@@ -160,7 +162,7 @@ public:
      * Loads the deck from its text representation in @param file with the aid of @param cardDatabase database.
      * @param file File containing the deck's text representation.
      * @param cardDatabase Database of all available cards.
-     * @return Instance of the 'Deck' class loaded from @param file
+     * @return Instance of the @class Deck loaded from @param file
      */
     static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 

@@ -12,66 +12,70 @@
 
 #include "Card.h"
 
-
+/**
+ * A pseudo-database wrapper of all the available cards within the game. This class's instances offer access to pointers of the
+ * @class Cards and is responsible for the life cycle of the @class Cards - loading them from their respective files, offering
+ * access to them and their destruction.
+ */
 class CardDatabase {
 private:
     std::map<std::string, Card *> cards;
 
     /**
      * Reads the 'BasicCards' file in the 'CARDS_DIRECTORY' directory
-     * and processes them into elements of the 'cards' container.
+     * and processes them into @class BasicCard elements of the 'cards' container
      */
     void loadBasicCards();
 
     /**
      * Reads the 'DualCards' file in the 'CARDS_DIRECTORY' directory
-     * and processes them into elements of the 'cards' container.
+     * and processes them into @class DualCard elements of the 'cards' container
      */
     void loadDualCards();
 
     /**
-     * Adds a single 'DoubleCard' class instance to 'cards' container.
+     * Adds a single @class DoubleCard class instance to 'cards' container
      */
     void loadDoubleCard();
 
     /**
-     * Adds a single 'FlexCard' class instance to the 'cards' container.
+     * Adds a single @class FlexCard class instance to the 'cards' container
      */
     void loadFlexCard();
 
     /**
      * Reads the 'FlipCards' file in the 'CARDS_DIRECTORY' directory
-     * and processes them into elements of the 'cards' container.
+     * and processes them into @class FlipCard elements of the 'cards' container
      */
     void loadFlipCards();
 
     /**
      * Reads two numerical values from the @param line
-     * @throws invalid_argument  if either is not found.
-     * @param line Text to be parsed for the values.
-     * @return A pair of two different integer values.
+     * @throws invalid_argument  if either is not found
+     * @param line Text to be parsed for the values
+     * @return A pair of two different integer values
      */
     static std::pair<int, int> getDualValues(const std::string &line);
 
     /**
-     * Checks whether the elements of 'fileLines' represent valid file lines for the card type 'mode'.
-     * @throws invalid_argument  if the line is not valid.
-     * @param fileLines Lines representing individual cards.
-     * @param mode Mode by which the lines are validated.
+     * Checks whether the elements of @param fileLines represent valid file lines for the card type @param mode
+     * @throws invalid_argument  if the line is not valid
+     * @param fileLines Lines representing individual cards
+     * @param mode Mode by which the lines are validated
      */
     static void validLines(const std::vector<std::string> &fileLines, const std::string &mode = "");
 
     /**
-     * Constructs a path to the @param filename file in the 'CARD_DIRECTORY' DIRECTORY.
-     * @param filename Name of the file for which the path is constructed.
-     * @return Path to the @param filename file.
+     * Constructs a path to the @param filename in the 'CARD_DIRECTORY' DIRECTORY
+     * @param filename Name of the file for which the path is constructed
+     * @return Path to the @param filename
      */
     static std::string pathOf(const std::string &filename);
 
     /**
-     * Loads the file at @param filePath and splits it into individual lines.
-     * @param filePath Path to the file to be processed.
-     * @return Container of individual lines of the @param filePath file.
+     * Loads the file at @param filePath and splits it into individual lines
+     * @param filePath Path to the file to be processed
+     * @return Container of individual lines of the @param filePath file
      */
     static std::vector<std::string> getFileLines(const std::string &filePath);
 
@@ -88,7 +92,7 @@ public:
     /**
      * Finds and returns a pointer to an element stored by the @param key
      * @param key Key by which the element will be found.
-     * @return A Card pointer which has a key equal to @param key
+     * @return A @class Card pointer which has a key equal to @param key
      */
     Card *get(const std::string &key) const;
 
@@ -99,58 +103,58 @@ public:
     std::vector<Card *> toVector() const;
 
     /**
-     * Gets the 'cards' container's element count.
-     * @return size of 'cards'.
+     * Gets the 'cards' container's element count
+     * @return size of 'cards'
      */
     size_t size() const;
 
     /**
      * Splits the @param phrase string into substring delimited by the @param delimiter
-     * @param phrase Text to be split.
-     * @param delimiter Text by which the @param phrase will be split.
+     * @param phrase Text to be split
+     * @param delimiter Text by which the @param phrase will be split
      * @return Container of substrings split by the @param delimiter
      */
     static std::list<std::string> split(std::string phrase, const std::string &delimiter);
 
     /**
-     * Reads a line from the @param file stream and parses it for a pair of field-value.
-     * @throws ParseError if @param field and the parsed value mismatch.
-     * @param field Field to be found in the line.
-     * @param delimiter Delimiter by which the line is parsed.
-     * @param file File from which the line will be read.
+     * Reads a line from the @param file stream and parses it for a pair of field-value
+     * @throws ParseError if @param field and the parsed value mismatch
+     * @param field Field to be found in the line
+     * @param delimiter Delimiter by which the line is parsed
+     * @param file File from which the line will be read
      * @return The value of the @param field
      */
     static std::string loadValue(const std::string &field, const std::string &delimiter, std::ifstream &file);
 
     /**
-     * Places the 'cards' container's elements in the @param out stream.
-     * @param out Stream into which 'cards' will be placed.
-     * @param cardDatabase Database whose 'cards' will be placed in the stream.
-     * @return @param out stream with the 'cards' container placed into it.
+     * Places the 'cards' container's elements in the @param out stream
+     * @param out Stream into which 'cards' will be placed
+     * @param cardDatabase Database whose 'cards' will be placed in the stream
+     * @return @param out stream with the 'cards' container placed into it
      */
     friend std::ostream &operator<<(std::ostream &out, const CardDatabase &cardDatabase);
 
     /**
-     * Grants a constant iterator to the instance's 'cards' first element.
-     * @return Constant iterator pointing to the first element of 'cards'.
+     * Grants a constant iterator to the instance's 'cards' first element
+     * @return Constant iterator pointing to the first element of 'cards'
      */
     std::map<std::string, Card *>::const_iterator cbegin() const;
 
     /**
-     * Grants a constant iterator to the instance's 'cards' after-last element.
-     * @return Constant iterator pointing to the first element of 'cards'.
+     * Grants a constant iterator to the instance's 'cards' after-last element
+     * @return Constant iterator pointing to the first element of 'cards'
      */
     std::map<std::string, Card *>::const_iterator cend() const;
 
     /**
-     * Grants a iterator to the instance's 'cards' first element.
-     * @return iterator pointing to the first element of 'cards'.
+     * Grants a iterator to the instance's 'cards' first element
+     * @return iterator pointing to the first element of 'cards'
      */
     std::map<std::string, Card *>::iterator begin();
 
     /**
-     * Grants an iterator to the instance's 'cards' after-last element.
-     * @return Iterator pointing to the first element of 'cards'.
+     * Grants an iterator to the instance's 'cards' after-last element
+     * @return Iterator pointing to the first element of 'cards'
      */
     std::map<std::string, Card *>::iterator end();
 };

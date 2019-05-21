@@ -29,9 +29,9 @@ OBJECTS = $(OBJECT_OUTPUT_FILE)/main.o \
 	$(OBJECT_OUTPUT_FILE)/Source/Utilities/DeckParser.o \
 	$(OBJECT_OUTPUT_FILE)/Source/Utilities/RandomNumberGenerator.o \
 
-all: Output doc compile
+all: $(OBJECT_OUTPUT_FILE) doc compile
 
-compile: Output $(OBJECTS)
+compile: $(OBJECT_OUTPUT_FILE) $(OBJECTS)
 	$(LD) $(LDFLAGS) $(OBJECTS) -o $(TARGET)
 
 $(OBJECT_OUTPUT_FILE)/%.o: %.cpp
@@ -50,7 +50,7 @@ run: compile
 debug: compile
 	$(DEBUGGER) ./$(TARGET)
 
-Output:
+$(OBJECT_OUTPUT_FILE):
 	mkdir $(OBJECT_OUTPUT_FILE)
 	mkdir $(OBJECT_OUTPUT_FILE)/Source
 	mkdir $(OBJECT_OUTPUT_FILE)/Source/Cards $(OBJECT_OUTPUT_FILE)/Source/Player

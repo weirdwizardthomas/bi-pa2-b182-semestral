@@ -12,7 +12,8 @@
 #include "Card.h"
 
 /**
- * Basic cards add their value to the player's current score when played.
+ * A child of @class Card.
+ * Adds its singular value to the player's current score when played.
  */
 class BasicCard : public Card {
 
