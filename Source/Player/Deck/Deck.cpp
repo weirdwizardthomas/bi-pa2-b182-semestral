@@ -119,7 +119,7 @@ void Deck::saveToFile() const {
     fstream deckFile;
     deckFile.open(path, fstream::out);
     if (!deckFile.is_open())
-        throw CannotOpenFile();
+        throw InvalidFileException();
 
     auto cardLines = toLines();
 

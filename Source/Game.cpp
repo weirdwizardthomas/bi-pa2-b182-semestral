@@ -218,7 +218,7 @@ void Game::saveToFile(const string &outputPath) const {
 
     file.open(outputPath, fstream::out);
     if (!file.is_open())
-        throw CannotOpenFile();
+        throw InvalidFileException();
 
     file << CURRENT_SCORE_LEAD << FILE_FIELD_VALUE_DELIMITER << roundNumber << endl;
     players.first->saveToFile(file);

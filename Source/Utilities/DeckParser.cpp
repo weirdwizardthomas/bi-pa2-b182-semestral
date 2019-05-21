@@ -27,7 +27,7 @@ const vector<string> DeckParser::loadFileContent(const string &file) {
 
     deckFile.open(path, fstream::in);
     if (!deckFile.is_open())
-        throw CannotOpenFile();
+        throw InvalidFileException();
 
     string line;
     vector<string> fileContent;

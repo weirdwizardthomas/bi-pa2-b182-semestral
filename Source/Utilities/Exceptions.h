@@ -7,25 +7,28 @@
 
 #include <exception>
 
-#include "DeckParser.h"
-
 using namespace std;
 
+/**
+ * Directory has not been found or needs special permission to access
+ */
 class CannotOpenDirectory : public exception {
 public:
     const char *what() const noexcept override {
-        return (string("Cannot open the") + DeckParser::DECKS_DIRECTORY + "directory.").c_str();
+        return "Cannot open a directory.";
     }
 };
 
-class CannotOpenFile : public exception {
-    const char *what() const noexcept override { return ("Cannot open file."); }
-};
-
+/**
+ * File does not fit the prescribed format
+ */
 class ParseError : public exception {
     const char *what() const noexcept override { return ("Error reading file"); }
 };
 
+/**
+ * File has not been found or needs special permission to open
+ */
 class InvalidFileException : public exception {
     const char *what() const noexcept override { return "Error loading file."; }
 };
