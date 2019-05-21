@@ -1,212 +1,59 @@
-# variables: compiler
 CXX=g++
 LD=g++
 
-# variables: flags
 CXXFLAGS=-std=c++11  -Wall -pedantic -Wno-long-long -g
 LDFLAGS=
 
-OBJECTS = Output/main.o Output/Source/Game.o Output/Source/MainMenu.o Output/Source/Cards/BasicCard.o Output/Source/Cards/Card.o \
-                                   Output/Source/Cards/CardDatabase.o Output/Source/Cards/DoubleCard.o Output/Source/Cards/DualCard.o Output/Source/Cards/FlexCard.o \
-                                   Output/Source/Cards/FlipCard.o Output/Source/Player/Hand.o Output/Source/Player/PlayerBoard.o Output/Source/Player/Deck/Deck.o \
-                                   Output/Source/Player/Player/ComputerPlayer.o Output/Source/Player/Player/HumanPlayer.o Output/Source/Player/Player/Player.o \
-                                   Output/Source/Utilities/DeckParser.o Output/Source/Utilities/RandomNumberGenerator.o \
+TARGET = Pazaak
+DEBUGGER = valgrind
+DOXYGEN_CONFIGURATION_FILE = Doxyfile
+OBJECT_OUTPUT_FILE = ./Output
+LOGIN = koristo1
 
-all: Output compile doc
+OBJECTS = $(OBJECT_OUTPUT_FILE)/main.o \
+    	$(OBJECT_OUTPUT_FILE)/Source/Game.o \
+	$(OBJECT_OUTPUT_FILE)/Source/MainMenu.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/BasicCard.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/Card.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/CardDatabase.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/DoubleCard.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/DualCard.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/FlexCard.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Cards/FlipCard.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Player/Hand.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Player/PlayerBoard.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Player/Deck/Deck.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Player/Player/ComputerPlayer.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Player/Player/HumanPlayer.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Player/Player/Player.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Utilities/DeckParser.o \
+	$(OBJECT_OUTPUT_FILE)/Source/Utilities/RandomNumberGenerator.o \
 
-compile: Output Output/main.o Output/Source/Game.o Output/Source/MainMenu.o Output/Source/Cards/BasicCard.o Output/Source/Cards/Card.o \
-         Output/Source/Cards/CardDatabase.o Output/Source/Cards/DoubleCard.o Output/Source/Cards/DualCard.o Output/Source/Cards/FlexCard.o \
-         Output/Source/Cards/FlipCard.o Output/Source/Player/Hand.o Output/Source/Player/PlayerBoard.o Output/Source/Player/Deck/Deck.o \
-         Output/Source/Player/Player/ComputerPlayer.o Output/Source/Player/Player/HumanPlayer.o Output/Source/Player/Player/Player.o \
-         Output/Source/Utilities/DeckParser.o Output/Source/Utilities/RandomNumberGenerator.o
-	$(LD) $(LDFLAGS) $(OBJECTS) -o game
+all: Output doc compile
 
-Output/%.o: %.cpp
+compile: Output $(OBJECTS)
+	$(LD) $(LDFLAGS) $(OBJECTS) -o $(TARGET)
+
+$(OBJECT_OUTPUT_FILE)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -rf game
+	rm -rf $(TARGET)
 	rm -rf Output doc
 
 doc:
-	doxygen Doxyfile
-# run program
-run:
-	./game
+	doxygen $(DOXYGEN_CONFIGURATION_FILE)	
+
+run: compile
+	./$(TARGET)
+
+debug: compile
+	$(DEBUGGER) ./$(TARGET)
 
 Output:
-	mkdir Output
-	mkdir Output/Source
-	mkdir Output/Source/Cards Output/Source/Player Output/Source/Utilities
-	mkdir Output/Source/Player/Deck Output/Source/Player/Player
-
-# automatically generated dependencies
-main.o: main.cpp Source/Game.h Source/Player/Player/Player.h \
- Source/Player/Player/../Deck/Deck.h \
- Source/Player/Player/../Deck/../../Cards/Card.h \
- Source/Player/Player/../Deck/../../Cards/BasicCard.h \
- Source/Player/Player/../Deck/../../Cards/Card.h \
- Source/Player/Player/../Deck/../../Cards/DoubleCard.h \
- Source/Player/Player/../Deck/../../Cards/FlexCard.h \
- Source/Player/Player/../Deck/../../Cards/DualCard.h \
- Source/Player/Player/../Deck/../../Cards/FlipCard.h \
- Source/Player/Player/../Deck/../../Utilities/RandomNumberGenerator.h \
- Source/Player/Player/../Deck/../../Cards/CardDatabase.h \
- Source/Player/Player/../PlayerBoard.h \
- Source/Player/Player/../../Cards/Card.h \
- Source/Player/Player/../../Cards/BasicCard.h \
- Source/Player/Player/../../Utilities/RandomNumberGenerator.h \
- Source/Player/Player/../../Cards/CardDatabase.h \
- Source/Player/Player/../Hand.h \
- Source/Player/Player/../../Cards/CardDatabase.h \
- Source/Utilities/RandomNumberGenerator.h Source/Cards/CardDatabase.h \
- Source/MainMenu.h Source/Cards/CardDatabase.h
-
-Game.o: Game.cpp Game.h Player/Player/Player.h \
- Player/Player/../Deck/Deck.h Player/Player/../Deck/../../Cards/Card.h \
- Player/Player/../Deck/../../Cards/BasicCard.h \
- Player/Player/../Deck/../../Cards/Card.h \
- Player/Player/../Deck/../../Cards/DoubleCard.h \
- Player/Player/../Deck/../../Cards/FlexCard.h \
- Player/Player/../Deck/../../Cards/DualCard.h \
- Player/Player/../Deck/../../Cards/FlipCard.h \
- Player/Player/../Deck/../../Utilities/RandomNumberGenerator.h \
- Player/Player/../Deck/../../Cards/CardDatabase.h \
- Player/Player/../PlayerBoard.h Player/Player/../../Cards/Card.h \
- Player/Player/../../Cards/BasicCard.h \
- Player/Player/../../Utilities/RandomNumberGenerator.h \
- Player/Player/../../Cards/CardDatabase.h Player/Player/../Hand.h \
- Player/Player/../../Cards/CardDatabase.h \
- Utilities/RandomNumberGenerator.h Cards/CardDatabase.h \
- Utilities/Exceptions.h Utilities/DeckParser.h \
- Utilities/../Player/Deck/Deck.h
-
-MainMenu.o: MainMenu.cpp MainMenu.h Cards/CardDatabase.h Cards/Card.h \
- Game.h Player/Player/Player.h Player/Player/../Deck/Deck.h \
- Player/Player/../Deck/../../Cards/Card.h \
- Player/Player/../Deck/../../Cards/BasicCard.h \
- Player/Player/../Deck/../../Cards/Card.h \
- Player/Player/../Deck/../../Cards/DoubleCard.h \
- Player/Player/../Deck/../../Cards/FlexCard.h \
- Player/Player/../Deck/../../Cards/DualCard.h \
- Player/Player/../Deck/../../Cards/FlipCard.h \
- Player/Player/../Deck/../../Utilities/RandomNumberGenerator.h \
- Player/Player/../Deck/../../Cards/CardDatabase.h \
- Player/Player/../PlayerBoard.h Player/Player/../../Cards/Card.h \
- Player/Player/../../Cards/BasicCard.h \
- Player/Player/../../Utilities/RandomNumberGenerator.h \
- Player/Player/../../Cards/CardDatabase.h Player/Player/../Hand.h \
- Player/Player/../../Cards/CardDatabase.h \
- Utilities/RandomNumberGenerator.h Player/Player/HumanPlayer.h \
- Player/Player/Player.h Player/Player/ComputerPlayer.h
-
-BasicCard.o: BasicCard.cpp BasicCard.h Card.h
-Card.o: Card.cpp Card.h
-
-CardDatabase.o: CardDatabase.cpp CardDatabase.h Card.h FlipCard.h \
- DualCard.h BasicCard.h DoubleCard.h FlexCard.h ../Utilities/Exceptions.h \
- ../Utilities/DeckParser.h ../Utilities/../Player/Deck/Deck.h \
- ../Utilities/../Player/Deck/../../Cards/Card.h \
- ../Utilities/../Player/Deck/../../Cards/BasicCard.h \
- ../Utilities/../Player/Deck/../../Cards/DoubleCard.h \
- ../Utilities/../Player/Deck/../../Cards/FlexCard.h \
- ../Utilities/../Player/Deck/../../Cards/FlipCard.h \
- ../Utilities/../Player/Deck/../../Utilities/RandomNumberGenerator.h \
- ../Utilities/../Player/Deck/../../Cards/CardDatabase.h
-
-DoubleCard.o: DoubleCard.cpp DoubleCard.h Card.h
-
-DualCard.o: DualCard.cpp DualCard.h Card.h
-
-FlexCard.o: FlexCard.cpp FlexCard.h DualCard.h Card.h
-
-FlipCard.o: FlipCard.cpp FlipCard.h DualCard.h Card.h
-
-Hand.o: Hand.cpp Hand.h ../Cards/Card.h ../Cards/CardDatabase.h \
- ../Cards/Card.h ../Utilities/Exceptions.h ../Utilities/DeckParser.h \
- ../Utilities/../Player/Deck/Deck.h \
- ../Utilities/../Player/Deck/../../Cards/Card.h \
- ../Utilities/../Player/Deck/../../Cards/BasicCard.h \
- ../Utilities/../Player/Deck/../../Cards/Card.h \
- ../Utilities/../Player/Deck/../../Cards/DoubleCard.h \
- ../Utilities/../Player/Deck/../../Cards/FlexCard.h \
- ../Utilities/../Player/Deck/../../Cards/DualCard.h \
- ../Utilities/../Player/Deck/../../Cards/FlipCard.h \
- ../Utilities/../Player/Deck/../../Utilities/RandomNumberGenerator.h \
- ../Utilities/../Player/Deck/../../Cards/CardDatabase.h
-
-PlayerBoard.o: PlayerBoard.cpp PlayerBoard.h ../Cards/Card.h \
- ../Cards/BasicCard.h ../Cards/Card.h \
- ../Utilities/RandomNumberGenerator.h ../Cards/CardDatabase.h \
- ../Utilities/Exceptions.h ../Utilities/DeckParser.h \
- ../Utilities/../Player/Deck/Deck.h \
- ../Utilities/../Player/Deck/../../Cards/Card.h \
- ../Utilities/../Player/Deck/../../Cards/BasicCard.h \
- ../Utilities/../Player/Deck/../../Cards/DoubleCard.h \
- ../Utilities/../Player/Deck/../../Cards/Card.h \
- ../Utilities/../Player/Deck/../../Cards/FlexCard.h \
- ../Utilities/../Player/Deck/../../Cards/DualCard.h \
- ../Utilities/../Player/Deck/../../Cards/FlipCard.h \
- ../Utilities/../Player/Deck/../../Utilities/RandomNumberGenerator.h \
- ../Utilities/../Player/Deck/../../Cards/CardDatabase.h
-
-Deck.o: Deck.cpp Deck.h ../../Cards/Card.h ../../Cards/BasicCard.h \
- ../../Cards/Card.h ../../Cards/DoubleCard.h ../../Cards/FlexCard.h \
- ../../Cards/DualCard.h ../../Cards/FlipCard.h \
- ../../Utilities/RandomNumberGenerator.h ../../Cards/CardDatabase.h \
- ../../Utilities/DeckParser.h ../../Utilities/../Player/Deck/Deck.h \
- ../../Utilities/Exceptions.h ../../Utilities/DeckParser.h
-
-ComputerPlayer.o: ComputerPlayer.cpp ComputerPlayer.h Player.h \
- ../Deck/Deck.h ../Deck/../../Cards/Card.h \
- ../Deck/../../Cards/BasicCard.h ../Deck/../../Cards/Card.h \
- ../Deck/../../Cards/DoubleCard.h ../Deck/../../Cards/FlexCard.h \
- ../Deck/../../Cards/DualCard.h ../Deck/../../Cards/FlipCard.h \
- ../Deck/../../Utilities/RandomNumberGenerator.h \
- ../Deck/../../Cards/CardDatabase.h ../PlayerBoard.h ../../Cards/Card.h \
- ../../Cards/BasicCard.h ../../Utilities/RandomNumberGenerator.h \
- ../../Cards/CardDatabase.h ../Hand.h ../../Cards/CardDatabase.h \
- ../../Game.h ../../Player/Player/Player.h \
- ../../Utilities/RandomNumberGenerator.h ../../Utilities/Exceptions.h \
- ../../Utilities/DeckParser.h ../../Utilities/../Player/Deck/Deck.h
-
-HumanPlayer.o: HumanPlayer.cpp HumanPlayer.h Player.h ../Deck/Deck.h \
- ../Deck/../../Cards/Card.h ../Deck/../../Cards/BasicCard.h \
- ../Deck/../../Cards/Card.h ../Deck/../../Cards/DoubleCard.h \
- ../Deck/../../Cards/FlexCard.h ../Deck/../../Cards/DualCard.h \
- ../Deck/../../Cards/FlipCard.h \
- ../Deck/../../Utilities/RandomNumberGenerator.h \
- ../Deck/../../Cards/CardDatabase.h ../PlayerBoard.h ../../Cards/Card.h \
- ../../Cards/BasicCard.h ../../Utilities/RandomNumberGenerator.h \
- ../../Cards/CardDatabase.h ../Hand.h ../../Cards/CardDatabase.h \
- ../../Game.h ../../Player/Player/Player.h \
- ../../Utilities/RandomNumberGenerator.h ../../Utilities/DeckParser.h \
- ../../Utilities/../Player/Deck/Deck.h ../../Utilities/Exceptions.h \
- ../../Utilities/DeckParser.h
-
-Player.o: Player.cpp Player.h ../Deck/Deck.h ../Deck/../../Cards/Card.h \
- ../Deck/../../Cards/BasicCard.h ../Deck/../../Cards/Card.h \
- ../Deck/../../Cards/DoubleCard.h ../Deck/../../Cards/FlexCard.h \
- ../Deck/../../Cards/DualCard.h ../Deck/../../Cards/FlipCard.h \
- ../Deck/../../Utilities/RandomNumberGenerator.h \
- ../Deck/../../Cards/CardDatabase.h ../PlayerBoard.h ../../Cards/Card.h \
- ../../Cards/BasicCard.h ../../Utilities/RandomNumberGenerator.h \
- ../../Cards/CardDatabase.h ../Hand.h ../../Cards/CardDatabase.h \
- ../../Game.h ../../Player/Player/Player.h \
- ../../Utilities/RandomNumberGenerator.h ../../Utilities/DeckParser.h \
- ../../Utilities/../Player/Deck/Deck.h ../../Utilities/Exceptions.h \
- ../../Utilities/DeckParser.h HumanPlayer.h ComputerPlayer.h
-
-DeckParser.o: DeckParser.cpp DeckParser.h ../Player/Deck/Deck.h \
- ../Player/Deck/../../Cards/Card.h ../Player/Deck/../../Cards/BasicCard.h \
- ../Player/Deck/../../Cards/Card.h \
- ../Player/Deck/../../Cards/DoubleCard.h \
- ../Player/Deck/../../Cards/FlexCard.h \
- ../Player/Deck/../../Cards/DualCard.h \
- ../Player/Deck/../../Cards/FlipCard.h \
- ../Player/Deck/../../Utilities/RandomNumberGenerator.h \
- ../Player/Deck/../../Cards/CardDatabase.h Exceptions.h
-
-RandomNumberGenerator.o: RandomNumberGenerator.cpp \
- RandomNumberGenerator.h
-
+	mkdir $(OBJECT_OUTPUT_FILE)
+	mkdir $(OBJECT_OUTPUT_FILE)/Source
+	mkdir $(OBJECT_OUTPUT_FILE)/Source/Cards $(OBJECT_OUTPUT_FILE)/Source/Player
+	mkdir $(OBJECT_OUTPUT_FILE)/Source/Utilities
+	mkdir $(OBJECT_OUTPUT_FILE)/Source/Player/Deck
+	mkdir $(OBJECT_OUTPUT_FILE)/Source/Player/Player

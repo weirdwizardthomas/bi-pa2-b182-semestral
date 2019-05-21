@@ -151,6 +151,7 @@ public:
      * @param file file within the @param cardDatabase database.
      * @param file File from which the player data will be read.
      * @param cardDatabase Database of all cards.
+     * @param opponent Pointer to the opposing Player.
      * @return A dynamically allocated instance of the player.
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);

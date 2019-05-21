@@ -35,7 +35,7 @@ public:
     void drawHand() override;
 
     /**
-     * Saves the instance to the @param file.
+     * Saves the instance to the @param file
      * @param file File into which the instance will be saved.
      */
     void saveToFile(std::ofstream &file) const override;
@@ -59,7 +59,7 @@ public:
      * Finds the lowest Card to play to attain a score higher than @param currentScore without crossing the threshold,
      * and plays it.
      * @param opponentScore Score to surpass.
-     * @param currentScore Computer's current score to raise above @param opponentScore.
+     * @param currentScore Computer's current score to raise above @param opponentScore
      */
     void findPositive(int opponentScore, int currentScore);
 
@@ -71,7 +71,7 @@ public:
     void findNegative(int currentScore);
 
     /**
-     * Loads the instance from the @param file.
+     * Loads the instance from the @param file
      * @param file File from which the data to construct the instance is loaded.
      * @param cardDatabase Database of all the available cards.
      * @param opponent Pointer to the opposing player.

@@ -84,7 +84,7 @@ public:
      * @param file Stream containing the contents of the game from which the player data will be read.
      * @param cardDatabase Database of all the available cards.
      * @param opponent Pointer to the opposing player.
-     * @return Dynamically allocated instance of the Player's HumanPlayer child with data read from the @param file.
+     * @return Dynamically allocated instance of the Player's HumanPlayer child with data read from the @param file
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
