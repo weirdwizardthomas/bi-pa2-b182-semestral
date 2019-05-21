@@ -5,7 +5,6 @@
 #ifndef TMPPAZAAK_CARD_H
 #define TMPPAZAAK_CARD_H
 
-//Libraries---------------------------------
 #include <string>
 #include <vector>
 #include <iostream>
@@ -19,15 +18,15 @@ class Card {
 
 protected:
     /**
-     * Checks whether @param x satisfies all the constraints.
-     * @param x Integer to be checked as a valid card value
+     * Checks whether a number satisfies all the constraints.
+     * @param[in] x Integer to be checked as a valid card value
      * @return True if the input satisfies the constraints, false otherwise.
      */
     bool validInput(int x) const;
 
     /**
-     * Uniforms the @param x 's text length by prefixing it with a PLUS_SIGN if the number is positive.
-     * @param x Integer to be formatted based on its sign.
+     * Uniforms a numbers's text format by prefixing it with a PLUS_SIGN if the number is positive.
+     * @param[in] x Integer to be formatted based on its sign.
      * @return the input number with a sign (+ for positive, -for negative)
      */
     std::string offsetPositiveNumber(int x) const;
@@ -59,18 +58,18 @@ public:
 
     /**
      * Puts the card's effect in play
-     * @param playedCards Cards previously played by the current player.
-     * @param currentScore Current player's current round's score.
-     * @param opponentScore Opponent's current round's score.
+     * @param[in,out] playedCards Cards previously played by the current player.
+     * @param[in] currentScore Current player's current round's score.
+     * @param[in] opponentScore Opponent's current round's score.
      * @return Card's value, 0 if the card doesn't add a new value.
      */
     virtual int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const = 0;
 
     /**
-     * Prints the @param card 's description into the @param out stream
-     * @param out The stream into which the @param card 's description will be sent.
-     * @param card Card to be placed into the stream.
-     * @return @param out containing @param card 's description.
+     * Prints the Card's description into the output stream
+     * @param[in,out] out Stream into which the  Card's description will be sent.
+     * @param[in] card Card to be placed into the stream.
+     * @return @param out containing Card's description.
      */
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
 

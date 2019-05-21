@@ -9,6 +9,9 @@
 #include "Player/Player/Player.h"
 #include "Utilities/RandomNumberGenerator.h"
 
+/**
+ * Containts the actual game logic, with players taking turns playing against each other in a set of rounds.
+ */
 class Game {
 private:
     //Attributes------------------------------
@@ -45,15 +48,14 @@ private:
     Player *currentlyPlaying() const;
 
     /**
-     * Moves a number of random cards from the 'deck' element of both player
-     * to the 'hand' element for each player respectively
+     * Draws cards for each player respectively
      */
     void drawHands() const;
 
     /**
-     * Queries the user to select a deck from the container provided by @param savedGames
-     * @param savedGames Container of all filenames within the directory of saved games
-     * @return Relative path to the picked 'Game' file
+     * Queries the user to select a deck from the the directory of saved games
+     * @param[in] savedGames Container of all filenames within the directory of saved games
+     * @return Relative path to the picked Game file
      */
     static std::string getGameFileName(const std::vector<std::string> &savedGames);
 
@@ -70,31 +72,31 @@ private:
     Player *getRoundVictor() const;
 
     /**
-     * Locates all files, representing a game in progress, in the 'SAVED_FOLDER' directory
-     * @return names of all files in the 'SAVED_FOLDER' directory
+     * Locates all files, representing a game in progress, in the Game::SAVED_FOLDER directory
+     * @return names of all files in the Game::SAVED_FOLDER directory
      */
     static std::vector<std::string> getSavedGames();
 
     /**
-     * Queries the user to save a file with a custom filename within the 'SAVED_FOLDER' directory
+     * Queries the user to save a file with a custom filename within the Game::SAVED_FOLDER directory
      */
     void manualSave() const;
 
     /**
-     * Loads both players based on the contents of the @param file stream
-     * @param file File containing game's saved data
-     * @param cardDatabase Database of all cards
+     * Loads both players based on the contents of input stream
+     * @param[in] file File containing game's saved data
+     * @param[in] cardDatabase Database of all cards
      */
     void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
     /**
-     * Saves the current state of the game to a file as @param outputPath
-     * @param outputPath Path to the saving file
+     * Saves the current state of the game to a file
+     * @param[in] outputPath Path to the saving file
      */
     void saveToFile(const std::string &outputPath) const;
 
     /**
-     * Sets the 'board' element of either player to a default state
+     * Sets the Player::board element of either player to a default state
      */
     void resetBoards();
 
@@ -105,7 +107,7 @@ private:
     Player *round();
 
     /**
-     * Determines whether the finished round ended in a tie, i.e. equal score of both players
+     * Determines whether the finished round ended in a tie, i.e. equal playerBoard::currentScore of both players
      * @return True if players have equal score, false otherwise
      */
     bool roundIsTie() const;
@@ -121,8 +123,8 @@ private:
     void selectStartingPlayer();
 
     /**
-     * Queries the @param currentPlayer to play their turn if they are not skipping it
-     * @param currentPlayer Player to take their turn.
+     * Queries current player to play their turn if they are not skipping it
+     * @param currentPlayer Player to take their turn
      */
     void turn(Player *currentPlayer);
 
@@ -163,8 +165,8 @@ private:
     static void invalidInputMessage();
 
     /**
-     * Shows the filenames of all the decks within the 'SAVED_FOLDER' directory
-     * @param savedGames Container of all the file names within the 'SAVED_FOLDER' directory
+     * Shows the filenames of all the decks within the Game::SAVED_FOLDER directory
+     * @param savedGames Container of all the file names within the Game::SAVED_FOLDER directory
      */
     static void listGamesInDirectory(const std::vector<std::string> &savedGames);
 
@@ -179,7 +181,7 @@ private:
     static void roundTieMessage();
 
     /**
-     * Shows a message to tell the players who the @param victor of the round is
+     * Shows a message to tell the players who the victor of the round is
      * @param victor Pointer to the player who has scored higher than their opponent
      */
     static void roundVictorMessage(const Player *victor);
@@ -200,7 +202,7 @@ public:
     static const char *FILE_NAME_ITEMS_DELIMITER;
 
     /**
-     * Creates an instance of the @class Game with existing players @param player1 player2
+     * Creates an instance with existing players
      * @param player1 Dynamically allocated instance of a first player
      * @param player2 Dynamically allocated instance of a second player
      * @param cardDatabase Database of all available cards
@@ -208,7 +210,7 @@ public:
     Game(Player *player1, Player *player2, const CardDatabase &cardDatabase);
 
     /**
-     * Creates a default instance of the @class Game
+     * Creates a default instance
      */
     Game();
 
@@ -218,20 +220,20 @@ public:
     /**
      * Starts a game between the two players. The game is divided into a set of rounds
      * in which players take turn alternatively
-     * First player to win 'ROUNDS' number of rounds wins the game
+     * First player to win Game::ROUNDS number of rounds wins the game
      */
     void play();
 
     /**
-     * Queries the user to select a save game and loads it to a playable state.
-     * @param cardDatabase Database of all available cards
-     * @return Dynamically allocated instance of @class Game loaded from a selected file.
+     * Queries the user to select a save game and loads it to a playable state
+     * @param[in] cardDatabase Database of all available cards
+     * @return Dynamically allocated instance loaded from a selected file
      */
     static Game *loadFromFile(const CardDatabase &cardDatabase);
 
     /**
-     * Clears the @param out stream by sending a 'ROWS_CLEARED' number of new lines into it
-     * @param out Output stream to be cleared
+     * Clears the output stream by sending a Game::ROWS_CLEARED number of new lines into it
+     * @param[in,out] out Output stream to be cleared
      */
     static void clearScreen(std::ostream &out);
 };

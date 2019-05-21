@@ -53,8 +53,8 @@ vector<Card *> Deck::drawCardsFromDeck() {
     return drawnCards;
 }
 
-void Deck::loadCardsFromUser(const CardDatabase &allCards) {
-    vector<Card *> allCardsVector = allCards.toVector();
+void Deck::loadCardsFromUser(const CardDatabase &cardDatabase) {
+    vector<Card *> allCardsVector = cardDatabase.toVector();
 
     this->cards.reserve(Deck::DECK_SIZE);
     size_t i = 0; //initial index
@@ -66,7 +66,7 @@ void Deck::loadCardsFromUser(const CardDatabase &allCards) {
         cin >> input;
 
         if (!cin.fail()) { //is a positive number
-            if (input >= allCards.size())
+            if (input >= cardDatabase.size())
                 invalidInputMessage();//out of bounds
             else { //valid input
                 this->addCard(allCardsVector[input]);

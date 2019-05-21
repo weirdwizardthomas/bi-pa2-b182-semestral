@@ -16,6 +16,10 @@
 #include "../Hand.h"
 #include "../../Cards/CardDatabase.h"
 
+
+/**
+ * Representation of a party of the Game
+ */
 class Player {
 protected:
     //Attributes---------------------------------------------------------
@@ -24,15 +28,15 @@ protected:
 
     //Methods------------------------------------------------------------
     /**
-     * Plays a random card from the mainDeck
-     * @return Value of the @class BasicCard played
+     * Plays a random card from the main deck
+     * @return BasicCard::value of the picked card
      */
     int autoPlayCard();
 
     //Messages-and-prompts-----------------------------------------------
     /**
      * Displays information about the player's in-game objects
-     * @param opponentScore
+     * @param[in] opponentScore Opposing player's score
      */
     void boardStatusMessage(int opponentScore) const;
 
@@ -43,7 +47,7 @@ protected:
 
     /**
      * Displays a message informing the user of their opening card
-     * @param opener
+     * @param[in] opener Value of the opening card
      */
     void openerMessage(int opener) const;
 
@@ -67,8 +71,8 @@ public:
     explicit Player(std::string name);
 
     /**
-     * Adds a specific @class Deck for the player
-     * @param cardDatabase Database of all available cards
+     * Adds a specific Deck for the player
+     * @param[in] cardDatabase Database of all available cards
      */
     virtual void chooseDeck(const CardDatabase &cardDatabase) = 0;
 
@@ -78,11 +82,11 @@ public:
     virtual void drawHand() = 0;
 
     /** If the user is not 'standing' = skipping their turn,
-     * queries the user to stand up or play, plays the top card of the 'mainDeck' element
+     * queries the user to stand up or play, plays the top card of the playerBoard::mainDeck
      * and prompts the user to choose a card to play from their hand
-     * The player may choose to stand up before the 'mainDeck' card is auto-played, and may choose not to play a card
+     * The player may choose to stand up before the playerBoard::mainDeck card is auto-played, and may choose not to play a card
      * from their hand
-     * @param opponentScore Opposing player's current round score
+     * @param[in] opponentScore Opposing player's current round score
      */
     virtual void takeTurn(int opponentScore) = 0;
 
@@ -93,12 +97,13 @@ public:
     void addPoint();
 
     /**
-     * Resets all the round related attributes of the player to default values - current score, cards played, standing
+     * Resets all the round related attributes of the player to default values -
+     * PlayerBoard::currentScore, PlayerBoard::playedCards, PlayerBoard::standing
      */
     void resetBoard();
 
     /**
-     * Sets the 'standing' attribute to 'true'
+     * Sets the PlayerBoard::standing attribute to true
      */
     void stand();
 
@@ -123,43 +128,43 @@ public:
 
     /**
      * Gets the number of cards played in current round
-     * @return Number of cards played by this instance of @class Player in the current round
+     * @return Number of cards played in the current round
      */
     size_t getPlayedCardsCount() const;
 
     /**
-     * Gets the total rounds won in the current game.
-     * @return Number of rounds won by this instance of @class Player in the current game.
+     * Gets the total rounds won in the current game
+     * @return Number of rounds won in the current game
      */
     size_t getRoundsWon() const;
 
     /**
      * Shows whether the player is standing(skipping all their turns within the current round) or not
-     * @return True if is standing, false otherwise.
+     * @return True if is standing, false otherwise
      */
     bool isStanding() const;
 
     /**
-     * Saves the instance in a text representation in the @param file file
-     * @param file Output file into which the @class Player instance is being saved
+     * Saves the instance in a text representation in a file
+     * @param[in] file Output file into which the instance is being saved
      */
     virtual void saveToFile(std::ofstream &file) const = 0;
 
     /**
-     * Loads the player from its text representation from the @param file . The type of player and the subsequent
-     * specific attributes are determined by the leading text in the @param file . Cards are found by the clues in the
-     * @param file file within the @param cardDatabase
-     * @param file File from which the player data will be read
-     * @param cardDatabase Database of all cards
-     * @param opponent Pointer to the opposing player
+     * Loads the player from its text representation from a file
+     * The type of player and the subsequent specific attributes are determined by the leading text in the file
+     * Cards are found by the their description in the file within the database
+     * @param[in] file File from which the player data will be read
+     * @param[in] cardDatabase Database of all cards
+     * @param[in] opponent Pointer to the opposing player
      * @return A dynamically allocated instance of the player
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
     /**
-     * Saves the string identifying the specific child class of the @class Player class within the @param file ,
+     * Saves the string identifying the specific child class of this class within a file,
      * and the specific name of the instance.
-     * @param file Stream in which the identifier and the name are to be saved
+     * @param[in] file Stream in which the identifier and the name are to be saved
      */
     virtual void saveNameToFile(std::ofstream &file) const = 0;
 };

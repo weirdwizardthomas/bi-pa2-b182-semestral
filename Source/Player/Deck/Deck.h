@@ -21,8 +21,9 @@
 #include "../../Utilities/RandomNumberGenerator.h"
 #include "../../Cards/CardDatabase.h"
 
+
 /**
- *
+ * Represents the card collection constructed by the player, from which Card are drawn to HumanPlayer::hand.
  */
 class Deck {
 private:
@@ -32,73 +33,73 @@ private:
 
     //Methods-------------------------------------------------
     /**
-     * Adds a Card pointer to the 'cards' container
-     * @param card Pointer to a card to be added
+     * Adds a Card pointer to the Deck::cards
+     * @param[in] card Pointer to a card to be added
      */
     void addCard(Card *card);
 
     /**
-     * Queries the player with a choice of card indices to add to the deck.
-     * @param allCards All Cards eligible to be placed in the a deck.
+     * Queries the player with a choice of card indices to add to the deck
+     * @param[in] cardDatabase Database of all available cards
      */
-    void loadCardsFromUser(const CardDatabase &allCards);
+    void loadCardsFromUser(const CardDatabase &cardDatabase);
 
     /**
-     * Removes a single card at the'pickedCardIndex' from the 'cards' container.
-     * @param pickedCardIndex Index of the card to be removed from the 'cards' container
+     * Removes a single card at a specified index from  Deck::cards
+     * @param pickedCardIndex Index of the card to be removed from  Deck::cards
      */
     void removeCardFromDeck(size_t pickedCardIndex);
 
     /**
-     * Determines whether a file @param filename already exists in a directory.
-     * @param files Names of existing files.
-     * @param filename Name of the saving file to be compared to the existing ones.
-     * @return True if a file @param filename already exists, false otherwise.
+     * Determines whether a file with a given name already exists in a directory
+     * @param files Names of existing files
+     * @param filename Name of the saving file to be compared to the existing ones
+     * @return True if a file with filename already exists, false otherwise
      */
     static bool fileAlreadyExists(const std::vector<std::string> &files, const std::string &filename);
 
     //Messages and prompts----------------------------------------------------------------------------------------------
     /**
-     * Prompts the user to enter a name for the file representing the deck.
+     * Prompts the user to enter a unique name for the file representing the deck
      */
     static void deckNamePrompt();
 
     /**
-     * Informs the user that the custom deck has been created successfully.
+     * Informs the user that the custom deck has been created successfully
      */
     static void deckForgedMessage();
 
     /**
-     * Displays all the deck files, represented by @param files to the user.
-     * @param files Names of the deck files.
+     * Displays all the deck files, represented files to the user
+     * @param files Names of the deck files
      */
     static void displayDecksMessage(const std::vector<std::string> &files);
 
     /**
-     * Informs the user that a file already exists.
+     * Informs the user that a file already exists
      */
     static void fileExistsMessage();
 
     /**
-     * Informs the user that the input is not valid for the given scenario.
+     * Informs the user that the input is not valid for the given scenario
      */
     static void invalidInputMessage();
 
     /**
-       * Queries the user to enter a filename for the saving file.
-       * @param files Existing file names.
-       * @return name of the saving file.
+       * Queries the user to enter a filename for the saving file
+       * @param files Existing file names
+       * @return name of the file being saved
        */
     static std::string QueryUserInputFilename(const std::vector<std::string> &files);
 
     /**
-     * Informs the user of how many cards they are to add to their deck.
+     * Informs the user of how many cards they are to add to their deck
      */
     static void selectCardsDeckSizePrompt();
 
     /**
-     * Displays the card at the @param index of the deck's 'cards' container to the user.
-     * @param index Index of the card to be displayed.
+     * Displays the card at a specific index of the Deck::cards to the user
+     * @param index Index of the card to be displayed
      */
     void selectedCardMessage(size_t index) const;
 
@@ -113,56 +114,57 @@ public:
     Deck();
 
     /**
-     * Creates a new @class Deck instance by querying the user to pick individual cards from the @param cardDatabase database
-     * @param cardDatabase
+     * Creates a new instance  by querying the user to pick individual cards from the existing cards
+     * @param[in] cardDatabase Database of all available cards
      * @overload
      */
     explicit Deck(const CardDatabase &cardDatabase);
 
     /**
-     * Creates a @class Deck instance with the @param cards parameter as its 'cards' container.
-     * @param cards Card container to represent the deck.
+     * Creates an instance with the cards parameter as its Deck::cards
+     * @param cards Card container to represent the deck
      * @overload
      */
     explicit Deck(std::vector<Card *> cards);
 
     //Methods--------------------------------------------------
     /**
-     * Randomly selects up to four cards(if there are enough, otherwise fewer), removes them from the Deck and passes them.
-     * @return Up to 'MAX_CARDS_DRAWN' random Cards.
+     * Randomly selects up to Deck::MAX_CARDS_DRAWN elements of Deck::cards (if there are enough, otherwise fewer),
+     * removes them from the instance and passes them
+     * @return Up to Deck::MAX_CARDS_DRAWN random Card
      */
     std::vector<Card *> drawCardsFromDeck();
 
     /**
-     * Converts the deck's contents to a format suitable for saving to a file.
-     * @return Container of lines, each representing a single card from the deck.
+     * Converts the deck's contents to a format suitable for saving to a file
+     * @return Container of lines, each representing a single card from the deck
      */
     std::list<std::string> toLines() const;
 
     /**
-     * Saves the deck's contents to a readable form in the DECKS_DIRECTORY_PATH to be reconstructed later.
+     * Saves the deck's contents to a readable form in the DeckParser::DECKS_DIRECTORY to be reconstructed later
      */
     void saveToFile() const;
 
     /**
-     * Saves the deck's contents to a readable form into the @param file stream to be reconstructed later.
-     * @param file Stream representing the output file.
+     * Saves the deck's contents to a readable form into  file stream to be reconstructed later
+     * @param[in] file Stream representing the output file
      */
     void saveToFile(std::ofstream &file) const;
 
     /**
-     * Displays contents of the cards' container in the @param out stream.
-     * @param out Stream in which the Deck will be placed.
-     * @param deck Deck to be placed into the stream.
-     * @return @param out stream containing the deck's contents
+     * Displays contents of the cards' container in the output stream
+     * @param[in] out Stream in which the Deck will be placed
+     * @param[in] deck Deck to be placed into the stream
+     * @return  out stream containing the deck's contents
      */
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
 
     /**
-     * Loads the deck from its text representation in @param file with the aid of @param cardDatabase database.
-     * @param file File containing the deck's text representation.
-     * @param cardDatabase Database of all available cards.
-     * @return Instance of the @class Deck loaded from @param file
+     * Loads the deck from its text representation file
+     * @param file File containing the deck's text representation
+     * @param cardDatabase Database of all available cards
+     * @return Instance loaded from file
      */
     static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 

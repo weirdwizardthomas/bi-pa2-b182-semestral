@@ -9,7 +9,9 @@
 #include "Player.h"
 
 #include <queue>
-
+/**
+ * Computer player representation that has a wider selection of flexible cards than the human player
+ */
 class ComputerPlayer : public Player {
 private:
     std::vector<std::pair<BasicCard, BasicCard>> deck;
@@ -17,8 +19,7 @@ private:
     Player *opponent;
 
     /**
-     * Saves the string identifying the specific child class of the @class Player class and instance
-     * within the @param file
+     * Saves the string identifying ComputerPlayer class and instance within a file
      * @param file File to which the class identifier and instance identifier is saved to
      */
     void saveNameToFile(std::ofstream &file) const override;
@@ -31,13 +32,13 @@ public:
     explicit ComputerPlayer(Player *opponent);
 
     /**
-     * Increases the remainingCards counter by up to MAX_CARDS_DRAWN.
+     * Increases the ComputerPlayer::remainingCards counter by up to Deck:MAX_CARDS_DRAWN.
      */
     void drawHand() override;
 
     /**
-     * Saves the instance to the @param file
-     * @param file File into which the instance will be saved
+     * Saves the instance to a file
+     * @param[in] file File into which the instance will be saved
      */
     void saveToFile(std::ofstream &file) const override;
 
@@ -46,37 +47,37 @@ public:
      * or play a card from the deck
      * Finds the most optimal card to play to stay ahead of the opponent with the lowest advantage
      * without breaking the threshold
-     * @param opponentScore Score of the opposing player
+     * @param[in] opponentScore Score of the opposing player
      */
     void takeTurn(int opponentScore) override;
 
     /**
-     * Loads a set of flexible cards to 'deck'
-     * @param cardDatabase Database of all available cards
+     * Loads a set of flexible BasicCard to ComputerPlayer::deck
+     * @param[in] cardDatabase Database of all available cards
      */
     void chooseDeck(const CardDatabase &cardDatabase) override;
 
     /**
-     * Finds the lowest Card to play to attain a score higher than @param currentScore without crossing the threshold,
-     * and plays it
-     * @param opponentScore Score to surpass
-     * @param currentScore Computer's current score to raise above @param opponentScore
+     * Finds the lowest Card to play to attain a score higher than
+     * opponent's current score without crossing the threshold, and plays it
+     * @param[in] opponentScore Score to surpass
+     * @param[in] currentScore Computer's current score to raise above opponent's score
      */
     void findPositive(int opponentScore, int currentScore);
 
     /**
      * Finds lowest negative value to bring the score below the threshold
      * If no such value can be found the computer stands
-     * @param currentScore Computer's current score to bring below the threshold
+     * @param[in] currentScore Computer's current score to bring below the threshold
      */
     void findNegative(int currentScore);
 
     /**
-     * Loads the instance from the @param file
-     * @param file File from which the data to construct the instance is loaded
-     * @param cardDatabase Database of all the available cards
-     * @param opponent Pointer to the opposing player
-     * @return Dynamically allocated instance of the @class Player  child @class ComputerPlayer
+     * Loads the instance from the a file
+     * @param[in] file File from which the data to construct the instance is loaded
+     * @param[in] cardDatabase Database of all the available cards
+     * @param[in] opponent Pointer to the opposing player
+     * @return Dynamically allocated instance of ComputerPlayer
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent);
 };

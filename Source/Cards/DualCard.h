@@ -12,9 +12,9 @@
 
 #include "Card.h"
 
+
 /**
- * A child of @class Card
- * Offers a choice of two different values when played
+ * DualCard Offers a choice of two different values when played
  */
 class DualCard : public Card {
 
@@ -23,24 +23,24 @@ protected:
     std::pair<int, int> values;
 
     /**
-     * Queries the user to choose between the card's two values
+     * Queries the user to choose between the card's DualCard::values
      * @return User selected card value
      */
     int chooseEffect() const;
 
     /**
-     * Informs the user of the @param value they have selected
+     * Informs the user of the value they have selected
      * @param value Value to be displayed to the user
      */
     void valueChosenMessage(int value) const;
 
     /**
-     * Prompts the user to select between the card's two values
+     * Prompts the user to select between the card's two DualCard::values
      */
     void chooseValuePrompt() const;
 
     /**
-     * Displays the possible values to select from
+     * Displays the possible DualCard::values to select from
      */
     void listChoices() const;
 
@@ -57,7 +57,7 @@ public:
     ~DualCard() override = default;
 
     /**
-     * Presents the player with two values to choose from to be played
+     * Presents the player with two DualCard::values to choose from to be played
      * @param playedCards Cards previously played by the current player
      * @param currentScore Current player's current round's score
      * @param opponentScore Opponent's current round's score

@@ -21,10 +21,10 @@ int FlexCard::play(std::vector<int> &playedCards, int currentScore, int opponent
 }
 
 string FlexCard::getDescription() const {
-    return getSignedAttribute() + "\t" + to_string(LEFT) + string(DualCard::DUAL_DELIMITER) + to_string(RIGHT);
+    return getSignedSymbols() + "\t" + to_string(LEFT) + string(DualCard::DUAL_DELIMITER) + to_string(RIGHT);
 }
 
-string FlexCard::getSignedAttribute() const {
+string FlexCard::getSignedSymbols() const {
     return string(Card::PLUS_SIGN) + string(FlexCard::SIGN_DELIMITER) + string(Card::MINUS_SIGN);
 }
 
