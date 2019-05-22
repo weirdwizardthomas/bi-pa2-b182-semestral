@@ -24,7 +24,7 @@ private:
     size_t roundsWon; /*<! Amount of rounds won in the current game*/
     bool standing; /*<! If the player is standing, they are skipping all of their turns within the current round */
     std::vector<int> playedCards; /*<! Numerical values of all the cards played in the current round */
-    std::vector<BasicCard> mainDeck; /*<! Remaining auto-played cards in a given round */
+    std::vector <BasicCard> mainDeck; /*<! Remaining auto-played cards in a given round */
     RandomNumberGenerator randomNumberGenerator; /*<! Generator for picking cards from the mainDeck */
 
     /**
@@ -66,7 +66,7 @@ private:
      * @param[in] file Game file to be read from
      * @return Container representing PlayerBoard::mainDeck
      */
-    static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
+    static std::vector <BasicCard> loadMainDeck(std::ifstream &file);
 
     /**
      * Adds all the values of the PlayerBoard::playedCards' together and assigns the result to PlayerBoard::currentScore

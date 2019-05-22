@@ -148,7 +148,7 @@ void CardDatabase::validLines(const vector <string> &fileLines, const string &mo
         for (const string &line : fileLines) {
             size_t delimiterIndex = line.find(DualCard::DUAL_DELIMITER);
             if (delimiterIndex == string::npos)
-                throw ParseError(   );
+                throw ParseError();
         }
     }
 }

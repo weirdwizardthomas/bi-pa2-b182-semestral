@@ -15,7 +15,7 @@ const char *HumanPlayer::HUMAN_FILE_LEAD{"Human"};
 HumanPlayer::HumanPlayer(const string &name) : Player(name) {}
 
 void HumanPlayer::drawHand() {
-    vector<Card *> drawnFromHand = deck.drawCardsFromDeck();
+    vector < Card * > drawnFromHand = deck.drawCardsFromDeck();
 
     for (auto &card : drawnFromHand)
         hand.addCard(card);

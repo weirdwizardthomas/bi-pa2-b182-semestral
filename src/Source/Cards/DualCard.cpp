@@ -48,7 +48,9 @@ void DualCard::valueChosenMessage(int value) const { cout << "You've chosen: " <
 
 void DualCard::invalidInputMessage() const { cout << "Invalid choice, please try again." << endl; }
 
-void DualCard::listChoices() const { cout << "[" << values.first << DualCard::DUAL_DELIMITER << values.second << "]: "; }
+void DualCard::listChoices() const {
+    cout << "[" << values.first << DualCard::DUAL_DELIMITER << values.second << "]: ";
+}
 
 void DualCard::chooseValuePrompt() const {
     cout << "Choose an effect [0 for the first choice/1 for the second choice]" << endl;

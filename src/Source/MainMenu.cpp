@@ -19,20 +19,18 @@ const char MainMenu::NEWLINE = '\n';
 MainMenu::MainMenu() : items({"Play locally", "Play against a computer", "Load game", "Craft a deck", "Quit"}),
                        cardDatabase(CardDatabase()) {}
 
-//TODO if invalid skip the input till newline
 size_t MainMenu::selectItem() const {
-    cout << "Select a menu option: ";
+    selectItemPrompt();
     size_t choice = items.size();
     while (choice >= items.size()) {
         cin >> choice;
 
         if (cin.fail() || choice >= items.size()) {
             cin.clear();
-            //ignores the entire cin until a newline is encountered
             cin.ignore(numeric_limits<streamsize>::max(), MainMenu::NEWLINE);
 
-            cout << "Invalid choice, please select an option in range 0-" << items.size() - 1 << endl;
-            cout << "Select a menu option: ";
+            invalidItemChoiceMessage();
+            selectItemPrompt();
             choice = items.size();
             cin >> choice;
         }
@@ -108,6 +106,13 @@ void MainMenu::loop() const {
     } while (invoke(selectItem()));
 }
 
+void MainMenu::selectItemPrompt() {
+    cout << "Select a menu option:" << endl;
+}
+
+void MainMenu::invalidItemChoiceMessage() const {
+    cout << "Invalid choice, please select an option in range 0-" << items.size() - 1 << endl;
+}
 
 void MainMenu::playerNameQuery() const { cout << "Enter the name of the player:"; }
 

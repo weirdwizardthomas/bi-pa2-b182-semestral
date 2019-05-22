@@ -27,7 +27,7 @@ void Hand::addCard(Card *card) { cards.push_back(card); }
 Hand Hand::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
+    list <string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != Hand::HAND_FILE_LEAD)
         throw ParseError();
 

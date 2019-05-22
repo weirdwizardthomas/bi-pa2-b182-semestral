@@ -9,12 +9,13 @@
 #include "Player.h"
 
 #include <queue>
+
 /**
  * Computer player representation that has a wider selection of flexible cards than the human player
  */
 class ComputerPlayer : public Player {
 private:
-    std::vector<std::pair<BasicCard, BasicCard>> deck;
+    std::vector <std::pair<BasicCard, BasicCard>> deck;
     int remainingCards;
     Player *opponent;
 

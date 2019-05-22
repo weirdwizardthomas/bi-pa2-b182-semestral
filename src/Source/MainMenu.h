@@ -39,6 +39,11 @@ private:
      */
     bool invoke(size_t itemIndex) const;
 
+
+    static void selectItemPrompt();
+
+    void invalidItemChoiceMessage() const;
+
 public:
     static const char LEFT_INDEX_WRAPPER;
     static const char RIGHT_INDEX_WRAPPER;

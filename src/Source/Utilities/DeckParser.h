@@ -22,7 +22,7 @@ private:
      * @param[in] file Name of the file to be opened
      * @return Individual lines of the file
      */
-    static const std::vector<std::string> loadFileContent(const std::string &file);
+    static const std::vector <std::string> loadFileContent(const std::string &file);
 
     /**
      * Loads all the cards represented from file lines to their respective Card instances.
@@ -31,7 +31,7 @@ private:
      * @return Vector of cards based on the file.
      */
     static std::vector<Card *>
-    parseLinesForCards(const CardDatabase &cardDatabase, const std::vector<std::string> &fileLines);
+    parseLinesForCards(const CardDatabase &cardDatabase, const std::vector <std::string> &fileLines);
 
 
     /**
@@ -40,13 +40,13 @@ private:
      * @param[in] files Contents of the DeckParser::DECKS_DIRECTORY
      * @return index of the file chosen
      */
-    static size_t userDeckIndexInput(const std::vector<std::string> &files);
+    static size_t userDeckIndexInput(const std::vector <std::string> &files);
 
     /**
      * Displays all files' names in the DeckParser::DECK_DIRECTORY directory
      * @param[in] files Container of all the names of files in DeckParser::DECK_DIRECTORY directory
      */
-    static void listDecksMessage(const std::vector<std::string> &files);
+    static void listDecksMessage(const std::vector <std::string> &files);
 
     /**
      * Prompts the user to select a deck
@@ -79,7 +79,7 @@ public:
      * Finds all non-trivial (excluding current and parent folder references) files in the DeckParser::DECK_DIRECTORY directory
      * @return names of files within DeckParser::DECK_DIRECTORY directory
      */
-    static std::vector<std::string> getDecksFromDirectory();
+    static std::vector <std::string> getDecksFromDirectory();
 };
 
 

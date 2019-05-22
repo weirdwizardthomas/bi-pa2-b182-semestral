@@ -63,7 +63,7 @@ private:
      * @param[in] fileLines Lines representing individual cards
      * @param mode Mode by which the lines are validated
      */
-    static void validLines(const std::vector<std::string> &fileLines, const std::string &mode = "");
+    static void validLines(const std::vector <std::string> &fileLines, const std::string &mode = "");
 
     /**
      * Constructs a path to the file in the CardDatabase::CARDS_DIRECTORY directory
@@ -77,7 +77,7 @@ private:
      * @param[in] filePath Path to the file to be processed
      * @return Container of individual lines of the file
      */
-    static std::vector<std::string> getFileLines(const std::string &filePath);
+    static std::vector <std::string> getFileLines(const std::string &filePath);
 
 public:
     static const char *CARD_DIRECTORY; /*<! Path to the directory containing card files */
@@ -114,7 +114,7 @@ public:
      * @param[in] delimiter Text by which the phrase is to be split
      * @return Container of substrings split by the delimiter
      */
-    static std::list<std::string> split(std::string phrase, const std::string &delimiter);
+    static std::list <std::string> split(std::string phrase, const std::string &delimiter);
 
     /**
      * Reads a line from a  file stream and parses it for a pair of field-value

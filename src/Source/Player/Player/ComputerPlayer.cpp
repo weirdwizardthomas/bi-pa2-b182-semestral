@@ -107,7 +107,7 @@ Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &ca
 
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
+    list <string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != ComputerPlayer::REMAINING_CARDS_LEAD)
         throw ParseError();
     player->remainingCards = stoi(parsed.back());

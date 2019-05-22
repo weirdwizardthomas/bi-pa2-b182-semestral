@@ -11,6 +11,5 @@ int main() {
     mainMenu.loop();
     cout << "Exiting." << endl;
     return EXIT_SUCCESS;
-
 }
 

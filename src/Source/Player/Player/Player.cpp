@@ -39,7 +39,7 @@ bool Player::isStanding() const { return board.isStanding(); }
 Player *Player::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent) {
     string nameField;
     getline(file, nameField);
-    list<string> parsed = CardDatabase::split(nameField, Game::FILE_FIELD_VALUE_DELIMITER);
+    list <string> parsed = CardDatabase::split(nameField, Game::FILE_FIELD_VALUE_DELIMITER);
     if (parsed.front() != Player::NAME_FILE_LEAD)
         throw ParseError();
 

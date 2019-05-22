@@ -96,7 +96,7 @@ void PlayerBoard::saveToFile(ofstream &file) const {
     file << PlayerBoard::CURRENT_SCORE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << currentScore << endl;
     file << PlayerBoard::CARDS_PLAYED_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << showCardsPlayed() << endl;
     file << PlayerBoard::IS_STANDING_LEAD << Game::FILE_FIELD_VALUE_DELIMITER
-        << (standing ? IS_STANDING_VALUE : IS_NOT_STANDING_VALUE) << endl;
+         << (standing ? IS_STANDING_VALUE : IS_NOT_STANDING_VALUE) << endl;
     file << PlayerBoard::MAIN_DECK_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << mainDeck.size() << endl;
 
     for (size_t i = 0; i < mainDeck.size(); ++i)
@@ -141,14 +141,14 @@ vector<int> PlayerBoard::loadPlayedCards(ifstream &file) {
     return cards;
 }
 
-vector<BasicCard> PlayerBoard::loadMainDeck(ifstream &file) {
+vector <BasicCard> PlayerBoard::loadMainDeck(ifstream &file) {
     size_t cardCount = stoull(
             CardDatabase::loadValue(PlayerBoard::MAIN_DECK_LEAD, Game::FILE_FIELD_VALUE_DELIMITER, file));
-    vector<BasicCard> cards;
+    vector <BasicCard> cards;
     for (size_t i = 0; i < cardCount; ++i) {
         string input;
         getline(file, input);
-        list<string> parsed = CardDatabase::split(input, PlayerBoard::ITEM_LIST_DELIMITER);
+        list <string> parsed = CardDatabase::split(input, PlayerBoard::ITEM_LIST_DELIMITER);
         cards.emplace_back(stoi(parsed.back()));
     }
 
