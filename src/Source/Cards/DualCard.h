@@ -30,7 +30,7 @@ protected:
 
     /**
      * Informs the user of the value they have selected
-     * @param value Value to be displayed to the user
+     * @param[in] value Value to be displayed to the user
      */
     void valueChosenMessage(int value) const;
 
@@ -52,15 +52,20 @@ protected:
 public:
     static const char *DUAL_DELIMITER;
 
+    /**
+     * Creates an instance with two values as its members
+     * @param[in] left First value to be added to the instance
+     * @param[in] right Second value to be added to the instance
+     */
     DualCard(int left, int right);
 
     ~DualCard() override = default;
 
     /**
      * Presents the player with two DualCard::values to choose from to be played
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
+     * @param[in] playedCards Cards previously played by the current player
+     * @param[in] currentScore Current player's current round's score
+     * @param[in] opponentScore Opponent's current round's score
      * @return One of the user selected values
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;

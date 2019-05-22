@@ -68,6 +68,10 @@ public:
 
     virtual ~Player() = default;
 
+    /**
+     * Creates an instance with the 'name' as its Player::name
+     * @param[in] name Name to be added as a member of the instance
+     */
     explicit Player(std::string name);
 
     /**

@@ -86,10 +86,13 @@ public:
     static const char *FLIP_CARD; /*<! Name of the file containing FlipCard records */
 
     /**
-     * Loads all Card from their files into a database.
+     * Loads all Card from their files into a database
      */
     CardDatabase();
 
+    /**
+     * Destroys all the Card loaded by the instance
+     */
     ~CardDatabase();
 
     /**

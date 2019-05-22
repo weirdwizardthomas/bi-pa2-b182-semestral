@@ -112,6 +112,9 @@ public:
     static const char *RIGHT_INDEX_BRACKET;
 
     //Constructors--------------------------------------------
+    /**
+     * Creates an instance with an instantiated random number generator
+     */
     Deck();
 
     /**

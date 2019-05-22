@@ -22,7 +22,7 @@ private:
 public:
     /**
      * Creates an instance of BasicCard with value 'value'
-     * @param value
+     * @param[in] value Value to be put into BasicCard::value
      * @throws invalid_argument if the 'value' does not fit in Card::LOWER_BOUND - Card::UPPER_BOUND
      */
     explicit BasicCard(int value);

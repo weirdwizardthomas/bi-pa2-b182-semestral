@@ -94,7 +94,7 @@ public:
     static const char *ITEM_INDEX_LEAD;/*<! Leading string for item index in a file */
 
     /**
-     * Creates an instance  with a generated main deck, with other attributes set to default.
+     * Creates an instance  with a generated main deck, with other attributes set to default
      */
     PlayerBoard();
 

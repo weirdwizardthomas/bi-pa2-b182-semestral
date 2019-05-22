@@ -24,14 +24,14 @@ protected:
 
     /**
      * Takes input from the player and either passes the turn or plays a card from the player's hand
-     * @param opponentScore Opponent's current score
+     * @param[in] opponentScore Opponent's current score
      * @return True if player is passing their turn or selects a valid Card to play, false otherwise
      */
     bool playCard(int opponentScore);
 
     /**
      * Saves the instance to a file
-     * @param file File into which the instance is to be saved
+     * @param[in] file File into which the instance is to be saved
      */
     void saveToFile(std::ofstream &file) const override;
 
@@ -68,11 +68,15 @@ protected:
 public:
     static const char *HUMAN_FILE_LEAD;
 
+    /**
+     * Creates an instance with 'name' as its Player::name
+     * @param[in] name Name to be added as a member of the instance
+     */
     explicit HumanPlayer(const std::string &name);
 
     /**
      * Queries the player to either create a new deck of cards, or load an existing one from DeckParser::DECK_DIRECTORY
-     * @param cardDatabase Database of all available cards
+     * @param[in] cardDatabase Database of all available cards
      */
     void chooseDeck(const CardDatabase &cardDatabase) override;
 
@@ -83,23 +87,23 @@ public:
 
     /**
      * Loads the instance from a file
-     * @param file Stream containing the contents of the game from which the player data will be read
-     * @param cardDatabase Database of all the available cards
-     * @param opponent Pointer to the opposing player.
+     * @param[in] file Stream containing the contents of the game from which the player data will be read
+     * @param[in] cardDatabase Database of all the available cards
+     * @param[in] opponent Pointer to the opposing player.
      * @return Dynamically allocated instance of HumanPlayer with data read from the file
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
     /**
      * Saves the string identifying the HumanPlayer class and instance within a file
-     * @param file File to which the class identifier and instance identifier is saved to
+     * @param[in] file File to which the class identifier and instance identifier is saved to
      */
     void saveNameToFile(std::ofstream &file) const override;
 
     /**
      * Queries the current player to take their turn. The player decides whether they want to stand
      * a card is automatically played from their main deck' and then the player picks a card from their hand to play
-     * @param opponentScore The opposing side's current score
+     * @param[in] opponentScore The opposing side's current score
      */
     void takeTurn(int opponentScore) override;
 

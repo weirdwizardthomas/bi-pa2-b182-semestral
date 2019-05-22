@@ -30,14 +30,17 @@ public:
     static const int RIGHT;
     static const char *SIGN_DELIMITER;
 
+    /**
+     * Constructs an instance with FlexCard::LEFT and FlexCard::RIGHT as its two member values
+     */
     FlexCard();
 
     //Methods-------------------------------
     /**
      * Presents the player with a choice of sign and FlexCard::LEFT or FlexCard::RIGHT to be played
-     * @param playedCards Cards previously played by the current player
-     * @param currentScore Current player's current round's score
-     * @param opponentScore Opponent's current round's score
+     * @param[in] playedCards Cards previously played by the current player
+     * @param[in] currentScore Current player's current round's score
+     * @param[in] opponentScore Opponent's current round's score
      * @return A positive or negative FlexCard::LEFT or FlexCard::RIGHT value
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;

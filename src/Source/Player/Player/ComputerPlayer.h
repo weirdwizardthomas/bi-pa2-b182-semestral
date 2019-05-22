@@ -30,6 +30,10 @@ public:
     static const char *COMPUTER_FILE_LEAD;
     static const char *REMAINING_CARDS_LEAD;
 
+    /**
+     * Creates an instance that has access to the opponent's instance
+     * @param opponent Opponent's instance to be assigned to this instance
+     */
     explicit ComputerPlayer(Player *opponent);
 
     /**

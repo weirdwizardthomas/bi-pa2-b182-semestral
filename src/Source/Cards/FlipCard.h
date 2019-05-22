@@ -21,9 +21,9 @@ public:
     static const char *FLIP_SIGN;
 
     /**
-     * Initialises the FlipCard::values with two values
-     * @param[in] left First value to be put into FlipCard::values
-     * @param[in] right Second value to be put into FlipCard::values
+     * Initialises the instance with two members
+     * @param[in] left First value to be added to the instance
+     * @param[in] right Second value to be added to the instance
      */
     FlipCard(int left, int right);
 
@@ -32,7 +32,7 @@ public:
      * @param[in,out] playedCards Cards previously played by the current player
      * @param[in] currentScore Current player's current round's score
      * @param[in] opponentScore Opponent's current round's score
-     * @return 0, as the card itself does not add any new value
+     * @return 0
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
