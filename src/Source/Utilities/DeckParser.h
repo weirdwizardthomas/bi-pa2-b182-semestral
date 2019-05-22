@@ -20,6 +20,7 @@ private:
     /**
      * Loads content of a single file, represented by a file in DeckParser::DECKS_DIRECTORY_PATH
      * @param[in] file Name of the file to be opened
+     * @throws InvalidFileException if the file does not exist or is corrupted
      * @return Individual lines of the file
      */
     static const std::vector <std::string> loadFileContent(const std::string &file);
@@ -71,6 +72,7 @@ public:
     /**
      * Constructs a deck based on contents of a user chosen file within the DeckParser::DECK_DIRECTORY directory
      * @param[in] cardDatabase Database of all the current cards
+     * @throws InvalidFileException if the file cannot be opened or is corrupted
      * @return Deck containing cards corresponding to records in a file
      */
     static Deck loadFromFile(const CardDatabase &cardDatabase);

@@ -39,9 +39,14 @@ private:
      */
     bool invoke(size_t itemIndex) const;
 
-
+    /**
+     * Prompts the user to a select an item from the menu list
+     */
     static void selectItemPrompt();
 
+    /**
+     * Informs the user that their input is not valid
+     */
     void invalidItemChoiceMessage() const;
 
 public:

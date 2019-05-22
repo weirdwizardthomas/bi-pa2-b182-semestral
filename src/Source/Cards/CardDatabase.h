@@ -85,6 +85,9 @@ public:
     static const char *DUAL_CARD; /*<! Name of the file containing DualCard records */
     static const char *FLIP_CARD; /*<! Name of the file containing FlipCard records */
 
+    /**
+     * Loads all Card from their files into a database.
+     */
     CardDatabase();
 
     ~CardDatabase();

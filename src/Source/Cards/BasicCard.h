@@ -20,6 +20,11 @@ private:
     int value;
 
 public:
+    /**
+     * Creates an instance of BasicCard with value 'value'
+     * @param value
+     * @throws invalid_argument if the 'value' does not fit in Card::LOWER_BOUND - Card::UPPER_BOUND
+     */
     explicit BasicCard(int value);
 
     ~BasicCard() override = default;

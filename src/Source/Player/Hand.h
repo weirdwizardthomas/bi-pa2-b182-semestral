@@ -32,6 +32,7 @@ public:
      * Loads the Hand from its text representation from a file
      * @param[in] file File from which the Hand is loaded
      * @param[in] cardDatabase Database containing all the available cards
+     * @throws ParseError if a line within a file is ill-formatted
      * @return Hand instance built from a file's contents
      */
     static Hand loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
@@ -42,6 +43,7 @@ public:
      * @param[in] playedCards Cards played by the this instance's owner so far
      * @param[in] currentScore Instance's owner's current score
      * @param[in] opponentScore Instance's owner's opponent's current score
+     * @throws invalid_argument if the 'cardIndex' is out of bounds of Hand::cards
      * @return Value of the played card, 0 if the card does not add any value
      */
     int playCard(size_t cardIndex, std::vector<int> &playedCards, int currentScore, int opponentScore);

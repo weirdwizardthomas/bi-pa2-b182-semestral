@@ -73,18 +73,21 @@ private:
 
     /**
      * Locates all files, representing a game in progress, in the Game::SAVED_FOLDER directory
+     * @throws CannotOpenDirectory if the directory is inaccessible
      * @return names of all files in the Game::SAVED_FOLDER directory
      */
     static std::vector <std::string> getSavedGames();
 
     /**
      * Queries the user to save a file with a custom filename within the Game::SAVED_FOLDER directory
+     * @throws InvalidFileException if file cannot be opened.
      */
     void manualSave() const;
 
     /**
      * Loads both players based on the contents of input stream
      * @param[in] file File containing game's saved data
+     * @throws InvalidFileException if file is ill-formatted
      * @param[in] cardDatabase Database of all cards
      */
     void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
@@ -92,6 +95,7 @@ private:
     /**
      * Saves the current state of the game to a file
      * @param[in] outputPath Path to the saving file
+     * @throws InvalidFileException if file cannot be opened
      */
     void saveToFile(const std::string &outputPath) const;
 
@@ -150,7 +154,7 @@ private:
     static void enterFileNameQuery();
 
     /**
-     * Shows a message to tell players the game has commenced.
+     * Shows a message to tell players the game has commenced
      */
     void gameStartMessage() const;
 
@@ -227,6 +231,7 @@ public:
     /**
      * Queries the user to select a save game and loads it to a playable state
      * @param[in] cardDatabase Database of all available cards
+     * @throws InvalidFileException if file cannot be opened or is ill-formatted
      * @return Dynamically allocated instance loaded from a selected file
      */
     static Game loadFromFile(const CardDatabase &cardDatabase);

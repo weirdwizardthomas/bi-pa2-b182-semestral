@@ -144,6 +144,7 @@ public:
 
     /**
      * Saves the deck's contents to a readable form in the DeckParser::DECKS_DIRECTORY to be reconstructed later
+     * @throws InvalidFileException if file cannot be opened
      */
     void saveToFile() const;
 

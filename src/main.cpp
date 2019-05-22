@@ -9,7 +9,6 @@ using namespace std;
 int main() {
     MainMenu mainMenu;
     mainMenu.loop();
-    cout << "Exiting." << endl;
     return EXIT_SUCCESS;
 }
 
