@@ -26,7 +26,6 @@ protected:
     std::string name;
     PlayerBoard board;
 
-    //Methods------------------------------------------------------------
     /**
      * Plays a random card from the main deck
      * @return BasicCard::value of the picked card
@@ -39,6 +38,11 @@ protected:
      * @param[in] opponentScore Opposing player's score
      */
     void boardStatusMessage(int opponentScore) const;
+
+    /**
+     * Informs the user that they are passing their turn
+     */
+    void isPassingTurnMessage() const;
 
     /**
      * Informs the players that this player is standing and thus skipping their turns for this round
@@ -56,12 +60,6 @@ protected:
      */
     void standPrompt() const;
 
-    /**
-     * Informs the user that they are passing their turn
-     */
-    void isPassingTurnMessage() const;
-
-
 public:
     static const char *NAME_FILE_LEAD;
     static const char *PLAYER_TYPE_DELIMITER;
@@ -75,6 +73,11 @@ public:
     explicit Player(std::string name);
 
     /**
+     * Increments the player's counter of rounds won
+     */
+    void addPoint();
+
+    /**
      * Adds a specific Deck for the player
      * @param[in] cardDatabase Database of all available cards
      */
@@ -85,33 +88,6 @@ public:
      */
     virtual void drawHand() = 0;
 
-    /** If the user is not 'standing' = skipping their turn,
-     * queries the user to stand up or play, plays the top card of the playerBoard::mainDeck
-     * and prompts the user to choose a card to play from their hand
-     * The player may choose to stand up before the playerBoard::mainDeck card is auto-played, and may choose not to play a card
-     * from their hand
-     * @param[in] opponentScore Opposing player's current round score
-     */
-    virtual void takeTurn(int opponentScore) = 0;
-
-    //Setters------------------------------------------------------------
-    /**
-     * Increments the player's counter of rounds won
-     */
-    void addPoint();
-
-    /**
-     * Resets all the round related attributes of the player to default values -
-     * PlayerBoard::currentScore, PlayerBoard::playedCards, PlayerBoard::standing
-     */
-    void resetBoard();
-
-    /**
-     * Sets the PlayerBoard::standing attribute to true
-     */
-    void stand();
-
-    //Getters------------------------------------------------------------
     /**
      * Gets the current round's score
      * @return Current round's score
@@ -149,12 +125,6 @@ public:
     bool isStanding() const;
 
     /**
-     * Saves the instance in a text representation in a file
-     * @param[in] file Output file into which the instance is being saved
-     */
-    virtual void saveToFile(std::ofstream &file) const = 0;
-
-    /**
      * Loads the player from its text representation from a file
      * The type of player and the subsequent specific attributes are determined by the leading text in the file
      * Cards are found by the their description in the file within the database
@@ -166,11 +136,37 @@ public:
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent = nullptr);
 
     /**
+     * Resets all the round related attributes of the player to default values -
+     * PlayerBoard::currentScore, PlayerBoard::playedCards, PlayerBoard::standing
+     */
+    void resetBoard();
+
+    /**
+     * Saves the instance in a text representation in a file
+     * @param[in] file Output file into which the instance is being saved
+     */
+    virtual void saveToFile(std::ofstream &file) const = 0;
+
+    /**
      * Saves the string identifying the specific child class of this class within a file,
      * and the specific name of the instance.
      * @param[in] file Stream in which the identifier and the name are to be saved
      */
     virtual void saveNameToFile(std::ofstream &file) const = 0;
+
+    /**
+     * Sets the PlayerBoard::standing attribute to true
+     */
+    void stand();
+
+    /** If the user is not 'standing' = skipping their turn,
+     * queries the user to stand up or play, plays the top card of the playerBoard::mainDeck
+     * and prompts the user to choose a card to play from their hand
+     * The player may choose to stand up before the playerBoard::mainDeck card is auto-played, and may choose not to play a card
+     * from their hand
+     * @param[in] opponentScore Opposing player's current round score
+     */
+    virtual void takeTurn(int opponentScore) = 0;
 };
 
 #endif //PAZAAK_PLAYER_H

@@ -32,7 +32,6 @@ private:
     std::vector<Card *> cards;
     RandomNumberGenerator randomGenerator;
 
-    //Methods-------------------------------------------------
     /**
      * Adds a Card pointer to the Deck::cards
      * @param[in] card Pointer to a card to be added
@@ -59,7 +58,7 @@ private:
      */
     static bool fileAlreadyExists(const std::vector <std::string> &files, const std::string &filename);
 
-    //Messages and prompts----------------------------------------------------------------------------------------------
+    //Messages-and-prompts-----------------------------------------------
     /**
      * Prompts the user to enter a unique name for the file representing the deck
      */
@@ -111,7 +110,6 @@ public:
     static const char *LEFT_INDEX_BRACKET;
     static const char *RIGHT_INDEX_BRACKET;
 
-    //Constructors--------------------------------------------
     /**
      * Creates an instance with an instantiated random number generator
      */
@@ -131,7 +129,6 @@ public:
      */
     explicit Deck(std::vector<Card *> cards);
 
-    //Methods--------------------------------------------------
     /**
      * Randomly selects up to Deck::MAX_CARDS_DRAWN elements of Deck::cards (if there are enough, otherwise fewer),
      * removes them from the instance and passes them
@@ -140,10 +137,12 @@ public:
     std::vector<Card *> drawCardsFromDeck();
 
     /**
-     * Converts the deck's contents to a format suitable for saving to a file
-     * @return Container of lines, each representing a single card from the deck
+     * Loads the deck from its text representation file
+     * @param file File containing the deck's text representation
+     * @param cardDatabase Database of all available cards
+     * @return Instance loaded from file
      */
-    std::list <std::string> toLines() const;
+    static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
     /**
      * Saves the deck's contents to a readable form in the DeckParser::DECKS_DIRECTORY to be reconstructed later
@@ -158,21 +157,18 @@ public:
     void saveToFile(std::ofstream &file) const;
 
     /**
+     * Converts the deck's contents to a format suitable for saving to a file
+     * @return Container of lines, each representing a single card from the deck
+     */
+    std::list <std::string> toLines() const;
+
+    /**
      * Displays contents of the cards' container in the output stream
      * @param[in] out Stream in which the Deck will be placed
      * @param[in] deck Deck to be placed into the stream
      * @return  out stream containing the deck's contents
      */
     friend std::ostream &operator<<(std::ostream &out, const Deck &deck);
-
-    /**
-     * Loads the deck from its text representation file
-     * @param file File containing the deck's text representation
-     * @param cardDatabase Database of all available cards
-     * @return Instance loaded from file
-     */
-    static Deck loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
-
 };
 
 #endif //PAZAAK_DECK_H

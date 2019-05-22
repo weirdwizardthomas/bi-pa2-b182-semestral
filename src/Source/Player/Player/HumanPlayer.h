@@ -13,6 +13,7 @@
  */
 class HumanPlayer : public Player {
 protected:
+    //Attributes---------------------------------------------------------
     Deck deck;
     Hand hand;
 
@@ -35,25 +36,16 @@ protected:
      */
     void saveToFile(std::ofstream &file) const override;
 
+    //Messages-and-prompts-----------------------------------------------
     /**
-     * Shows the deck's elements to the player
+     * Prompts the player to select a card to play or to pass their turn
      */
-    void printDeck() const;
-
-    /**
-     * Informs the user that the input is not valid for the given scenario
-     */
-    void invalidInputMessage() const;
+    void actionPrompt() const;
 
     /**
      * Prompts the user to confirm their deck selection
      */
     void deckApprovalPrompt() const;
-
-    /**
-     * Prompts the player to select a card to play or to pass their turn
-     */
-    void actionPrompt() const;
 
     /**
      * Prompts the player to create a new deck or load an existing one from a file
@@ -64,6 +56,16 @@ protected:
      * Informs the players which player is to pick their deck
      */
     void choosingDeckMessage() const;
+
+    /**
+     * Informs the user that the input is not valid for the given scenario
+     */
+    void invalidInputMessage() const;
+
+    /**
+     * Shows the deck's elements to the player
+     */
+    void printDeck() const;
 
 public:
     static const char *HUMAN_FILE_LEAD;

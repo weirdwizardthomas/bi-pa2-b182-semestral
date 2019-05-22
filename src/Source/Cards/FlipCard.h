@@ -27,6 +27,9 @@ public:
      */
     FlipCard(int left, int right);
 
+
+    std::string getDescription() const override;
+
     /**
      * Swaps the signs on all cards with value equal to this card's effects
      * @param[in,out] playedCards Cards previously played by the current player
@@ -36,7 +39,6 @@ public:
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
-    std::string getDescription() const override;
 };
 
 

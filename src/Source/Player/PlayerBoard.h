@@ -19,7 +19,7 @@
 class PlayerBoard {
 
 private:
-    //Attributes--------------------------
+    //Attributes---------------------------------------------------------
     int currentScore; /*<! Amount of points scored in the current round */
     size_t roundsWon; /*<! Amount of rounds won in the current game*/
     bool standing; /*<! If the player is standing, they are skipping all of their turns within the current round */
@@ -100,7 +100,7 @@ public:
 
     /**
      * Saves the board's contents to a text representation within a file
-     * @param file Stream in which the board is to be saved
+     * @param[in] file Stream in which the board is to be saved
      */
     void saveToFile(std::ofstream &file) const;
 
@@ -160,7 +160,7 @@ public:
 
     /**
      * Adds a card's value to PlayerBoard::playedCards
-     * @param cardValue Value to be added to the end of PlayerBoard::playedCards
+     * @param[in] cardValue Value to be added to the end of PlayerBoard::playedCards
      */
     void addPlayedCard(int cardValue);
 
@@ -172,9 +172,9 @@ public:
 
     /**
      * Loads the instance from its text representation from a file
-     * @param file File from which the instance will be instantiated
-     * @param database Database containing all the available cards
-     * @return PlayerBoard instance loaded from the file
+     * @param[in] file File from which the instance will be instantiated
+     * @param[in] database Database containing all the available cards
+     * @return[ PlayerBoard instance loaded from the file
      */
     static PlayerBoard loadFromFile(std::ifstream &file, const CardDatabase &database);
 

@@ -19,9 +19,10 @@
 class DualCard : public Card {
 
 protected:
-    //Attributes----------------------------
+    //Attributes---------------------------------------------------------
     std::pair<int, int> values;
 
+    //Messages-and-prompts-----------------------------------------------
     /**
      * Queries the user to choose between the card's DualCard::values
      * @return User selected card value

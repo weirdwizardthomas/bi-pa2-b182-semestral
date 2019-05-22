@@ -15,6 +15,7 @@
  */
 class Hand {
 private:
+    //Attributes---------------------------------------------------------
     std::vector<Card *> cards;
 
 public:

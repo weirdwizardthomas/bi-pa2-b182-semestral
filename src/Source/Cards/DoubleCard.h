@@ -14,8 +14,9 @@
 class DoubleCard : public Card {
 
 public:
-
     ~DoubleCard() override = default;
+
+    std::string getDescription() const override;
 
     /**
      * Removes the last played card and returns a card with a value double of it
@@ -27,9 +28,6 @@ public:
      * @return Value of the last card doubled
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
-
-    std::string getDescription() const override;
-
 };
 
 

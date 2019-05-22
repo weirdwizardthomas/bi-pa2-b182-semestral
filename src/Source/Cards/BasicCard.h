@@ -17,6 +17,7 @@
 class BasicCard : public Card {
 
 private:
+    //Attributes---------------------------------------------------------
     int value;
 
 public:
@@ -28,6 +29,8 @@ public:
     explicit BasicCard(int value);
 
     ~BasicCard() override = default;
+
+    std::string getDescription() const override;
 
     /**
      * Gets the cards BasicCard::value
@@ -43,9 +46,6 @@ public:
      * @return  BasicCard::value
      */
     int play() const;
-
-    std::string getDescription() const override;
-
 
 };
 

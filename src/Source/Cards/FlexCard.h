@@ -14,6 +14,7 @@
  */
 class FlexCard : public DualCard {
 private:
+    //Messages-and-prompts-----------------------------------------------
     /**
      * Constructs a string containing both signs split by FlexCard::SIGN_DELIMITER
      * @return string containing either sign
@@ -35,7 +36,8 @@ public:
      */
     FlexCard();
 
-    //Methods-------------------------------
+    std::string getDescription() const override;
+
     /**
      * Presents the player with a choice of sign and FlexCard::LEFT or FlexCard::RIGHT to be played
      * @param[in] playedCards Cards previously played by the current player
@@ -45,7 +47,6 @@ public:
      */
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
-    std::string getDescription() const override;
 
 };
 

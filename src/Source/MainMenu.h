@@ -27,10 +27,9 @@ private:
     void listItems() const;
 
     /**
-     * Queries the user to select an index in the MainMenu::items range
-     * @return index of the selected item
+     * Informs the user that their input is not valid
      */
-    size_t selectItem() const;
+    void invalidItemChoiceMessage() const;
 
     /**
      * Triggers a specific item from the MainMenu::items
@@ -40,14 +39,25 @@ private:
     bool invoke(size_t itemIndex) const;
 
     /**
+     * Queries the user to select an index in the MainMenu::items range
+     * @return index of the selected item
+     */
+    size_t selectItem() const;
+
+    /**
      * Prompts the user to a select an item from the menu list
      */
     static void selectItemPrompt();
 
     /**
-     * Informs the user that their input is not valid
+     * Displays the basic information about the project to the user
      */
-    void invalidItemChoiceMessage() const;
+    void printHeader() const;
+
+    /**
+     * Queries the user to input a name to represent them within the programme
+     */
+    void playerNameQuery() const;
 
 public:
     static const char LEFT_INDEX_WRAPPER;
@@ -61,16 +71,6 @@ public:
      * Loops forever until the 'Quit' item is selected
      * */
     void loop() const;
-
-    /**
-     * Displays the basic information about the project to the user
-     */
-    void printHeader() const;
-
-    /**
-     * Queries the user to input a name to represent them within the programme
-     */
-    void playerNameQuery() const;
 
     /**
      * Gets a string representing the user in the game

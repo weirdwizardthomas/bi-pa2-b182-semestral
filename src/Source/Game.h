@@ -14,10 +14,10 @@
  */
 class Game {
 private:
-    //Attributes------------------------------
+    //Attributes----------------------------------------------
     std::pair<Player *, Player *> players;
     size_t roundNumber;
-    //Methods--------------------------------
+
     /**
      * Saves the game's current status, including all it's elements to a file to be re-constructable later
      */
@@ -93,16 +93,14 @@ private:
     void loadPlayersFromFile(std::ifstream &file, const CardDatabase &cardDatabase);
 
     /**
-     * Saves the current state of the game to a file
-     * @param[in] outputPath Path to the saving file
-     * @throws InvalidFileException if file cannot be opened
-     */
-    void saveToFile(const std::string &outputPath) const;
-
-    /**
      * Sets the Player::board element of either player to a default state
      */
     void resetBoards();
+
+    /**
+     * Stops the programme from any other actions until the user prompts it to continue
+     */
+    static void returnToMainMenu();
 
     /**
      * Plays a round between the two players
@@ -115,6 +113,13 @@ private:
      * @return True if players have equal score, false otherwise
      */
     bool roundIsTie() const;
+
+    /**
+     * Saves the current state of the game to a file
+     * @param[in] outputPath Path to the saving file
+     * @throws InvalidFileException if file cannot be opened
+     */
+    void saveToFile(const std::string &outputPath) const;
 
     /**
      * Swaps between currently playing and currently not playing player
@@ -132,12 +137,7 @@ private:
      */
     void turn(Player *currentPlayer);
 
-    /**
-     * Stops the programme from any other actions until the user prompts it to continue
-     */
-    static void returnToMainMenu();
-
-    //Messages & prompts-----------------------
+    //Messages-and-prompts-----------------------------------------------
     /**
      * Queries the user to press any key to return to main menu
      */
@@ -220,14 +220,6 @@ public:
 
     ~Game();
 
-    //Methods--------------------------------
-    /**
-     * Starts a game between the two players. The game is divided into a set of rounds
-     * in which players take turn alternatively
-     * First player to win Game::ROUNDS number of rounds wins the game
-     */
-    void play();
-
     /**
      * Queries the user to select a save game and loads it to a playable state
      * @param[in] cardDatabase Database of all available cards
@@ -235,6 +227,13 @@ public:
      * @return Dynamically allocated instance loaded from a selected file
      */
     static Game loadFromFile(const CardDatabase &cardDatabase);
+
+    /**
+        * Starts a game between the two players. The game is divided into a set of rounds
+        * in which players take turn alternatively
+        * First player to win Game::ROUNDS number of rounds wins the game
+        */
+    void play();
 
     /**
      * Clears the output stream by sending a Game::ROWS_CLEARED number of new lines into it

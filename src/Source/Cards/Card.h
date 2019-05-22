@@ -31,6 +31,7 @@ protected:
      */
     std::string offsetPositiveNumber(int x) const;
 
+    //Messages-and-prompts-----------------------------------------------
     /**
      * Queries the user to choose between a positive and negative sign.
      * @return PLUS_SIGN or MINUS_SIGN.

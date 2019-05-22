@@ -12,6 +12,7 @@
  */
 class RandomNumberGenerator {
 private:
+    //Attributes---------------------------------------------------------
     std::mt19937 generator;
     std::uniform_int_distribution <size_t> distribution;
 public:

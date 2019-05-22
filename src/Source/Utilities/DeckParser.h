@@ -34,7 +34,6 @@ private:
     static std::vector<Card *>
     parseLinesForCards(const CardDatabase &cardDatabase, const std::vector <std::string> &fileLines);
 
-
     /**
      * Lists all existing decks within DeckParser::DECK_DIRECTORY directory
      * and queries the user  to pick a file's index
@@ -43,6 +42,7 @@ private:
      */
     static size_t userDeckIndexInput(const std::vector <std::string> &files);
 
+    //Messages-and-prompts-----------------------------------------------
     /**
      * Displays all files' names in the DeckParser::DECK_DIRECTORY directory
      * @param[in] files Container of all the names of files in DeckParser::DECK_DIRECTORY directory

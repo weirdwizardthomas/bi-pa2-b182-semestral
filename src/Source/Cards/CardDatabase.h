@@ -19,6 +19,7 @@
  */
 class CardDatabase {
 private:
+    //Attributes---------------------------------------------------------
     std::map<std::string, Card *> cards; /*<! Collection of all the available cards in game*/
 
     /**
@@ -103,6 +104,16 @@ public:
     Card *get(const std::string &key) const;
 
     /**
+     * Reads a line from a  file stream and parses it for a pair of field-value
+     * @throws ParseError if field and the parsed value mismatch
+     * @param[in] field Field to be found in the line
+     * @param[in] delimiter Delimiter by which the line is parsed
+     * @param[in] file File from which the line will be read
+     * @return The value of the field's complement
+     */
+    static std::string loadValue(const std::string &field, const std::string &delimiter, std::ifstream &file);
+
+    /**
      * Converts the CardDatabase::cards into vector representation.
      * @return Vector of pointers to Card in the database
      */
@@ -121,16 +132,6 @@ public:
      * @return Container of substrings split by the delimiter
      */
     static std::list <std::string> split(std::string phrase, const std::string &delimiter);
-
-    /**
-     * Reads a line from a  file stream and parses it for a pair of field-value
-     * @throws ParseError if field and the parsed value mismatch
-     * @param[in] field Field to be found in the line
-     * @param[in] delimiter Delimiter by which the line is parsed
-     * @param[in] file File from which the line will be read
-     * @return The value of the field's complement
-     */
-    static std::string loadValue(const std::string &field, const std::string &delimiter, std::ifstream &file);
 
     /**
      * Places the cards container's elements in the output stream

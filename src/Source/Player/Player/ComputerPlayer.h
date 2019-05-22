@@ -15,52 +15,37 @@
  */
 class ComputerPlayer : public Player {
 private:
+    //Attributes---------------------------------------------------------
     std::vector <std::pair<BasicCard, BasicCard>> deck;
     int remainingCards;
     Player *opponent;
 
     /**
      * Saves the string identifying ComputerPlayer class and instance within a file
-     * @param file File to which the class identifier and instance identifier is saved to
+     * @param[in] file File to which the class identifier and instance identifier is saved to
      */
     void saveNameToFile(std::ofstream &file) const override;
 
 public:
-
     static const char *COMPUTER_FILE_LEAD;
     static const char *REMAINING_CARDS_LEAD;
 
     /**
      * Creates an instance that has access to the opponent's instance
-     * @param opponent Opponent's instance to be assigned to this instance
+     * @param[in] opponent Opponent's instance to be assigned to this instance
      */
     explicit ComputerPlayer(Player *opponent);
-
-    /**
-     * Increases the ComputerPlayer::remainingCards counter by up to Deck:MAX_CARDS_DRAWN.
-     */
-    void drawHand() override;
-
-    /**
-     * Saves the instance to a file
-     * @param[in] file File into which the instance will be saved
-     */
-    void saveToFile(std::ofstream &file) const override;
-
-    /**
-     * Evaluates the next auto-played card and the possible remaining cards in deck to stand
-     * or play a card from the deck
-     * Finds the most optimal card to play to stay ahead of the opponent with the lowest advantage
-     * without breaking the threshold
-     * @param[in] opponentScore Score of the opposing player
-     */
-    void takeTurn(int opponentScore) override;
 
     /**
      * Loads a set of flexible BasicCard to ComputerPlayer::deck
      * @param[in] cardDatabase Database of all available cards
      */
     void chooseDeck(const CardDatabase &cardDatabase) override;
+
+    /**
+     * Increases the ComputerPlayer::remainingCards counter by up to Deck:MAX_CARDS_DRAWN.
+     */
+    void drawHand() override;
 
     /**
      * Finds the lowest Card to play to attain a score higher than
@@ -85,6 +70,21 @@ public:
      * @return Dynamically allocated instance of ComputerPlayer
      */
     static Player *loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent);
+
+    /**
+     * Saves the instance to a file
+     * @param[in] file File into which the instance will be saved
+     */
+    void saveToFile(std::ofstream &file) const override;
+
+    /**
+     * Evaluates the next auto-played card and the possible remaining cards in deck to stand
+     * or play a card from the deck
+     * Finds the most optimal card to play to stay ahead of the opponent with the lowest advantage
+     * without breaking the threshold
+     * @param[in] opponentScore Score of the opposing player
+     */
+    void takeTurn(int opponentScore) override;
 };
 
 
