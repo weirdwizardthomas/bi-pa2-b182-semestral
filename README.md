@@ -1,4 +1,5 @@
-#Introduction
+# Introduction
+
 This is a C++ project developed for the purposes of the Programming and Algorithmics 2 course 
 at the Faculty of Information Technology of the Czech Technical University in Prague.
 
