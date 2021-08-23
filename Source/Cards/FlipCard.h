@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 08/02/19.
-//
-
 #ifndef PAZAAK_FLIPCARD_H
 #define PAZAAK_FLIPCARD_H
 

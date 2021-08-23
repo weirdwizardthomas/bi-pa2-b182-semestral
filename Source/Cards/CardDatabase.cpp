@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 04/05/19.
-//
-
 #include "CardDatabase.h"
 #include "FlipCard.h"
 #include "BasicCard.h"
@@ -26,12 +22,13 @@ CardDatabase::CardDatabase() {
 }
 
 CardDatabase::~CardDatabase() {
-    for (auto &record: cards)
+    for (auto &record: cards) {
         delete record.second;
+    }
 }
 
 void CardDatabase::loadFlipCards() {
-    vector<string> fileLines = getFileLines(pathOf(CardDatabase::FLIP_CARD));
+    vector <string> fileLines = getFileLines(pathOf(CardDatabase::FLIP_CARD));
     validLines(fileLines);
 
     for (const string &line : fileLines) {
@@ -42,7 +39,7 @@ void CardDatabase::loadFlipCards() {
 }
 
 void CardDatabase::loadDualCards() {
-    vector<string> fileLines = getFileLines(pathOf(DUAL_CARD));
+    vector <string> fileLines = getFileLines(pathOf(DUAL_CARD));
     validLines(fileLines);
 
     for (const string &line : fileLines) {
@@ -53,7 +50,7 @@ void CardDatabase::loadDualCards() {
 }
 
 void CardDatabase::loadBasicCards() {
-    vector<string> fileLines = getFileLines(pathOf(BASIC_CARD));
+    vector <string> fileLines = getFileLines(pathOf(BASIC_CARD));
     validLines(fileLines, BASIC_CARD);
 
     for (const string &line : fileLines) {
@@ -79,30 +76,37 @@ pair<int, int> CardDatabase::getDualValues(const string &line) {
     return {stoi(tokenisedLine.front()), stoi(tokenisedLine.back())};
 }
 
-vector<string> CardDatabase::getFileLines(const string &filePath) {
+vector <string> CardDatabase::getFileLines(const string &filePath) {
     fstream cardFile;
     cardFile.open(filePath, ios::in);
 
-    if (!cardFile.is_open())
+    if (!cardFile.is_open()) {
         throw InvalidFileException();
+    }
 
     string line;
-    vector<string> lines;
+    vector <string> lines;
 
-    while (getline(cardFile, line))
-        if (line.find_first_not_of(' ') != string::npos) //not an empty line
+    while (getline(cardFile, line)) {
+        if (line.find_first_not_of(' ') != string::npos) { //not an empty line
             lines.push_back(line);
+        }
+    }
 
     return lines;
 }
 
-string CardDatabase::pathOf(const string &filename) { return CARD_DIRECTORY + filename; }
+string CardDatabase::pathOf(const string &filename) {
+    return CARD_DIRECTORY + filename;
+}
 
-size_t CardDatabase::size() const { return cards.size(); }
+size_t CardDatabase::size() const {
+    return cards.size();
+}
 
-list<string> CardDatabase::split(string phrase, const string &delimiter) {
+list <string> CardDatabase::split(string phrase, const string &delimiter) {
     //Copied from https://stackoverflow.com/a/44495206'
-    list<string> list;
+    list <string> list;
     string s = string(move(phrase));
     size_t pos = 0;
     string token;
@@ -114,8 +118,9 @@ list<string> CardDatabase::split(string phrase, const string &delimiter) {
     list.push_back(s);
 
     //Added a modification to ensure that the line contained only one delimiter
-    if (list.size() != 2)
+    if (list.size() != 2) {
         throw InvalidFileException();
+    }
 
     return list;
 }
@@ -123,38 +128,45 @@ list<string> CardDatabase::split(string phrase, const string &delimiter) {
 string CardDatabase::loadValue(const string &field, const string &delimiter, ifstream &file) {
     string input;
     getline(file, input);
-    list<string> parsed = split(input, delimiter);
-    if (parsed.front() != field)
+    list <string> parsed = split(input, delimiter);
+
+    if (parsed.front() != field) {
         throw ParseError();
+    }
 
     return parsed.back();
 }
 
 std::vector<Card *> CardDatabase::toVector() const {
-    vector<Card *> asVector;
+    vector < Card * > asVector;
     asVector.reserve(cards.size());
 
-    for (const auto &card : cards)
+    for (const auto &card : cards) {
         asVector.push_back(card.second);
+    }
 
     return asVector;
 }
 
-void CardDatabase::validLines(const vector<string> &fileLines, const string &mode) {
+void CardDatabase::validLines(const vector <string> &fileLines, const string &mode) {
     if (mode == BASIC_CARD)
-        for (const string &line : fileLines)
+        for (const string &line : fileLines) {
             stoi(line);
+        }
     else {
         for (const string &line : fileLines) {
             size_t delimiterIndex = line.find(DualCard::DUAL_DELIMITER);
-            if (delimiterIndex == string::npos)
+
+            if (delimiterIndex == string::npos) {
                 throw InvalidFileException();
+            }
         }
     }
 }
 
 ostream &operator<<(ostream &out, const CardDatabase &cardDatabase) {
     size_t i = 0;
+
     for (auto &card : cardDatabase.cards) {
         cout << (i < 10 ? " " : "") //Offsets single digit indices
              << (i < 100 ? " " : "")  //Offsets double digit indices
@@ -165,10 +177,18 @@ ostream &operator<<(ostream &out, const CardDatabase &cardDatabase) {
     return out;
 }
 
-std::map<std::string, Card *>::const_iterator CardDatabase::cbegin() const { return cards.cbegin(); }
+std::map<std::string, Card *>::const_iterator CardDatabase::cbegin() const {
+    return cards.cbegin();
+}
 
-std::map<std::string, Card *>::const_iterator CardDatabase::cend() const { return cards.cend(); }
+std::map<std::string, Card *>::const_iterator CardDatabase::cend() const {
+    return cards.cend();
+}
 
-std::map<std::string, Card *>::iterator CardDatabase::begin() { return cards.begin(); }
+std::map<std::string, Card *>::iterator CardDatabase::begin() {
+    return cards.begin();
+}
 
-std::map<std::string, Card *>::iterator CardDatabase::end() { return cards.end(); }
+std::map<std::string, Card *>::iterator CardDatabase::end() {
+    return cards.end();
+}

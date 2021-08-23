@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 04/05/19.
-//
-
 #include "ComputerPlayer.h"
 #include "../../Game.h"
 #include "../../Utilities/Exceptions.h"
@@ -15,8 +11,12 @@ const char *ComputerPlayer::REMAINING_CARDS_LEAD{"Remaining cards"};
 ComputerPlayer::ComputerPlayer(Player *opponent) : Player("Computer"), remainingCards(0), opponent(opponent) {}
 
 void ComputerPlayer::saveNameToFile(std::ofstream &file) const {
-    file << Player::NAME_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER
-         << ComputerPlayer::COMPUTER_FILE_LEAD << Player::PLAYER_TYPE_DELIMITER << name << endl;
+    file << Player::NAME_FILE_LEAD
+         << Game::FILE_FIELD_VALUE_DELIMITER
+         << ComputerPlayer::COMPUTER_FILE_LEAD
+         << Player::PLAYER_TYPE_DELIMITER
+         << name
+         << endl;
 }
 
 void ComputerPlayer::takeTurn(int opponentScore) {
@@ -34,12 +34,11 @@ void ComputerPlayer::takeTurn(int opponentScore) {
         return;
     }
 
-
-    if (currentScore < Game::TARGET_SCORE && currentScore > opponentScore)
+    if (currentScore < Game::TARGET_SCORE && currentScore > opponentScore) {
         return;
+    }
 
     if (remainingCards != 0) {
-
         if (currentScore < Game::TARGET_SCORE && currentScore < opponentScore) {
             findPositive(opponentScore, currentScore);
             return;
@@ -49,9 +48,7 @@ void ComputerPlayer::takeTurn(int opponentScore) {
             findNegative(currentScore);
             return;
         }
-
     }
-
 }
 
 void ComputerPlayer::findNegative(int currentScore) {
@@ -83,8 +80,9 @@ void ComputerPlayer::findPositive(int opponentScore, int currentScore) {
 }
 
 void ComputerPlayer::chooseDeck(const CardDatabase &cardDatabase) {
-    for (int i = 1; i <= 6; ++i)
+    for (int i = 1; i <= 6; ++i) {
         deck.emplace_back(i, -i);
+    }
 }
 
 void ComputerPlayer::drawHand() {
@@ -94,29 +92,49 @@ void ComputerPlayer::drawHand() {
 void ComputerPlayer::saveToFile(std::ofstream &file) const {
     saveNameToFile(file);
     size_t i = 0;
-    file << ComputerPlayer::REMAINING_CARDS_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << remainingCards << endl;
-    file << Deck::DECK_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << deck.size() << endl;
-    for (const auto &card : deck)
-        file << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << card.first << endl;
+    file << ComputerPlayer::REMAINING_CARDS_LEAD
+         << Game::FILE_FIELD_VALUE_DELIMITER
+         << remainingCards
+         << endl
+         << Deck::DECK_FILE_LEAD
+         << Game::FILE_FIELD_VALUE_DELIMITER
+         << deck.size()
+         << endl;
+
+    for (const auto &card : deck) {
+        file << Deck::LEFT_INDEX_BRACKET
+             << i++
+             << Deck::RIGHT_INDEX_BRACKET
+             << card.first
+             << endl;
+    }
 
     board.saveToFile(file);
 }
 
 Player *ComputerPlayer::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase, Player *opponent) {
+
     auto *player = new ComputerPlayer(opponent);
 
     string input;
     getline(file, input);
-    list<string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
-    if (parsed.front() != ComputerPlayer::REMAINING_CARDS_LEAD)
+    list <string> parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
+
+    if (parsed.front() != ComputerPlayer::REMAINING_CARDS_LEAD) {
         throw ParseError();
+    }
+
     player->remainingCards = stoi(parsed.back());
 
     getline(file, input);
     parsed = CardDatabase::split(input, Game::FILE_FIELD_VALUE_DELIMITER);
-    if (parsed.front() != Deck::DECK_FILE_LEAD)
+
+    if (parsed.front() != Deck::DECK_FILE_LEAD) {
         throw ParseError();
+    }
+
     size_t cardCount = stoull(parsed.back());
+
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
         parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);

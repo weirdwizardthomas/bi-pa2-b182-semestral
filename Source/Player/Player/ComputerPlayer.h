@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 04/05/19.
-//
-
 #ifndef PAZAAK_COMPUTERPLAYER_H
 #define PAZAAK_COMPUTERPLAYER_H
 
@@ -9,12 +5,13 @@
 #include "Player.h"
 
 #include <queue>
+
 /**
  * Computer player representation that has a wider selection of flexible cards than the human player
  */
 class ComputerPlayer : public Player {
 private:
-    std::vector<std::pair<BasicCard, BasicCard>> deck;
+    std::vector <std::pair<BasicCard, BasicCard>> deck;
     int remainingCards;
     Player *opponent;
 
@@ -25,7 +22,6 @@ private:
     void saveNameToFile(std::ofstream &file) const override;
 
 public:
-
     static const char *COMPUTER_FILE_LEAD;
     static const char *REMAINING_CARDS_LEAD;
 

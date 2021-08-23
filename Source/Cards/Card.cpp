@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #include "Card.h"
 
 using namespace std;
@@ -17,9 +13,13 @@ ostream &operator<<(ostream &out, const Card &card) {
     return out;
 }
 
-bool Card::validInput(int x) const { return (x >= Card::LOWER_BOUND && x <= Card::UPPER_BOUND); }
+bool Card::validInput(int x) const {
+    return (x >= Card::LOWER_BOUND && x <= Card::UPPER_BOUND);
+}
 
-string Card::offsetPositiveNumber(int x) const { return ((x < 0 ? "" : Card::PLUS_SIGN) + to_string(x)); }
+string Card::offsetPositiveNumber(int x) const {
+    return ((x < 0 ? "" : Card::PLUS_SIGN) + to_string(x));
+}
 
 string Card::chooseSign() const {
     bool invalidInput = true;
@@ -29,11 +29,13 @@ string Card::chooseSign() const {
 
         invalidInput = (sign != Card::PLUS_SIGN && sign != Card::MINUS_SIGN);
 
-        if (invalidInput)
+        if (invalidInput) {
             invalidSignMessage();
-
+        }
     }
     return sign;
 }
 
-void Card::invalidSignMessage() const { cout << "Invalid sign, please try again."; }
+void Card::invalidSignMessage() const {
+    cout << "Invalid sign, please try again.";
+}

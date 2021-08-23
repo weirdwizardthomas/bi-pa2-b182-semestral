@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 11/02/19.
-//
-
 #ifndef PAZAAK_GAME_H
 #define PAZAAK_GAME_H
 
@@ -57,7 +53,7 @@ private:
      * @param[in] savedGames Container of all filenames within the directory of saved games
      * @return Relative path to the picked Game file
      */
-    static std::string getGameFileName(const std::vector<std::string> &savedGames);
+    static std::string getGameFileName(const std::vector <std::string> &savedGames);
 
     /**
      * Examines the round scores of either players and determines the victor of the game
@@ -75,7 +71,7 @@ private:
      * Locates all files, representing a game in progress, in the Game::SAVED_FOLDER directory
      * @return names of all files in the Game::SAVED_FOLDER directory
      */
-    static std::vector<std::string> getSavedGames();
+    static std::vector <std::string> getSavedGames();
 
     /**
      * Queries the user to save a file with a custom filename within the Game::SAVED_FOLDER directory
@@ -168,7 +164,7 @@ private:
      * Shows the filenames of all the decks within the Game::SAVED_FOLDER directory
      * @param savedGames Container of all the file names within the Game::SAVED_FOLDER directory
      */
-    static void listGamesInDirectory(const std::vector<std::string> &savedGames);
+    static void listGamesInDirectory(const std::vector <std::string> &savedGames);
 
     /**
      * Shows a message that a round is commencing

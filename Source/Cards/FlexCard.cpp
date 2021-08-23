@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #include "FlexCard.h"
 
 using namespace std;
@@ -15,7 +11,6 @@ FlexCard::FlexCard() : DualCard(FlexCard::LEFT, FlexCard::RIGHT) {}
 
 int FlexCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
     chooseSignPrompt();
-
     return (chooseSign() == Card::PLUS_SIGN ? 1 : -1) * chooseEffect();
 }
 
@@ -28,6 +23,10 @@ string FlexCard::getSignedSymbols() const {
 }
 
 void FlexCard::chooseSignPrompt() const {
-    cout << "Choose sign: " << PLUS_SIGN << SIGN_DELIMITER << MINUS_SIGN << endl;
+    cout << "Choose sign: "
+         << PLUS_SIGN
+         << SIGN_DELIMITER
+         << MINUS_SIGN
+         << endl;
 }
 

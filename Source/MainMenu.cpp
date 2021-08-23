@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 05/05/19.
-//
-
 #include <iostream>
 
 #include "MainMenu.h"
@@ -21,8 +17,10 @@ MainMenu::MainMenu() : items({"Play locally", "Play against a computer", "Load g
 size_t MainMenu::selectItem() const {
     cout << "Select a menu option: ";
     size_t choice = items.size();
+
     while (choice >= items.size()) {
         cin >> choice;
+
         if (choice >= items.size()) {
             cout << "Invalid choice, please select an option in range 0-" << items.size() - 1 << endl;
             cout << "Select a menu option: ";
@@ -82,17 +80,22 @@ void MainMenu::loop() const {
     } while (invoke(selectItem()));
 }
 
-
-void MainMenu::playerNameQuery() const { cout << "Enter the name of the player:"; }
-
+void MainMenu::playerNameQuery() const {
+    cout << "Enter the name of the player:";
+}
 
 void MainMenu::listItems() const {
     size_t i = 0;
     for (const auto &item : items)
-        cout << LEFT_INDEX_WRAPPER << i++ << RIGHT_INDEX_WRAPPER << " " << item << endl;
+        cout << LEFT_INDEX_WRAPPER
+             << i++
+             << RIGHT_INDEX_WRAPPER
+             << " "
+             << item
+             << endl;
 }
 
 void MainMenu::printHeader() const {
-    cout << "Pazaak, a card game from Star Wars: Knights of the Old Republic "
-         << "by Tomas Koristka - koristo1@fit.cvut.cz" << endl;
+    cout << "Pazaak, a card game from Star Wars: Knights of the Old Republic by Tomas Koristka - koristo1@fit.cvut.cz"
+         << endl;
 }

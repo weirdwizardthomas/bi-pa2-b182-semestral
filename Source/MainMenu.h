@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 05/05/19.
-//
-
 #ifndef PAZAAK_MAINMENU_H
 #define PAZAAK_MAINMENU_H
 

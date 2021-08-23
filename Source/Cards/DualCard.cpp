@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #include "DualCard.h"
 
 using namespace std;
@@ -10,11 +6,13 @@ const char *DualCard::DUAL_DELIMITER{"|"};
 
 
 DualCard::DualCard(int left, int right) : values({left, right}) {
-    if (!validInput(left) || !validInput(right))
+    if (!validInput(left) || !validInput(right)) {
         throw invalid_argument("Invalid Dual Card value");
+    }
 
-    if (abs(values.first) <= abs(values.second))
+    if (abs(values.first) <= abs(values.second)) {
         swap(values.first, values.second);
+    }
 }
 
 int DualCard::play(std::vector<int> &playedCards, int currentScore, int opponentScore) const {
@@ -32,8 +30,10 @@ int DualCard::chooseEffect() const {
         listChoices();
         cin >> input;
         invalidInput = (input != 0 && input != 1);
-        if (invalidInput)
+
+        if (invalidInput) {
             invalidInputMessage();
+        }
     }
     return input;
 }
@@ -44,11 +44,20 @@ string DualCard::getDescription() const {
            Card::offsetPositiveNumber(values.second);
 }
 
-void DualCard::valueChosenMessage(int value) const { cout << "You've chosen: " << value << endl; }
+void DualCard::valueChosenMessage(int value) const {
+    cout << "You've chosen: " << value << endl;
+}
 
-void DualCard::invalidInputMessage() const { cout << "Invalid choice, please try again." << endl; }
+void DualCard::invalidInputMessage() const {
+    cout << "Invalid choice, please try again." << endl;
+}
 
-void DualCard::listChoices() const { cout << "[" << values.first << DualCard::DUAL_DELIMITER << values.second << "]: "; }
+void DualCard::listChoices() const {
+    cout << "["
+         << values.first
+         << DualCard::DUAL_DELIMITER
+         << values.second << "]: ";
+}
 
 void DualCard::chooseValuePrompt() const {
     cout << "Choose an effect [0 for the first choice/1 for the second choice]" << endl;

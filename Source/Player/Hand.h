@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 09/02/19.
-//
-
 #ifndef PAZAAK_HAND_H
 #define PAZAAK_HAND_H
 
@@ -59,7 +55,6 @@ public:
      * @return output stream containing Hand::cards
      */
     friend std::ostream &operator<<(std::ostream &out, const Hand &hand);
-
 };
 
 

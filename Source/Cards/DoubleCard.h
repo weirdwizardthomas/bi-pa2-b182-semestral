@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #ifndef TMPPAZAAK_DOUBLECARD_H
 #define TMPPAZAAK_DOUBLECARD_H
 
@@ -14,7 +10,6 @@
 class DoubleCard : public Card {
 
 public:
-
     ~DoubleCard() override = default;
 
     /**
@@ -29,7 +24,6 @@ public:
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
     std::string getDescription() const override;
-
 };
 
 

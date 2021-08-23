@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #ifndef TMPPAZAAK_BASICCARD_H
 #define TMPPAZAAK_BASICCARD_H
 
@@ -9,7 +5,6 @@
 #include <fstream>
 
 #include "Card.h"
-
 
 /**
  * Adds its singular value to the player's current score when played
@@ -40,8 +35,6 @@ public:
     int play() const;
 
     std::string getDescription() const override;
-
-
 };
 
 

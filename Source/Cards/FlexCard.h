@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #ifndef TMPPAZAAK_PLUSMINUSONETWOCARD_H
 #define TMPPAZAAK_PLUSMINUSONETWOCARD_H
 
@@ -43,7 +39,6 @@ public:
     int play(std::vector<int> &playedCards, int currentScore, int opponentScore) const override;
 
     std::string getDescription() const override;
-
 };
 
 #endif //TMPPAZAAK_PLUSMINUSONETWOCARD_H

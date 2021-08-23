@@ -9,14 +9,9 @@
 #include "Source/Cards/CardDatabase.h"
 #include "Source/MainMenu.h"
 
-//Namespaces--------------------------------
-using namespace std;
-
 
 int main() {
-    MainMenu mainMenu;
-    mainMenu.loop();
+    MainMenu().loop();
     return EXIT_SUCCESS;
-
 }
 

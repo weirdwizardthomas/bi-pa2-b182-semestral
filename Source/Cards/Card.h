@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #ifndef TMPPAZAAK_CARD_H
 #define TMPPAZAAK_CARD_H
 
@@ -72,7 +68,6 @@ public:
      * @return @param out containing Card's description.
      */
     friend std::ostream &operator<<(std::ostream &out, const Card &card);
-
 };
 
 

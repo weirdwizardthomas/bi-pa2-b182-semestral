@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 03/02/19.
-//
-
 #ifndef TMPPAZAAK_DUALCARD_H
 #define TMPPAZAAK_DUALCARD_H
 

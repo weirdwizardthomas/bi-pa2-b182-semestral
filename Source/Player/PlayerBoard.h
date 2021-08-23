@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 08/02/19.
-//
-
 #ifndef TMPPAZAAK_PLAYERBOARD_H
 #define TMPPAZAAK_PLAYERBOARD_H
 
@@ -24,7 +20,7 @@ private:
     size_t roundsWon; /*<! Amount of rounds won in the current game*/
     bool standing; /*<! If the player is standing, they are skipping all of their turns within the current round */
     std::vector<int> playedCards; /*<! Numerical values of all the cards played in the current round */
-    std::vector<BasicCard> mainDeck; /*<! Remaining auto-played cards in a given round */
+    std::vector <BasicCard> mainDeck; /*<! Remaining auto-played cards in a given round */
     RandomNumberGenerator randomNumberGenerator; /*<! Generator for picking cards from the mainDeck */
 
     /**
@@ -66,7 +62,7 @@ private:
      * @param[in] file Game file to be read from
      * @return Container representing PlayerBoard::mainDeck
      */
-    static std::vector<BasicCard> loadMainDeck(std::ifstream &file);
+    static std::vector <BasicCard> loadMainDeck(std::ifstream &file);
 
     /**
      * Adds all the values of the PlayerBoard::playedCards' together and assigns the result to PlayerBoard::currentScore
@@ -81,8 +77,7 @@ private:
 public:
     static const size_t TABLE_SIZE;/*<! Maximum number of Cards that can be played in a round */
     static const size_t MAIN_DECK_CARD_COPIES; /*<! Number of identical copies of each card in the mainDeck */
-    static const char *PLAYED_CARDS_DELIMITER; /*<! Delimiter to separate
-                                                * individual numerical values of elements of 'playedCards' in a file */
+    static const char *PLAYED_CARDS_DELIMITER; /*<! Delimiter to separate individual numerical values of elements of 'playedCards' in a file */
     static const char *ROUNDS_WON_LEAD;/*<! Leading string for the 'roundsWon'  member in a file */
     static const char *CURRENT_SCORE_LEAD;/*<! Leading string for the 'currentScore' member in a file */
     static const char *ITEM_LIST_DELIMITER;/*<! String that separates the item index in a list from a value */

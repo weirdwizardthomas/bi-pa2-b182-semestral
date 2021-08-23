@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 04/05/19.
-//
-
 #include "HumanPlayer.h"
 #include "../../Game.h"
 #include "../../Utilities/DeckParser.h"
@@ -15,10 +11,11 @@ const char *HumanPlayer::HUMAN_FILE_LEAD{"Human"};
 HumanPlayer::HumanPlayer(const string &name) : Player(name) {}
 
 void HumanPlayer::drawHand() {
-    vector<Card *> drawnFromHand = deck.drawCardsFromDeck();
+    vector < Card * > drawnFromHand = deck.drawCardsFromDeck();
 
-    for (auto &card : drawnFromHand)
+    for (auto &card : drawnFromHand) {
         hand.addCard(card);
+    }
 }
 
 void HumanPlayer::takeTurn(const int opponentScore) {
@@ -35,23 +32,28 @@ void HumanPlayer::takeTurn(const int opponentScore) {
         Game::clearScreen(cout);
         return;
     }
+
     Game::clearScreen(cout);
     board.addPlayedCard(autoPlayCard());
     boardStatusMessage(opponentScore);
     actionPrompt();
 
     while (!playCard(opponentScore));
-
 }
 
 void HumanPlayer::saveNameToFile(std::ofstream &file) const {
-    file << NAME_FILE_LEAD << Game::FILE_FIELD_VALUE_DELIMITER << HumanPlayer::HUMAN_FILE_LEAD
-         << Player::PLAYER_TYPE_DELIMITER << name << endl;
+    file << NAME_FILE_LEAD
+         << Game::FILE_FIELD_VALUE_DELIMITER
+         << HumanPlayer::HUMAN_FILE_LEAD
+         << Player::PLAYER_TYPE_DELIMITER
+         << name
+         << endl;
 }
 
 bool HumanPlayer::isStandingUp() const {
     string input;
     bool invalidInput = true;
+
     while (invalidInput) {
         cin >> input;
         invalidInput = input != "Y" && input != "N" && input != "S";
@@ -67,6 +69,7 @@ bool HumanPlayer::isStandingUp() const {
 bool HumanPlayer::playCard(const int opponentScore) {
     string input;
     cin >> input;
+
     if (input == "P" || input == "PASS" || input == "Y" || input == "YES") {
         isPassingTurnMessage();
         return true;
@@ -86,7 +89,6 @@ bool HumanPlayer::playCard(const int opponentScore) {
         actionPrompt();
         return false;
     }
-
 }
 
 void HumanPlayer::chooseDeck(const CardDatabase &cardDatabase) {
@@ -117,6 +119,7 @@ void HumanPlayer::chooseDeck(const CardDatabase &cardDatabase) {
             deckApprovalPrompt();
             cin >> input;
         }
+
         confirmed = (input == "Y");
     }
 }
@@ -137,23 +140,37 @@ Player *HumanPlayer::loadFromFile(std::ifstream &file, const CardDatabase &cardD
     return player;
 }
 
-void HumanPlayer::printDeck() const { cout << deck << endl; }
+void HumanPlayer::printDeck() const {
+    cout << deck
+         << endl;
+}
 
-void HumanPlayer::invalidInputMessage() const { cout << "Invalid input, try again." << endl; }
+void HumanPlayer::invalidInputMessage() const {
+    cout << "Invalid input, try again."
+         << endl;
+}
 
-void HumanPlayer::deckApprovalPrompt() const { cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?" << endl; }
+void HumanPlayer::deckApprovalPrompt() const {
+    cout << "Do you want to use this deck? [Y]es/[N]o/[E]xit?"
+         << endl;
+}
 
 void HumanPlayer::actionPrompt() const {
-    cout << endl << "Pick a card to play or [P]ass" << endl;
-    cout << hand;
-    cout << "(P)ass" << endl;
+    cout << endl
+         << "Pick a card to play or [P]ass"
+         << endl
+         << hand
+         << "(P)ass" << endl;
 }
 
 void HumanPlayer::deckChoicePrompt() const {
-    cout << "Forge a new deck or Load an existing one([F]orge/[L]oad)?" << endl;
+    cout << "Forge a new deck or Load an existing one([F]orge/[L]oad)?"
+         << endl;
 }
 
 void HumanPlayer::choosingDeckMessage() const {
     Game::clearScreen(cout);
-    cout << name << "'s turn to pick a deck." << endl;
+    cout << name
+         << "'s turn to pick a deck."
+         << endl;
 }

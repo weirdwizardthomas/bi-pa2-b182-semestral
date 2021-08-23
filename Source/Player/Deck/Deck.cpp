@@ -1,8 +1,3 @@
-
-//
-// Created by tomtom on 08/02/19.
-//
-
 #include <list>
 #include "Deck.h"
 #include "../../Utilities/DeckParser.h"
@@ -20,8 +15,11 @@ const char *Deck::RIGHT_INDEX_BRACKET{") "};
 
 ostream &operator<<(ostream &out, const Deck &deck) {
     size_t i = 0;
-    for (const Card *card : deck.cards)
+
+    for (const Card *card : deck.cards) {
         out << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << *card << endl;
+    }
+
     return out;
 }
 
@@ -39,7 +37,7 @@ Deck::Deck(const CardDatabase &cardDatabase) : randomGenerator(0, DECK_SIZE - 1)
 void Deck::addCard(Card *card) { this->cards.push_back(card); }
 
 vector<Card *> Deck::drawCardsFromDeck() {
-    vector<Card *> drawnCards;
+    vector < Card * > drawnCards;
 
     for (size_t i = 0; i < MAX_CARDS_DRAWN; i++) {
         if (cards.empty())
@@ -53,7 +51,7 @@ vector<Card *> Deck::drawCardsFromDeck() {
 }
 
 void Deck::loadCardsFromUser(const CardDatabase &cardDatabase) {
-    vector<Card *> allCardsVector = cardDatabase.toVector();
+    vector < Card * > allCardsVector = cardDatabase.toVector();
 
     this->cards.reserve(Deck::DECK_SIZE);
     size_t i = 0; //initial index
@@ -81,8 +79,8 @@ void Deck::loadCardsFromUser(const CardDatabase &cardDatabase) {
     }
 }
 
-list<string> Deck::toLines() const {
-    list<string> fileLines;
+list <string> Deck::toLines() const {
+    list <string> fileLines;
     for (const auto &card: cards) {
         string line;
 
@@ -110,11 +108,10 @@ void Deck::removeCardFromDeck(size_t pickedCardIndex) {
 }
 
 void Deck::saveToFile() const {
-    vector<string> files = DeckParser::getDecksFromDirectory();
+    vector <string> files = DeckParser::getDecksFromDirectory();
     string filename = QueryUserInputFilename(files);
 
-    string path;
-    path.append(DeckParser::DECKS_DIRECTORY).append(DeckParser::FOLDER_DELIMITER).append(filename);
+    string path = DeckParser::DECKS_DIRECTORY + DeckParser::FOLDER_DELIMITER + filename;
 
     fstream deckFile;
     deckFile.open(path, fstream::out);
@@ -123,8 +120,9 @@ void Deck::saveToFile() const {
 
     auto cardLines = toLines();
 
-    for (const auto &cardLine : cardLines)
+    for (const auto &cardLine : cardLines) {
         deckFile << cardLine << endl;
+    }
 
     deckFile.close();
 }
@@ -134,10 +132,12 @@ void Deck::saveToFile(std::ofstream &file) const {
     file << *this;
 }
 
-bool Deck::fileAlreadyExists(const vector<string> &files, const string &filename) {
-    for (const string &currentFile : files)
-        if (currentFile == filename)
+bool Deck::fileAlreadyExists(const vector <string> &files, const string &filename) {
+    for (const string &currentFile : files) {
+        if (currentFile == filename) {
             return true;
+        }
+    }
     return false;
 }
 
@@ -151,14 +151,14 @@ Deck Deck::loadFromFile(std::ifstream &file, const CardDatabase &cardDatabase) {
 
     for (size_t i = 0; i < cardCount; ++i) {
         getline(file, input);
-        list<string> parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
+        list <string> parsed = CardDatabase::split(input, Deck::RIGHT_INDEX_BRACKET);
         deck.cards.push_back(cardDatabase.get(parsed.back()));
     }
 
     return deck;
 }
 
-string Deck::QueryUserInputFilename(const vector<string> &files) {
+string Deck::QueryUserInputFilename(const vector <string> &files) {
     displayDecksMessage(files);
     deckNamePrompt();
 
@@ -172,21 +172,41 @@ string Deck::QueryUserInputFilename(const vector<string> &files) {
     return filename;
 }
 
-void Deck::fileExistsMessage() { cout << "File already exists, please try another name: "; }
+void Deck::fileExistsMessage() {
+    cout << "File already exists, please try another name: ";
+}
 
-void Deck::deckNamePrompt() { cout << "Save deck as:"; }
+void Deck::deckNamePrompt() {
+    cout << "Save deck as:";
+}
 
-void Deck::deckForgedMessage() { cout << "Deck forged." << endl; }
+void Deck::deckForgedMessage() {
+    cout << "Deck forged." << endl;
+}
 
-void Deck::selectCardsDeckSizePrompt() { cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl; }
+void Deck::selectCardsDeckSizePrompt() {
+    cout << "Select " << DECK_SIZE << " cards to add to your deck." << endl;
+}
 
-void Deck::selectedCardMessage(size_t index) const { cout << "You've selected: " << *(cards[index]) << endl; }
+void Deck::selectedCardMessage(size_t index) const {
+    cout << "You've selected: " << *(cards[index]) << endl;
+}
 
-void Deck::invalidInputMessage() { cout << "Invalid input, please try again." << endl; }
+void Deck::invalidInputMessage() {
+    cout << "Invalid input, please try again." << endl;
+}
 
-void Deck::displayDecksMessage(const vector<string> &files) {
-    cout << "Saved decks" << endl;
+void Deck::displayDecksMessage(const vector <string> &files) {
+    cout << "Saved decks"
+         << endl;
+
     size_t i = 0;
-    for (const auto &file : files)
-        cout << Deck::LEFT_INDEX_BRACKET << i++ << Deck::RIGHT_INDEX_BRACKET << file << endl;
+
+    for (const auto &file : files) {
+        cout << Deck::LEFT_INDEX_BRACKET
+             << i++
+             << Deck::RIGHT_INDEX_BRACKET
+             << file
+             << endl;
+    }
 }

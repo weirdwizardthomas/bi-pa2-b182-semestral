@@ -1,7 +1,3 @@
-//
-// Created by tomtom on 04/05/19.
-//
-
 #ifndef PAZAAK_HUMANPLAYER_H
 #define PAZAAK_HUMANPLAYER_H
 
@@ -102,7 +98,6 @@ public:
      * @param opponentScore The opposing side's current score
      */
     void takeTurn(int opponentScore) override;
-
 };
 
 
